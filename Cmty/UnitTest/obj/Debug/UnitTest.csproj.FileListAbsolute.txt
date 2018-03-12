@@ -1,0 +1,6 @@
+D:\文档\Cmty\UnitTest\bin\Debug\UnitTest.exe.config
+D:\文档\Cmty\UnitTest\bin\Debug\UnitTest.exe
+D:\文档\Cmty\UnitTest\bin\Debug\UnitTest.pdb
+D:\文档\Cmty\UnitTest\obj\Debug\UnitTest.csprojResolveAssemblyReference.cache
+D:\文档\Cmty\UnitTest\obj\Debug\UnitTest.exe
+D:\文档\Cmty\UnitTest\obj\Debug\UnitTest.pdb
