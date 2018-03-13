@@ -16,52 +16,51 @@ namespace Services
         [OperationContract]
         CommonLib.ReturnState Register(RegisterView register);
 
-        [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
-
         // TODO: 在此添加您的服务操作
     }
 
     [DataContract]
     public class RegisterView
     {
-        private string email;
-        private string pwd;
+        private string _email;
+        private string _password;
+        private int _userType;
+        private string _userName;
+        private string _tel;
 
         [DataMember]
         public string Email
         {
-            get { return email; }
-            set { email = value; }
+            get { return _email; }
+            set { _email = value; }
         }
 
         [DataMember]
-        public string Pwd
+        public string Password
         {
-            get { return pwd; }
-            set { pwd = value; }
-        }
-    }
-
-    // 使用下面示例中说明的数据约定将复合类型添加到服务操作。
-    [DataContract]
-    public class CompositeType
-    {
-        bool boolValue = true;
-        string stringValue = "Hello ";
-
-        [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
+            get { return _password; }
+            set { _password = value; }
         }
 
         [DataMember]
-        public string StringValue
+        public string UserName
         {
-            get { return stringValue; }
-            set { stringValue = value; }
+            get { return _userName; }
+            set { _userName = value; }
+        }
+
+        [DataMember]
+        public string Tel
+        {
+            get { return _tel; }
+            set { _tel = value; }
+        }
+
+        [DataMember]
+        public int UserType
+        {
+            get { return _userType; }
+            set { _userType = value; }
         }
     }
 }

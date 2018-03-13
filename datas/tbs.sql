@@ -34,7 +34,7 @@ create table UserSets
 	uType    int default 0,
 	uName    nvarchar(20),
 	rDate    datetime,
-	destroy  bit default 0,
+	Tel		 nvarchar(11),
 	primary key (Email),
 	constraint fk_uType_us foreign key (uType) references cfg_UserType (Id)
 );

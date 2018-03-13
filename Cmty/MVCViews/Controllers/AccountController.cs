@@ -153,21 +153,27 @@ namespace MVCViews.Controllers
         {
             if (ModelState.IsValid)
             {
-                
-                var result = accountClient.Register()
+                AccountService.RegisterView registerModel = new AccountService.RegisterView
+                {
+                    Email = model.Email,
+                    Password = model.Password,
+                    UserName = model.UserName,
+                    Tel = model.Tel,
+                    UserType = 1, // default
+                };
+
+                // 用户名为空，则默认为Email
+                if (model.UserName.Equals(""))
+                {
+                    registerModel.UserName = model.Email;
+                }
+
+                var result = accountClient.Register(registerModel);
                 if (result.Equals(ReturnState.ReturnOK))
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // 有关如何启用帐户确认和密码重置的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=320771
-                    // 发送包含此链接的电子邮件
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "确认你的帐户", "请通过单击 <a href=\"" + callbackUrl + "\">這裏</a>来确认你的帐户");
-
                     return RedirectToAction("Index", "Home");
                 }
-                AddErrors(result);
+                AddErrors(IdentityResult.Failed(@"邮箱已注册!"));
             }
 
             // 如果我们进行到这一步时某个地方出错，则重新显示表单

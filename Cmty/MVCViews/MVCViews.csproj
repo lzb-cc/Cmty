@@ -241,12 +241,6 @@
     <None Include="Service References\AccountService\AccountService.disco" />
     <None Include="Service References\AccountService\configuration91.svcinfo" />
     <None Include="Service References\AccountService\configuration.svcinfo" />
-    <Content Include="Service References\AccountService\MVCViews.AccountService.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\AccountService\MVCViews.AccountService.ReturnState.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\AccountService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

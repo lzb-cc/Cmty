@@ -5,27 +5,17 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using Services.DAL.Account;
 
 namespace Services
 {
     public class AccountService : IAccountService
     {
-        public CommonLib.ReturnState Register(RegisterView register)
+        public CommonLib.ReturnState Register(RegisterView model)
         {
-            return CommonLib.ReturnState.ReturnError;
-        }
-
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            if (AccountOperator.HasMember(model.Email))
+                return CommonLib.ReturnState.ReturnError;
+            return AccountOperator.Register(model);
         }
     }
 }

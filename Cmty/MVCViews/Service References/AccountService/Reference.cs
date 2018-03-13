@@ -15,7 +15,7 @@ namespace MVCViews.AccountService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RegisterView", Namespace="http://schemas.datacontract.org/2004/07/Services.Interfaces")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RegisterView", Namespace="http://schemas.datacontract.org/2004/07/Services")]
     [System.SerializableAttribute()]
     public partial class RegisterView : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -26,7 +26,16 @@ namespace MVCViews.AccountService {
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PwdField;
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserTypeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -52,89 +61,53 @@ namespace MVCViews.AccountService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Pwd {
+        public string Password {
             get {
-                return this.PwdField;
+                return this.PasswordField;
             }
             set {
-                if ((object.ReferenceEquals(this.PwdField, value) != true)) {
-                    this.PwdField = value;
-                    this.RaisePropertyChanged("Pwd");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ReturnState", Namespace="http://schemas.datacontract.org/2004/07/CommonLib")]
-    public enum ReturnState : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        ReturnOK = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        ReturnError = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        SystemError = 2,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/Services.Interfaces")]
-    [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
-            get {
-                return this.BoolValueField;
-            }
-            set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
+        public string Tel {
             get {
-                return this.StringValueField;
+                return this.TelField;
             }
             set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
+                if ((object.ReferenceEquals(this.TelField, value) != true)) {
+                    this.TelField = value;
+                    this.RaisePropertyChanged("Tel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserType {
+            get {
+                return this.UserTypeField;
+            }
+            set {
+                if ((this.UserTypeField.Equals(value) != true)) {
+                    this.UserTypeField = value;
+                    this.RaisePropertyChanged("UserType");
                 }
             }
         }
@@ -154,16 +127,10 @@ namespace MVCViews.AccountService {
     public interface IAccountService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/Register", ReplyAction="http://tempuri.org/IAccountService/RegisterResponse")]
-        MVCViews.AccountService.ReturnState Register([System.ServiceModel.MessageParameterAttribute(Name="register")] MVCViews.AccountService.RegisterView register1);
+        CommonLib.ReturnState Register([System.ServiceModel.MessageParameterAttribute(Name="register")] MVCViews.AccountService.RegisterView register1);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/Register", ReplyAction="http://tempuri.org/IAccountService/RegisterResponse")]
-        System.Threading.Tasks.Task<MVCViews.AccountService.ReturnState> RegisterAsync(MVCViews.AccountService.RegisterView register);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IAccountService/GetDataUsingDataContractResponse")]
-        MVCViews.AccountService.CompositeType GetDataUsingDataContract(MVCViews.AccountService.CompositeType composite);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IAccountService/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<MVCViews.AccountService.CompositeType> GetDataUsingDataContractAsync(MVCViews.AccountService.CompositeType composite);
+        System.Threading.Tasks.Task<CommonLib.ReturnState> RegisterAsync(MVCViews.AccountService.RegisterView register);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -193,20 +160,12 @@ namespace MVCViews.AccountService {
                 base(binding, remoteAddress) {
         }
         
-        public MVCViews.AccountService.ReturnState Register(MVCViews.AccountService.RegisterView register1) {
+        public CommonLib.ReturnState Register(MVCViews.AccountService.RegisterView register1) {
             return base.Channel.Register(register1);
         }
         
-        public System.Threading.Tasks.Task<MVCViews.AccountService.ReturnState> RegisterAsync(MVCViews.AccountService.RegisterView register) {
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> RegisterAsync(MVCViews.AccountService.RegisterView register) {
             return base.Channel.RegisterAsync(register);
-        }
-        
-        public MVCViews.AccountService.CompositeType GetDataUsingDataContract(MVCViews.AccountService.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
-        }
-        
-        public System.Threading.Tasks.Task<MVCViews.AccountService.CompositeType> GetDataUsingDataContractAsync(MVCViews.AccountService.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContractAsync(composite);
         }
     }
 }
