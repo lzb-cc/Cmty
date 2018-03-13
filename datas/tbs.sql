@@ -13,7 +13,7 @@ go
 if OBJECT_ID('cfg_Universities') is not null drop table cfg_Universities;
 create table cfg_Universities
 (
-    Id    int,
+    Id    int identity,
 	name  nvarchar(20),
 	primary key(Id)
 );
@@ -21,7 +21,7 @@ create table cfg_Universities
 if OBJECT_ID('cfg_UserType') is not null drop table cfg_UserType;
 create table cfg_UserType
 (
-	Id    int,
+	Id    int identity,
 	uType nvarchar(10),
 	primary key (Id)
 );
@@ -33,6 +33,8 @@ create table UserSets
 	Pwd		 nvarchar(16),
 	uType    int default 0,
 	uName    nvarchar(20),
+	rDate    datetime,
+	destroy  bit default 0,
 	primary key (Email),
 	constraint fk_uType_us foreign key (uType) references cfg_UserType (Id)
 );
@@ -82,7 +84,24 @@ go
 
 use CmtyDB;
 go
+--cfg_Universities--
+insert into cfg_Universities values (N'北京大学')
+insert into cfg_Universities values (N'清华大学')
+insert into cfg_Universities values (N'武汉大学')
+insert into cfg_Universities values (N'华中科技大学')
+insert into cfg_Universities values (N'武汉科技大学')
 
+--cfg_UserType--
+insert into cfg_UserType values (N'普通用户')
+insert into cfg_UserType values (N'教师')
+
+----
+
+
+----
+
+
+----
 go
 
 use master;
