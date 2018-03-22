@@ -5,6 +5,7 @@ using System.Web;
 using System.Configuration;
 using CommonLib;
 using System.Data.SqlClient;
+using Services;
 
 namespace Services.DAL.Account
 {
@@ -12,6 +13,12 @@ namespace Services.DAL.Account
     {
         private static readonly string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
+
+        /// <summary>
+        /// 用户注册
+        /// </summary>
+        /// <param name="model">注册对象</param>
+        /// <returns></returns>
         public static ReturnState Register(RegisterView model)
         {
             using (var conn = new SqlConnection(connectionString))
@@ -33,6 +40,11 @@ namespace Services.DAL.Account
             return ReturnState.ReturnOK;
         }
 
+        /// <summary>
+        /// 查询邮箱是否存在
+        /// </summary>
+        /// <param name="emal"></param>
+        /// <returns></returns>
         public static bool HasMember(string emal)
         {
             bool result = false;
@@ -40,6 +52,23 @@ namespace Services.DAL.Account
             {
                 conn.Open();
                 var cmdText = string.Format("select * from UserSets where email = '{0}'", emal);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteScalar() != null;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static bool Login(LoginView model)
+        {
+            bool result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select * from UserSets where email = '{0}' and pwd = '{1}'", model.Email, model.Password);
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     result = cmd.ExecuteScalar() != null;

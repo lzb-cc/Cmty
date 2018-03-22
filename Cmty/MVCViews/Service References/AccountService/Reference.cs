@@ -122,15 +122,82 @@ namespace MVCViews.AccountService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LoginView", Namespace="http://schemas.datacontract.org/2004/07/Services")]
+    [System.SerializableAttribute()]
+    public partial class LoginView : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AccountService.IAccountService")]
     public interface IAccountService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/Register", ReplyAction="http://tempuri.org/IAccountService/RegisterResponse")]
-        CommonLib.ReturnState Register([System.ServiceModel.MessageParameterAttribute(Name="register")] MVCViews.AccountService.RegisterView register1);
+        CommonLib.ReturnState Register(MVCViews.AccountService.RegisterView model);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/Register", ReplyAction="http://tempuri.org/IAccountService/RegisterResponse")]
-        System.Threading.Tasks.Task<CommonLib.ReturnState> RegisterAsync(MVCViews.AccountService.RegisterView register);
+        System.Threading.Tasks.Task<CommonLib.ReturnState> RegisterAsync(MVCViews.AccountService.RegisterView model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/Login", ReplyAction="http://tempuri.org/IAccountService/LoginResponse")]
+        CommonLib.ReturnState Login(MVCViews.AccountService.LoginView model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/Login", ReplyAction="http://tempuri.org/IAccountService/LoginResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> LoginAsync(MVCViews.AccountService.LoginView model);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -160,12 +227,20 @@ namespace MVCViews.AccountService {
                 base(binding, remoteAddress) {
         }
         
-        public CommonLib.ReturnState Register(MVCViews.AccountService.RegisterView register1) {
-            return base.Channel.Register(register1);
+        public CommonLib.ReturnState Register(MVCViews.AccountService.RegisterView model) {
+            return base.Channel.Register(model);
         }
         
-        public System.Threading.Tasks.Task<CommonLib.ReturnState> RegisterAsync(MVCViews.AccountService.RegisterView register) {
-            return base.Channel.RegisterAsync(register);
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> RegisterAsync(MVCViews.AccountService.RegisterView model) {
+            return base.Channel.RegisterAsync(model);
+        }
+        
+        public CommonLib.ReturnState Login(MVCViews.AccountService.LoginView model) {
+            return base.Channel.Login(model);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> LoginAsync(MVCViews.AccountService.LoginView model) {
+            return base.Channel.LoginAsync(model);
         }
     }
 }

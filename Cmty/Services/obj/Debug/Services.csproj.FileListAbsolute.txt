@@ -39,3 +39,4 @@ F:\GitHub\Cmty\Cmty\Services\bin\Microsoft.AI.WindowsServer.xml
 F:\GitHub\Cmty\Cmty\Services\bin\Microsoft.ApplicationInsights.xml
 F:\GitHub\Cmty\Cmty\Services\obj\Debug\Services.dll
 F:\GitHub\Cmty\Cmty\Services\obj\Debug\Services.pdb
+F:\GitHub\Cmty\Cmty\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache

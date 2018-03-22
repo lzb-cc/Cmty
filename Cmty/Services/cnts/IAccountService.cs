@@ -14,9 +14,11 @@ namespace Services
     {
 
         [OperationContract]
-        CommonLib.ReturnState Register(RegisterView register);
+        CommonLib.ReturnState Register(RegisterView model);
 
         // TODO: 在此添加您的服务操作
+        [OperationContract]
+        CommonLib.ReturnState Login(LoginView model);
     }
 
     [DataContract]
@@ -61,6 +63,27 @@ namespace Services
         {
             get { return _userType; }
             set { _userType = value; }
+        }
+    }
+
+    [DataContract]
+    public class LoginView
+    {
+        private string _email;
+        private string _password;
+
+        [DataMember]
+        public string Email
+        {
+            get { return _email; }
+            set { _email = value; }
+        }
+
+        [DataMember]
+        public string Password
+        {
+            get { return _password; }
+            set { _password = value; }
         }
     }
 }

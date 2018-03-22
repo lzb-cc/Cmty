@@ -18,6 +18,11 @@ namespace MVCViews.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private static HttpCookie _cookie = new HttpCookie(DefaultAuthenticationTypes.ApplicationCookie);
+        private static readonly string cookieValue = "cookieValue";
+        private static readonly string cookieLogout = "cookieLogout";
+
+
         private static AccountService.AccountServiceClient accountClient = new AccountService.AccountServiceClient();
 
         public AccountController()
@@ -68,7 +73,7 @@ namespace MVCViews.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public ActionResult Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
@@ -77,20 +82,21 @@ namespace MVCViews.Controllers
 
             // 这不会计入到为执行帐户锁定而统计的登录失败次数中
             // 若要在多次输入错误密码的情况下触发帐户锁定，请更改为 shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            var obj = new AccountService.LoginView()
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "无效的登录尝试。");
-                    return View(model);
+                Email = model.Email,
+                Password = model.Password
+            };
+            var result = accountClient.Login(obj) ;
+            
+            if (result == CommonLib.ReturnState.ReturnOK)
+            {
+                _cookie.Value = model.Email;
+                _cookie.Expires = DateTime.Now.AddDays(1);
+                this.ControllerContext.HttpContext.Response.Cookies.Add(_cookie);
+                return RedirectToAction("Index", "Home");
             }
+            return RedirectToAction(returnUrl);
         }
 
         //
@@ -113,7 +119,7 @@ namespace MVCViews.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
         {
-            if (!ModelState.IsValid)
+            if (this.ControllerContext.HttpContext.Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value.Equals(cookieValue))
             {
                 return View(model);
             }
@@ -171,6 +177,14 @@ namespace MVCViews.Controllers
                 var result = accountClient.Register(registerModel);
                 if (result.Equals(ReturnState.ReturnOK))
                 {
+                    // set dict
+                    Gloable.dict.Add(model.Email, model.UserName);
+
+                    // set cookie
+                    _cookie.Value = model.Email;
+                    _cookie.Expires = DateTime.Now.AddDays(1);
+                    this.ControllerContext.HttpContext.Response.SetCookie(_cookie);
+
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(IdentityResult.Failed(@"邮箱已注册!"));
@@ -396,10 +410,11 @@ namespace MVCViews.Controllers
         //
         // POST: /Account/LogOff
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            this.ControllerContext.HttpContext.Response.Cookies[DefaultAuthenticationTypes.ApplicationCookie].Expires = DateTime.Now.AddDays(-1);
+            //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
 
