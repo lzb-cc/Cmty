@@ -13,7 +13,7 @@ using CommonLib;
 
 namespace MVCViews.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -409,11 +409,13 @@ namespace MVCViews.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
+        //[HttpPost]
         //[ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            this.ControllerContext.HttpContext.Response.Cookies[DefaultAuthenticationTypes.ApplicationCookie].Expires = DateTime.Now.AddDays(-1);
+            var cookie = this.ControllerContext.HttpContext.Response.Cookies[DefaultAuthenticationTypes.ApplicationCookie];
+            cookie.Expires = DateTime.Now.AddDays(-1);
+            this.ControllerContext.HttpContext.Response.AppendCookie(cookie);
             //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
