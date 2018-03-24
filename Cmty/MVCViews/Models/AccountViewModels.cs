@@ -86,6 +86,9 @@ namespace MVCViews.Models
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "电话号码")]
         public string Tel { get; set; }
+
+        [Display(Name = "学校")]
+        public string University { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -115,5 +118,22 @@ namespace MVCViews.Models
         [EmailAddress]
         [Display(Name = "电子邮件")]
         public string Email { get; set; }
+    }
+
+    public class UserInfoViewModel
+    {
+
+        [Display(Name = "电子邮件")]
+        public string Email { get; set; }
+
+        [Display(Name = "用户名")]
+        public string UserName { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "电话号码")]
+        public string Tel { get; set; }
+
+        [Display(Name = "学校")]
+        public string University { get; set; }
     }
 }

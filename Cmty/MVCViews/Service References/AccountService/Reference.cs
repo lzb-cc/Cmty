@@ -32,6 +32,9 @@ namespace MVCViews.AccountService {
         private string TelField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UniversityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -82,6 +85,19 @@ namespace MVCViews.AccountService {
                 if ((object.ReferenceEquals(this.TelField, value) != true)) {
                     this.TelField = value;
                     this.RaisePropertyChanged("Tel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int University {
+            get {
+                return this.UniversityField;
+            }
+            set {
+                if ((this.UniversityField.Equals(value) != true)) {
+                    this.UniversityField = value;
+                    this.RaisePropertyChanged("University");
                 }
             }
         }
@@ -198,6 +214,12 @@ namespace MVCViews.AccountService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/Login", ReplyAction="http://tempuri.org/IAccountService/LoginResponse")]
         System.Threading.Tasks.Task<CommonLib.ReturnState> LoginAsync(MVCViews.AccountService.LoginView model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/IndexOfUniversity", ReplyAction="http://tempuri.org/IAccountService/IndexOfUniversityResponse")]
+        int IndexOfUniversity(string university);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/IndexOfUniversity", ReplyAction="http://tempuri.org/IAccountService/IndexOfUniversityResponse")]
+        System.Threading.Tasks.Task<int> IndexOfUniversityAsync(string university);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -241,6 +263,14 @@ namespace MVCViews.AccountService {
         
         public System.Threading.Tasks.Task<CommonLib.ReturnState> LoginAsync(MVCViews.AccountService.LoginView model) {
             return base.Channel.LoginAsync(model);
+        }
+        
+        public int IndexOfUniversity(string university) {
+            return base.Channel.IndexOfUniversity(university);
+        }
+        
+        public System.Threading.Tasks.Task<int> IndexOfUniversityAsync(string university) {
+            return base.Channel.IndexOfUniversityAsync(university);
         }
     }
 }

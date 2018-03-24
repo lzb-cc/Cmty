@@ -19,6 +19,9 @@ namespace Services
         // TODO: 在此添加您的服务操作
         [OperationContract]
         CommonLib.ReturnState Login(LoginView model);
+
+        [OperationContract]
+        int IndexOfUniversity(string university);
     }
 
     [DataContract]
@@ -29,6 +32,7 @@ namespace Services
         private int _userType;
         private string _userName;
         private string _tel;
+        private int _university;
 
         [DataMember]
         public string Email
@@ -63,6 +67,13 @@ namespace Services
         {
             get { return _userType; }
             set { _userType = value; }
+        }
+
+        [DataMember]
+        public int University
+        {
+            get { return _university; }
+            set { _university = value; }
         }
     }
 

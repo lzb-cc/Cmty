@@ -24,7 +24,7 @@ namespace Services.DAL.Account
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                var cmdText = string.Format("insert into UserSets(Email, Pwd, uType, uName, rDate, Tel) values (N'{0}', N'{1}', {2}, N'{3}', '{4}', N'{5}')", model.Email, model.Password, model.UserType, model.UserName, DateTime.Now, model.Tel);
+                var cmdText = string.Format("insert into UserSets(Email, Pwd, uType, uName, rDate, Tel, University) values (N'{0}', N'{1}', {2}, N'{3}', '{4}', N'{5}', {6})", model.Email, model.Password, model.UserType, model.UserName, DateTime.Now, model.Tel, model.University);
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     var result = cmd.ExecuteNonQuery();
@@ -55,6 +55,27 @@ namespace Services.DAL.Account
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     result = cmd.ExecuteScalar() != null;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static int IndexOfUniversity(string university)
+        {
+            int result = -1;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select Id from cfg_Universities where name = N'{0}'", university);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var obj = cmd.ExecuteScalar();
+                    if (obj != null)
+                    {
+                        result = Convert.ToInt32(obj);
+                    }
                     conn.Close();
                 }
             }

@@ -22,5 +22,10 @@ namespace Services
         {
             return AccountOperator.Login(model) ? CommonLib.ReturnState.ReturnOK : CommonLib.ReturnState.ReturnError;
         }
+
+        public int IndexOfUniversity(string university)
+        {
+            return AccountOperator.IndexOfUniversity(university);
+        }
     }
 }

@@ -174,6 +174,13 @@ namespace MVCViews.Controllers
                     registerModel.UserName = model.Email;
                 }
 
+                registerModel.University = accountClient.IndexOfUniversity(model.University);
+                if (registerModel.University <= 0)
+                {
+                    AddErrors(IdentityResult.Failed(@"学校信息错误"));
+                    return View(model);
+                }
+
                 var result = accountClient.Register(registerModel);
                 if (result.Equals(ReturnState.ReturnOK))
                 {
