@@ -24,7 +24,7 @@ namespace Services.DAL.Account
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                var cmdText = string.Format("insert into UserSets(Email, Pwd, uType, uName, rDate, Tel, University) values (N'{0}', N'{1}', {2}, N'{3}', '{4}', N'{5}', {6})", model.Email, model.Password, model.UserType, model.UserName, DateTime.Now, model.Tel, model.University);
+                var cmdText = string.Format("insert into UserSets(Email, Pwd, uName, rDate, Tel, University) values (N'{0}', N'{1}', N'{2}', '{3}', N'{4}', {5})", model.Email, model.Password, model.UserName, DateTime.Now, model.Tel, model.University);
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     var result = cmd.ExecuteNonQuery();
@@ -141,6 +141,23 @@ namespace Services.DAL.Account
                     result = cmd.ExecuteNonQuery() > 0;
                     cmd.CommandText = cmdText1;
                     result = result && (cmd.ExecuteNonQuery() > 0);
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static bool AdminLogin(LoginView model)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select * from AdminUsers where Email = N'{0}' and Pwd = N'{1}'", model.Email, model.Password);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteScalar() != null;
                     conn.Close();
                 }
             }

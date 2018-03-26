@@ -37,9 +37,6 @@ namespace MVCViews.AccountService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserNameField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int UserTypeField;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -111,19 +108,6 @@ namespace MVCViews.AccountService {
                 if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
                     this.UserNameField = value;
                     this.RaisePropertyChanged("UserName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int UserType {
-            get {
-                return this.UserTypeField;
-            }
-            set {
-                if ((this.UserTypeField.Equals(value) != true)) {
-                    this.UserTypeField = value;
-                    this.RaisePropertyChanged("UserType");
                 }
             }
         }

@@ -28,6 +28,9 @@ namespace Services
 
         [OperationContract]
         CommonLib.ReturnState UpdateUserInfo(UserInfoView model);
+
+        [OperationContract]
+        CommonLib.ReturnState AdminLogin(LoginView model);
     }
 
     [DataContract]
@@ -35,7 +38,6 @@ namespace Services
     {
         private string _email;
         private string _password;
-        private int _userType;
         private string _userName;
         private string _tel;
         private int _university;
@@ -66,13 +68,6 @@ namespace Services
         {
             get { return _tel; }
             set { _tel = value; }
-        }
-
-        [DataMember]
-        public int UserType
-        {
-            get { return _userType; }
-            set { _userType = value; }
         }
 
         [DataMember]

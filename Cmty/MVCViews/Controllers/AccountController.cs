@@ -89,7 +89,7 @@ namespace MVCViews.Controllers
             };
             var result = accountClient.Login(obj) ;
             
-            if (result == CommonLib.ReturnState.ReturnOK)
+            if (result == ReturnState.ReturnOK)
             {
                 _cookie.Value = model.Email;
                 _cookie.Expires = DateTime.Now.AddDays(1);
@@ -165,7 +165,6 @@ namespace MVCViews.Controllers
                     Password = model.Password,
                     UserName = model.UserName,
                     Tel = model.Tel,
-                    UserType = 1, // default
                 };
 
                 // 用户名为空，则默认为Email

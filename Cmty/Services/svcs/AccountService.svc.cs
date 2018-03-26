@@ -39,5 +39,10 @@ namespace Services
                 return CommonLib.ReturnState.ReturnError;
             return AccountOperator.UpdateUserInfo(model) ? CommonLib.ReturnState.ReturnOK : CommonLib.ReturnState.ReturnError;
         }
+
+        public CommonLib.ReturnState AdminLogin(LoginView model)
+        {
+            return AccountOperator.AdminLogin(model) ? CommonLib.ReturnState.ReturnOK : CommonLib.ReturnState.ReturnError;
+        }
     }
 }
