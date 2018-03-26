@@ -1,0 +1,74 @@
+﻿@model MVCViews.Models.UserInfoViewModel
+
+@{
+    ViewBag.Title = "UserInfo";
+}
+
+<h2>个人信息</h2>
+
+<div>
+    <h4>查看个人信息</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.University)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.University)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nick)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nick)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hobby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hobby)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("修改", "Edit", new { email = Model.Email }) |
+    @Html.ActionLink("返回主页", "Index")
+</p>

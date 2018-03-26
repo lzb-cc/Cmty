@@ -199,6 +199,147 @@ namespace MVCViews.AccountService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserInfoView", Namespace="http://schemas.datacontract.org/2004/07/Services")]
+    [System.SerializableAttribute()]
+    public partial class UserInfoView : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HobbyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NickField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SexField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UniversityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Hobby {
+            get {
+                return this.HobbyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HobbyField, value) != true)) {
+                    this.HobbyField = value;
+                    this.RaisePropertyChanged("Hobby");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nick {
+            get {
+                return this.NickField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NickField, value) != true)) {
+                    this.NickField = value;
+                    this.RaisePropertyChanged("Nick");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Sex {
+            get {
+                return this.SexField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SexField, value) != true)) {
+                    this.SexField = value;
+                    this.RaisePropertyChanged("Sex");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Tel {
+            get {
+                return this.TelField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TelField, value) != true)) {
+                    this.TelField = value;
+                    this.RaisePropertyChanged("Tel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string University {
+            get {
+                return this.UniversityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UniversityField, value) != true)) {
+                    this.UniversityField = value;
+                    this.RaisePropertyChanged("University");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AccountService.IAccountService")]
     public interface IAccountService {
@@ -220,6 +361,18 @@ namespace MVCViews.AccountService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/IndexOfUniversity", ReplyAction="http://tempuri.org/IAccountService/IndexOfUniversityResponse")]
         System.Threading.Tasks.Task<int> IndexOfUniversityAsync(string university);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/GetUserInfo", ReplyAction="http://tempuri.org/IAccountService/GetUserInfoResponse")]
+        MVCViews.AccountService.UserInfoView GetUserInfo(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/GetUserInfo", ReplyAction="http://tempuri.org/IAccountService/GetUserInfoResponse")]
+        System.Threading.Tasks.Task<MVCViews.AccountService.UserInfoView> GetUserInfoAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/UpdateUserInfo", ReplyAction="http://tempuri.org/IAccountService/UpdateUserInfoResponse")]
+        CommonLib.ReturnState UpdateUserInfo(MVCViews.AccountService.UserInfoView model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/UpdateUserInfo", ReplyAction="http://tempuri.org/IAccountService/UpdateUserInfoResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> UpdateUserInfoAsync(MVCViews.AccountService.UserInfoView model);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -271,6 +424,22 @@ namespace MVCViews.AccountService {
         
         public System.Threading.Tasks.Task<int> IndexOfUniversityAsync(string university) {
             return base.Channel.IndexOfUniversityAsync(university);
+        }
+        
+        public MVCViews.AccountService.UserInfoView GetUserInfo(string email) {
+            return base.Channel.GetUserInfo(email);
+        }
+        
+        public System.Threading.Tasks.Task<MVCViews.AccountService.UserInfoView> GetUserInfoAsync(string email) {
+            return base.Channel.GetUserInfoAsync(email);
+        }
+        
+        public CommonLib.ReturnState UpdateUserInfo(MVCViews.AccountService.UserInfoView model) {
+            return base.Channel.UpdateUserInfo(model);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> UpdateUserInfoAsync(MVCViews.AccountService.UserInfoView model) {
+            return base.Channel.UpdateUserInfoAsync(model);
         }
     }
 }

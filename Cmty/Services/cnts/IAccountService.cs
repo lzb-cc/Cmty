@@ -22,6 +22,12 @@ namespace Services
 
         [OperationContract]
         int IndexOfUniversity(string university);
+
+        [OperationContract]
+        UserInfoView GetUserInfo(string email);
+
+        [OperationContract]
+        CommonLib.ReturnState UpdateUserInfo(UserInfoView model);
     }
 
     [DataContract]
@@ -96,5 +102,30 @@ namespace Services
             get { return _password; }
             set { _password = value; }
         }
+    }
+
+    [DataContract]
+    public class UserInfoView
+    {
+        [DataMember]
+        public string Email { get; set; }
+
+        [DataMember]
+        public string UserName { get; set; }
+
+        [DataMember]
+        public string Tel { get; set; }
+
+        [DataMember]
+        public string University { get; set; }
+
+        [DataMember]
+        public string Sex { get; set; }
+
+        [DataMember]
+        public string Nick { get; set; }
+
+        [DataMember]
+        public string Hobby { get; set; }
     }
 }

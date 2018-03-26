@@ -135,5 +135,14 @@ namespace MVCViews.Models
 
         [Display(Name = "学校")]
         public string University { get; set; }
+
+        [Display(Name = "性别")]
+        public string Sex { get; set; }
+
+        [Display(Name ="昵称")]
+        public string Nick { get; set; }
+
+        [Display(Name ="兴趣爱好")]
+        public string Hobby { get; set; }
     }
 }

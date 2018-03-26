@@ -27,5 +27,17 @@ namespace Services
         {
             return AccountOperator.IndexOfUniversity(university);
         }
+
+        public UserInfoView GetUserInfo(string email)
+        {
+            return AccountOperator.GetUserInfo(email);
+        }
+
+        public CommonLib.ReturnState UpdateUserInfo(UserInfoView model)
+        {
+            if (!AccountOperator.HasMember(model.Email))
+                return CommonLib.ReturnState.ReturnError;
+            return AccountOperator.UpdateUserInfo(model) ? CommonLib.ReturnState.ReturnOK : CommonLib.ReturnState.ReturnError;
+        }
     }
 }
