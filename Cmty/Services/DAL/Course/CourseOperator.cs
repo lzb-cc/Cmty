@@ -96,6 +96,12 @@ namespace Services.DAL.Course
             }
         }
 
+        public static bool AddCourseApply(CourseView model, UserApply user)
+        {
+            bool result = false;
 
+
+            return result;
+        }
     }
 }

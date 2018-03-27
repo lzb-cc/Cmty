@@ -20,6 +20,12 @@ namespace MVCViews.UtilityService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/IndexOfUniversity", ReplyAction="http://tempuri.org/IUtilityService/IndexOfUniversityResponse")]
         System.Threading.Tasks.Task<int> IndexOfUniversityAsync(string university);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/NameOfUniversity", ReplyAction="http://tempuri.org/IUtilityService/NameOfUniversityResponse")]
+        string NameOfUniversity(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/NameOfUniversity", ReplyAction="http://tempuri.org/IUtilityService/NameOfUniversityResponse")]
+        System.Threading.Tasks.Task<string> NameOfUniversityAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +61,14 @@ namespace MVCViews.UtilityService {
         
         public System.Threading.Tasks.Task<int> IndexOfUniversityAsync(string university) {
             return base.Channel.IndexOfUniversityAsync(university);
+        }
+        
+        public string NameOfUniversity(int id) {
+            return base.Channel.NameOfUniversity(id);
+        }
+        
+        public System.Threading.Tasks.Task<string> NameOfUniversityAsync(int id) {
+            return base.Channel.NameOfUniversityAsync(id);
         }
     }
 }

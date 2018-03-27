@@ -36,4 +36,17 @@ namespace Services.cnts
         [DataMember]
         public string PicUrl { get; set; }
     }
+
+    [DataContract]
+    public class UserApply
+    {
+        [DataMember]
+        public string Email { get; set; }
+
+        [DataMember]
+        public DateTime CommitDate { get; set; }
+
+        [DataMember]
+        public string Status { get; set; }
+    }
 }
