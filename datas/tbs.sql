@@ -26,6 +26,14 @@ create table cfg_AdminType
 	primary key (Id)
 );
 
+if OBJECT_ID('cfg_ReviewStatus') is not null drop table cfg_ReviewStatus;
+create table cfg_ReviewStatus
+(
+	Id	   int identity,
+	Desp   nvarchar(20),
+	primary key (Id)
+);
+
 if OBJECT_ID('UserSets') is not null drop table UserSets;
 create table UserSets
 (
@@ -93,6 +101,19 @@ create table AdminUsers
 	primary key (Email),
 	constraint fk_authority_au foreign key (authority) references cfg_AdminType(Id)
 );
+
+if OBJECT_ID('tmp_CourseSets') is not null drop table tmp_CourseSets;
+create table tmp_CourseSets
+(
+	Id		     nvarchar(20),
+	CommitUser   nvarchar(20),
+	CommitDate   datetime,
+	ReviewStatus int,
+	primary key (Id),
+	constraint fk_Id_tcs foreign key (Id) references CourseSets (Id),
+	constraint fk_CommitUser_tcs foreign key (CommitUser) references UserSets (Email),
+	constraint fk_ReviewStatus_tcs foreign key (ReviewStatus) references cfg_ReviewStatus (Id)
+);
 go
 
 
@@ -114,8 +135,11 @@ insert into cfg_AdminType values (N'操作员')
 insert into AdminUsers values (N'349911680@qq.com', N'123456', 1)
 
 
-----
-
+--cfg_ReviewStatus--
+insert into cfg_ReviewStatus values (N'待审核')
+insert into cfg_ReviewStatus values (N'审核中')
+insert into cfg_ReviewStatus values (N'审核通过')
+insert into cfg_ReviewStatus values (N'审核不通过')
 
 ----
 go
