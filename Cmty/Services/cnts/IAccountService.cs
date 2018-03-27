@@ -21,9 +21,6 @@ namespace Services
         CommonLib.ReturnState Login(LoginView model);
 
         [OperationContract]
-        int IndexOfUniversity(string university);
-
-        [OperationContract]
         UserInfoView GetUserInfo(string email);
 
         [OperationContract]

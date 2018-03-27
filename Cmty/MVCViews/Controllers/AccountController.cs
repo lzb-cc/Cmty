@@ -24,6 +24,7 @@ namespace MVCViews.Controllers
 
 
         private static AccountService.AccountServiceClient accountClient = new AccountService.AccountServiceClient();
+        private static UtilityService.UtilityServiceClient utilityClient = new UtilityService.UtilityServiceClient();
 
         public AccountController()
         {
@@ -173,7 +174,7 @@ namespace MVCViews.Controllers
                     registerModel.UserName = model.Email;
                 }
 
-                registerModel.University = accountClient.IndexOfUniversity(model.University);
+                registerModel.University = utilityClient.IndexOfUniversity(model.University);
                 if (registerModel.University <= 0)
                 {
                     AddErrors(IdentityResult.Failed(@"学校信息错误"));

@@ -340,12 +340,6 @@ namespace MVCViews.AccountService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/Login", ReplyAction="http://tempuri.org/IAccountService/LoginResponse")]
         System.Threading.Tasks.Task<CommonLib.ReturnState> LoginAsync(MVCViews.AccountService.LoginView model);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/IndexOfUniversity", ReplyAction="http://tempuri.org/IAccountService/IndexOfUniversityResponse")]
-        int IndexOfUniversity(string university);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/IndexOfUniversity", ReplyAction="http://tempuri.org/IAccountService/IndexOfUniversityResponse")]
-        System.Threading.Tasks.Task<int> IndexOfUniversityAsync(string university);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/GetUserInfo", ReplyAction="http://tempuri.org/IAccountService/GetUserInfoResponse")]
         MVCViews.AccountService.UserInfoView GetUserInfo(string email);
         
@@ -357,6 +351,12 @@ namespace MVCViews.AccountService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/UpdateUserInfo", ReplyAction="http://tempuri.org/IAccountService/UpdateUserInfoResponse")]
         System.Threading.Tasks.Task<CommonLib.ReturnState> UpdateUserInfoAsync(MVCViews.AccountService.UserInfoView model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/AdminLogin", ReplyAction="http://tempuri.org/IAccountService/AdminLoginResponse")]
+        CommonLib.ReturnState AdminLogin(MVCViews.AccountService.LoginView model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/AdminLogin", ReplyAction="http://tempuri.org/IAccountService/AdminLoginResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> AdminLoginAsync(MVCViews.AccountService.LoginView model);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -402,14 +402,6 @@ namespace MVCViews.AccountService {
             return base.Channel.LoginAsync(model);
         }
         
-        public int IndexOfUniversity(string university) {
-            return base.Channel.IndexOfUniversity(university);
-        }
-        
-        public System.Threading.Tasks.Task<int> IndexOfUniversityAsync(string university) {
-            return base.Channel.IndexOfUniversityAsync(university);
-        }
-        
         public MVCViews.AccountService.UserInfoView GetUserInfo(string email) {
             return base.Channel.GetUserInfo(email);
         }
@@ -424,6 +416,14 @@ namespace MVCViews.AccountService {
         
         public System.Threading.Tasks.Task<CommonLib.ReturnState> UpdateUserInfoAsync(MVCViews.AccountService.UserInfoView model) {
             return base.Channel.UpdateUserInfoAsync(model);
+        }
+        
+        public CommonLib.ReturnState AdminLogin(MVCViews.AccountService.LoginView model) {
+            return base.Channel.AdminLogin(model);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> AdminLoginAsync(MVCViews.AccountService.LoginView model) {
+            return base.Channel.AdminLoginAsync(model);
         }
     }
 }

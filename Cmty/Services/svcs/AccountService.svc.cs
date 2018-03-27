@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using Services.DAL.Account;
+using Services.DAL;
 
 namespace Services
 {
@@ -21,11 +22,6 @@ namespace Services
         public CommonLib.ReturnState Login(LoginView model)
         {
             return AccountOperator.Login(model) ? CommonLib.ReturnState.ReturnOK : CommonLib.ReturnState.ReturnError;
-        }
-
-        public int IndexOfUniversity(string university)
-        {
-            return AccountOperator.IndexOfUniversity(university);
         }
 
         public UserInfoView GetUserInfo(string email)

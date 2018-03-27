@@ -62,27 +62,6 @@ namespace Services.DAL.Account
             return result;
         }
 
-        public static int IndexOfUniversity(string university)
-        {
-            int result = -1;
-            using (var conn = new SqlConnection(connectionString))
-            {
-                conn.Open();
-                var cmdText = string.Format("select Id from cfg_Universities where name = N'{0}'", university);
-                using (var cmd = new SqlCommand(cmdText, conn))
-                {
-                    var obj = cmd.ExecuteScalar();
-                    if (obj != null)
-                    {
-                        result = Convert.ToInt32(obj);
-                    }
-                    conn.Close();
-                }
-            }
-
-            return result;
-        }
-
         public static bool Login(LoginView model)
         {
             bool result = false;

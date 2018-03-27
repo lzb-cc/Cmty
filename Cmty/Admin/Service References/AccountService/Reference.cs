@@ -340,12 +340,6 @@ namespace Admin.AccountService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/Login", ReplyAction="http://tempuri.org/IAccountService/LoginResponse")]
         System.Threading.Tasks.Task<CommonLib.ReturnState> LoginAsync(Admin.AccountService.LoginView model);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/IndexOfUniversity", ReplyAction="http://tempuri.org/IAccountService/IndexOfUniversityResponse")]
-        int IndexOfUniversity(string university);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/IndexOfUniversity", ReplyAction="http://tempuri.org/IAccountService/IndexOfUniversityResponse")]
-        System.Threading.Tasks.Task<int> IndexOfUniversityAsync(string university);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/GetUserInfo", ReplyAction="http://tempuri.org/IAccountService/GetUserInfoResponse")]
         Admin.AccountService.UserInfoView GetUserInfo(string email);
         
@@ -406,14 +400,6 @@ namespace Admin.AccountService {
         
         public System.Threading.Tasks.Task<CommonLib.ReturnState> LoginAsync(Admin.AccountService.LoginView model) {
             return base.Channel.LoginAsync(model);
-        }
-        
-        public int IndexOfUniversity(string university) {
-            return base.Channel.IndexOfUniversity(university);
-        }
-        
-        public System.Threading.Tasks.Task<int> IndexOfUniversityAsync(string university) {
-            return base.Channel.IndexOfUniversityAsync(university);
         }
         
         public Admin.AccountService.UserInfoView GetUserInfo(string email) {
