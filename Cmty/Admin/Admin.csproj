@@ -262,6 +262,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Service References\CourseService\Admin.CourseService.CourseView.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\UtilityService\UtilityService.disco" />
     <None Include="Service References\UtilityService\configuration91.svcinfo" />
     <None Include="Service References\UtilityService\configuration.svcinfo" />

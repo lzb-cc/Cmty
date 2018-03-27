@@ -13,6 +13,9 @@ namespace Services.cnts
     {
         [OperationContract]
         CommonLib.ReturnState AddCourse(CourseView model);
+
+        [OperationContract]
+        List<CourseView> GetCourseByPage(int page, int nPage);
     }
 
     [DataContract]

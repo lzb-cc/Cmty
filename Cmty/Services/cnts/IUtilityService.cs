@@ -12,5 +12,8 @@ namespace Services.cnts
     {
         [OperationContract]
         int IndexOfUniversity(string university);
+
+        [OperationContract]
+        string NameOfUniversity(int id);
     }
 }

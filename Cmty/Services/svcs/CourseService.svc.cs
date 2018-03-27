@@ -20,5 +20,10 @@ namespace Services.svcs
                 return ReturnState.ReturnError;
             return CourseOperator.AddCourse(model);
         }
+
+        public List<CourseView> GetCourseByPage(int page, int nPage = 10)
+        {
+            return CourseOperator.GetCourseByPage(page, nPage);
+        }
     }
 }

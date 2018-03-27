@@ -15,7 +15,7 @@ namespace Admin.Controllers
         // GET: CourseReview
         public ActionResult Index()
         {
-            List<CourseReviewViewModels> list = new List<CourseReviewViewModels>();
+            var list = new List<CourseReviewViewModels>();
             return View(list);
         }
 
@@ -55,9 +55,22 @@ namespace Admin.Controllers
             return RedirectToAction("CourseCenter");
         }
 
-        public ActionResult CourseCenter()
+        public ActionResult CourseCenter(int page)
         {
             var list = new List<CourseViewModels>();
+            var array = courseClient.GetCourseByPage(page, 10);
+            foreach(var item in array)
+            {
+                list.Add(new CourseViewModels()
+                {
+                    Code = item.Code,
+                    Desp = item.Desp,
+                    Name = item.Name,
+                    PicUrl = item.PicUrl,
+                    University = utilityClient.NameOfUniversity(item.University)
+                });
+            }
+
             return View(list);
         }
     }

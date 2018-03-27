@@ -36,5 +36,22 @@ namespace Services.DAL
 
             return result;
         }
+
+        public static string NameOfUniversity(int id)
+        {
+            string result = "";
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select name from cfg_Universities where id = {0}", id);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = Convert.ToString(cmd.ExecuteScalar());
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
     }
 }

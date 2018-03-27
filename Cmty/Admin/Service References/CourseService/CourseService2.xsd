@@ -10,4 +10,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CourseView" nillable="true" type="tns:CourseView" />
+  <xs:complexType name="ArrayOfCourseView">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CourseView" nillable="true" type="tns:CourseView" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCourseView" nillable="true" type="tns:ArrayOfCourseView" />
 </xs:schema>

@@ -12,16 +12,35 @@
   <wsdl:message name="IUtilityService_IndexOfUniversity_OutputMessage">
     <wsdl:part name="parameters" element="tns:IndexOfUniversityResponse" />
   </wsdl:message>
+  <wsdl:message name="IUtilityService_NameOfUniversity_InputMessage">
+    <wsdl:part name="parameters" element="tns:NameOfUniversity" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_NameOfUniversity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NameOfUniversityResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUtilityService">
     <wsdl:operation name="IndexOfUniversity">
       <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/IndexOfUniversity" message="tns:IUtilityService_IndexOfUniversity_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/IndexOfUniversityResponse" message="tns:IUtilityService_IndexOfUniversity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NameOfUniversity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/NameOfUniversity" message="tns:IUtilityService_NameOfUniversity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/NameOfUniversityResponse" message="tns:IUtilityService_NameOfUniversity_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUtilityService" type="tns:IUtilityService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="IndexOfUniversity">
       <soap:operation soapAction="http://tempuri.org/IUtilityService/IndexOfUniversity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NameOfUniversity">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/NameOfUniversity" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

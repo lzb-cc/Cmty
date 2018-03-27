@@ -18,5 +18,10 @@ namespace Services.svcs
         {
             return UtilityOperator.IndexOfUniversity(university);
         }
+
+        public string NameOfUniversity(int id)
+        {
+            return UtilityOperator.NameOfUniversity(id);
+        }
     }
 }

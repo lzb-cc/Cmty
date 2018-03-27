@@ -131,6 +131,12 @@ namespace Admin.CourseService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/AddCourse", ReplyAction="http://tempuri.org/ICourseService/AddCourseResponse")]
         System.Threading.Tasks.Task<CommonLib.ReturnState> AddCourseAsync(Admin.CourseService.CourseView model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/GetCourseByPage", ReplyAction="http://tempuri.org/ICourseService/GetCourseByPageResponse")]
+        Admin.CourseService.CourseView[] GetCourseByPage(int page, int nPage);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/GetCourseByPage", ReplyAction="http://tempuri.org/ICourseService/GetCourseByPageResponse")]
+        System.Threading.Tasks.Task<Admin.CourseService.CourseView[]> GetCourseByPageAsync(int page, int nPage);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -166,6 +172,14 @@ namespace Admin.CourseService {
         
         public System.Threading.Tasks.Task<CommonLib.ReturnState> AddCourseAsync(Admin.CourseService.CourseView model) {
             return base.Channel.AddCourseAsync(model);
+        }
+        
+        public Admin.CourseService.CourseView[] GetCourseByPage(int page, int nPage) {
+            return base.Channel.GetCourseByPage(page, nPage);
+        }
+        
+        public System.Threading.Tasks.Task<Admin.CourseService.CourseView[]> GetCourseByPageAsync(int page, int nPage) {
+            return base.Channel.GetCourseByPageAsync(page, nPage);
         }
     }
 }

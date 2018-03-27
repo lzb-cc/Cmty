@@ -61,5 +61,39 @@ namespace Services.DAL.Course
 
             return result;
         }
+
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="nPage"></param>
+        /// <returns></returns>
+        public static List<CourseView> GetCourseByPage(int page,int nPage = 10)
+        {
+            var retList = new List<CourseView>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select top {0} * from CourseSets where Id not in (select top {1} Id from CourseSets)", nPage, page * nPage);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        var course = new CourseView()
+                        {
+                            Code = Convert.ToString(reader.GetValue(0)),
+                            University = Convert.ToInt32(reader.GetValue(1)),
+                            Name = Convert.ToString(reader.GetValue(2)),
+                            Desp = Convert.ToString(reader.GetValue(3)),
+                            PicUrl = Convert.ToString(reader.GetValue(4))
+                        };
+                        retList.Add(course);
+                    }
+                }
+
+                return retList;
+            }
+        }
     }
 }
