@@ -14,17 +14,10 @@ using CommonLib;
 namespace MVCViews.Controllers
 {
    // [Authorize]
-    public class AccountController : Controller
+    public class AccountController : AuthorityController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private static HttpCookie _cookie = new HttpCookie(DefaultAuthenticationTypes.ApplicationCookie);
-        private static readonly string cookieValue = "cookieValue";
-        private static readonly string cookieLogout = "cookieLogout";
-
-
-        private static AccountService.AccountServiceClient accountClient = new AccountService.AccountServiceClient();
-        private static UtilityService.UtilityServiceClient utilityClient = new UtilityService.UtilityServiceClient();
 
         public AccountController()
         {
@@ -120,7 +113,7 @@ namespace MVCViews.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
         {
-            if (this.ControllerContext.HttpContext.Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value.Equals(cookieValue))
+            if (true)
             {
                 return View(model);
             }

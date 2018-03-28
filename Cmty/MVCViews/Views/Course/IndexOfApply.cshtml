@@ -1,17 +1,16 @@
-﻿@model IEnumerable<MVCViews.Models.CourseViewModels>
+﻿@model IEnumerable<MVCViews.Models.CourseReviewViewModels>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "IndexOfApply";
 }
 
-<h2>课程专区</h2>
+<h2>IndexOfApply</h2>
 
 <p>
-    @Html.ActionLink("申请添加新课程", "ApplyForAddCourse")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-
         <th>
             @Html.DisplayNameFor(model => model.Code)
         </th>
@@ -26,6 +25,15 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PicUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommitUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommitDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
         </th>
         <th></th>
     </tr>
@@ -48,9 +56,13 @@
             @Html.DisplayFor(modelItem => item.PicUrl)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.DisplayFor(modelItem => item.CommitUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommitDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
         </td>
     </tr>
 }

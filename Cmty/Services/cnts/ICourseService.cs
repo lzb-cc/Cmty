@@ -16,6 +16,12 @@ namespace Services.cnts
 
         [OperationContract]
         List<CourseView> GetCourseByPage(int page, int nPage);
+
+        [OperationContract]
+        CommonLib.ReturnState AddCourseApply(CourseView model, UserApply user);
+
+        [OperationContract]
+        bool HasMember(string code);
     }
 
     [DataContract]
@@ -47,6 +53,6 @@ namespace Services.cnts
         public DateTime CommitDate { get; set; }
 
         [DataMember]
-        public string Status { get; set; }
+        public int Status { get; set; }
     }
 }

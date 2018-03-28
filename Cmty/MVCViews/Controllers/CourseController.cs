@@ -1,4 +1,5 @@
-﻿using MVCViews.Models;
+﻿using Microsoft.AspNet.Identity;
+using MVCViews.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,8 @@ using System.Web.Mvc;
 
 namespace MVCViews.Controllers
 {
-    public class CourseController : Controller
+    public class CourseController : AuthorityController
     {
-        private static CourseService.CourseServiceClient courseClient = new CourseService.CourseServiceClient();
-        private static UtilityService.UtilityServiceClient utilityClient = new UtilityService.UtilityServiceClient();
-
         // GET: Course
         public ActionResult Index(int page = 0)
         {
@@ -32,16 +30,53 @@ namespace MVCViews.Controllers
             return View(list);
         }
 
+        public ActionResult IndexOfApply()
+        {
+            Authority();
+            var list = new List<CourseReviewViewModels>();
+            return View(list);
+        }
+
         [HttpGet]
         public ActionResult ApplyForAddCourse()
         {
+            Authority();
             return View();
         }
 
         [HttpPost]
         public ActionResult ApplyForAddCourse(CourseViewModels model)
         {
-            return View();
+            Authority();
+            if (courseClient.HasMember(model.Code))
+            {
+                ModelState.AddModelError("", "课程代码已存在!");
+                return View(model);
+            }
+            
+            var user = new CourseService.UserApply()
+            {
+                Email = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value,
+                CommitDate = DateTime.Now,
+                Status = 1
+            };
+            var course = new CourseService.CourseView()
+            {
+                Code = model.Code,
+                Name = model.Name,
+                Desp = model.Desp,
+                PicUrl = model.PicUrl,
+                University = utilityClient.IndexOfUniversity(model.University)
+            };
+
+            var result = courseClient.AddCourseApply(course, user);
+            if (result == CommonLib.ReturnState.ReturnError)
+            {
+                ModelState.AddModelError("", "申请失败，请重试!");
+                return View(model);
+            }
+
+            return RedirectToAction("IndexOfApply");
         }
     }
 }

@@ -16,4 +16,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfCourseView" nillable="true" type="tns:ArrayOfCourseView" />
+  <xs:complexType name="UserApply">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommitDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserApply" nillable="true" type="tns:UserApply" />
 </xs:schema>

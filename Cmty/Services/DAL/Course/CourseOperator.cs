@@ -68,7 +68,7 @@ namespace Services.DAL.Course
         /// <param name="page"></param>
         /// <param name="nPage"></param>
         /// <returns></returns>
-        public static List<CourseView> GetCourseByPage(int page,int nPage = 10)
+        public static List<CourseView> GetCourseByPage(int page, int nPage = 10)
         {
             var retList = new List<CourseView>();
             using (var conn = new SqlConnection(connectionString))
@@ -78,7 +78,7 @@ namespace Services.DAL.Course
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     var reader = cmd.ExecuteReader();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         var course = new CourseView()
                         {
@@ -96,10 +96,28 @@ namespace Services.DAL.Course
             }
         }
 
-        public static bool AddCourseApply(CourseView model, UserApply user)
+        public static ReturnState AddCourseApply(CourseView model, UserApply user)
         {
-            bool result = false;
+            var result = AddCourse(model);
+            if (result == ReturnState.ReturnError)
+            {
+                return result;
+            }
 
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("insert into tmp_CourseSets values (N'{0}', N'{1}', '{2}', {3})", model.Code, user.Email, user.CommitDate, user.Status);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    if (cmd.ExecuteNonQuery() <= 0)
+                    {
+                        result = ReturnState.ReturnError;
+                        cmdText = string.Format("delete from CourseSets where Id = N'{0}", model.Code);
+                    }
+                    conn.Close();
+                }
+            }
 
             return result;
         }

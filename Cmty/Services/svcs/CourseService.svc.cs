@@ -21,9 +21,19 @@ namespace Services.svcs
             return CourseOperator.AddCourse(model);
         }
 
+        public ReturnState AddCourseApply(CourseView model, UserApply user)
+        {
+            return CourseOperator.AddCourseApply(model, user);
+        }
+
         public List<CourseView> GetCourseByPage(int page, int nPage = 10)
         {
             return CourseOperator.GetCourseByPage(page, nPage);
+        }
+
+        public bool HasMember(string code)
+        {
+            return CourseOperator.HasMember(code);
         }
     }
 }

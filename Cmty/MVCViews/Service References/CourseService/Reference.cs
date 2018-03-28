@@ -122,6 +122,83 @@ namespace MVCViews.CourseService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserApply", Namespace="http://schemas.datacontract.org/2004/07/Services.cnts")]
+    [System.SerializableAttribute()]
+    public partial class UserApply : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CommitDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StatusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime CommitDate {
+            get {
+                return this.CommitDateField;
+            }
+            set {
+                if ((this.CommitDateField.Equals(value) != true)) {
+                    this.CommitDateField = value;
+                    this.RaisePropertyChanged("CommitDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((this.StatusField.Equals(value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CourseService.ICourseService")]
     public interface ICourseService {
@@ -137,6 +214,18 @@ namespace MVCViews.CourseService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/GetCourseByPage", ReplyAction="http://tempuri.org/ICourseService/GetCourseByPageResponse")]
         System.Threading.Tasks.Task<MVCViews.CourseService.CourseView[]> GetCourseByPageAsync(int page, int nPage);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/AddCourseApply", ReplyAction="http://tempuri.org/ICourseService/AddCourseApplyResponse")]
+        CommonLib.ReturnState AddCourseApply(MVCViews.CourseService.CourseView model, MVCViews.CourseService.UserApply user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/AddCourseApply", ReplyAction="http://tempuri.org/ICourseService/AddCourseApplyResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> AddCourseApplyAsync(MVCViews.CourseService.CourseView model, MVCViews.CourseService.UserApply user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/HasMember", ReplyAction="http://tempuri.org/ICourseService/HasMemberResponse")]
+        bool HasMember(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/HasMember", ReplyAction="http://tempuri.org/ICourseService/HasMemberResponse")]
+        System.Threading.Tasks.Task<bool> HasMemberAsync(string code);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -180,6 +269,22 @@ namespace MVCViews.CourseService {
         
         public System.Threading.Tasks.Task<MVCViews.CourseService.CourseView[]> GetCourseByPageAsync(int page, int nPage) {
             return base.Channel.GetCourseByPageAsync(page, nPage);
+        }
+        
+        public CommonLib.ReturnState AddCourseApply(MVCViews.CourseService.CourseView model, MVCViews.CourseService.UserApply user) {
+            return base.Channel.AddCourseApply(model, user);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> AddCourseApplyAsync(MVCViews.CourseService.CourseView model, MVCViews.CourseService.UserApply user) {
+            return base.Channel.AddCourseApplyAsync(model, user);
+        }
+        
+        public bool HasMember(string code) {
+            return base.Channel.HasMember(code);
+        }
+        
+        public System.Threading.Tasks.Task<bool> HasMemberAsync(string code) {
+            return base.Channel.HasMemberAsync(code);
         }
     }
 }

@@ -28,6 +28,9 @@ namespace Services
 
         [OperationContract]
         CommonLib.ReturnState AdminLogin(LoginView model);
+
+        [OperationContract]
+        bool HasMember(string email);
     }
 
     [DataContract]

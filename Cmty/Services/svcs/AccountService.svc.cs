@@ -40,5 +40,10 @@ namespace Services
         {
             return AccountOperator.AdminLogin(model) ? CommonLib.ReturnState.ReturnOK : CommonLib.ReturnState.ReturnError;
         }
+
+        public bool HasMember(string email)
+        {
+            return AccountOperator.HasMember(email);
+        }
     }
 }
