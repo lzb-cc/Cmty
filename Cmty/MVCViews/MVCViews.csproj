@@ -278,6 +278,9 @@
     <Content Include="Service References\CourseService\MVCViews.CourseService.CourseView.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\CourseService\MVCViews.CourseService.CourseReviewView.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\UtilityService\UtilityService.disco" />
     <None Include="Service References\UtilityService\configuration91.svcinfo" />
     <None Include="Service References\UtilityService\configuration.svcinfo" />

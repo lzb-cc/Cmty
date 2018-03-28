@@ -60,4 +60,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetCourseReviewViewByEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCourseReviewViewByEmailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Services.cnts" minOccurs="0" name="GetCourseReviewViewByEmailResult" nillable="true" type="q7:ArrayOfCourseReviewView" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

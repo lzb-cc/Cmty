@@ -105,12 +105,15 @@ create table AdminUsers
 if OBJECT_ID('tmp_CourseSets') is not null drop table tmp_CourseSets;
 create table tmp_CourseSets
 (
-	Id		     nvarchar(20),
 	CommitUser   nvarchar(20),
 	CommitDate   datetime,
 	ReviewStatus int,
-	primary key (Id),
-	constraint fk_Id_tcs foreign key (Id) references CourseSets (Id),
+	Code	     nvarchar(20),
+    university   int,
+    name         nvarchar(20),
+	desp		 nvarchar(200),
+	pic_url		 nvarchar(200),
+	primary key (CommitUser),
 	constraint fk_CommitUser_tcs foreign key (CommitUser) references UserSets (Email),
 	constraint fk_ReviewStatus_tcs foreign key (ReviewStatus) references cfg_ReviewStatus (Id)
 );

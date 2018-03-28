@@ -96,30 +96,52 @@ namespace Services.DAL.Course
             }
         }
 
-        public static ReturnState AddCourseApply(CourseView model, UserApply user)
+        public static bool AddCourseApply(CourseView model, UserApply user)
         {
-            var result = AddCourse(model);
-            if (result == ReturnState.ReturnError)
-            {
-                return result;
-            }
-
+            var result = false;
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                var cmdText = string.Format("insert into tmp_CourseSets values (N'{0}', N'{1}', '{2}', {3})", model.Code, user.Email, user.CommitDate, user.Status);
+                var cmdText = string.Format("insert into tmp_CourseSets values (N'{0}', '{1}', {2}, N'{3}', {4}, N'{5}', N'{6}', N'{7}')",user.Email, user.CommitDate, user.Status, model.Code, model.University, model.Name, model.Desp, model.PicUrl);
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
-                    if (cmd.ExecuteNonQuery() <= 0)
-                    {
-                        result = ReturnState.ReturnError;
-                        cmdText = string.Format("delete from CourseSets where Id = N'{0}", model.Code);
-                    }
+                    result = cmd.ExecuteNonQuery() > 0;
                     conn.Close();
                 }
             }
 
             return result;
+        }
+
+        public static List<CourseReviewView> GetCourseReviewViewByEmail(string email)
+        {
+            var retList = new List<CourseReviewView>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select a.CommitDate, a.Code,a.name, a.desp, a.pic_url, b.Desp, c.name from tmp_CourseSets a left join cfg_ReviewStatus b on a.ReviewStatus = b.Id left join cfg_Universities c on a.university = c.Id where a.CommitUser = N'{0}'", email);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        var course = new CourseReviewView()
+                        {
+                            Email = email,
+                            CommitDate = Convert.ToDateTime(reader.GetValue(0)),
+                            Code = Convert.ToString(reader.GetValue(1)),
+                            Name = Convert.ToString(reader.GetValue(2)),
+                            Desp = Convert.ToString(reader.GetValue(3)),
+                            PicUrl = Convert.ToString(reader.GetValue(4)),
+                            Status = Convert.ToString(reader.GetValue(5)),
+                            University = Convert.ToString(reader.GetValue(6))
+                        };
+                        retList.Add(course);
+                    }
+                }
+            }
+
+            return retList;
         }
     }
 }

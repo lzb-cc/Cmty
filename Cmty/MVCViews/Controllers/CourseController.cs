@@ -10,6 +10,11 @@ namespace MVCViews.Controllers
 {
     public class CourseController : AuthorityController
     {
+        /// <summary>
+        /// 课程主页
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
         // GET: Course
         public ActionResult Index(int page = 0)
         {
@@ -30,17 +35,49 @@ namespace MVCViews.Controllers
             return View(list);
         }
 
+        /// <summary>
+        /// 我的申请
+        /// </summary>
+        /// <returns></returns>
         public ActionResult IndexOfApply()
         {
-            Authority();
+            if(!Authority())
+            {
+                return _authorityResult;
+            }
+     
             var list = new List<CourseReviewViewModels>();
+            var items = courseClient.GetCourseReviewViewByEmail(Request.Cookies.Get(_cookie.Name).Value);
+            foreach(var item in items)
+            {
+                var course = new CourseReviewViewModels()
+                {
+                    Code = item.Code,
+                    CommitDate = item.CommitDate,
+                    CommitUser = item.Email,
+                    Desp = item.Desp,
+                    Name = item.Name,
+                    PicUrl = item.PicUrl,
+                    Status = item.Status,
+                    University = item.University
+                };
+                list.Add(course);
+            }
             return View(list);
         }
 
+        /// <summary>
+        /// 申请添加课程
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult ApplyForAddCourse()
         {
-            Authority();
+            if(!Authority())
+            {
+                return _authorityResult;
+            }
+
             return View();
         }
 

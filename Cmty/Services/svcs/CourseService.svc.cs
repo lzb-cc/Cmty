@@ -23,12 +23,17 @@ namespace Services.svcs
 
         public ReturnState AddCourseApply(CourseView model, UserApply user)
         {
-            return CourseOperator.AddCourseApply(model, user);
+            return CourseOperator.AddCourseApply(model, user) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
 
         public List<CourseView> GetCourseByPage(int page, int nPage = 10)
         {
             return CourseOperator.GetCourseByPage(page, nPage);
+        }
+
+        public List<CourseReviewView> GetCourseReviewViewByEmail(string email)
+        {
+            return CourseOperator.GetCourseReviewViewByEmail(email);
         }
 
         public bool HasMember(string code)

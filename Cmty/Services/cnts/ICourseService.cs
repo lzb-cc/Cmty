@@ -22,6 +22,9 @@ namespace Services.cnts
 
         [OperationContract]
         bool HasMember(string code);
+
+        [OperationContract]
+        List<CourseReviewView> GetCourseReviewViewByEmail(string email);
     }
 
     [DataContract]
@@ -54,5 +57,33 @@ namespace Services.cnts
 
         [DataMember]
         public int Status { get; set; }
+    }
+
+    public class CourseReviewView
+    {
+        [DataMember]
+        public string Code { get; set; }
+
+        [DataMember]
+        public string University { get; set; }
+
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public string Desp { get; set; }
+
+        [DataMember]
+        public string PicUrl { get; set; }
+
+        [DataMember]
+        public string Email { get; set; }
+
+        [DataMember]
+        public DateTime CommitDate { get; set; }
+
+        [DataMember]
+        public string Status { get; set; }
+
     }
 }
