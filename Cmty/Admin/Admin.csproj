@@ -198,6 +198,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuthorityController.cs" />
     <Compile Include="Controllers\CourseReviewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -214,12 +215,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\UtilityService\Reference.cs">
+    <Compile Include="Service References\CourseService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\CourseService\Reference.cs">
+    <Compile Include="Service References\UtilityService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -265,17 +266,20 @@
     <Content Include="Service References\CourseService\Admin.CourseService.CourseView.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\UtilityService\UtilityService.disco" />
-    <None Include="Service References\UtilityService\configuration91.svcinfo" />
-    <None Include="Service References\UtilityService\configuration.svcinfo" />
-    <None Include="Service References\UtilityService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <Content Include="Service References\CourseService\Admin.CourseService.CourseReviewView.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\CourseService\CourseService.disco" />
     <None Include="Service References\CourseService\configuration91.svcinfo" />
     <None Include="Service References\CourseService\configuration.svcinfo" />
     <None Include="Service References\CourseService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\UtilityService\UtilityService.disco" />
+    <None Include="Service References\UtilityService\configuration91.svcinfo" />
+    <None Include="Service References\UtilityService\configuration.svcinfo" />
+    <None Include="Service References\UtilityService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -328,13 +332,6 @@
     </None>
     <Content Include="Views\CourseReview\Index.cshtml" />
     <Content Include="Views\CourseReview\Create.cshtml" />
-    <None Include="Service References\UtilityService\UtilityService.wsdl" />
-    <None Include="Service References\UtilityService\UtilityService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UtilityService\UtilityService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\CourseService\CourseService.wsdl" />
     <None Include="Service References\CourseService\CourseService.xsd">
       <SubType>Designer</SubType>
@@ -349,9 +346,17 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\CourseReview\CourseCenter.cshtml" />
+    <None Include="Service References\UtilityService\UtilityService.wsdl" />
+    <None Include="Service References\UtilityService\UtilityService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UtilityService\UtilityService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Authority\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -366,8 +371,8 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AccountService\" />
-    <WCFMetadataStorage Include="Service References\UtilityService\" />
     <WCFMetadataStorage Include="Service References\CourseService\" />
+    <WCFMetadataStorage Include="Service References\UtilityService\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CommonLib\CommonLib.csproj">

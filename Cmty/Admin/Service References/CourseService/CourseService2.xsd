@@ -16,4 +16,31 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfCourseView" nillable="true" type="tns:ArrayOfCourseView" />
+  <xs:complexType name="UserApply">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommitDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserApply" nillable="true" type="tns:UserApply" />
+  <xs:complexType name="ArrayOfCourseReviewView">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CourseReviewView" nillable="true" type="tns:CourseReviewView" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCourseReviewView" nillable="true" type="tns:ArrayOfCourseReviewView" />
+  <xs:complexType name="CourseReviewView">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CommitDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Desp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PicUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="University" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CourseReviewView" nillable="true" type="tns:CourseReviewView" />
 </xs:schema>

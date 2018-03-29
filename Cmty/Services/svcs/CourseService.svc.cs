@@ -31,6 +31,11 @@ namespace Services.svcs
             return CourseOperator.GetCourseByPage(page, nPage);
         }
 
+        public List<CourseReviewView> GetCourseReviews()
+        {
+            return CourseOperator.GetCourseReviewViews();
+        }
+
         public List<CourseReviewView> GetCourseReviewViewByEmail(string email)
         {
             return CourseOperator.GetCourseReviewViewByEmail(email);
@@ -39,6 +44,11 @@ namespace Services.svcs
         public bool HasMember(string code)
         {
             return CourseOperator.HasMember(code);
+        }
+
+        public ReturnState ReviewPass(string code)
+        {
+            return CourseOperator.ReviewPass(code) ? CommonLib.ReturnState.ReturnOK : CommonLib.ReturnState.ReturnError;
         }
     }
 }

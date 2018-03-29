@@ -102,7 +102,7 @@ namespace Services.DAL.Course
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                var cmdText = string.Format("insert into tmp_CourseSets values (N'{0}', '{1}', {2}, N'{3}', {4}, N'{5}', N'{6}', N'{7}')",user.Email, user.CommitDate, user.Status, model.Code, model.University, model.Name, model.Desp, model.PicUrl);
+                var cmdText = string.Format("insert into tmp_CourseSets values (N'{0}', '{1}', {2}, N'{3}', {4}, N'{5}', N'{6}', N'{7}')", user.Email, user.CommitDate, user.Status, model.Code, model.University, model.Name, model.Desp, model.PicUrl);
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     result = cmd.ExecuteNonQuery() > 0;
@@ -123,7 +123,7 @@ namespace Services.DAL.Course
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     var reader = cmd.ExecuteReader();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         var course = new CourseReviewView()
                         {
@@ -142,6 +142,54 @@ namespace Services.DAL.Course
             }
 
             return retList;
+        }
+
+        public static List<CourseReviewView> GetCourseReviewViews()
+        {
+            var retList = new List<CourseReviewView>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select a.CommitDate, a.Code,a.name, a.desp, a.pic_url, b.Desp, c.name, a.CommitUser from tmp_CourseSets a left join cfg_ReviewStatus b on a.ReviewStatus = b.Id left join cfg_Universities c on a.university = c.Id where a.ReviewStatus = 1");
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var course = new CourseReviewView()
+                        {
+                            CommitDate = Convert.ToDateTime(reader.GetValue(0)),
+                            Code = Convert.ToString(reader.GetValue(1)),
+                            Name = Convert.ToString(reader.GetValue(2)),
+                            Desp = Convert.ToString(reader.GetValue(3)),
+                            PicUrl = Convert.ToString(reader.GetValue(4)),
+                            Status = Convert.ToString(reader.GetValue(5)),
+                            University = Convert.ToString(reader.GetValue(6)),
+                            Email = Convert.ToString(reader.GetValue(7))
+                        };
+                        retList.Add(course);
+                    }
+                }
+            }
+
+            return retList;
+        }
+
+
+        public static bool ReviewPass(string code)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("insert into CourseSets(Id, university, name, desp, pic_url) select Code, university, name, desp, pic_url from tmp_CourseSets where code = N'{0}'", code);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                }
+            }
+
+            return result;
         }
     }
 }

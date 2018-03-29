@@ -25,6 +25,12 @@ namespace Services.cnts
 
         [OperationContract]
         List<CourseReviewView> GetCourseReviewViewByEmail(string email);
+
+        [OperationContract]
+        List<CourseReviewView> GetCourseReviews();
+
+        [OperationContract]
+        CommonLib.ReturnState ReviewPass(string code);
     }
 
     [DataContract]

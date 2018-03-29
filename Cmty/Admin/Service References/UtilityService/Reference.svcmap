@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a3257091-5288-4b79-aa9c-391eba105567" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2f1cbb61-7b8b-4152-90b2-1c090a6a1093" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,10 +22,10 @@
     <MetadataSource Address="http://localhost:7774/svcs/UtilityService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="UtilityService.xsd" MetadataType="Schema" ID="08ff00e7-68d8-4cff-87c4-7c99b7f0deb5" SourceId="1" SourceUrl="http://localhost:7774/svcs/UtilityService.svc?xsd=xsd0" />
-    <MetadataFile FileName="UtilityService.disco" MetadataType="Disco" ID="55982526-f907-4885-a209-9eecc94b36f6" SourceId="1" SourceUrl="http://localhost:7774/svcs/UtilityService.svc?disco" />
-    <MetadataFile FileName="UtilityService.wsdl" MetadataType="Wsdl" ID="8db66a8a-977a-4bee-9a9e-0d60c4d492c5" SourceId="1" SourceUrl="http://localhost:7774/svcs/UtilityService.svc?wsdl" />
-    <MetadataFile FileName="UtilityService1.xsd" MetadataType="Schema" ID="5315e3b1-df74-4681-907d-1140fdf1f31f" SourceId="1" SourceUrl="http://localhost:7774/svcs/UtilityService.svc?xsd=xsd1" />
+    <MetadataFile FileName="UtilityService.xsd" MetadataType="Schema" ID="460f8a2a-afdb-46bd-bf27-ccf767e81ace" SourceId="1" SourceUrl="http://localhost:7774/svcs/UtilityService.svc?xsd=xsd0" />
+    <MetadataFile FileName="UtilityService.disco" MetadataType="Disco" ID="e7699fca-6486-4482-a55a-ebc4ca1026c9" SourceId="1" SourceUrl="http://localhost:7774/svcs/UtilityService.svc?disco" />
+    <MetadataFile FileName="UtilityService.wsdl" MetadataType="Wsdl" ID="03e3fc26-114e-4efe-bb88-7a34736b6cde" SourceId="1" SourceUrl="http://localhost:7774/svcs/UtilityService.svc?wsdl" />
+    <MetadataFile FileName="UtilityService1.xsd" MetadataType="Schema" ID="0f206d10-000b-4cd8-a18b-80da199cb1d6" SourceId="1" SourceUrl="http://localhost:7774/svcs/UtilityService.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

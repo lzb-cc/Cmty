@@ -66,8 +66,8 @@
             @Html.DisplayFor(modelItem => item.Status)
         </td>
         <td>
-            @Html.ActionLink("通过", "Pass", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("不通过", "Fail", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("通过", "ReviewPass", new { code = item.Code }) |
+            @Html.ActionLink("不通过", "ReviewFail", new { code = item.Code }) |
             @Html.ActionLink("编辑", "Edit")
         </td>
     </tr>

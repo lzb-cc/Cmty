@@ -357,6 +357,12 @@ namespace Admin.AccountService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/AdminLogin", ReplyAction="http://tempuri.org/IAccountService/AdminLoginResponse")]
         System.Threading.Tasks.Task<CommonLib.ReturnState> AdminLoginAsync(Admin.AccountService.LoginView model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/HasMember", ReplyAction="http://tempuri.org/IAccountService/HasMemberResponse")]
+        bool HasMember(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/HasMember", ReplyAction="http://tempuri.org/IAccountService/HasMemberResponse")]
+        System.Threading.Tasks.Task<bool> HasMemberAsync(string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -424,6 +430,14 @@ namespace Admin.AccountService {
         
         public System.Threading.Tasks.Task<CommonLib.ReturnState> AdminLoginAsync(Admin.AccountService.LoginView model) {
             return base.Channel.AdminLoginAsync(model);
+        }
+        
+        public bool HasMember(string email) {
+            return base.Channel.HasMember(email);
+        }
+        
+        public System.Threading.Tasks.Task<bool> HasMemberAsync(string email) {
+            return base.Channel.HasMemberAsync(email);
         }
     }
 }

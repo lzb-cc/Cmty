@@ -7,15 +7,28 @@ using Admin.Models;
 
 namespace Admin.Controllers
 {
-    public class CourseReviewController : Controller
+    public class CourseReviewController : AuthorityController
     {
-        private static CourseService.CourseServiceClient courseClient = new CourseService.CourseServiceClient();
-        private static UtilityService.UtilityServiceClient utilityClient = new UtilityService.UtilityServiceClient();
-
         // GET: CourseReview
         public ActionResult Index()
         {
             var list = new List<CourseReviewViewModels>();
+            var items = courseClient.GetCourseReviews();
+            foreach(var item in items)
+            {
+                var tmp = new CourseReviewViewModels()
+                {
+                    Code = item.Code,
+                    CommitDate = item.CommitDate,
+                    CommitUser = item.Email,
+                    Desp = item.Desp,
+                    Name = item.Name,
+                    PicUrl = item.PicUrl,
+                    Status = item.Status,
+                    University = item.University
+                };
+                list.Add(tmp);
+            }
             return View(list);
         }
 
@@ -72,6 +85,12 @@ namespace Admin.Controllers
             }
 
             return View(list);
+        }
+
+        public ActionResult ReviewPass(string code)
+        {
+            
+            return RedirectToAction("Index");
         }
     }
 }
