@@ -182,7 +182,23 @@ namespace Services.DAL.Course
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                var cmdText = string.Format("insert into CourseSets(Id, university, name, desp, pic_url) select Code, university, name, desp, pic_url from tmp_CourseSets where code = N'{0}'", code);
+                var cmdText = string.Format("insert into CourseSets(Id, university, name, desp, pic_url) select Code, university, name, desp, pic_url from tmp_CourseSets where code = N'{0}'; update tmp_CourseSets set ReviewStatus = 3 where code = N'{0}'", code);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                }
+            }
+
+            return result;
+        }
+
+        public static bool ReviewFailed(string code)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("update tmp_CourseSets set ReviewStatus = 4 where code = N'{0}'", code);
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     result = cmd.ExecuteNonQuery() > 0;

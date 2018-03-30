@@ -89,7 +89,12 @@ namespace Admin.Controllers
 
         public ActionResult ReviewPass(string code)
         {
-            
+            courseClient.ReviewPass(code);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult ReviewFailed(string code)
+        {
             return RedirectToAction("Index");
         }
     }
