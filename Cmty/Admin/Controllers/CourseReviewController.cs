@@ -65,7 +65,7 @@ namespace Admin.Controllers
                 return View(model);
             }
 
-            return RedirectToAction("CourseCenter");
+            return RedirectToAction("CourseCenter", new { page = 0 });
         }
 
         public ActionResult CourseCenter(int page)
