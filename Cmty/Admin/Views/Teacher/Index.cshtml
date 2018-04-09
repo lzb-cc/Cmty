@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>教师信息中心</h2>
 
 <p>
     @Html.ActionLink("添加新信息", "Create")
@@ -27,10 +27,13 @@
             @Html.DisplayNameFor(model => model.Sex)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nick)
+            @Html.DisplayNameFor(model => model.RegistDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Hobby)
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Desp)
         </th>
         <th></th>
     </tr>
@@ -53,10 +56,13 @@
             @Html.DisplayFor(modelItem => item.Sex)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Nick)
+            @Html.DisplayFor(modelItem => item.RegistDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Hobby)
+            @Html.DisplayFor(modelItem => item.JobTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desp)
         </td>
         <td>
             @Html.ActionLink("编辑", "Edit", new { /* id=item.PrimaryKey */ }) |

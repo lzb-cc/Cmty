@@ -26,11 +26,14 @@ namespace Admin.Models
         [Display(Name = "性别")]
         public string Sex { get; set; }
 
-        [Display(Name = "昵称")]
-        public string Nick { get; set; }
+        [Display(Name = "任教时间")]
+        public string RegistDate { get; set; }
 
-        [Display(Name = "兴趣爱好")]
-        public string Hobby { get; set; }
+        [Display(Name = "职称")]
+        public string JobTitle { get; set; }
+
+        [Display(Name = "简历")]
+        public string Desp { get; set; }
     }
 
 }

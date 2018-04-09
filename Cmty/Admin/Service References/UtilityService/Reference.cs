@@ -26,6 +26,18 @@ namespace Admin.UtilityService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/NameOfUniversity", ReplyAction="http://tempuri.org/IUtilityService/NameOfUniversityResponse")]
         System.Threading.Tasks.Task<string> NameOfUniversityAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/IndexOfJobTitle", ReplyAction="http://tempuri.org/IUtilityService/IndexOfJobTitleResponse")]
+        int IndexOfJobTitle(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/IndexOfJobTitle", ReplyAction="http://tempuri.org/IUtilityService/IndexOfJobTitleResponse")]
+        System.Threading.Tasks.Task<int> IndexOfJobTitleAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/NameOfJobTitle", ReplyAction="http://tempuri.org/IUtilityService/NameOfJobTitleResponse")]
+        string NameOfJobTitle(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/NameOfJobTitle", ReplyAction="http://tempuri.org/IUtilityService/NameOfJobTitleResponse")]
+        System.Threading.Tasks.Task<string> NameOfJobTitleAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -69,6 +81,22 @@ namespace Admin.UtilityService {
         
         public System.Threading.Tasks.Task<string> NameOfUniversityAsync(int id) {
             return base.Channel.NameOfUniversityAsync(id);
+        }
+        
+        public int IndexOfJobTitle(string name) {
+            return base.Channel.IndexOfJobTitle(name);
+        }
+        
+        public System.Threading.Tasks.Task<int> IndexOfJobTitleAsync(string name) {
+            return base.Channel.IndexOfJobTitleAsync(name);
+        }
+        
+        public string NameOfJobTitle(int id) {
+            return base.Channel.NameOfJobTitle(id);
+        }
+        
+        public System.Threading.Tasks.Task<string> NameOfJobTitleAsync(int id) {
+            return base.Channel.NameOfJobTitleAsync(id);
         }
     }
 }

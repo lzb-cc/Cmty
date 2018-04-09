@@ -34,6 +34,15 @@ create table cfg_ReviewStatus
 	primary key (Id)
 );
 
+
+if OBJECT_ID('cfg_JobTitle') is not null drop table cfg_JobTitle;
+create table cfg_JobTitle
+(
+	Id	 int identity,
+	Desp nvarchar(20),
+	primary key (Id)
+);
+
 if OBJECT_ID('UserSets') is not null drop table UserSets;
 create table UserSets
 (
@@ -45,6 +54,22 @@ create table UserSets
 	university int,
 	primary key (Email),
 	constraint fk_university_us foreign key (university) references cfg_Universities (Id),
+);
+
+if OBJECT_ID('TeacherSets') is not null drop table TeacherSets;
+create table TeacherSets
+(
+	Email      nvarchar(20),
+	uName      nvarchar(20),
+	rDate      datetime,
+	Sex		   nvarchar(10),
+	Tel		   nvarchar(11),
+	university int,
+	jTitle	   int,
+	Desp	   nvarchar(200),
+	primary key (Email),
+	constraint fk_university_ts foreign key (university) references cfg_Universities (Id),
+	constraint fk_jTitle_ts foreign key (jTitle) references cfg_JobTitle (Id)
 );
 
 if OBJECT_ID('CourseSets') is not null drop table CourseSets;
@@ -144,7 +169,14 @@ insert into cfg_ReviewStatus values (N'审核中')
 insert into cfg_ReviewStatus values (N'审核通过')
 insert into cfg_ReviewStatus values (N'审核不通过')
 
-----
+--cfg_JobTitle--
+insert into cfg_JobTitle values (N'助教')
+insert into cfg_JobTitle values (N'讲师')
+insert into cfg_JobTitle values (N'副教授')
+insert into cfg_JobTitle values (N'教授')
+insert into cfg_JobTitle values (N'院士')
+
+
 go
 
 use master;

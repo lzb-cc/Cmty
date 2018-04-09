@@ -15,5 +15,11 @@ namespace Services.cnts
 
         [OperationContract]
         string NameOfUniversity(int id);
+
+        [OperationContract]
+        int IndexOfJobTitle(string name);
+
+        [OperationContract]
+        string NameOfJobTitle(int id);
     }
 }

@@ -91,14 +91,17 @@
   <ItemGroup>
     <Content Include="svcs\AccountService.svc" />
     <Content Include="svcs\CourseService.svc" />
+    <Content Include="svcs\TeacherService.svc" />
     <Content Include="svcs\UtilityService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cnts\ICourseService.cs" />
+    <Compile Include="cnts\ITeacherService.cs" />
     <Compile Include="cnts\IUtilityService.cs" />
     <Compile Include="DAL\Account\AccountOperator.cs" />
     <Compile Include="DAL\Course\CourseOperator.cs" />
+    <Compile Include="DAL\Teacher\TeacherOperator.cs" />
     <Compile Include="DAL\UtilityOperator.cs" />
     <Compile Include="svcs\AccountService.svc.cs">
       <DependentUpon>AccountService.svc</DependentUpon>
@@ -107,6 +110,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="svcs\CourseService.svc.cs">
       <DependentUpon>CourseService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="svcs\TeacherService.svc.cs">
+      <DependentUpon>TeacherService.svc</DependentUpon>
     </Compile>
     <Compile Include="svcs\UtilityService.svc.cs">
       <DependentUpon>UtilityService.svc</DependentUpon>

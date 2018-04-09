@@ -12,6 +12,7 @@ namespace Admin.Controllers
         protected static AccountService.AccountServiceClient accountClient = new AccountService.AccountServiceClient();
         protected static UtilityService.UtilityServiceClient utilityClient = new UtilityService.UtilityServiceClient();
         protected static CourseService.CourseServiceClient courseClient = new CourseService.CourseServiceClient();
+        protected static TeacherService.TeacherServiceClient teacherClient = new TeacherService.TeacherServiceClient();
         protected static HttpCookie _cookie = new HttpCookie(DefaultAuthenticationTypes.ApplicationCookie);
         protected ActionResult _authorityResult;
 
