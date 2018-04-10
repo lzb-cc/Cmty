@@ -96,6 +96,34 @@ namespace Services.DAL.Course
             }
         }
 
+        public static CourseView GetCourseByCode(string code)
+        {
+            CourseView ret = null;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select * from CourseSets where Id = N'{0}'", code);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var course = new CourseView()
+                        {
+                            Code = Convert.ToString(reader.GetValue(0)),
+                            University = Convert.ToInt32(reader.GetValue(1)),
+                            Name = Convert.ToString(reader.GetValue(2)),
+                            Desp = Convert.ToString(reader.GetValue(3)),
+                            PicUrl = Convert.ToString(reader.GetValue(4))
+                        };
+                        ret = course;
+                    }
+                }
+
+                return ret;
+            }
+        }
+
         public static bool AddCourseApply(CourseView model, UserApply user)
         {
             var result = false;
@@ -174,7 +202,6 @@ namespace Services.DAL.Course
 
             return retList;
         }
-
 
         public static bool ReviewPass(string code)
         {

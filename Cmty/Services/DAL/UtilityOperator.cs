@@ -87,5 +87,86 @@ namespace Services.DAL
 
             return result;
         }
+
+        public static bool AddTeacherCourseMap(string email, string code)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("insert into TeacherCourseSets values(N'{0}', N'{1}')", email.Trim(), code.Trim());
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    try
+                    {
+                        result = cmd.ExecuteNonQuery() > 0;
+                    }
+                    catch (SqlException exp)
+                    {
+                        result = false;
+                    }
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static bool DelTeacherCourseMap(string email, string code)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("delete from TeacherCourseSets where Email = N'{0}' and CourseId = N'{1}'", email.Trim(), code.Trim());
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static List<string> GetCourseByTeacher(string email)
+        {
+            var ret = new List<string>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select CourseId from TeacherCourseSets where Email = N'{0}'", email.Trim());
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ret.Add(Convert.ToString(reader.GetValue(0)));
+                    }
+                }
+            }
+
+            return ret;
+        }
+
+        public static List<string> GetTeacherByCourseId(string code)
+        {
+            var ret = new List<string>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select Email from TeacherCourseSets where CourseId = N'{0}'", code.Trim());
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ret.Add(Convert.ToString(reader.GetValue(0)));
+                    }
+                }
+            }
+
+            return ret;
+        }
     }
 }

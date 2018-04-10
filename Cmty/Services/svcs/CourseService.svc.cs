@@ -26,6 +26,11 @@ namespace Services.svcs
             return CourseOperator.AddCourseApply(model, user) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
 
+        public CourseView GetCourseByCode(string code)
+        {
+            return CourseOperator.GetCourseByCode(code);
+        }
+
         public List<CourseView> GetCourseByPage(int page, int nPage = 10)
         {
             return CourseOperator.GetCourseByPage(page, nPage);
@@ -44,6 +49,11 @@ namespace Services.svcs
         public bool HasMember(string code)
         {
             return CourseOperator.HasMember(code);
+        }
+
+        public ReturnState ReviewFailed(string code)
+        {
+            return CourseOperator.ReviewFailed(code) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
 
         public ReturnState ReviewPass(string code)

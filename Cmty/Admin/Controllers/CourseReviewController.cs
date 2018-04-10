@@ -14,7 +14,7 @@ namespace Admin.Controllers
         {
             var list = new List<CourseReviewViewModels>();
             var items = courseClient.GetCourseReviews();
-            foreach(var item in items)
+            foreach (var item in items)
             {
                 var tmp = new CourseReviewViewModels()
                 {
@@ -72,7 +72,7 @@ namespace Admin.Controllers
         {
             var list = new List<CourseViewModels>();
             var array = courseClient.GetCourseByPage(page, 10);
-            foreach(var item in array)
+            foreach (var item in array)
             {
                 list.Add(new CourseViewModels()
                 {
@@ -95,7 +95,55 @@ namespace Admin.Controllers
 
         public ActionResult ReviewFailed(string code)
         {
+            courseClient.ReviewFailed(code);
             return RedirectToAction("Index");
+        }
+
+        /// <summary>
+        /// 为课程添加授课教师
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public ActionResult Details(string code)
+        {
+            if (string.IsNullOrEmpty(code))
+            {
+                return RedirectToAction("CourseCenter", new { page = 0 });
+            }
+
+            var course = courseClient.GetCourseByCode(code);
+            var model = new CourseViewModels()
+            {
+                Code = course.Code,
+                Desp = course.Desp,
+                Name = course.Name,
+                PicUrl = course.PicUrl,
+                University = utilityClient.NameOfUniversity(course.University)
+            };
+
+            //查询授课教师信息
+            ViewBag.Emails = utilityClient.GetTeacherByCourseId(code);
+
+            return View(model);
+        }
+
+
+        public ActionResult AddCourseTeacherMap(string code, string email)
+        {
+            if (!string.IsNullOrEmpty(code) && !string.IsNullOrEmpty(email))
+            {
+                utilityClient.AddTeacherCourseMap(email, code);
+            }
+            return RedirectToAction("Details", new { code = code });
+        }
+
+        public ActionResult DelCourseTeacherMap(string code, string email)
+        {
+            if (!string.IsNullOrEmpty(code) && !string.IsNullOrEmpty(email))
+            {
+                utilityClient.DelTeacherCourseMap(email, code);
+            }
+            return RedirectToAction("Details", new { code = code });
         }
     }
 }

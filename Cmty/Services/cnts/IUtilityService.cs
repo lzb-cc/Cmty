@@ -21,5 +21,17 @@ namespace Services.cnts
 
         [OperationContract]
         string NameOfJobTitle(int id);
+
+        [OperationContract]
+        bool AddTeacherCourseMap(string email, string code);
+
+        [OperationContract]
+        bool DelTeacherCourseMap(string email, string code);
+
+        [OperationContract]
+        List<string> GetCourseIdByTeacher(string email);
+
+        [OperationContract]
+        List<string> GetTeacherByCourseId(string code);
     }
 }

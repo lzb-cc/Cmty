@@ -401,6 +401,18 @@ namespace Admin.CourseService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/ReviewPass", ReplyAction="http://tempuri.org/ICourseService/ReviewPassResponse")]
         System.Threading.Tasks.Task<CommonLib.ReturnState> ReviewPassAsync(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/ReviewFailed", ReplyAction="http://tempuri.org/ICourseService/ReviewFailedResponse")]
+        CommonLib.ReturnState ReviewFailed(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/ReviewFailed", ReplyAction="http://tempuri.org/ICourseService/ReviewFailedResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> ReviewFailedAsync(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/GetCourseByCode", ReplyAction="http://tempuri.org/ICourseService/GetCourseByCodeResponse")]
+        Admin.CourseService.CourseView GetCourseByCode(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/GetCourseByCode", ReplyAction="http://tempuri.org/ICourseService/GetCourseByCodeResponse")]
+        System.Threading.Tasks.Task<Admin.CourseService.CourseView> GetCourseByCodeAsync(string code);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -484,6 +496,22 @@ namespace Admin.CourseService {
         
         public System.Threading.Tasks.Task<CommonLib.ReturnState> ReviewPassAsync(string code) {
             return base.Channel.ReviewPassAsync(code);
+        }
+        
+        public CommonLib.ReturnState ReviewFailed(string code) {
+            return base.Channel.ReviewFailed(code);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> ReviewFailedAsync(string code) {
+            return base.Channel.ReviewFailedAsync(code);
+        }
+        
+        public Admin.CourseService.CourseView GetCourseByCode(string code) {
+            return base.Channel.GetCourseByCode(code);
+        }
+        
+        public System.Threading.Tasks.Task<Admin.CourseService.CourseView> GetCourseByCodeAsync(string code) {
+            return base.Channel.GetCourseByCodeAsync(code);
         }
     }
 }

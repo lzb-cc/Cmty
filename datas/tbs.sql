@@ -91,7 +91,7 @@ create table TeacherCourseSets
     Email       nvarchar(20),
     CourseId    nvarchar(20),
     primary key (Email, CourseId),
-    constraint fk_Email_tcs foreign key (Email) references UserSets (Email),
+    constraint fk_Email_tcs foreign key (Email) references TeacherSets (Email),
     constraint fk_CourseId_tcs foreign key (CourseId) references CourseSets (Id)
 );
 

@@ -31,6 +31,12 @@ namespace Services.cnts
 
         [OperationContract]
         CommonLib.ReturnState ReviewPass(string code);
+
+        [OperationContract]
+        CommonLib.ReturnState ReviewFailed(string code);
+
+        [OperationContract]
+        CourseView GetCourseByCode(string code);
     }
 
     [DataContract]

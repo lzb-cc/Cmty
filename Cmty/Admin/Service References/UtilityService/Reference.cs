@@ -38,6 +38,30 @@ namespace Admin.UtilityService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/NameOfJobTitle", ReplyAction="http://tempuri.org/IUtilityService/NameOfJobTitleResponse")]
         System.Threading.Tasks.Task<string> NameOfJobTitleAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/AddTeacherCourseMap", ReplyAction="http://tempuri.org/IUtilityService/AddTeacherCourseMapResponse")]
+        bool AddTeacherCourseMap(string email, string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/AddTeacherCourseMap", ReplyAction="http://tempuri.org/IUtilityService/AddTeacherCourseMapResponse")]
+        System.Threading.Tasks.Task<bool> AddTeacherCourseMapAsync(string email, string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/DelTeacherCourseMap", ReplyAction="http://tempuri.org/IUtilityService/DelTeacherCourseMapResponse")]
+        bool DelTeacherCourseMap(string email, string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/DelTeacherCourseMap", ReplyAction="http://tempuri.org/IUtilityService/DelTeacherCourseMapResponse")]
+        System.Threading.Tasks.Task<bool> DelTeacherCourseMapAsync(string email, string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/GetCourseIdByTeacher", ReplyAction="http://tempuri.org/IUtilityService/GetCourseIdByTeacherResponse")]
+        string[] GetCourseIdByTeacher(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/GetCourseIdByTeacher", ReplyAction="http://tempuri.org/IUtilityService/GetCourseIdByTeacherResponse")]
+        System.Threading.Tasks.Task<string[]> GetCourseIdByTeacherAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/GetTeacherByCourseId", ReplyAction="http://tempuri.org/IUtilityService/GetTeacherByCourseIdResponse")]
+        string[] GetTeacherByCourseId(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/GetTeacherByCourseId", ReplyAction="http://tempuri.org/IUtilityService/GetTeacherByCourseIdResponse")]
+        System.Threading.Tasks.Task<string[]> GetTeacherByCourseIdAsync(string code);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -97,6 +121,38 @@ namespace Admin.UtilityService {
         
         public System.Threading.Tasks.Task<string> NameOfJobTitleAsync(int id) {
             return base.Channel.NameOfJobTitleAsync(id);
+        }
+        
+        public bool AddTeacherCourseMap(string email, string code) {
+            return base.Channel.AddTeacherCourseMap(email, code);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddTeacherCourseMapAsync(string email, string code) {
+            return base.Channel.AddTeacherCourseMapAsync(email, code);
+        }
+        
+        public bool DelTeacherCourseMap(string email, string code) {
+            return base.Channel.DelTeacherCourseMap(email, code);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DelTeacherCourseMapAsync(string email, string code) {
+            return base.Channel.DelTeacherCourseMapAsync(email, code);
+        }
+        
+        public string[] GetCourseIdByTeacher(string email) {
+            return base.Channel.GetCourseIdByTeacher(email);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetCourseIdByTeacherAsync(string email) {
+            return base.Channel.GetCourseIdByTeacherAsync(email);
+        }
+        
+        public string[] GetTeacherByCourseId(string code) {
+            return base.Channel.GetTeacherByCourseId(code);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetTeacherByCourseIdAsync(string code) {
+            return base.Channel.GetTeacherByCourseIdAsync(code);
         }
     }
 }

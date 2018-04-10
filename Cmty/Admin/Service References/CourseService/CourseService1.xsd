@@ -100,4 +100,32 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ReviewFailed">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReviewFailedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/CommonLib" minOccurs="0" name="ReviewFailedResult" type="q10:ReturnState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCourseByCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCourseByCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Services.cnts" minOccurs="0" name="GetCourseByCodeResult" nillable="true" type="q11:CourseView" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -24,6 +24,7 @@
   <Metadata>
     <MetadataFile FileName="UtilityService.xsd" MetadataType="Schema" ID="460f8a2a-afdb-46bd-bf27-ccf767e81ace" SourceId="1" SourceUrl="http://localhost:7774/svcs/UtilityService.svc?xsd=xsd0" />
     <MetadataFile FileName="UtilityService.disco" MetadataType="Disco" ID="e7699fca-6486-4482-a55a-ebc4ca1026c9" SourceId="1" SourceUrl="http://localhost:7774/svcs/UtilityService.svc?disco" />
+    <MetadataFile FileName="UtilityService2.xsd" MetadataType="Schema" ID="99073051-74a2-41b1-80ed-a817c9c49c56" SourceId="1" SourceUrl="http://localhost:7774/svcs/UtilityService.svc?xsd=xsd2" />
     <MetadataFile FileName="UtilityService.wsdl" MetadataType="Wsdl" ID="03e3fc26-114e-4efe-bb88-7a34736b6cde" SourceId="1" SourceUrl="http://localhost:7774/svcs/UtilityService.svc?wsdl" />
     <MetadataFile FileName="UtilityService1.xsd" MetadataType="Schema" ID="0f206d10-000b-4cd8-a18b-80da199cb1d6" SourceId="1" SourceUrl="http://localhost:7774/svcs/UtilityService.svc?xsd=xsd1" />
   </Metadata>

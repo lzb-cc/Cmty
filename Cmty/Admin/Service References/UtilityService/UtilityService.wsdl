@@ -4,6 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:7774/svcs/UtilityService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:7774/svcs/UtilityService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:7774/svcs/UtilityService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUtilityService_IndexOfUniversity_InputMessage">
@@ -30,6 +31,30 @@
   <wsdl:message name="IUtilityService_NameOfJobTitle_OutputMessage">
     <wsdl:part name="parameters" element="tns:NameOfJobTitleResponse" />
   </wsdl:message>
+  <wsdl:message name="IUtilityService_AddTeacherCourseMap_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTeacherCourseMap" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_AddTeacherCourseMap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTeacherCourseMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_DelTeacherCourseMap_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelTeacherCourseMap" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_DelTeacherCourseMap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelTeacherCourseMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_GetCourseIdByTeacher_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCourseIdByTeacher" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_GetCourseIdByTeacher_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCourseIdByTeacherResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_GetTeacherByCourseId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeacherByCourseId" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_GetTeacherByCourseId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeacherByCourseIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUtilityService">
     <wsdl:operation name="IndexOfUniversity">
       <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/IndexOfUniversity" message="tns:IUtilityService_IndexOfUniversity_InputMessage" />
@@ -46,6 +71,22 @@
     <wsdl:operation name="NameOfJobTitle">
       <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/NameOfJobTitle" message="tns:IUtilityService_NameOfJobTitle_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/NameOfJobTitleResponse" message="tns:IUtilityService_NameOfJobTitle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTeacherCourseMap">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/AddTeacherCourseMap" message="tns:IUtilityService_AddTeacherCourseMap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/AddTeacherCourseMapResponse" message="tns:IUtilityService_AddTeacherCourseMap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelTeacherCourseMap">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/DelTeacherCourseMap" message="tns:IUtilityService_DelTeacherCourseMap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/DelTeacherCourseMapResponse" message="tns:IUtilityService_DelTeacherCourseMap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseIdByTeacher">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/GetCourseIdByTeacher" message="tns:IUtilityService_GetCourseIdByTeacher_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/GetCourseIdByTeacherResponse" message="tns:IUtilityService_GetCourseIdByTeacher_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeacherByCourseId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/GetTeacherByCourseId" message="tns:IUtilityService_GetTeacherByCourseId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/GetTeacherByCourseIdResponse" message="tns:IUtilityService_GetTeacherByCourseId_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUtilityService" type="tns:IUtilityService">
@@ -79,6 +120,42 @@
     </wsdl:operation>
     <wsdl:operation name="NameOfJobTitle">
       <soap:operation soapAction="http://tempuri.org/IUtilityService/NameOfJobTitle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTeacherCourseMap">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/AddTeacherCourseMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelTeacherCourseMap">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/DelTeacherCourseMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseIdByTeacher">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/GetCourseIdByTeacher" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeacherByCourseId">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/GetTeacherByCourseId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
