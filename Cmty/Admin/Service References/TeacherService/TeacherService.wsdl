@@ -38,6 +38,12 @@
   <wsdl:message name="ITeacherService_GetTeacherInfoList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTeacherInfoListResponse" />
   </wsdl:message>
+  <wsdl:message name="ITeacherService_RemoveTeacherInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveTeacherInfo" />
+  </wsdl:message>
+  <wsdl:message name="ITeacherService_RemoveTeacherInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveTeacherInfoResponse" />
+  </wsdl:message>
   <wsdl:portType name="ITeacherService">
     <wsdl:operation name="AddTeacherInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/ITeacherService/AddTeacherInfo" message="tns:ITeacherService_AddTeacherInfo_InputMessage" />
@@ -58,6 +64,10 @@
     <wsdl:operation name="GetTeacherInfoList">
       <wsdl:input wsaw:Action="http://tempuri.org/ITeacherService/GetTeacherInfoList" message="tns:ITeacherService_GetTeacherInfoList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITeacherService/GetTeacherInfoListResponse" message="tns:ITeacherService_GetTeacherInfoList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveTeacherInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITeacherService/RemoveTeacherInfo" message="tns:ITeacherService_RemoveTeacherInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITeacherService/RemoveTeacherInfoResponse" message="tns:ITeacherService_RemoveTeacherInfo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ITeacherService" type="tns:ITeacherService">
@@ -100,6 +110,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetTeacherInfoList">
       <soap:operation soapAction="http://tempuri.org/ITeacherService/GetTeacherInfoList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveTeacherInfo">
+      <soap:operation soapAction="http://tempuri.org/ITeacherService/RemoveTeacherInfo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

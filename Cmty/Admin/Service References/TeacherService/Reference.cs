@@ -203,6 +203,12 @@ namespace Admin.TeacherService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITeacherService/GetTeacherInfoList", ReplyAction="http://tempuri.org/ITeacherService/GetTeacherInfoListResponse")]
         System.Threading.Tasks.Task<Admin.TeacherService.TeacherInfoView[]> GetTeacherInfoListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITeacherService/RemoveTeacherInfo", ReplyAction="http://tempuri.org/ITeacherService/RemoveTeacherInfoResponse")]
+        CommonLib.ReturnState RemoveTeacherInfo(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITeacherService/RemoveTeacherInfo", ReplyAction="http://tempuri.org/ITeacherService/RemoveTeacherInfoResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> RemoveTeacherInfoAsync(string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -270,6 +276,14 @@ namespace Admin.TeacherService {
         
         public System.Threading.Tasks.Task<Admin.TeacherService.TeacherInfoView[]> GetTeacherInfoListAsync() {
             return base.Channel.GetTeacherInfoListAsync();
+        }
+        
+        public CommonLib.ReturnState RemoveTeacherInfo(string email) {
+            return base.Channel.RemoveTeacherInfo(email);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> RemoveTeacherInfoAsync(string email) {
+            return base.Channel.RemoveTeacherInfoAsync(email);
         }
     }
 }

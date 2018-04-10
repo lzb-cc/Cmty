@@ -70,4 +70,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RemoveTeacherInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveTeacherInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/CommonLib" minOccurs="0" name="RemoveTeacherInfoResult" type="q7:ReturnState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -34,6 +34,11 @@ namespace Services.svcs
             return TeacherOperator.HasMember(email);
         }
 
+        public ReturnState RemoveTeacherInfo(string email)
+        {
+            return TeacherOperator.DelelteTeacherInfo(email) ? ReturnState.ReturnOK : ReturnState.ReturnError;
+        }
+
         public ReturnState UpdateTeacherrInfo(TeacherInfoView model)
         {
             return TeacherOperator.UpdateUserInfo(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;

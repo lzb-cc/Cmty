@@ -101,9 +101,8 @@ namespace Services.DAL.Teacher
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     var reader = cmd.ExecuteReader();
-                    if (reader.HasRows)
+                    while(reader.Read())
                     {
-                        reader.Read();
                         var user = new TeacherInfoView();
                         user.UserName = Convert.ToString(reader.GetValue(0));
                         user.RegisteDate = Convert.ToDateTime(reader.GetValue(1));
@@ -129,6 +128,23 @@ namespace Services.DAL.Teacher
             {
                 conn.Open();
                 var cmdText = string.Format("update TeacherSets set uName = N'{1}', rDate = '{2}', Sex = N'{3}', Tel = N'{4}', University = {5}, jTitle = {6}, Desp = N'{7}'  where Email = N'{0}'", model.Email, model.UserName, model.RegisteDate, model.Sex, model.Tel, model.University, model.JobTitle, model.Desp);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static bool DelelteTeacherInfo(string email)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("delete from TeacherSets where Email = N'{0}'", email);
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     result = cmd.ExecuteNonQuery() > 0;

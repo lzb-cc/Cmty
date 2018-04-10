@@ -39,5 +39,10 @@ namespace Admin.Controllers
 
             return true;
         }
+
+        protected void AddErrors(string error)
+        {
+            ModelState.AddModelError("", error);
+        }
     }
 }

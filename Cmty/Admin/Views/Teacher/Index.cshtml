@@ -65,9 +65,9 @@
             @Html.DisplayFor(modelItem => item.Desp)
         </td>
         <td>
-            @Html.ActionLink("编辑", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("详细", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("删除", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("编辑", "Edit", new { email = item.Email }) |
+            @Html.ActionLink("详细", "Detail", new { email = item.Email }) |
+            @Html.ActionLink("删除", "Delete", new { email = item.Email })
         </td>
     </tr>
 }

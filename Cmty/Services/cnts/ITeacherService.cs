@@ -25,6 +25,9 @@ namespace Services.cnts
 
         [OperationContract]
         List<TeacherInfoView> GetTeacherInfoList();
+
+        [OperationContract]
+        CommonLib.ReturnState RemoveTeacherInfo(string email);
     }
 
     [DataContract]
