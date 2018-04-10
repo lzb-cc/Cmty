@@ -33,5 +33,8 @@ namespace Services.cnts
 
         [OperationContract]
         List<string> GetTeacherByCourseId(string code);
+
+        [OperationContract]
+        string NameOfCourse(string code);
     }
 }

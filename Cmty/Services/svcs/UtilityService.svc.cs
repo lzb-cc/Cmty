@@ -43,6 +43,11 @@ namespace Services.svcs
             return UtilityOperator.IndexOfUniversity(university);
         }
 
+        public string NameOfCourse(string code)
+        {
+            return UtilityOperator.NameOfCourse(code);
+        }
+
         public string NameOfJobTitle(int id)
         {
             return UtilityOperator.NameOfJobTitle(id);

@@ -202,6 +202,7 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Gloable.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -210,6 +211,7 @@
     <Compile Include="Models\CourseViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TeacherViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\AccountService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -217,6 +219,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\CourseService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\TeacherService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -281,6 +288,22 @@
     <Content Include="Service References\CourseService\MVCViews.CourseService.CourseReviewView.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\TeacherService\MVCViews.TeacherService.TeacherInfoView.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\TeacherService\TeacherService.wsdl" />
+    <None Include="Service References\TeacherService\TeacherService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TeacherService\TeacherService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TeacherService\TeacherService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TeacherService\TeacherService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\UtilityService\UtilityService.disco" />
     <None Include="Service References\UtilityService\configuration91.svcinfo" />
     <None Include="Service References\UtilityService\configuration.svcinfo" />
@@ -292,6 +315,13 @@
     <None Include="Service References\CourseService\configuration91.svcinfo" />
     <None Include="Service References\CourseService\configuration.svcinfo" />
     <None Include="Service References\CourseService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\TeacherService\TeacherService.disco" />
+    <None Include="Service References\TeacherService\configuration91.svcinfo" />
+    <None Include="Service References\TeacherService\configuration.svcinfo" />
+    <None Include="Service References\TeacherService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -355,6 +385,11 @@
     <Content Include="Views\Course\Index.cshtml" />
     <Content Include="Views\Course\ApplyForAddCourse.cshtml" />
     <Content Include="Views\Course\IndexOfApply.cshtml" />
+    <Content Include="Views\Teacher\Index.cshtml" />
+    <None Include="Service References\UtilityService\UtilityService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Views\Teacher\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -373,6 +408,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AccountService\" />
     <WCFMetadataStorage Include="Service References\CourseService\" />
+    <WCFMetadataStorage Include="Service References\TeacherService\" />
     <WCFMetadataStorage Include="Service References\UtilityService\" />
   </ItemGroup>
   <ItemGroup>

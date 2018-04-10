@@ -168,5 +168,22 @@ namespace Services.DAL
 
             return ret;
         }
+
+        public static string NameOfCourse(string code)
+        {
+            var result = "";
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select name from CourseSets where Id = N'{0}'", code);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = Convert.ToString(cmd.ExecuteScalar());
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
     }
 }

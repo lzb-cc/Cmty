@@ -389,6 +389,30 @@ namespace MVCViews.CourseService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/GetCourseReviewViewByEmail", ReplyAction="http://tempuri.org/ICourseService/GetCourseReviewViewByEmailResponse")]
         System.Threading.Tasks.Task<MVCViews.CourseService.CourseReviewView[]> GetCourseReviewViewByEmailAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/GetCourseReviews", ReplyAction="http://tempuri.org/ICourseService/GetCourseReviewsResponse")]
+        MVCViews.CourseService.CourseReviewView[] GetCourseReviews();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/GetCourseReviews", ReplyAction="http://tempuri.org/ICourseService/GetCourseReviewsResponse")]
+        System.Threading.Tasks.Task<MVCViews.CourseService.CourseReviewView[]> GetCourseReviewsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/ReviewPass", ReplyAction="http://tempuri.org/ICourseService/ReviewPassResponse")]
+        CommonLib.ReturnState ReviewPass(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/ReviewPass", ReplyAction="http://tempuri.org/ICourseService/ReviewPassResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> ReviewPassAsync(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/ReviewFailed", ReplyAction="http://tempuri.org/ICourseService/ReviewFailedResponse")]
+        CommonLib.ReturnState ReviewFailed(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/ReviewFailed", ReplyAction="http://tempuri.org/ICourseService/ReviewFailedResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> ReviewFailedAsync(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/GetCourseByCode", ReplyAction="http://tempuri.org/ICourseService/GetCourseByCodeResponse")]
+        MVCViews.CourseService.CourseView GetCourseByCode(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseService/GetCourseByCode", ReplyAction="http://tempuri.org/ICourseService/GetCourseByCodeResponse")]
+        System.Threading.Tasks.Task<MVCViews.CourseService.CourseView> GetCourseByCodeAsync(string code);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -456,6 +480,38 @@ namespace MVCViews.CourseService {
         
         public System.Threading.Tasks.Task<MVCViews.CourseService.CourseReviewView[]> GetCourseReviewViewByEmailAsync(string email) {
             return base.Channel.GetCourseReviewViewByEmailAsync(email);
+        }
+        
+        public MVCViews.CourseService.CourseReviewView[] GetCourseReviews() {
+            return base.Channel.GetCourseReviews();
+        }
+        
+        public System.Threading.Tasks.Task<MVCViews.CourseService.CourseReviewView[]> GetCourseReviewsAsync() {
+            return base.Channel.GetCourseReviewsAsync();
+        }
+        
+        public CommonLib.ReturnState ReviewPass(string code) {
+            return base.Channel.ReviewPass(code);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> ReviewPassAsync(string code) {
+            return base.Channel.ReviewPassAsync(code);
+        }
+        
+        public CommonLib.ReturnState ReviewFailed(string code) {
+            return base.Channel.ReviewFailed(code);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> ReviewFailedAsync(string code) {
+            return base.Channel.ReviewFailedAsync(code);
+        }
+        
+        public MVCViews.CourseService.CourseView GetCourseByCode(string code) {
+            return base.Channel.GetCourseByCode(code);
+        }
+        
+        public System.Threading.Tasks.Task<MVCViews.CourseService.CourseView> GetCourseByCodeAsync(string code) {
+            return base.Channel.GetCourseByCodeAsync(code);
         }
     }
 }
