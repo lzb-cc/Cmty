@@ -46,12 +46,10 @@
             @Html.DisplayFor(modelItem => item.Desp)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PicUrl)
+            <img class="lazy" rel="popover" src="http://localhost:8090/Course_Url/@item.PicUrl" width="60" height="40"/>
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("详细", "Details", new { code = item.Code }) 
         </td>
     </tr>
 }

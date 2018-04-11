@@ -1,0 +1,61 @@
+﻿@model MVCViews.Models.CourseViewModels
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>课程信息</h2>
+
+<div>
+    <h4>详细信息</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.University)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.University)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PicUrl)
+        </dt>
+
+        <dd>
+            <img class="lazy" rel="popover" src="http://localhost:8090/Course_Url/@Model.PicUrl" width="60" height="40" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desp)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    @foreach(var message in ViewBag.Messages)
+    {
+        <div>
+            @message.UserName : @message.Date : @message.Content
+        </div>
+    }
+    <div>
+        评论: @Html.Editor("comment_edit")
+        <a href="" >发送</a>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("返回主页", "Index")
+</p>

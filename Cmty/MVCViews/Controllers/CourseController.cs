@@ -35,6 +35,28 @@ namespace MVCViews.Controllers
             return View(list);
         }
 
+        public ActionResult Details(string code)
+        {
+            if (string.IsNullOrEmpty(code))
+            {
+                return RedirectToAction("Index", new { page = 0 });
+            }
+
+            var course = courseClient.GetCourseByCode(code);
+            var model = new CourseViewModels()
+            {
+                Desp = course.Desp,
+                Name = course.Name,
+                PicUrl = course.PicUrl,
+                University = utilityClient.NameOfUniversity(course.University)
+            };
+
+            // 查询评论
+            var messages = "";
+
+            return View(model);
+        }
+
         /// <summary>
         /// 我的申请
         /// </summary>
@@ -105,6 +127,11 @@ namespace MVCViews.Controllers
                 PicUrl = model.PicUrl,
                 University = utilityClient.IndexOfUniversity(model.University)
             };
+
+            if (string.IsNullOrEmpty(course.PicUrl))
+            {
+                course.PicUrl = "00.jpg";
+            }
 
             var result = courseClient.AddCourseApply(course, user);
             if (result == CommonLib.ReturnState.ReturnError)

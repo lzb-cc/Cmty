@@ -390,6 +390,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Teacher\Details.cshtml" />
+    <Content Include="Views\Course\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

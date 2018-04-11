@@ -132,6 +132,11 @@ namespace Services.DAL
         public static List<string> GetCourseByTeacher(string email)
         {
             var ret = new List<string>();
+            if (string.IsNullOrEmpty(email))
+            {
+                return ret;
+            }
+
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
