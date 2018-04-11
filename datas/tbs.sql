@@ -142,6 +142,19 @@ create table tmp_CourseSets
 	constraint fk_CommitUser_tcs foreign key (CommitUser) references UserSets (Email),
 	constraint fk_ReviewStatus_tcs foreign key (ReviewStatus) references cfg_ReviewStatus (Id)
 );
+
+if OBJECT_ID('CourseCommentSets') is not null drop table CourseCommentSets;
+create table CourseCommentSets
+(
+	Id			int  identity,
+	Code		nvarchar(20),
+	Email		nvarchar(20),
+	cDate		datetime,
+	Content		nvarchar(200),
+	primary key (Id),
+	constraint fk_Code_ccs foreign key (Code) references CourseSets (Id),
+	constraint fk_Email_ccs foreign key (Email) references UserSets (Email)
+);
 go
 
 
