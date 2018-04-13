@@ -66,7 +66,7 @@ create table TeacherSets
 	Tel		   nvarchar(11),
 	university int,
 	jTitle	   int,
-	Desp	   nvarchar(200),
+	Desp	   nvarchar(2000),
 	primary key (Email),
 	constraint fk_university_ts foreign key (university) references cfg_Universities (Id),
 	constraint fk_jTitle_ts foreign key (jTitle) references cfg_JobTitle (Id)
@@ -78,7 +78,7 @@ create table CourseSets
     Id          nvarchar(20),
     university  int,
     name        nvarchar(20),
-	desp		nvarchar(200),
+	desp		nvarchar(2000),
 	pic_url		nvarchar(200),
     primary key (Id),
     constraint fk_university_cs foreign key (university) references cfg_Universities (Id)
@@ -102,7 +102,7 @@ create table BookSets
     name        nvarchar(50),
     author      nvarchar(50),
     pic         nvarchar(50),
-    desp        nvarchar(200),
+    desp        nvarchar(2000),
     primary key (Id)
 );
 
@@ -136,7 +136,7 @@ create table tmp_CourseSets
 	ReviewStatus int,
     university   int,
     name         nvarchar(20),
-	desp		 nvarchar(200),
+	desp		 nvarchar(2000),
 	pic_url		 nvarchar(200),
 	primary key (Code),
 	constraint fk_CommitUser_tcs foreign key (CommitUser) references UserSets (Email),
