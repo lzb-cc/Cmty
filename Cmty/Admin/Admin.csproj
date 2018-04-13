@@ -202,6 +202,7 @@
     <Compile Include="Controllers\CourseReviewController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OtherController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -392,6 +393,7 @@
     <None Include="Service References\UtilityService\UtilityService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Other\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
