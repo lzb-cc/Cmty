@@ -4,3 +4,9 @@ D:\文档\Cmty\UnitTest\bin\Debug\UnitTest.pdb
 D:\文档\Cmty\UnitTest\obj\Debug\UnitTest.csprojResolveAssemblyReference.cache
 D:\文档\Cmty\UnitTest\obj\Debug\UnitTest.exe
 D:\文档\Cmty\UnitTest\obj\Debug\UnitTest.pdb
+F:\GitHub\Cmty\Cmty\UnitTest\bin\Debug\UnitTest.exe.config
+F:\GitHub\Cmty\Cmty\UnitTest\obj\Debug\UnitTest.exe
+F:\GitHub\Cmty\Cmty\UnitTest\obj\Debug\UnitTest.pdb
+F:\GitHub\Cmty\Cmty\UnitTest\bin\Debug\UnitTest.exe
+F:\GitHub\Cmty\Cmty\UnitTest\bin\Debug\UnitTest.pdb
+F:\GitHub\Cmty\Cmty\UnitTest\obj\Debug\UnitTest.csprojResolveAssemblyReference.cache

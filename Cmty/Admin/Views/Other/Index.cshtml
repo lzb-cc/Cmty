@@ -4,14 +4,14 @@
 }
 
 <div>
-<input type="file" id="select_data_file"/><a href="" id="up_data_file">批量导入数据</a>
+<input type="file" id="select_data_file"/><a href="" id="up_data_file" onclick="Upload()">批量导入数据</a>
 </div>
 
 
 <script>
     function Upload() {
-        var file_name = document.getElementById("select_data_filef").value;
-        href = "/Other/UploadData?fileName=" + file_name;
+        var file_name = document.getElementById("select_data_file").value.split("\\");
+        href = "/Other/UploadData?fileName=" + file_name[file_name.length -1];
         document.getElementById("up_data_file").setAttribute("href", href);
     }
 </script>
