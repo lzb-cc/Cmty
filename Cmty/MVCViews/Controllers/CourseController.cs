@@ -52,7 +52,7 @@ namespace MVCViews.Controllers
             };
 
             // 查询评论
-            var messages = "";
+            var commnets = "";
 
             return View(model);
         }
