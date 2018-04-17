@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a4e02b2c-560f-494f-a5d3-38e03ac97711" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:7774/svcs/CourseCommentService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CourseCommentService.xsd" MetadataType="Schema" ID="c2d80806-90b4-4cd1-84b7-b7cda3534a52" SourceId="1" SourceUrl="http://localhost:7774/svcs/CourseCommentService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CourseCommentService1.xsd" MetadataType="Schema" ID="1c2175d6-38b6-4d17-8dea-5ad5edd8aa8c" SourceId="1" SourceUrl="http://localhost:7774/svcs/CourseCommentService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CourseCommentService.wsdl" MetadataType="Wsdl" ID="daed671d-0a34-4a0d-bec6-6b653ce5a815" SourceId="1" SourceUrl="http://localhost:7774/svcs/CourseCommentService.svc?wsdl" />
+    <MetadataFile FileName="CourseCommentService.disco" MetadataType="Disco" ID="18849d4c-ad5c-471e-b610-6275f261e425" SourceId="1" SourceUrl="http://localhost:7774/svcs/CourseCommentService.svc?disco" />
+    <MetadataFile FileName="CourseCommentService2.xsd" MetadataType="Schema" ID="63a34742-d21a-433b-95ec-52394c4c217c" SourceId="1" SourceUrl="http://localhost:7774/svcs/CourseCommentService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CourseCommentService3.xsd" MetadataType="Schema" ID="54da9694-6043-4901-a935-1429be2f22e2" SourceId="1" SourceUrl="http://localhost:7774/svcs/CourseCommentService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
