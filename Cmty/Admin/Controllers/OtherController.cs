@@ -60,9 +60,43 @@ namespace Admin.Controllers
             }
         }
 
+        public void SetCourseSets()
+        {
+            var ws = (Worksheet)workBook.Worksheets["CourseSets"];
+            int rows = ws.UsedRange.Cells.Rows.Count;
+
+            for (int i = 1; i <= rows; i++)
+            {
+                var model = new CourseService.CourseView()
+                {
+                    Code = ((Range)ws.Cells[i, 1]).Text,
+                    University = Convert.ToInt32(((Range)ws.Cells[i, 2]).Text),
+                    Name = ((Range)ws.Cells[i, 3]).Text,
+                    Desp = ((Range)ws.Cells[i, 4]).Text,
+                    PicUrl = ((Range)ws.Cells[i, 5]).Text
+                };
+                courseClient.AddCourse(model);
+            }
+        }
+
+        public void SetTeacherCourseSets()
+        {
+            var ws = (Worksheet)workBook.Worksheets["TeacherCourseSets"];
+            int rows = ws.UsedRange.Cells.Rows.Count;
+
+            for (int i = 1; i <= rows; i++)
+            {
+                utilityClient.AddTeacherCourseMap(((Range)ws.Cells[i, 1]).Text, ((Range)ws.Cells[i, 2]).Text);
+            }
+        }
+
         public ActionResult UploadData(string fileName)
         {
-            workBook = application.Workbooks.Open(Url + fileName);
+            workBook = application.Workbooks.Open((url+fileName).ToString());
+            SetUserSets();
+            SetCourseSets();
+            SetTeacherSets();
+            SetTeacherCourseSets();
             workBook.Close();
             return RedirectToAction("Index");
         }
