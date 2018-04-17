@@ -151,6 +151,7 @@ create table CourseCommentSets
 	Email		nvarchar(20),
 	cDate		datetime,
 	Content		nvarchar(200),
+	CmtFloor	int,
 	primary key (Id),
 	constraint fk_Code_ccs foreign key (Code) references CourseSets (Id),
 	constraint fk_Email_ccs foreign key (Email) references UserSets (Email)
