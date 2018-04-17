@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using CommonLib;
+using Services.DAL.Course;
 
 namespace Services.svcs
 {
@@ -15,12 +16,12 @@ namespace Services.svcs
     {
         public ReturnState AddComment(CourseCommentView model)
         {
-            throw new NotImplementedException();
+            return CourseCommentOperator.AddCourseComment(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
 
         public ReturnState RemoveComment(CourseCommentView model)
         {
-            throw new NotImplementedException();
+            return CourseCommentOperator.RemoveCourseComment(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
     }
 }

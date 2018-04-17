@@ -28,5 +28,22 @@ namespace Services.DAL.Course
             }
             return result;
         }
+
+        public static bool RemoveCourseComment(CourseCommentView model)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("delete from CourseCommentSets where Code = N'{0}' and Email = N'{1}' and cDate = '{2}'", model.Code, model.Email, model.PubDate);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
     }
 }
