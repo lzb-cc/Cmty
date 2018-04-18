@@ -70,14 +70,40 @@
             所授课程
         </dt>
 
-@foreach(var item in ViewBag.Courses)
-{
-    <dd>
-        @item
-    </dd>
-}
+        @foreach (var item in ViewBag.Courses)
+        {
+            <dd>
+                @item
+            </dd>
+        }
     </dl>
+</div>
+
+<div>
+    @foreach (var cmt in ViewBag.CmtList)
+    {
+        <div>
+            <h3>#@cmt.Floor @cmt.Email</h3>
+            <p>@cmt.PubDate : @cmt.Content</p>
+        </div>
+    }
+
+    <div>
+        <label id="code_label" hidden>@Model.Email</label>
+        评论: @Html.Editor("comment_edit")
+        <a id="href_comment" href="" onclick="make_comment()">发送</a>
+    </div>
 </div>
 <p>
     @Html.ActionLink("返回主页", "Index")
 </p>
+
+
+<script>
+    function make_comment() {
+        var content = document.getElementById("comment_edit").value;
+        var email = document.getElementById("code_label").innerText;
+        var href = "/Teacher/MakeComment?email=" + email + "&content=" + content;
+        document.getElementById("href_comment").setAttribute("href", href);
+    }
+</script>

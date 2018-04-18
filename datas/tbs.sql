@@ -156,6 +156,20 @@ create table CourseCommentSets
 	constraint fk_Code_ccs foreign key (Code) references CourseSets (Id),
 	constraint fk_Email_ccs foreign key (Email) references UserSets (Email)
 );
+
+if OBJECT_ID('TeacherCommentSets') is not null drop table TeacherCommentSets;
+create table TeacherCommentSets
+(
+	Id			int  identity,
+	T_Id		nvarchar(20),
+	Email		nvarchar(20),
+	cDate		datetime,
+	Content		nvarchar(200),
+	CmtFloor	int,
+	primary key (Id),
+	constraint fk_Code_ttcs foreign key (T_Id) references TeacherSets (Email),
+	constraint fk_Email_ttcs foreign key (Email) references UserSets (Email)
+);
 go
 
 
