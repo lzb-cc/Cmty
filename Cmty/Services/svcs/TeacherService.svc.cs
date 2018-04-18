@@ -43,5 +43,25 @@ namespace Services.svcs
         {
             return TeacherOperator.UpdateUserInfo(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
+
+        public ReturnState AddComment(TeacherCommentView model)
+        {
+            return TeacherOperator.AddCourseComment(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
+        }
+
+        public List<TeacherCommentView> GetCommentByEmail(string email)
+        {
+            return TeacherOperator.GetCourseCommentListByEmail(email);
+        }
+
+        public int GetValidFloor(string code)
+        {
+            return TeacherOperator.GetValidFloor(code);
+        }
+
+        public ReturnState RemoveComment(TeacherCommentView model)
+        {
+            return TeacherOperator.RemoveCourseComment(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
+        }
     }
 }

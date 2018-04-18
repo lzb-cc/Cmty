@@ -1,4 +1,5 @@
-﻿using MVCViews.Models;
+﻿using Microsoft.AspNet.Identity;
+using MVCViews.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,7 +54,32 @@ namespace MVCViews.Controllers
             }
 
             ViewBag.Courses = courseList;
+            ViewBag.CmtList = teacherClient.GetCommentByEmail(email);
             return View(model);
+        }
+
+        public ActionResult MakeComment(string email, string content)
+        {
+            if (!Authority())
+            {
+                return _authorityResult;
+            }
+
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(content))
+            {
+                return RedirectToAction("Index");
+            }
+
+            var model = new TeacherService.TeacherCommentView()
+            {
+                Teacher = email,
+                Content = content,
+                Email = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value,
+                PubDate = DateTime.Now,
+                Floor = teacherClient.GetValidFloor(email)
+            };
+            teacherClient.AddComment(model);
+            return RedirectToAction("Details", new { email = email });
         }
     }
 }

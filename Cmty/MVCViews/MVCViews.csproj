@@ -319,6 +319,9 @@
     <Content Include="Service References\TeacherService\MVCViews.TeacherService.TeacherInfoView.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\TeacherService\MVCViews.TeacherService.TeacherCommentView.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\TeacherService\TeacherService.wsdl" />
     <None Include="Service References\TeacherService\TeacherService.xsd">
       <SubType>Designer</SubType>

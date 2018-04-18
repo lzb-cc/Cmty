@@ -170,6 +170,115 @@ namespace MVCViews.TeacherService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TeacherCommentView", Namespace="http://schemas.datacontract.org/2004/07/Services.cnts")]
+    [System.SerializableAttribute()]
+    public partial class TeacherCommentView : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FloorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime PubDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TeacherField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Content {
+            get {
+                return this.ContentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContentField, value) != true)) {
+                    this.ContentField = value;
+                    this.RaisePropertyChanged("Content");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Floor {
+            get {
+                return this.FloorField;
+            }
+            set {
+                if ((this.FloorField.Equals(value) != true)) {
+                    this.FloorField = value;
+                    this.RaisePropertyChanged("Floor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime PubDate {
+            get {
+                return this.PubDateField;
+            }
+            set {
+                if ((this.PubDateField.Equals(value) != true)) {
+                    this.PubDateField = value;
+                    this.RaisePropertyChanged("PubDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Teacher {
+            get {
+                return this.TeacherField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TeacherField, value) != true)) {
+                    this.TeacherField = value;
+                    this.RaisePropertyChanged("Teacher");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TeacherService.ITeacherService")]
     public interface ITeacherService {
@@ -209,6 +318,30 @@ namespace MVCViews.TeacherService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITeacherService/RemoveTeacherInfo", ReplyAction="http://tempuri.org/ITeacherService/RemoveTeacherInfoResponse")]
         System.Threading.Tasks.Task<CommonLib.ReturnState> RemoveTeacherInfoAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITeacherService/AddComment", ReplyAction="http://tempuri.org/ITeacherService/AddCommentResponse")]
+        CommonLib.ReturnState AddComment(MVCViews.TeacherService.TeacherCommentView model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITeacherService/AddComment", ReplyAction="http://tempuri.org/ITeacherService/AddCommentResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> AddCommentAsync(MVCViews.TeacherService.TeacherCommentView model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITeacherService/RemoveComment", ReplyAction="http://tempuri.org/ITeacherService/RemoveCommentResponse")]
+        CommonLib.ReturnState RemoveComment(MVCViews.TeacherService.TeacherCommentView model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITeacherService/RemoveComment", ReplyAction="http://tempuri.org/ITeacherService/RemoveCommentResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> RemoveCommentAsync(MVCViews.TeacherService.TeacherCommentView model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITeacherService/GetCommentByEmail", ReplyAction="http://tempuri.org/ITeacherService/GetCommentByEmailResponse")]
+        MVCViews.TeacherService.TeacherCommentView[] GetCommentByEmail(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITeacherService/GetCommentByEmail", ReplyAction="http://tempuri.org/ITeacherService/GetCommentByEmailResponse")]
+        System.Threading.Tasks.Task<MVCViews.TeacherService.TeacherCommentView[]> GetCommentByEmailAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITeacherService/GetValidFloor", ReplyAction="http://tempuri.org/ITeacherService/GetValidFloorResponse")]
+        int GetValidFloor(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITeacherService/GetValidFloor", ReplyAction="http://tempuri.org/ITeacherService/GetValidFloorResponse")]
+        System.Threading.Tasks.Task<int> GetValidFloorAsync(string code);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -284,6 +417,38 @@ namespace MVCViews.TeacherService {
         
         public System.Threading.Tasks.Task<CommonLib.ReturnState> RemoveTeacherInfoAsync(string email) {
             return base.Channel.RemoveTeacherInfoAsync(email);
+        }
+        
+        public CommonLib.ReturnState AddComment(MVCViews.TeacherService.TeacherCommentView model) {
+            return base.Channel.AddComment(model);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> AddCommentAsync(MVCViews.TeacherService.TeacherCommentView model) {
+            return base.Channel.AddCommentAsync(model);
+        }
+        
+        public CommonLib.ReturnState RemoveComment(MVCViews.TeacherService.TeacherCommentView model) {
+            return base.Channel.RemoveComment(model);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> RemoveCommentAsync(MVCViews.TeacherService.TeacherCommentView model) {
+            return base.Channel.RemoveCommentAsync(model);
+        }
+        
+        public MVCViews.TeacherService.TeacherCommentView[] GetCommentByEmail(string email) {
+            return base.Channel.GetCommentByEmail(email);
+        }
+        
+        public System.Threading.Tasks.Task<MVCViews.TeacherService.TeacherCommentView[]> GetCommentByEmailAsync(string email) {
+            return base.Channel.GetCommentByEmailAsync(email);
+        }
+        
+        public int GetValidFloor(string code) {
+            return base.Channel.GetValidFloor(code);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetValidFloorAsync(string code) {
+            return base.Channel.GetValidFloorAsync(code);
         }
     }
 }

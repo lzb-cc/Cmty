@@ -28,6 +28,18 @@ namespace Services.cnts
 
         [OperationContract]
         CommonLib.ReturnState RemoveTeacherInfo(string email);
+
+        [OperationContract]
+        CommonLib.ReturnState AddComment(TeacherCommentView model);
+
+        [OperationContract]
+        CommonLib.ReturnState RemoveComment(TeacherCommentView model);
+
+        [OperationContract]
+        List<TeacherCommentView> GetCommentByEmail(string email);
+
+        [OperationContract]
+        int GetValidFloor(string code);
     }
 
     [DataContract]
@@ -58,4 +70,22 @@ namespace Services.cnts
         public string Desp { get; set; }
     }
 
+    public class TeacherCommentView
+    {
+        [DataMember]
+        public string Teacher { get; set; }
+
+        [DataMember]
+        public string Email { get; set; }
+
+        [DataMember]
+        public DateTime PubDate { get; set; }
+
+        [DataMember]
+        public string Content { get; set; }
+
+        [DataMember]
+        public int Floor { get; set; }
+
+    }
 }

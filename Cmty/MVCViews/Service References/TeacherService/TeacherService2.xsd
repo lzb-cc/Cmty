@@ -19,4 +19,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfTeacherInfoView" nillable="true" type="tns:ArrayOfTeacherInfoView" />
+  <xs:complexType name="TeacherCommentView">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Floor" type="xs:int" />
+      <xs:element minOccurs="0" name="PubDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Teacher" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TeacherCommentView" nillable="true" type="tns:TeacherCommentView" />
+  <xs:complexType name="ArrayOfTeacherCommentView">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TeacherCommentView" nillable="true" type="tns:TeacherCommentView" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTeacherCommentView" nillable="true" type="tns:ArrayOfTeacherCommentView" />
 </xs:schema>

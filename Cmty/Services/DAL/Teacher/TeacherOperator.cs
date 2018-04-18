@@ -154,5 +154,85 @@ namespace Services.DAL.Teacher
 
             return result;
         }
+
+        public static bool AddCourseComment(TeacherCommentView model)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("insert into TeacherCommentSets values (N'{0}', N'{1}' , '{2}', N'{3}', {4})", model.Teacher, model.Email, model.PubDate, model.Content, model.Floor);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+            return result;
+        }
+
+        public static bool RemoveCourseComment(TeacherCommentView model)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("delete from TeacherCommentSets where T_Id = N'{0}' and Email = N'{1}' and cDate = '{2}'", model.Teacher, model.Email, model.PubDate);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static List<TeacherCommentView> GetCourseCommentListByEmail(string email)
+        {
+            var ret = new List<TeacherCommentView>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select T_Id, Email, cDate, Content, CmtFloor from TeacherCommentSets where T_Id = N'{0}' order by CmtFloor ASC", email);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var comment = new TeacherCommentView()
+                        {
+                            Teacher = Convert.ToString(reader.GetValue(0)),
+                            Email = Convert.ToString(reader.GetValue(1)),
+                            PubDate = Convert.ToDateTime(reader.GetValue(2)),
+                            Content = Convert.ToString(reader.GetValue(3)),
+                            Floor = Convert.ToInt32(reader.GetValue(4))
+                        };
+                        ret.Add(comment);
+                    }
+                }
+            }
+
+            return ret;
+        }
+
+        public static int GetValidFloor(string email)
+        {
+            var result = 1;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select max(CmtFloor) from TeacherCommentSets where T_Id = N'{0}'", email);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var tmp = cmd.ExecuteScalar();
+                    result += Convert.ToInt32(DBNull.Value.Equals(tmp) ? 0 : tmp);
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
     }
 }

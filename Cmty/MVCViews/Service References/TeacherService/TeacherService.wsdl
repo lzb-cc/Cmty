@@ -44,6 +44,30 @@
   <wsdl:message name="ITeacherService_RemoveTeacherInfo_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoveTeacherInfoResponse" />
   </wsdl:message>
+  <wsdl:message name="ITeacherService_AddComment_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddComment" />
+  </wsdl:message>
+  <wsdl:message name="ITeacherService_AddComment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITeacherService_RemoveComment_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveComment" />
+  </wsdl:message>
+  <wsdl:message name="ITeacherService_RemoveComment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITeacherService_GetCommentByEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommentByEmail" />
+  </wsdl:message>
+  <wsdl:message name="ITeacherService_GetCommentByEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommentByEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITeacherService_GetValidFloor_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidFloor" />
+  </wsdl:message>
+  <wsdl:message name="ITeacherService_GetValidFloor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidFloorResponse" />
+  </wsdl:message>
   <wsdl:portType name="ITeacherService">
     <wsdl:operation name="AddTeacherInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/ITeacherService/AddTeacherInfo" message="tns:ITeacherService_AddTeacherInfo_InputMessage" />
@@ -68,6 +92,22 @@
     <wsdl:operation name="RemoveTeacherInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/ITeacherService/RemoveTeacherInfo" message="tns:ITeacherService_RemoveTeacherInfo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITeacherService/RemoveTeacherInfoResponse" message="tns:ITeacherService_RemoveTeacherInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddComment">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITeacherService/AddComment" message="tns:ITeacherService_AddComment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITeacherService/AddCommentResponse" message="tns:ITeacherService_AddComment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveComment">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITeacherService/RemoveComment" message="tns:ITeacherService_RemoveComment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITeacherService/RemoveCommentResponse" message="tns:ITeacherService_RemoveComment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentByEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITeacherService/GetCommentByEmail" message="tns:ITeacherService_GetCommentByEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITeacherService/GetCommentByEmailResponse" message="tns:ITeacherService_GetCommentByEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValidFloor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITeacherService/GetValidFloor" message="tns:ITeacherService_GetValidFloor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITeacherService/GetValidFloorResponse" message="tns:ITeacherService_GetValidFloor_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ITeacherService" type="tns:ITeacherService">
@@ -119,6 +159,42 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveTeacherInfo">
       <soap:operation soapAction="http://tempuri.org/ITeacherService/RemoveTeacherInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddComment">
+      <soap:operation soapAction="http://tempuri.org/ITeacherService/AddComment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveComment">
+      <soap:operation soapAction="http://tempuri.org/ITeacherService/RemoveComment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentByEmail">
+      <soap:operation soapAction="http://tempuri.org/ITeacherService/GetCommentByEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValidFloor">
+      <soap:operation soapAction="http://tempuri.org/ITeacherService/GetValidFloor" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
