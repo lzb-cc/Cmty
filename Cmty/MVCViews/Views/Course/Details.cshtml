@@ -45,10 +45,10 @@
     </dl>
 </div>
 <div>
-    @foreach(var message in ViewBag.Messages)
+    @foreach(var cmt in ViewBag.CmtList)
     {
         <div>
-            @message.UserName : @message.Date : @message.Content
+            @cmt.Email : @cmt.PubDate : @cmt.Content
         </div>
     }
     <div>

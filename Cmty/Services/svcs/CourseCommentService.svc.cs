@@ -19,6 +19,11 @@ namespace Services.svcs
             return CourseCommentOperator.AddCourseComment(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
 
+        public List<CourseCommentView> GetCommentByCode(string code)
+        {
+            return CourseCommentOperator.GetCourseCommentListByCode(code);
+        }
+
         public ReturnState RemoveComment(CourseCommentView model)
         {
             return CourseCommentOperator.RemoveCourseComment(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;

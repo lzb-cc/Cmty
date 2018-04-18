@@ -30,4 +30,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetCommentByCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommentByCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Services.cnts" minOccurs="0" name="GetCommentByCodeResult" nillable="true" type="q5:ArrayOfCourseCommentView" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

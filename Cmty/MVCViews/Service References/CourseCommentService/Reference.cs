@@ -137,6 +137,12 @@ namespace MVCViews.CourseCommentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseCommentService/RemoveComment", ReplyAction="http://tempuri.org/ICourseCommentService/RemoveCommentResponse")]
         System.Threading.Tasks.Task<CommonLib.ReturnState> RemoveCommentAsync(MVCViews.CourseCommentService.CourseCommentView model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseCommentService/GetCommentByCode", ReplyAction="http://tempuri.org/ICourseCommentService/GetCommentByCodeResponse")]
+        MVCViews.CourseCommentService.CourseCommentView[] GetCommentByCode(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseCommentService/GetCommentByCode", ReplyAction="http://tempuri.org/ICourseCommentService/GetCommentByCodeResponse")]
+        System.Threading.Tasks.Task<MVCViews.CourseCommentService.CourseCommentView[]> GetCommentByCodeAsync(string code);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -180,6 +186,14 @@ namespace MVCViews.CourseCommentService {
         
         public System.Threading.Tasks.Task<CommonLib.ReturnState> RemoveCommentAsync(MVCViews.CourseCommentService.CourseCommentView model) {
             return base.Channel.RemoveCommentAsync(model);
+        }
+        
+        public MVCViews.CourseCommentService.CourseCommentView[] GetCommentByCode(string code) {
+            return base.Channel.GetCommentByCode(code);
+        }
+        
+        public System.Threading.Tasks.Task<MVCViews.CourseCommentService.CourseCommentView[]> GetCommentByCodeAsync(string code) {
+            return base.Channel.GetCommentByCodeAsync(code);
         }
     }
 }

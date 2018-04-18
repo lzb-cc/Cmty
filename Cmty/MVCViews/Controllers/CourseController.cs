@@ -52,8 +52,8 @@ namespace MVCViews.Controllers
             };
 
             // 查询评论
-            var commnets = "";
-
+            ViewBag.CmtList = courseCommentClient.GetCommentByCode(code);
+            
             return View(model);
         }
 

@@ -10,4 +10,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CourseCommentView" nillable="true" type="tns:CourseCommentView" />
+  <xs:complexType name="ArrayOfCourseCommentView">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CourseCommentView" nillable="true" type="tns:CourseCommentView" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCourseCommentView" nillable="true" type="tns:ArrayOfCourseCommentView" />
 </xs:schema>

@@ -45,5 +45,33 @@ namespace Services.DAL.Course
 
             return result;
         }
+
+        public static List<CourseCommentView> GetCourseCommentListByCode(string code)
+        {
+            var ret = new List<CourseCommentView>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select Code, Email, cDate, Content, CmtFloor from CourseCommentSets where Code = N'{0}' order by CmtFloor ASC", code);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        var comment = new CourseCommentView()
+                        {
+                            Code = Convert.ToString(reader.GetValue(0)),
+                            Email = Convert.ToString(reader.GetValue(1)),
+                            PubDate = Convert.ToDateTime(reader.GetValue(2)),
+                            Content = Convert.ToString(reader.GetValue(3)),
+                            Floor = Convert.ToInt32(reader.GetValue(4))
+                        };
+                        ret.Add(comment);
+                    }
+                }
+            }
+
+            return ret;
+        }
     }
 }

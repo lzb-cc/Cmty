@@ -218,6 +218,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\CourseCommentService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\CourseService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -269,6 +274,22 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\CourseCommentService\CourseCommentService.wsdl" />
+    <None Include="Service References\CourseCommentService\CourseCommentService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CourseCommentService\CourseCommentService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CourseCommentService\CourseCommentService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CourseCommentService\CourseCommentService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\CourseCommentService\MVCViews.CourseCommentService.CourseCommentView.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\CourseService\CourseService.wsdl" />
     <None Include="Service References\CourseService\CourseService.xsd">
       <SubType>Designer</SubType>
@@ -281,6 +302,13 @@
     </None>
     <None Include="Service References\CourseService\CourseService3.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CourseCommentService\CourseCommentService.disco" />
+    <None Include="Service References\CourseCommentService\configuration91.svcinfo" />
+    <None Include="Service References\CourseCommentService\configuration.svcinfo" />
+    <None Include="Service References\CourseCommentService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Service References\CourseService\MVCViews.CourseService.CourseView.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -408,6 +436,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AccountService\" />
+    <WCFMetadataStorage Include="Service References\CourseCommentService\" />
     <WCFMetadataStorage Include="Service References\CourseService\" />
     <WCFMetadataStorage Include="Service References\TeacherService\" />
     <WCFMetadataStorage Include="Service References\UtilityService\" />
