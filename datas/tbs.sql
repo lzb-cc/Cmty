@@ -170,6 +170,48 @@ create table TeacherCommentSets
 	constraint fk_Code_ttcs foreign key (T_Id) references TeacherSets (Email),
 	constraint fk_Email_ttcs foreign key (Email) references UserSets (Email)
 );
+
+
+if OBJECT_ID('cfg_SaleStatus') is not null drop table cfg_SaleStatus
+create table cfg_SaleStatus
+(
+	Id	int identity,
+	Desp  nvarchar(50),
+	primary key (Id)
+);
+
+if OBJECT_ID('GoodsSets') is not null drop table GoodsSets
+create table GoodsSets
+(
+	Id			int identity,
+	Seller		nvarchar(20),
+	Name		nvarchar(30),
+	Mny 		int,
+	Pic_Url		nvarchar(20),
+	Desp		nvarchar(200),
+	PubDate		datetime,
+	SStatus     int,
+	Buyer		nvarchar(20),
+	Comment		nvarchar(200),
+	primary key (Id),
+	constraint fk_Seller_gs   foreign key (Seller)   references UserSets (Email),
+	constraint fk_Buyer_gs   foreign key (Buyer) references UserSets(Email),
+	constraint fk_SStatus_gs foreign key (SStatus) references cfg_SaleStatus (Id)
+);
+
+if OBJECT_ID('LeaveMsg') is not null drop table LeaveMsg
+create table LeaveMsg
+(
+	Id		int identity,
+	Gid		int,
+	Email	nvarchar(20),
+	PubDate	datetime,
+	Content nvarchar(200),
+	LmFloor int,
+	primary key (Id),
+	constraint fk_Gid_lm foreign key (Gid) references GoodsSets (Id),
+	constraint fk_Email  foreign key (Email) references UserSets (Email)
+);
 go
 
 
@@ -203,6 +245,15 @@ insert into cfg_JobTitle values (N'讲师')
 insert into cfg_JobTitle values (N'副教授')
 insert into cfg_JobTitle values (N'教授')
 insert into cfg_JobTitle values (N'院士')
+
+--cfg_SaleStatus--
+insert into cfg_SaleStatus values(N'待审核')
+insert into cfg_SaleStatus values(N'审核中')
+insert into cfg_SaleStatus values(N'销售中')
+insert into cfg_SaleStatus values(N'销售完成')
+insert into cfg_SaleStatus values(N'售后/退货')
+insert into cfg_SaleStatus values(N'退货完成')
+
 
 
 go
