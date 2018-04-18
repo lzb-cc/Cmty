@@ -15,7 +15,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            <h3>@Html.DisplayFor(model => model.Name)</h3>
         </dd>
 
         <dt>
@@ -31,7 +31,7 @@
         </dt>
 
         <dd>
-            <img class="lazy" rel="popover" src="http://localhost:8090/Course_Url/@Model.PicUrl" width="60" height="40" />
+            <img class="lazy" rel="popover" src="http://localhost:8090/Course_Url/@Model.PicUrl" width="120" height="120" />
         </dd>
 
         <dt>
@@ -48,14 +48,26 @@
     @foreach(var cmt in ViewBag.CmtList)
     {
         <div>
-            @cmt.Email : @cmt.PubDate : @cmt.Content
+            <h3>#@cmt.Floor @cmt.Email</h3> 
+            <p>@cmt.PubDate : @cmt.Content</p>
         </div>
     }
+
     <div>
+        <label id="code_label" hidden>@Model.Code</label>
         评论: @Html.Editor("comment_edit")
-        <a href="" >发送</a>
+        <a id="href_comment" href="" onclick="make_comment()">发送</a>
     </div>
 </div>
 <p>
     @Html.ActionLink("返回主页", "Index")
 </p>
+
+<script>
+    function make_comment() {
+        var content = document.getElementById("comment_edit").value;
+        var code = document.getElementById("code_label").innerText;
+        var href = "/Course/MakeComment?code=" + code + "&content=" + content;
+        document.getElementById("href_comment").setAttribute("href", href);
+    }
+</script>

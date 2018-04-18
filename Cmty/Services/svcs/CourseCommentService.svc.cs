@@ -24,6 +24,11 @@ namespace Services.svcs
             return CourseCommentOperator.GetCourseCommentListByCode(code);
         }
 
+        public int GetValidFloor(string code)
+        {
+            return CourseCommentOperator.GetValidFloor(code);
+        }
+
         public ReturnState RemoveComment(CourseCommentView model)
         {
             return CourseCommentOperator.RemoveCourseComment(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;

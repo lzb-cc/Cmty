@@ -19,6 +19,9 @@ namespace Services.cnts
 
         [OperationContract]
         List<CourseCommentView> GetCommentByCode(string code);
+
+        [OperationContract]
+        int GetValidFloor(string code);
     }
 
     [DataContract]

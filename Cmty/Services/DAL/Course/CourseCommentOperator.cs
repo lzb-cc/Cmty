@@ -56,7 +56,7 @@ namespace Services.DAL.Course
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     var reader = cmd.ExecuteReader();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         var comment = new CourseCommentView()
                         {
@@ -72,6 +72,24 @@ namespace Services.DAL.Course
             }
 
             return ret;
+        }
+
+        public static int GetValidFloor(string code)
+        {
+            var result = 1;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select max(CmtFloor) from CourseCommentSets where Code = N'{0}'", code);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var tmp = cmd.ExecuteScalar();
+                    result += Convert.ToInt32(DBNull.Value.Equals(tmp) ? 0 : tmp);
+                    conn.Close();
+                }
+            }
+
+            return result;
         }
     }
 }

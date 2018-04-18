@@ -45,6 +45,7 @@ namespace MVCViews.Controllers
             var course = courseClient.GetCourseByCode(code);
             var model = new CourseViewModels()
             {
+                Code = course.Code,
                 Desp = course.Desp,
                 Name = course.Name,
                 PicUrl = course.PicUrl,
@@ -106,7 +107,11 @@ namespace MVCViews.Controllers
         [HttpPost]
         public ActionResult ApplyForAddCourse(CourseViewModels model)
         {
-            Authority();
+            if (!Authority())
+            {
+                return _authorityResult;
+            }
+
             if (courseClient.HasMember(model.Code))
             {
                 ModelState.AddModelError("", "课程代码已存在!");
@@ -141,6 +146,30 @@ namespace MVCViews.Controllers
             }
 
             return RedirectToAction("IndexOfApply");
+        }
+
+        public ActionResult MakeComment(string code, string content)
+        {
+            if (!Authority())
+            {
+                return _authorityResult;
+            }
+
+            if (string.IsNullOrEmpty(code) || string.IsNullOrEmpty(content))
+            {
+                return RedirectToAction("Index", new { page = 0 });
+            }
+
+            var model = new CourseCommentService.CourseCommentView()
+            {
+                Code = code,
+                Content = content,
+                Email = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value,
+                PubDate = DateTime.Now,
+                Floor = courseCommentClient.GetValidFloor(code)
+            };
+            courseCommentClient.AddComment(model);
+            return RedirectToAction("Details", new { code = code });
         }
     }
 }

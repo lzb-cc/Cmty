@@ -143,6 +143,12 @@ namespace MVCViews.CourseCommentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseCommentService/GetCommentByCode", ReplyAction="http://tempuri.org/ICourseCommentService/GetCommentByCodeResponse")]
         System.Threading.Tasks.Task<MVCViews.CourseCommentService.CourseCommentView[]> GetCommentByCodeAsync(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseCommentService/GetValidFloor", ReplyAction="http://tempuri.org/ICourseCommentService/GetValidFloorResponse")]
+        int GetValidFloor(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseCommentService/GetValidFloor", ReplyAction="http://tempuri.org/ICourseCommentService/GetValidFloorResponse")]
+        System.Threading.Tasks.Task<int> GetValidFloorAsync(string code);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -194,6 +200,14 @@ namespace MVCViews.CourseCommentService {
         
         public System.Threading.Tasks.Task<MVCViews.CourseCommentService.CourseCommentView[]> GetCommentByCodeAsync(string code) {
             return base.Channel.GetCommentByCodeAsync(code);
+        }
+        
+        public int GetValidFloor(string code) {
+            return base.Channel.GetValidFloor(code);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetValidFloorAsync(string code) {
+            return base.Channel.GetValidFloorAsync(code);
         }
     }
 }

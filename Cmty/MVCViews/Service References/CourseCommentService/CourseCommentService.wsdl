@@ -26,6 +26,12 @@
   <wsdl:message name="ICourseCommentService_GetCommentByCode_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCommentByCodeResponse" />
   </wsdl:message>
+  <wsdl:message name="ICourseCommentService_GetValidFloor_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidFloor" />
+  </wsdl:message>
+  <wsdl:message name="ICourseCommentService_GetValidFloor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidFloorResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICourseCommentService">
     <wsdl:operation name="AddComment">
       <wsdl:input wsaw:Action="http://tempuri.org/ICourseCommentService/AddComment" message="tns:ICourseCommentService_AddComment_InputMessage" />
@@ -38,6 +44,10 @@
     <wsdl:operation name="GetCommentByCode">
       <wsdl:input wsaw:Action="http://tempuri.org/ICourseCommentService/GetCommentByCode" message="tns:ICourseCommentService_GetCommentByCode_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICourseCommentService/GetCommentByCodeResponse" message="tns:ICourseCommentService_GetCommentByCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValidFloor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICourseCommentService/GetValidFloor" message="tns:ICourseCommentService_GetValidFloor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICourseCommentService/GetValidFloorResponse" message="tns:ICourseCommentService_GetValidFloor_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICourseCommentService" type="tns:ICourseCommentService">
@@ -62,6 +72,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetCommentByCode">
       <soap:operation soapAction="http://tempuri.org/ICourseCommentService/GetCommentByCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValidFloor">
+      <soap:operation soapAction="http://tempuri.org/ICourseCommentService/GetValidFloor" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
