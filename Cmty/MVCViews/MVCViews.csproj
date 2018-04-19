@@ -455,6 +455,7 @@
     <Content Include="Views\Market\Index.cshtml" />
     <Content Include="Views\Market\MyCenter.cshtml" />
     <Content Include="Views\Market\MyPayList.cshtml" />
+    <Content Include="Views\Market\AddGoods.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

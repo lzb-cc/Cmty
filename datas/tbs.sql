@@ -204,7 +204,6 @@ create table GoodsSets
 	GType		int,
 	primary key (Id),
 	constraint fk_Seller_gs   foreign key (Seller)   references UserSets (Email),
-	constraint fk_Buyer_gs   foreign key (Buyer) references UserSets(Email),
 	constraint fk_SStatus_gs foreign key (SStatus) references cfg_SaleStatus (Id),
 	constraint fk_GType_gs   foreign key (GType) references cfg_GoodsType (Id)
 );
@@ -277,3 +276,7 @@ insert into cfg_GoodsType values(N'¶þÊÖµçÄÔ')
 go
 
 use master;
+
+
+--select * from sys.sysprocesses where dbid = DB_ID('CmtyDB')
+--kill 54

@@ -63,5 +63,44 @@ namespace MVCViews.Controllers
             // ret
             return View(list);
         }
+
+        [HttpGet]
+        public ActionResult AddGoods()
+        {
+            if (!Authority())
+            {
+                return _authorityResult;
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddGoods(GoodsInfoView model)
+        {
+            if (!Authority())
+            {
+                return _authorityResult;
+            }
+
+            // edit model
+            var good = new MarketService.GoodsInfo()
+            {
+                Seller = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value,
+                AddDate = DateTime.Now,
+                Buyer = string.Empty,
+                Comments = string.Empty,
+                Desp = model.Desp,
+                Money = model.Money,
+                Name = model.Name,
+                PicUrl = model.PicUrl,
+                Status = @"待审核",
+                Type = model.Type
+            };
+            marketClient.UserAddGoods(good);
+
+            // ret
+            return RedirectToAction("MyCenter");
+        }
     }
 }
