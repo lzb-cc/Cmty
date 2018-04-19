@@ -47,10 +47,13 @@ namespace MVCViews.Models
         [Display(Name = "发布时间")]
         public DateTime AddDate { get; set; }
 
+        [Display(Name=("状态"))]
         public string Status { get; set; }
 
+        [Display(Name="买家")]
         public string Buyer { get; set; }
 
+        [Display(Name="买家评论")]
         public string Comments { get; set; }
 
         [Display(Name = "商品类型")]

@@ -453,6 +453,8 @@
     <Content Include="Views\Teacher\Details.cshtml" />
     <Content Include="Views\Course\Details.cshtml" />
     <Content Include="Views\Market\Index.cshtml" />
+    <Content Include="Views\Market\MyCenter.cshtml" />
+    <Content Include="Views\Market\MyPayList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

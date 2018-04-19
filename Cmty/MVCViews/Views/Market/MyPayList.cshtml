@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<MVCViews.Models.GoodsInfoView>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "MyPayList";
 }
 
-<h2>二手交易中心</h2>
+<h2>我的购物记录</h2>
 
 <p>
-    @Html.ActionLink("进入我的主页", "MyCenter")
+    
 </p>
 <table class="table">
     <tr>
@@ -16,6 +16,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Money)
@@ -30,7 +33,7 @@
             @Html.DisplayNameFor(model => model.AddDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Type)
+            @Html.DisplayNameFor(model => model.Comments)
         </th>
         <th></th>
     </tr>
@@ -42,6 +45,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Money)
@@ -56,10 +62,13 @@
             @Html.DisplayFor(modelItem => item.AddDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Type)
+            @Html.DisplayFor(modelItem => item.Comments)
         </td>
+
         <td>
-            @Html.ActionLink("详细", "Details", new { id=item.Id }) 
+            @Html.ActionLink("添加评论", "AddComments", new { id=item.Id }) |
+            @Html.ActionLink("详细", "Details", new { id=item.Id }) |
+            @Html.ActionLink("删除记录", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
