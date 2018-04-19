@@ -222,6 +222,12 @@ namespace MVCViews.MarketService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MarketService.IMarketService")]
     public interface IMarketService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/UserAddGoods", ReplyAction="http://tempuri.org/IMarketService/UserAddGoodsResponse")]
+        CommonLib.ReturnState UserAddGoods(MVCViews.MarketService.GoodsInfo model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/UserAddGoods", ReplyAction="http://tempuri.org/IMarketService/UserAddGoodsResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> UserAddGoodsAsync(MVCViews.MarketService.GoodsInfo model);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetGoodsInfoBySellerAndDate", ReplyAction="http://tempuri.org/IMarketService/GetGoodsInfoBySellerAndDateResponse")]
         MVCViews.MarketService.GoodsInfo GetGoodsInfoBySellerAndDate(string seller, System.DateTime date);
         
@@ -245,6 +251,12 @@ namespace MVCViews.MarketService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetGoodsInfoListByBuyer", ReplyAction="http://tempuri.org/IMarketService/GetGoodsInfoListByBuyerResponse")]
         System.Threading.Tasks.Task<MVCViews.MarketService.GoodsInfo[]> GetGoodsInfoListByBuyerAsync(string buyer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetGoodsInfoOnSale", ReplyAction="http://tempuri.org/IMarketService/GetGoodsInfoOnSaleResponse")]
+        MVCViews.MarketService.GoodsInfo[] GetGoodsInfoOnSale();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetGoodsInfoOnSale", ReplyAction="http://tempuri.org/IMarketService/GetGoodsInfoOnSaleResponse")]
+        System.Threading.Tasks.Task<MVCViews.MarketService.GoodsInfo[]> GetGoodsInfoOnSaleAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -272,6 +284,14 @@ namespace MVCViews.MarketService {
         
         public MarketServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public CommonLib.ReturnState UserAddGoods(MVCViews.MarketService.GoodsInfo model) {
+            return base.Channel.UserAddGoods(model);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> UserAddGoodsAsync(MVCViews.MarketService.GoodsInfo model) {
+            return base.Channel.UserAddGoodsAsync(model);
         }
         
         public MVCViews.MarketService.GoodsInfo GetGoodsInfoBySellerAndDate(string seller, System.DateTime date) {
@@ -304,6 +324,14 @@ namespace MVCViews.MarketService {
         
         public System.Threading.Tasks.Task<MVCViews.MarketService.GoodsInfo[]> GetGoodsInfoListByBuyerAsync(string buyer) {
             return base.Channel.GetGoodsInfoListByBuyerAsync(buyer);
+        }
+        
+        public MVCViews.MarketService.GoodsInfo[] GetGoodsInfoOnSale() {
+            return base.Channel.GetGoodsInfoOnSale();
+        }
+        
+        public System.Threading.Tasks.Task<MVCViews.MarketService.GoodsInfo[]> GetGoodsInfoOnSaleAsync() {
+            return base.Channel.GetGoodsInfoOnSaleAsync();
         }
     }
 }

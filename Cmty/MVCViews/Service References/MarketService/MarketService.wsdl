@@ -5,8 +5,15 @@
       <xsd:import schemaLocation="http://localhost:7774/svcs/MarketService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:7774/svcs/MarketService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:7774/svcs/MarketService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Services.cnts" />
+      <xsd:import schemaLocation="http://localhost:7774/svcs/MarketService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/CommonLib" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IMarketService_UserAddGoods_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserAddGoods" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_UserAddGoods_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserAddGoodsResponse" />
+  </wsdl:message>
   <wsdl:message name="IMarketService_GetGoodsInfoBySellerAndDate_InputMessage">
     <wsdl:part name="parameters" element="tns:GetGoodsInfoBySellerAndDate" />
   </wsdl:message>
@@ -31,7 +38,17 @@
   <wsdl:message name="IMarketService_GetGoodsInfoListByBuyer_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetGoodsInfoListByBuyerResponse" />
   </wsdl:message>
+  <wsdl:message name="IMarketService_GetGoodsInfoOnSale_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGoodsInfoOnSale" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_GetGoodsInfoOnSale_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGoodsInfoOnSaleResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMarketService">
+    <wsdl:operation name="UserAddGoods">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/UserAddGoods" message="tns:IMarketService_UserAddGoods_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/UserAddGoodsResponse" message="tns:IMarketService_UserAddGoods_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetGoodsInfoBySellerAndDate">
       <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/GetGoodsInfoBySellerAndDate" message="tns:IMarketService_GetGoodsInfoBySellerAndDate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/GetGoodsInfoBySellerAndDateResponse" message="tns:IMarketService_GetGoodsInfoBySellerAndDate_OutputMessage" />
@@ -48,9 +65,22 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/GetGoodsInfoListByBuyer" message="tns:IMarketService_GetGoodsInfoListByBuyer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/GetGoodsInfoListByBuyerResponse" message="tns:IMarketService_GetGoodsInfoListByBuyer_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetGoodsInfoOnSale">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/GetGoodsInfoOnSale" message="tns:IMarketService_GetGoodsInfoOnSale_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/GetGoodsInfoOnSaleResponse" message="tns:IMarketService_GetGoodsInfoOnSale_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMarketService" type="tns:IMarketService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UserAddGoods">
+      <soap:operation soapAction="http://tempuri.org/IMarketService/UserAddGoods" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetGoodsInfoBySellerAndDate">
       <soap:operation soapAction="http://tempuri.org/IMarketService/GetGoodsInfoBySellerAndDate" style="document" />
       <wsdl:input>
@@ -80,6 +110,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetGoodsInfoListByBuyer">
       <soap:operation soapAction="http://tempuri.org/IMarketService/GetGoodsInfoListByBuyer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsInfoOnSale">
+      <soap:operation soapAction="http://tempuri.org/IMarketService/GetGoodsInfoOnSale" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
