@@ -180,6 +180,14 @@ create table cfg_SaleStatus
 	primary key (Id)
 );
 
+if OBJECT_ID('cfg_GoodsType') is not null drop table cfg_GoodsType
+create table cfg_GoodsType
+(
+	Id		int identity,
+	Desp    nvarchar(50),
+	primary key(Id)
+);
+
 if OBJECT_ID('GoodsSets') is not null drop table GoodsSets
 create table GoodsSets
 (
@@ -193,10 +201,12 @@ create table GoodsSets
 	SStatus     int,
 	Buyer		nvarchar(20),
 	Comment		nvarchar(200),
+	GType		int,
 	primary key (Id),
 	constraint fk_Seller_gs   foreign key (Seller)   references UserSets (Email),
 	constraint fk_Buyer_gs   foreign key (Buyer) references UserSets(Email),
-	constraint fk_SStatus_gs foreign key (SStatus) references cfg_SaleStatus (Id)
+	constraint fk_SStatus_gs foreign key (SStatus) references cfg_SaleStatus (Id),
+	constraint fk_GType_gs   foreign key (GType) references cfg_GoodsType (Id)
 );
 
 if OBJECT_ID('LeaveMsg') is not null drop table LeaveMsg
@@ -253,6 +263,14 @@ insert into cfg_SaleStatus values(N'销售中')
 insert into cfg_SaleStatus values(N'销售完成')
 insert into cfg_SaleStatus values(N'售后/退货')
 insert into cfg_SaleStatus values(N'退货完成')
+
+--cfg_GooldsType--
+insert into cfg_GoodsType values(N'其他')
+insert into cfg_GoodsType values(N'课程资料')
+insert into cfg_GoodsType values(N'二手书')
+insert into cfg_GoodsType values(N'笔记')
+insert into cfg_GoodsType values(N'二手电脑')
+
 
 
 
