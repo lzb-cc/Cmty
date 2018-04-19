@@ -12,6 +12,9 @@ namespace Services.cnts
     interface IMarketService
     {
         [OperationContract]
+        CommonLib.ReturnState UserAddGoods(GoodsInfo model);
+
+        [OperationContract]
         GoodsInfo GetGoodsInfoBySellerAndDate(string seller, DateTime date);
 
         [OperationContract]
@@ -22,6 +25,9 @@ namespace Services.cnts
 
         [OperationContract]
         List<GoodsInfo> GetGoodsInfoListByBuyer(string buyer);
+
+        [OperationContract]
+        List<GoodsInfo> GetGoodsInfoOnSale();
     }
 
     [DataContract]

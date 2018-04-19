@@ -229,6 +229,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\MarketService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\TeacherService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -317,12 +322,32 @@
     <Content Include="Service References\CourseService\MVCViews.CourseService.CourseReviewView.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\MarketService\MarketService.disco" />
+    <None Include="Service References\MarketService\configuration91.svcinfo" />
+    <None Include="Service References\MarketService\configuration.svcinfo" />
+    <Content Include="Service References\MarketService\MVCViews.MarketService.GoodsInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\MarketService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Service References\TeacherService\MVCViews.TeacherService.TeacherInfoView.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\TeacherService\MVCViews.TeacherService.TeacherCommentView.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\MarketService\MarketService.wsdl" />
+    <None Include="Service References\MarketService\MarketService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MarketService\MarketService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MarketService\MarketService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\TeacherService\TeacherService.wsdl" />
     <None Include="Service References\TeacherService\TeacherService.xsd">
       <SubType>Designer</SubType>
@@ -443,6 +468,7 @@
     <WCFMetadataStorage Include="Service References\AccountService\" />
     <WCFMetadataStorage Include="Service References\CourseCommentService\" />
     <WCFMetadataStorage Include="Service References\CourseService\" />
+    <WCFMetadataStorage Include="Service References\MarketService\" />
     <WCFMetadataStorage Include="Service References\TeacherService\" />
     <WCFMetadataStorage Include="Service References\UtilityService\" />
   </ItemGroup>

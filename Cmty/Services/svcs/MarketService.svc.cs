@@ -2,6 +2,7 @@
 using Services.DAL.Market;
 using System;
 using System.Collections.Generic;
+using CommonLib;
 
 namespace Services.svcs
 {
@@ -27,6 +28,16 @@ namespace Services.svcs
         public List<GoodsInfo> GetGoodsInfoListBySeller(string seller)
         {
             return MarketOperator.GetGoodsInfoListBySeller(seller);
+        }
+
+        public List<GoodsInfo> GetGoodsInfoOnSale()
+        {
+            return MarketOperator.GetGoodsInfoListOnSale();
+        }
+
+        public ReturnState UserAddGoods(GoodsInfo model)
+        {
+            return MarketOperator.UserAddGoods(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
     }
 }

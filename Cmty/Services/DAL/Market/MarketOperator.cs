@@ -97,9 +97,27 @@ namespace Services.DAL.Market
             return result;
         }
 
+        public static GoodsInfo SqlReaderGoodsInfo(SqlDataReader reader)
+        {
+            var model = new GoodsInfo();
+            model.Id = Convert.ToInt32(reader.GetValue(0));
+            model.Seller = Convert.ToString(reader.GetValue(1));
+            model.Name = Convert.ToString(reader.GetValue(2));
+            model.Money = Convert.ToInt32(reader.GetValue(3));
+            model.PicUrl = Convert.ToString(reader.GetValue(4));
+            model.Desp = Convert.ToString(reader.GetValue(5));
+            model.AddDate = Convert.ToDateTime(reader.GetValue(6));
+            model.Status = NameOfSaleStatus(Convert.ToInt32(reader.GetValue(7)));
+            model.Buyer = Convert.ToString(reader.GetValue(8));
+            model.Comments = Convert.ToString(reader.GetValue(9));
+            model.Type = NameOfGoodsType(Convert.ToInt32(reader.GetValue(10)));
+
+            return model;
+        }
+
         public static GoodsInfo QueryGoodsInfoBySellerAndDate(string seller, DateTime date)
         {
-            var result = new GoodsInfo();
+            GoodsInfo result = null;
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -110,17 +128,7 @@ namespace Services.DAL.Market
                     if (reader.HasRows)
                     {
                         reader.Read();
-                        result.Id = Convert.ToInt32(reader.GetValue(0));
-                        result.Seller = Convert.ToString(reader.GetValue(1));
-                        result.Name = Convert.ToString(reader.GetValue(2));
-                        result.Money = Convert.ToInt32(reader.GetValue(3));
-                        result.PicUrl = Convert.ToString(reader.GetValue(4));
-                        result.Desp = Convert.ToString(reader.GetValue(5));
-                        result.AddDate = Convert.ToDateTime(reader.GetValue(6));
-                        result.Status = NameOfSaleStatus(Convert.ToInt32(reader.GetValue(7)));
-                        result.Buyer = Convert.ToString(reader.GetValue(8));
-                        result.Comments = Convert.ToString(reader.GetValue(9));
-                        result.Type = NameOfGoodsType(Convert.ToInt32(reader.GetValue(10)));
+                        result = SqlReaderGoodsInfo(reader);
                     }
                     conn.Close();
                 }
@@ -131,7 +139,7 @@ namespace Services.DAL.Market
         
         public static GoodsInfo QueryGoodsInfoById(int id)
         {
-            var result = new GoodsInfo();
+            GoodsInfo result = null;
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -142,17 +150,7 @@ namespace Services.DAL.Market
                     if (reader.HasRows)
                     {
                         reader.Read();
-                        result.Id = Convert.ToInt32(reader.GetValue(0));
-                        result.Seller = Convert.ToString(reader.GetValue(1));
-                        result.Name = Convert.ToString(reader.GetValue(2));
-                        result.Money = Convert.ToInt32(reader.GetValue(3));
-                        result.PicUrl = Convert.ToString(reader.GetValue(4));
-                        result.Desp = Convert.ToString(reader.GetValue(5));
-                        result.AddDate = Convert.ToDateTime(reader.GetValue(6));
-                        result.Status = NameOfSaleStatus(Convert.ToInt32(reader.GetValue(7)));
-                        result.Buyer = Convert.ToString(reader.GetValue(8));
-                        result.Comments = Convert.ToString(reader.GetValue(9));
-                        result.Type = NameOfGoodsType(Convert.ToInt32(reader.GetValue(10)));
+                        result = SqlReaderGoodsInfo(reader);
                     }
                     conn.Close();
                 }
@@ -173,18 +171,7 @@ namespace Services.DAL.Market
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        var model = new GoodsInfo();
-                        model.Id = Convert.ToInt32(reader.GetValue(0));
-                        model.Seller = Convert.ToString(reader.GetValue(1));
-                        model.Name = Convert.ToString(reader.GetValue(2));
-                        model.Money = Convert.ToInt32(reader.GetValue(3));
-                        model.PicUrl = Convert.ToString(reader.GetValue(4));
-                        model.Desp = Convert.ToString(reader.GetValue(5));
-                        model.AddDate = Convert.ToDateTime(reader.GetValue(6));
-                        model.Status = NameOfSaleStatus(Convert.ToInt32(reader.GetValue(7)));
-                        model.Buyer = Convert.ToString(reader.GetValue(8));
-                        model.Comments = Convert.ToString(reader.GetValue(9));
-                        model.Type = NameOfGoodsType(Convert.ToInt32(reader.GetValue(10)));
+                        var model = SqlReaderGoodsInfo(reader);
                         result.Add(model);
                     }
                     conn.Close();
@@ -206,18 +193,29 @@ namespace Services.DAL.Market
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        var model = new GoodsInfo();
-                        model.Id = Convert.ToInt32(reader.GetValue(0));
-                        model.Seller = Convert.ToString(reader.GetValue(1));
-                        model.Name = Convert.ToString(reader.GetValue(2));
-                        model.Money = Convert.ToInt32(reader.GetValue(3));
-                        model.PicUrl = Convert.ToString(reader.GetValue(4));
-                        model.Desp = Convert.ToString(reader.GetValue(5));
-                        model.AddDate = Convert.ToDateTime(reader.GetValue(6));
-                        model.Status = NameOfSaleStatus(Convert.ToInt32(reader.GetValue(7)));
-                        model.Buyer = Convert.ToString(reader.GetValue(8));
-                        model.Comments = Convert.ToString(reader.GetValue(9));
-                        model.Type = NameOfGoodsType(Convert.ToInt32(reader.GetValue(10)));
+                        var model = SqlReaderGoodsInfo(reader);
+                        result.Add(model);
+                    }
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static List<GoodsInfo> GetGoodsInfoListOnSale()
+        {
+            var result = new List<GoodsInfo>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select * from GoodsSets where SStatus = 3");
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var model = SqlReaderGoodsInfo(reader);
                         result.Add(model);
                     }
                     conn.Close();
