@@ -92,6 +92,7 @@
     <Content Include="svcs\AccountService.svc" />
     <Content Include="svcs\CourseCommentService.svc" />
     <Content Include="svcs\CourseService.svc" />
+    <Content Include="svcs\MarketService.svc" />
     <Content Include="svcs\TeacherService.svc" />
     <Content Include="svcs\UtilityService.svc" />
     <Content Include="Web.config" />
@@ -99,11 +100,13 @@
   <ItemGroup>
     <Compile Include="cnts\ICourseCommentService.cs" />
     <Compile Include="cnts\ICourseService.cs" />
+    <Compile Include="cnts\IMarketService.cs" />
     <Compile Include="cnts\ITeacherService.cs" />
     <Compile Include="cnts\IUtilityService.cs" />
     <Compile Include="DAL\Account\AccountOperator.cs" />
     <Compile Include="DAL\Course\CourseCommentOperator.cs" />
     <Compile Include="DAL\Course\CourseOperator.cs" />
+    <Compile Include="DAL\Market\MarketOperator.cs" />
     <Compile Include="DAL\Teacher\TeacherOperator.cs" />
     <Compile Include="DAL\UtilityOperator.cs" />
     <Compile Include="svcs\AccountService.svc.cs">
@@ -116,6 +119,9 @@
     </Compile>
     <Compile Include="svcs\CourseService.svc.cs">
       <DependentUpon>CourseService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="svcs\MarketService.svc.cs">
+      <DependentUpon>MarketService.svc</DependentUpon>
     </Compile>
     <Compile Include="svcs\TeacherService.svc.cs">
       <DependentUpon>TeacherService.svc</DependentUpon>
