@@ -28,6 +28,15 @@ namespace Services.cnts
 
         [OperationContract]
         List<GoodsInfo> GetGoodsInfoOnSale();
+
+        [OperationContract]
+        List<GoodsInfo> GetGoodsInfoByStatus(string status);
+
+        [OperationContract]
+        CommonLib.ReturnState SetGoodsInfoStatusById(int id, string status);
+
+        [OperationContract]
+        List<GoodsInfo> GetAllGoodsInfo();
     }
 
     [DataContract]

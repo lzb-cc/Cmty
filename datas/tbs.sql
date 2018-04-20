@@ -258,6 +258,7 @@ insert into cfg_JobTitle values (N'院士')
 --cfg_SaleStatus--
 insert into cfg_SaleStatus values(N'待审核')
 insert into cfg_SaleStatus values(N'审核中')
+insert into cfg_SaleStatus values(N'审核不通过')
 insert into cfg_SaleStatus values(N'销售中')
 insert into cfg_SaleStatus values(N'销售完成')
 insert into cfg_SaleStatus values(N'售后/退货')

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Services.cnts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Services.cnts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="GoodsInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Buyer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Comments" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Desp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Money" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PicUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Seller" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GoodsInfo" nillable="true" type="tns:GoodsInfo" />
+  <xs:complexType name="ArrayOfGoodsInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GoodsInfo" nillable="true" type="tns:GoodsInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGoodsInfo" nillable="true" type="tns:ArrayOfGoodsInfo" />
+</xs:schema>

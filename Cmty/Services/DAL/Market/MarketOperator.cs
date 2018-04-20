@@ -203,13 +203,52 @@ namespace Services.DAL.Market
             return result;
         }
 
-        public static List<GoodsInfo> GetGoodsInfoListOnSale()
+        public static List<GoodsInfo> GetGoodsInfoListBySaleStatus(int status)
         {
             var result = new List<GoodsInfo>();
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                var cmdText = string.Format("select * from GoodsSets where SStatus = 3");
+                var cmdText = string.Format("select * from GoodsSets where SStatus = {0}", status);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var model = SqlReaderGoodsInfo(reader);
+                        result.Add(model);
+                    }
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static bool SetGoodsInfoStatusById(int id, int status)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("update GoodsSets set SStatus = {1} where Id = {0}", id, status);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static List<GoodsInfo> GetAllGoodsInfo()
+        {
+            var result = new List<GoodsInfo>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select * from GoodsSets");
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     var reader = cmd.ExecuteReader();

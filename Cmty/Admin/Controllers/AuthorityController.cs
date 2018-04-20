@@ -14,6 +14,7 @@ namespace Admin.Controllers
         protected static CourseService.CourseServiceClient courseClient = new CourseService.CourseServiceClient();
         protected static TeacherService.TeacherServiceClient teacherClient = new TeacherService.TeacherServiceClient();
         protected static HttpCookie _cookie = new HttpCookie(DefaultAuthenticationTypes.ApplicationCookie);
+        protected static MarketService.MarketServiceClient marketClient = new MarketService.MarketServiceClient();
         protected ActionResult _authorityResult;
 
         public AuthorityController()

@@ -32,12 +32,27 @@ namespace Services.svcs
 
         public List<GoodsInfo> GetGoodsInfoOnSale()
         {
-            return MarketOperator.GetGoodsInfoListOnSale();
+            return MarketOperator.GetGoodsInfoListBySaleStatus(3);
+        }
+
+        public List<GoodsInfo> GetGoodsInfoByStatus(string status)
+        {
+            return MarketOperator.GetGoodsInfoListBySaleStatus(MarketOperator.IndexOfSaleStatus(status));
         }
 
         public ReturnState UserAddGoods(GoodsInfo model)
         {
             return MarketOperator.UserAddGoods(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
+        }
+
+        public ReturnState SetGoodsInfoStatusById(int id, string status)
+        {
+            return MarketOperator.SetGoodsInfoStatusById(id, MarketOperator.IndexOfSaleStatus(status)) ? ReturnState.ReturnOK : ReturnState.ReturnError;
+        }
+
+        public List<GoodsInfo> GetAllGoodsInfo()
+        {
+            return MarketOperator.GetAllGoodsInfo();
         }
     }
 }
