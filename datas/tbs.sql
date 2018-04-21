@@ -270,6 +270,7 @@ insert into cfg_GoodsType values(N'课程资料')
 insert into cfg_GoodsType values(N'二手书')
 insert into cfg_GoodsType values(N'笔记')
 insert into cfg_GoodsType values(N'二手电脑')
+insert into cfg_GoodsType values(N'运动器材')
 
 
 
