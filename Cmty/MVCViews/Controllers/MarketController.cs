@@ -14,7 +14,7 @@ namespace MVCViews.Controllers
         public ActionResult Index()
         {
             var list = new List<GoodsInfoView>();
-            var retList = marketClient.GetGoodsInfoOnSale();
+            var retList = marketClient.GetGoodsInfoByStatus(@"销售中");
             foreach(var item in retList)
             {
                 list.Add(new GoodsInfoView(item));
@@ -101,6 +101,14 @@ namespace MVCViews.Controllers
 
             // ret
             return RedirectToAction("MyCenter");
+        }
+
+        public ActionResult Details(int id)
+        {
+            var model = new GoodsInfoView(marketClient.GetGoodsInfoById(id));
+
+            ViewBag.LeaveMsgs = new List<string>();
+            return View(model);
         }
     }
 }

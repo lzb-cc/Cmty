@@ -1,0 +1,86 @@
+﻿@model MVCViews.Models.GoodsInfoView
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>物品详细信息</h2>
+
+<div>
+    <h4>详细信息</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Seller)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seller)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Money)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Money)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PicUrl)
+        </dt>
+
+        <dd>
+            <img src="http://localhost:8090/Goods_Url/@Model.PicUrl" width="80" height="100" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddDate)
+        </dd>
+
+    </dl>
+</div>
+
+<div>
+    <h3>用户留言:</h3>
+    @foreach(var msg in ViewBag.LeaveMsgs)
+    {
+
+    }
+
+    <h3>添加留言:</h3>
+    <input id="leave_msg" /><a id="cmt_msg" href="" onclick="LeaveMsg()">提交</a>
+</div>
+
+<p>
+    @Html.ActionLink("返回主页", "Index")
+</p>
+
+
+<script>
+    function LeaveMsg() {
+        var msg = document.getElementById("leave_msg").value;
+        href = "/Market/LeaveMsg?msg=" + msg;
+        document.getElementById("cmg_msg").setAttribute("href", href)
+    }
+</script>

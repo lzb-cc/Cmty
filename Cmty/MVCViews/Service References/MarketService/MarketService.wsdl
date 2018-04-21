@@ -44,6 +44,30 @@
   <wsdl:message name="IMarketService_GetGoodsInfoOnSale_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetGoodsInfoOnSaleResponse" />
   </wsdl:message>
+  <wsdl:message name="IMarketService_GetGoodsInfoByStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGoodsInfoByStatus" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_GetGoodsInfoByStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGoodsInfoByStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_SetGoodsInfoStatusById_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetGoodsInfoStatusById" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_SetGoodsInfoStatusById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetGoodsInfoStatusByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_GetAllGoodsInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllGoodsInfo" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_GetAllGoodsInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllGoodsInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_HasMember_InputMessage">
+    <wsdl:part name="parameters" element="tns:HasMember" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_HasMember_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HasMemberResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMarketService">
     <wsdl:operation name="UserAddGoods">
       <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/UserAddGoods" message="tns:IMarketService_UserAddGoods_InputMessage" />
@@ -68,6 +92,22 @@
     <wsdl:operation name="GetGoodsInfoOnSale">
       <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/GetGoodsInfoOnSale" message="tns:IMarketService_GetGoodsInfoOnSale_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/GetGoodsInfoOnSaleResponse" message="tns:IMarketService_GetGoodsInfoOnSale_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsInfoByStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/GetGoodsInfoByStatus" message="tns:IMarketService_GetGoodsInfoByStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/GetGoodsInfoByStatusResponse" message="tns:IMarketService_GetGoodsInfoByStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetGoodsInfoStatusById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/SetGoodsInfoStatusById" message="tns:IMarketService_SetGoodsInfoStatusById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/SetGoodsInfoStatusByIdResponse" message="tns:IMarketService_SetGoodsInfoStatusById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGoodsInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/GetAllGoodsInfo" message="tns:IMarketService_GetAllGoodsInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/GetAllGoodsInfoResponse" message="tns:IMarketService_GetAllGoodsInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="HasMember">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/HasMember" message="tns:IMarketService_HasMember_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/HasMemberResponse" message="tns:IMarketService_HasMember_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMarketService" type="tns:IMarketService">
@@ -119,6 +159,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetGoodsInfoOnSale">
       <soap:operation soapAction="http://tempuri.org/IMarketService/GetGoodsInfoOnSale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsInfoByStatus">
+      <soap:operation soapAction="http://tempuri.org/IMarketService/GetGoodsInfoByStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetGoodsInfoStatusById">
+      <soap:operation soapAction="http://tempuri.org/IMarketService/SetGoodsInfoStatusById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGoodsInfo">
+      <soap:operation soapAction="http://tempuri.org/IMarketService/GetAllGoodsInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasMember">
+      <soap:operation soapAction="http://tempuri.org/IMarketService/HasMember" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

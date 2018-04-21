@@ -257,6 +257,30 @@ namespace MVCViews.MarketService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetGoodsInfoOnSale", ReplyAction="http://tempuri.org/IMarketService/GetGoodsInfoOnSaleResponse")]
         System.Threading.Tasks.Task<MVCViews.MarketService.GoodsInfo[]> GetGoodsInfoOnSaleAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetGoodsInfoByStatus", ReplyAction="http://tempuri.org/IMarketService/GetGoodsInfoByStatusResponse")]
+        MVCViews.MarketService.GoodsInfo[] GetGoodsInfoByStatus(string status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetGoodsInfoByStatus", ReplyAction="http://tempuri.org/IMarketService/GetGoodsInfoByStatusResponse")]
+        System.Threading.Tasks.Task<MVCViews.MarketService.GoodsInfo[]> GetGoodsInfoByStatusAsync(string status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/SetGoodsInfoStatusById", ReplyAction="http://tempuri.org/IMarketService/SetGoodsInfoStatusByIdResponse")]
+        CommonLib.ReturnState SetGoodsInfoStatusById(int id, string status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/SetGoodsInfoStatusById", ReplyAction="http://tempuri.org/IMarketService/SetGoodsInfoStatusByIdResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> SetGoodsInfoStatusByIdAsync(int id, string status);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetAllGoodsInfo", ReplyAction="http://tempuri.org/IMarketService/GetAllGoodsInfoResponse")]
+        MVCViews.MarketService.GoodsInfo[] GetAllGoodsInfo();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetAllGoodsInfo", ReplyAction="http://tempuri.org/IMarketService/GetAllGoodsInfoResponse")]
+        System.Threading.Tasks.Task<MVCViews.MarketService.GoodsInfo[]> GetAllGoodsInfoAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/HasMember", ReplyAction="http://tempuri.org/IMarketService/HasMemberResponse")]
+        bool HasMember(MVCViews.MarketService.GoodsInfo model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/HasMember", ReplyAction="http://tempuri.org/IMarketService/HasMemberResponse")]
+        System.Threading.Tasks.Task<bool> HasMemberAsync(MVCViews.MarketService.GoodsInfo model);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -332,6 +356,38 @@ namespace MVCViews.MarketService {
         
         public System.Threading.Tasks.Task<MVCViews.MarketService.GoodsInfo[]> GetGoodsInfoOnSaleAsync() {
             return base.Channel.GetGoodsInfoOnSaleAsync();
+        }
+        
+        public MVCViews.MarketService.GoodsInfo[] GetGoodsInfoByStatus(string status) {
+            return base.Channel.GetGoodsInfoByStatus(status);
+        }
+        
+        public System.Threading.Tasks.Task<MVCViews.MarketService.GoodsInfo[]> GetGoodsInfoByStatusAsync(string status) {
+            return base.Channel.GetGoodsInfoByStatusAsync(status);
+        }
+        
+        public CommonLib.ReturnState SetGoodsInfoStatusById(int id, string status) {
+            return base.Channel.SetGoodsInfoStatusById(id, status);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> SetGoodsInfoStatusByIdAsync(int id, string status) {
+            return base.Channel.SetGoodsInfoStatusByIdAsync(id, status);
+        }
+        
+        public MVCViews.MarketService.GoodsInfo[] GetAllGoodsInfo() {
+            return base.Channel.GetAllGoodsInfo();
+        }
+        
+        public System.Threading.Tasks.Task<MVCViews.MarketService.GoodsInfo[]> GetAllGoodsInfoAsync() {
+            return base.Channel.GetAllGoodsInfoAsync();
+        }
+        
+        public bool HasMember(MVCViews.MarketService.GoodsInfo model) {
+            return base.Channel.HasMember(model);
+        }
+        
+        public System.Threading.Tasks.Task<bool> HasMemberAsync(MVCViews.MarketService.GoodsInfo model) {
+            return base.Channel.HasMemberAsync(model);
         }
     }
 }
