@@ -13,10 +13,10 @@
       <publishTime>03/26/2018 15:19:39</publishTime>
     </File>
     <File Include="bin/Admin.dll">
-      <publishTime>04/21/2018 14:12:48</publishTime>
+      <publishTime>04/21/2018 17:41:13</publishTime>
     </File>
     <File Include="bin/Admin.pdb">
-      <publishTime>04/21/2018 14:12:48</publishTime>
+      <publishTime>04/21/2018 17:41:13</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>03/12/2018 12:34:39</publishTime>
@@ -28,10 +28,10 @@
       <publishTime>03/26/2018 15:19:39</publishTime>
     </File>
     <File Include="bin/CommonLib.dll">
-      <publishTime>04/21/2018 14:06:55</publishTime>
+      <publishTime>04/21/2018 17:40:12</publishTime>
     </File>
     <File Include="bin/CommonLib.pdb">
-      <publishTime>04/21/2018 14:06:55</publishTime>
+      <publishTime>04/21/2018 17:40:12</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/12/2018 12:34:40</publishTime>
@@ -310,7 +310,7 @@
       <publishTime>04/10/2018 20:09:01</publishTime>
     </File>
     <File Include="Service References/MarketService/Admin.MarketService.GoodsInfo.datasource">
-      <publishTime>04/20/2018 11:23:15</publishTime>
+      <publishTime>04/21/2018 17:40:51</publishTime>
     </File>
     <File Include="Service References/TeacherService/Admin.TeacherService.TeacherInfoView.datasource">
       <publishTime>04/10/2018 20:09:03</publishTime>

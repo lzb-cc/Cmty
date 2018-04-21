@@ -242,6 +242,23 @@ namespace Services.DAL.Market
             return result;
         }
 
+        public static bool HasMember(GoodsInfo model)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select * from GoodsSets where Seller = N'{0}' and PubDate = '{1}'", model.Seller, model.AddDate);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteScalar() != null;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
         public static List<GoodsInfo> GetAllGoodsInfo()
         {
             var result = new List<GoodsInfo>();

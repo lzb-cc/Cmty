@@ -37,6 +37,9 @@ namespace Services.cnts
 
         [OperationContract]
         List<GoodsInfo> GetAllGoodsInfo();
+
+        [OperationContract]
+        bool HasMember(GoodsInfo model);
     }
 
     [DataContract]

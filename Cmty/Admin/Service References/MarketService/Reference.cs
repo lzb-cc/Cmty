@@ -275,6 +275,12 @@ namespace Admin.MarketService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetAllGoodsInfo", ReplyAction="http://tempuri.org/IMarketService/GetAllGoodsInfoResponse")]
         System.Threading.Tasks.Task<Admin.MarketService.GoodsInfo[]> GetAllGoodsInfoAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/HasMember", ReplyAction="http://tempuri.org/IMarketService/HasMemberResponse")]
+        bool HasMember(Admin.MarketService.GoodsInfo model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/HasMember", ReplyAction="http://tempuri.org/IMarketService/HasMemberResponse")]
+        System.Threading.Tasks.Task<bool> HasMemberAsync(Admin.MarketService.GoodsInfo model);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -374,6 +380,14 @@ namespace Admin.MarketService {
         
         public System.Threading.Tasks.Task<Admin.MarketService.GoodsInfo[]> GetAllGoodsInfoAsync() {
             return base.Channel.GetAllGoodsInfoAsync();
+        }
+        
+        public bool HasMember(Admin.MarketService.GoodsInfo model) {
+            return base.Channel.HasMember(model);
+        }
+        
+        public System.Threading.Tasks.Task<bool> HasMemberAsync(Admin.MarketService.GoodsInfo model) {
+            return base.Channel.HasMemberAsync(model);
         }
     }
 }

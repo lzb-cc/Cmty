@@ -54,5 +54,10 @@ namespace Services.svcs
         {
             return MarketOperator.GetAllGoodsInfo();
         }
+
+        public bool HasMember(GoodsInfo model)
+        {
+            return MarketOperator.HasMember(model);
+        }
     }
 }

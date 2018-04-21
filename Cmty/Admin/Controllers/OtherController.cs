@@ -62,7 +62,7 @@ namespace Admin.Controllers
                     Email = ((Range)ws.Cells[i, 1]).Text,
                     UserName = ((Range)ws.Cells[i, 2]).Text,
                     RegisteDate = Convert.ToDateTime(((Range)ws.Cells[i, 3]).Text),
-                    Tel = ((Range)ws.Cells[i,4]).Text,
+                    Tel = ((Range)ws.Cells[i, 4]).Text,
                     University = Convert.ToInt32(((Range)ws.Cells[i, 5]).Text),
                     Sex = ((Range)ws.Cells[i, 6]).Text,
                     JobTitle = Convert.ToInt32(((Range)ws.Cells[i, 7]).Text),
@@ -91,7 +91,7 @@ namespace Admin.Controllers
                     Desp = ((Range)ws.Cells[i, 4]).Text,
                     PicUrl = ((Range)ws.Cells[i, 5]).Text
                 };
-                if(courseClient.HasMember(model.Code))
+                if (courseClient.HasMember(model.Code))
                 {
                     continue;
                 }
@@ -132,7 +132,11 @@ namespace Admin.Controllers
                     Comments = ((Range)ws.Cells[i, 9]).Text,
                     Type = ((Range)ws.Cells[i, 10]).Text
                 };
-                
+
+                if (marketClient.HasMember(model))
+                {
+                    continue;
+                }
                 marketClient.UserAddGoods(model);
             }
         }
@@ -149,14 +153,15 @@ namespace Admin.Controllers
                 SetTeacherCourseSets();
                 SetGoodsInfoSets();
             }
-            catch(Exception e){
+            catch (Exception e)
+            {
                 msg = e.Message;
             }
             finally
             {
                 if (workBook != null)
                 {
-                     workBook.Close();
+                    workBook.Close();
                 }
             }
 
