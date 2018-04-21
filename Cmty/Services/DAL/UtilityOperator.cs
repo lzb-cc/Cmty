@@ -101,7 +101,7 @@ namespace Services.DAL
                     {
                         result = cmd.ExecuteNonQuery() > 0;
                     }
-                    catch (SqlException exp)
+                    catch (SqlException)
                     {
                         result = false;
                     }

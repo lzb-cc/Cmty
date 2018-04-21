@@ -1,0 +1,5 @@
+F:\GitHub\Cmty\Cmty\CommonLib\bin\Release\CommonLib.dll
+F:\GitHub\Cmty\Cmty\CommonLib\bin\Release\CommonLib.pdb
+F:\GitHub\Cmty\Cmty\CommonLib\obj\Release\CommonLib.csprojResolveAssemblyReference.cache
+F:\GitHub\Cmty\Cmty\CommonLib\obj\Release\CommonLib.dll
+F:\GitHub\Cmty\Cmty\CommonLib\obj\Release\CommonLib.pdb
