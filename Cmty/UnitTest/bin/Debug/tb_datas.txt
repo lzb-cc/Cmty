@@ -1,0 +1,283 @@
+{
+	"name"  : "UserSets",
+	"array" : 
+	[
+		{
+			"email" 		: "349911680@qq.com",
+			"password" 		: "123456",
+			"name" 			: "刘志斌",
+			"tel" 			: "18520143443",
+			"university" 	: "5"
+		},		
+		{
+			"email" 		: "admin@qq.com",
+			"password" 		: "admin",
+			"name" 			: "admin",
+			"tel" 			: "10086",
+			"university" 	: "5"
+		},
+		{
+			"email" 		: "18610600113@qq.com",
+			"password" 		: "123456",
+			"name" 			: "小明",
+			"tel" 			: "18610600113",
+			"university" 	: "5"
+		},
+		{
+			"email" 		: "test@163.com",
+			"password" 		: "test",
+			"name" 			: "Tom",
+			"tel" 			: "15997411165",
+			"university" 	: "3"
+		},
+		{
+			"email" 		: "cc_tx@outlook.com",
+			"password" 		: "123456",
+			"name" 			: "Jeff",
+			"tel" 			: "15997411645",
+			"university" 	: "5"
+		},
+		{
+			"email" 		: "Jeff@qq.com",
+			"password" 		: "123456",
+			"name" 			: "Jeff.W",
+			"tel" 			: "15965234156",
+			"university" 	: "2"
+		}
+	]
+};
+{
+	"name"    : "TeacherSets",
+	"arrray"  : 
+	[
+		{
+			"email"		  : "Key@163.com",
+			"name"		  : "Key",
+			"date"		  : "2014/12/25",
+			"tel"		  :	"15965488521",
+			"university"  :	"5",
+			"sex"		  :	"男",
+			"title"		  :	"2",
+			"desp"		  :	"主要从事：现场总线控制系统、多传感器数据融合、嵌入式技术、普适计算、（丰满）水力发电机组计算机仿真系统、肺癌早期筛查&计算机辅助诊断、网络科学&互联网生命特征、网络空间地图、无线传感器网络、物联网&体域网等交叉学科的教学、科研、人才培养与团队建设工作。到目前为止，已培养博士60名(获得学位)，其中一篇博士论文获2012年辽宁省优秀博士论文，获2013年国家教育部百篇优秀博士论文提名；已培养硕士200名(获得学位)。长期以来与加拿大滑铁卢大学(University of Waterloo)、英国杜伦大学(University of Durham)、美国卡内基梅隆大学(Carnegie Mellon University)、加州大学圣地亚哥分校（University of California, San Diego）、普渡大学(Purdue University)、荷兰阿姆斯特丹大学(University of Amsterdam)和代尔夫特理工大学(Delft University of Technology)、澳大利亚悉尼科技大学(University of Technology, Sydney)等多所国际知名院校保持科研及联合培养学生的合作关系，已经送出和联合培养硕士、博士、博士后15名。多年来培养的学生遍及著名IT行业企业、研究所、高校及军队等部门，从事相关领域设计、研发、教学、科研、管理及领导工作，其中，部分学生已在美国、加拿大、澳大利亚IT企业任职。"
+		},		
+		{
+			"email"		  : "Jeff@163.com",
+			"name"		  : "Jeff",
+			"date"		  : "2011/3/3",
+			"tel"		  :	"15999856431",
+			"university"  :	"5",
+			"sex"		  :	"男",
+			"title"		  :	"2",
+			"desp"		  :	"主要从事：现场总线控制系统、多传感器数据融合、嵌入式技术、普适计算、（丰满）水力发电机组计算机仿真系统、肺癌早期筛查&计算机辅助诊断、网络科学&互联网生命特征、网络空间地图、无线传感器网络、物联网&体域网等交叉学科的教学、科研、人才培养与团队建设工作。到目前为止，已培养博士60名(获得学位)，其中一篇博士论文获2012年辽宁省优秀博士论文，获2013年国家教育部百篇优秀博士论文提名；已培养硕士200名(获得学位)。长期以来与加拿大滑铁卢大学(University of Waterloo)、英国杜伦大学(University of Durham)、美国卡内基梅隆大学(Carnegie Mellon University)、加州大学圣地亚哥分校（University of California, San Diego）、普渡大学(Purdue University)、荷兰阿姆斯特丹大学(University of Amsterdam)和代尔夫特理工大学(Delft University of Technology)、澳大利亚悉尼科技大学(University of Technology, Sydney)等多所国际知名院校保持科研及联合培养学生的合作关系，已经送出和联合培养硕士、博士、博士后15名。多年来培养的学生遍及著名IT行业企业、研究所、高校及军队等部门，从事相关领域设计、研发、教学、科研、管理及领导工作，其中，部分学生已在美国、加拿大、澳大利亚IT企业任职。"
+		},		
+		{
+			"email"		  : "Tean@163.com",
+			"name"		  : "Tean",
+			"date"		  : "2004/9/8",
+			"tel"		  :	"15671566642",
+			"university"  :	"3",
+			"sex"		  :	"男",
+			"title"		  :	"3",
+			"desp"		  :	"主持完成国家社科基金课题1项，主持完成省级及校级课题3项，参与完成国家社科基金课题1项、省级课题5项。现主持在研国家社科基金课题1项、国家社科重大招标课题子课题1项、教育部“留学回国人员科研启动基金”课题1项，主持在研江西省社科规划课题1项、江西省哲学社会科学重点研究基地课题暨江西省社科规划课题1项、江西省高校人文社科课题1项。参与在研国家社科基金课题1项、江西省社科规划课题1项。"
+		},		
+		{
+			"email"		  : "Steav@163.com",
+			"name"		  : "Steav",
+			"date"		  : "1998/12/8",
+			"tel"		  :	"15666215324",
+			"university"  :	"2",
+			"sex"		  :	"女",
+			"title"		  :	"4",
+			"desp"		  :	"主要从事：现场总线控制系统、多传感器数据融合、嵌入式技术、普适计算、（丰满）水力发电机组计算机仿真系统、肺癌早期筛查&计算机辅助诊断、网络科学&互联网生命特征、网络空间地图、无线传感器网络、物联网&体域网等交叉学科的教学、科研、人才培养与团队建设工作。到目前为止，已培养博士60名(获得学位)，其中一篇博士论文获2012年辽宁省优秀博士论文，获2013年国家教育部百篇优秀博士论文提名；已培养硕士200名(获得学位)。长期以来与加拿大滑铁卢大学(University of Waterloo)、英国杜伦大学(University of Durham)、美国卡内基梅隆大学(Carnegie Mellon University)、加州大学圣地亚哥分校（University of California, San Diego）、普渡大学(Purdue University)、荷兰阿姆斯特丹大学(University of Amsterdam)和代尔夫特理工大学(Delft University of Technology)、澳大利亚悉尼科技大学(University of Technology, Sydney)等多所国际知名院校保持科研及联合培养学生的合作关系，已经送出和联合培养硕士、博士、博士后15名。多年来培养的学生遍及著名IT行业企业、研究所、高校及军队等部门，从事相关领域设计、研发、教学、科研、管理及领导工作，其中，部分学生已在美国、加拿大、澳大利亚IT企业任职。"
+		}
+	]
+};
+{
+	"name"  : "CourseSets",
+	"array" : 
+	[
+	    {
+		    "code"         : "wust_cs_0001", 
+			"university"   : "5",
+			"name"         : "计算机网络",
+			"desp"         : "计算机网络是计算机专业学生必修的一门专业基础课和核心课程，它是后续课程《计算机系统安全》、《网络管理技术》、《TCP/IP与网络互联》等理论课程，以及《网络课程设计》等实践教学环节的先行课。《计算机网络》课程的教学，旨在使学生掌握计算机网络的体系结构和流行的参考模型，掌握物理层标准的基本原理和数据通信技术，掌握数据链路层协议的工作原理和常见实例，掌握局域网基本原理和组网方法，掌握广域网基本原理和接入方法，掌握网络互连的基本知识和IP协议的运行机制，掌握传输层协议的工作原理和TCP、UDP协议的运行原理，掌握应用层常见协议和网络服务的工作原理，以及应用系统构架方法，了解计算机网络技术发展的前沿技术，为培养学生在计算机网络系统的规划与构建，网络应用系统的建立与开发等方面能力打下坚实的基础。 ",
+			"url"          : "compute_cs.jpg"
+		},	 
+		{
+		    "code"         : "wust_cs_0002", 
+			"university"   : "5",
+			"name"         : "操作系统",
+			"desp"         : "操作系统课程主要介绍操作系统的设计方法和实现技术，讲授众多操作系统的设计精髓及操作系统最新技术。包括操作系统各组成部分的概述，互斥性和同步性，处理器实现，调度算法，存储管理，设备管理和文件系统。",
+			"url"          : "os_concepts.jpg"
+		},
+		{
+		    "code"         : "wust_cs_0003", 
+			"university"   : "5",
+			"name"         : "数据结构",
+			"desp"         : "数据结构是计算机科学的一门非常重要的专业基础课，内容丰富，涉及面广，我校计算机专业的本科主干基础课程，也是非计算机类本科生和研究生学习计算机的选修课。",
+			"url"          : "data_struct.jpg"
+		},
+		{
+		    "code"         : "wust_cs_0004", 
+			"university"   : "5",
+			"name"         : "离散数学",
+			"desp"         : " 离散数学是研究离散量的结构及其相互关系的数学学科，是现代数学的重要组成部分。它在各学科领域，特别在计算机科学与技术领域有着广泛的应用，同时离散数学也是计算机专业的许多专业课程，如程序设计语言、数据结构、操作系统、编译技术、人工智能、数据库、算法设计与分析、理论计算机科学基础等必不可少的先行课程。通过离散数学的学习，不但可以掌握处理离散结构的描述工具和方法，为后续课程的学习创造条件，而且可以提高抽象思维和严格的逻辑推理能力，为将来参与创新性的研究和开发工作打下坚实的基础。",
+			"url"          : "math_cs.jpg"
+		},
+		{
+		    "code"         : "wust_cs_0005", 
+			"university"   : "5",
+			"name"         : "大学英语",
+			"desp"         : "本课程是基础阶段进行基本功训练的主要平台，英语专业一年级必修课程。总体目标是大力盘活中学所学内容，为学生打好语言基础，提高学生的语音、语调和朗读技巧，消化并提升中学所学的词汇和语法知识，优化学习方法，增加文化积累，拓展逻辑思维能力，积极介绍各种新的语言现象，为完成下学期的任务打下基础。本课程的中心任务是提升阅读能力，包括三个方面：主题理解能力、语言赏析能力和实际应用能力。通过训练，学生无论从语言到内容上都能够准确抓住文章中心思想，能够学会品味文章的思想美、结构美、修辞美和逻辑美，借以提升和拓展批判性思维能力。",
+			"url"          : "english.jpg"
+		}
+	]
+};
+{
+    "name"   : "TeacherCourseSets",
+	"array"  :
+	[
+	    {
+		    "email"  : "Key@163.com",
+			"code"   : "wust_cs_0001"
+		},	 
+		{
+		    "email"  : "Jeff@163.com",
+			"code"   : "wust_cs_0002"
+		},	 
+		{
+		    "email"  : "Tean@163.com",
+			"code"   : "wust_cs_0003"
+		},	
+		{
+		    "email"  : "Steav@163.com",
+			"code"   : "wust_cs_0004"
+		}
+	]
+};
+{
+    "name"    : "GoodsInfoSets",
+	"array"   :
+	[
+	    {
+		    "seller"    : "349911680@qq.com",
+			"name"      : "计算机网络",
+			"price"     : "10",
+			"url"       : "00.jpg",
+			"desp"      : "计算机网络课程笔记",
+			"date"      : "2018/3/3",
+			"status"    : "待审核",
+			"buyer"     : "",
+			"comments"  : "",
+			"type"      : "笔记"
+		},	   
+		{
+		    "seller"    : "349911680@qq.com",
+			"name"      : "计算机网络二手书",
+			"price"     : "15",
+			"url"       : "compute_cs.jpg",
+			"desp"      : "计算机网络二手书",
+			"date"      : "2017/7/7",
+			"status"    : "待审核",
+			"buyer"     : "",
+			"comments"  : "",
+			"type"      : "二手书 "
+		},	  
+		{
+		    "seller"    : "349911680@qq.com",
+			"name"      : "操作系统二手书",
+			"price"     : "15",
+			"url"       : "os_concepts.jpg",
+			"desp"      : "操作系统二手书",
+			"date"      : "2017/8/1",
+			"status"    : "销售中",
+			"buyer"     : "",
+			"comments"  : "",
+			"type"      : "二手书"
+		},	 
+		{
+		    "seller"    : "Jeff@163.com",
+			"name"      : "数据结构二手书",
+			"price"     : "15",
+			"url"       : "data_struct.jpg",
+			"desp"      : "数据结构二手书",
+			"date"      : "2018/3/1",
+			"status"    : "销售完成",
+			"buyer"     : "349911680@qq.com",
+			"comments"  : "",
+			"type"      : "二手书"
+		},	 
+		{
+		    "seller"    : "Jeff@163.com",
+			"name"      : "大学英语二手书",
+			"price"     : "15",
+			"url"       : "english.jpg",
+			"desp"      : "大学英语二手书",
+			"date"      : "2017/9/1",
+			"status"    : "销售完成",
+			"buyer"     : "349911680@qq.com",
+			"comments"  : "Great",
+			"type"      : "二手书"
+		},	  
+		{
+		    "seller"    : "Jeff@163.com",
+			"name"      : "大学英语笔记",
+			"price"     : "5",
+			"url"       : "00.jpg",
+			"desp"      : "笔记",
+			"date"      : "2016/5/8",
+			"status"    : "销售中",
+			"buyer"     : "",
+			"comments"  : "",
+			"type"      : "笔记"
+		},	 
+		{
+		    "seller"    : "Jeff@163.com",
+			"name"      : "数据结构笔记",
+			"price"     : "5",
+			"url"       : "00.jpg",
+			"desp"      : "笔记",
+			"date"      : "2017/10/10",
+			"status"    : "待审核",
+			"buyer"     : "",
+			"comments"  : "",
+			"type"      : "二手书"
+		},	   
+		{
+		    "seller"    : "cc_tx@outlook.com",
+			"name"      : "算法导论",
+			"price"     : "20",
+			"url"       : "00.jpg",
+			"desp"      : "算法",
+			"date"      : "2018/2/2",
+			"status"    : "销售中",
+			"buyer"     : "",
+			"comments"  : "",
+			"type"      : "二手书"
+		},	  
+		{
+		    "seller"    : "cc_tx@outlook.com",
+			"name"      : "网球拍",
+			"price"     : "50",
+			"url"       : "00.jpg",
+			"desp"      : "七成新网球拍",
+			"date"      : "2017/12/1",
+			"status"    : "销售中",
+			"buyer"     : "",
+			"comments"  : "",
+			"type"      : "运动器材"
+		},	
+		{
+		    "seller"    : "cc_tx@outlook.com",
+			"name"      : "篮球",
+			"price"     : "20",
+			"url"       : "00.jpg",
+			"desp"      : "品牌篮球",
+			"date"      : "2017/12/12",
+			"status"    : "销售中",
+			"buyer"     : "",
+			"comments"  : "",
+			"type"      : "运动器材"
+		}
+	]
+}

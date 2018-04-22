@@ -1,9 +1,12 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Xml;
 
 namespace UnitTest
 {
@@ -29,11 +32,26 @@ namespace UnitTest
         }
 
 
+        public static void ReadJson()
+        {
+            var path = "tb_datas.txt";
+            var reader = new StreamReader(path, Encoding.UTF8);
+            var dat = reader.ReadToEnd().Split(';');
+            Console.WriteLine(dat[0]);
+
+            var xmlDoc = JsonConvert.DeserializeXmlNode(dat[0], "XmlData").FirstChild;
+            var name = xmlDoc.SelectSingleNode("name")?.InnerText;
+            var list = xmlDoc.SelectNodes("array");
+            foreach(XmlElement node in list)
+            {
+                Console.WriteLine("{0} {1}", name, node.SelectSingleNode("email")?.InnerText);
+            }
+        }
 
 
         static void Main(string[] args)
         {
-            OpenExcel("http://localhost:8090/tb_datas.xlsx");
+            ReadJson();
         }
     }
 }

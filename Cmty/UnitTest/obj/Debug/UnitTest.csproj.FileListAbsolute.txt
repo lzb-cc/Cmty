@@ -10,3 +10,12 @@ F:\GitHub\Cmty\Cmty\UnitTest\obj\Debug\UnitTest.pdb
 F:\GitHub\Cmty\Cmty\UnitTest\bin\Debug\UnitTest.exe
 F:\GitHub\Cmty\Cmty\UnitTest\bin\Debug\UnitTest.pdb
 F:\GitHub\Cmty\Cmty\UnitTest\obj\Debug\UnitTest.csprojResolveAssemblyReference.cache
+E:\github\Cmty\Cmty\UnitTest\bin\Debug\UnitTest.exe.config
+E:\github\Cmty\Cmty\UnitTest\obj\Debug\UnitTest.exe
+E:\github\Cmty\Cmty\UnitTest\obj\Debug\UnitTest.pdb
+E:\github\Cmty\Cmty\UnitTest\bin\Debug\UnitTest.exe
+E:\github\Cmty\Cmty\UnitTest\bin\Debug\UnitTest.pdb
+E:\github\Cmty\Cmty\UnitTest\obj\Debug\UnitTest.csprojResolveAssemblyReference.cache
+E:\github\Cmty\Cmty\UnitTest\bin\Debug\Newtonsoft.Json.dll
+E:\github\Cmty\Cmty\UnitTest\bin\Debug\Newtonsoft.Json.pdb
+E:\github\Cmty\Cmty\UnitTest\bin\Debug\Newtonsoft.Json.xml

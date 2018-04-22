@@ -48,7 +48,7 @@
 };
 {
 	"name"    : "TeacherSets",
-	"arrray"  : 
+	"array"  : 
 	[
 		{
 			"email"		  : "Key@163.com",
@@ -196,7 +196,7 @@
 			"type"      : "二手书"
 		},	 
 		{
-		    "seller"    : "Jeff@163.com",
+		    "seller"    : "Jeff@qq.com",
 			"name"      : "数据结构二手书",
 			"price"     : "15",
 			"url"       : "data_struct.jpg",
@@ -208,7 +208,7 @@
 			"type"      : "二手书"
 		},	 
 		{
-		    "seller"    : "Jeff@163.com",
+		    "seller"    : "Jeff@qq.com",
 			"name"      : "大学英语二手书",
 			"price"     : "15",
 			"url"       : "english.jpg",
@@ -220,7 +220,7 @@
 			"type"      : "二手书"
 		},	  
 		{
-		    "seller"    : "Jeff@163.com",
+		    "seller"    : "Jeff@qq.com",
 			"name"      : "大学英语笔记",
 			"price"     : "5",
 			"url"       : "00.jpg",
@@ -232,7 +232,7 @@
 			"type"      : "笔记"
 		},	 
 		{
-		    "seller"    : "Jeff@163.com",
+		    "seller"    : "Jeff@qq.com",
 			"name"      : "数据结构笔记",
 			"price"     : "5",
 			"url"       : "00.jpg",
