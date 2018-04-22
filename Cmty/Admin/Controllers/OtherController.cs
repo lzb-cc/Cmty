@@ -144,20 +144,20 @@ namespace Admin.Controllers
         public ActionResult UploadData(string fileName)
         {
             var msg = "导入成功!";
-            try
+            //try
             {
-                workBook = application.Workbooks.Open((url + fileName).ToString());
+                workBook = application.Workbooks.Open((fileName).ToString());
                 SetUserSets();
                 SetCourseSets();
                 SetTeacherSets();
                 SetTeacherCourseSets();
                 SetGoodsInfoSets();
             }
-            catch (Exception e)
+            //catch (Exception e)
             {
-                msg = e.Message;
+            //    msg = e.Message;
             }
-            finally
+            //finally
             {
                 if (workBook != null)
                 {
