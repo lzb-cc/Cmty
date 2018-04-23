@@ -211,6 +211,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CourseViewModels.cs" />
+    <Compile Include="Models\ForumViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MarketViewModels.cs" />
@@ -227,6 +228,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\CourseService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ForumService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -324,9 +330,32 @@
     <Content Include="Service References\CourseService\MVCViews.CourseService.CourseReviewView.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\ForumService\ForumService.wsdl" />
+    <None Include="Service References\ForumService\ForumService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ForumService\ForumService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ForumService\ForumService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ForumService\ForumService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\ForumService\MVCViews.ForumService.PostModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\MarketService\MarketService.disco" />
     <None Include="Service References\MarketService\configuration91.svcinfo" />
     <None Include="Service References\MarketService\configuration.svcinfo" />
+    <None Include="Service References\ForumService\ForumService.disco" />
+    <None Include="Service References\ForumService\configuration91.svcinfo" />
+    <None Include="Service References\ForumService\configuration.svcinfo" />
+    <None Include="Service References\ForumService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Service References\MarketService\MVCViews.MarketService.GoodsInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -459,10 +488,11 @@
     <Content Include="Views\Market\AddGoods.cshtml" />
     <Content Include="Views\Market\Details.cshtml" />
     <Content Include="Views\Market\Buy.cshtml" />
+    <Content Include="Views\Forum\Index.cshtml" />
+    <Content Include="Views\Forum\AddPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Forum\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -479,6 +509,7 @@
     <WCFMetadataStorage Include="Service References\AccountService\" />
     <WCFMetadataStorage Include="Service References\CourseCommentService\" />
     <WCFMetadataStorage Include="Service References\CourseService\" />
+    <WCFMetadataStorage Include="Service References\ForumService\" />
     <WCFMetadataStorage Include="Service References\MarketService\" />
     <WCFMetadataStorage Include="Service References\TeacherService\" />
     <WCFMetadataStorage Include="Service References\UtilityService\" />

@@ -15,6 +15,7 @@ namespace MVCViews.Controllers
         protected static TeacherService.TeacherServiceClient teacherClient = new TeacherService.TeacherServiceClient();
         protected static CourseCommentService.CourseCommentServiceClient courseCommentClient = new CourseCommentService.CourseCommentServiceClient();
         protected static MarketService.MarketServiceClient marketClient = new MarketService.MarketServiceClient();
+        protected static ForumService.ForumServiceClient forumClient = new ForumService.ForumServiceClient();
         protected static HttpCookie _cookie = new HttpCookie(DefaultAuthenticationTypes.ApplicationCookie);
         protected ActionResult _authorityResult;
 

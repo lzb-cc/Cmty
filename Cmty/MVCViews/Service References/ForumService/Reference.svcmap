@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8dfa22c1-6ebf-4029-ac7a-4557d5ef4c1a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:7774/svcs/ForumService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ForumService.xsd" MetadataType="Schema" ID="846e111c-e407-4563-8391-80eb7b2d2f96" SourceId="1" SourceUrl="http://localhost:7774/svcs/ForumService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ForumService1.xsd" MetadataType="Schema" ID="981129d6-d443-4e04-9fec-f12382ff04f3" SourceId="1" SourceUrl="http://localhost:7774/svcs/ForumService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ForumService2.xsd" MetadataType="Schema" ID="3842d09c-27aa-4150-9063-58d47913f5ee" SourceId="1" SourceUrl="http://localhost:7774/svcs/ForumService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ForumService.wsdl" MetadataType="Wsdl" ID="02e50187-7430-4b60-aad2-2f0a89a67525" SourceId="1" SourceUrl="http://localhost:7774/svcs/ForumService.svc?wsdl" />
+    <MetadataFile FileName="ForumService.disco" MetadataType="Disco" ID="9e2d0a90-224d-4838-9616-c10b891c9343" SourceId="1" SourceUrl="http://localhost:7774/svcs/ForumService.svc?disco" />
+    <MetadataFile FileName="ForumService3.xsd" MetadataType="Schema" ID="8beda9ab-23f8-4dd8-b658-d996a5e7035b" SourceId="1" SourceUrl="http://localhost:7774/svcs/ForumService.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
