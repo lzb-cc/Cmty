@@ -221,6 +221,55 @@ create table LeaveMsg
 	constraint fk_Gid_lm foreign key (Gid) references GoodsSets (Id),
 	constraint fk_Email  foreign key (Email) references UserSets (Email)
 );
+
+if OBJECT_ID('cfg_PostType') is not null drop table cfg_PostType
+create table cfg_PostType
+(
+	Id	int identity,
+	Desp nvarchar(20),
+	primary key (Id)
+);
+
+if OBJECT_ID('PostMsg') is not null drop table PostMsg
+create table PostMsg
+(
+	Id         int identity,
+	Email      nvarchar(20),
+	Title      nvarchar(20),
+	PType      int,
+	Content    nvarchar(200),
+	PDate	   datetime,
+	NoComments int,
+	primary key (Id),
+	constraint fk_Email_pm foreign key(Email) references UserSets(Email),
+	constraint fk_PType_pm foreign key(PType) references cfg_PostType(Id)
+);
+
+if OBJECT_ID('PostReply') is not null drop table PostReply
+create table PostReply
+(
+	Id		int identity,
+	Email	nvarchar(20),
+	Reply	int,
+	Content nvarchar(200),
+	RDate	datetime,
+	primary key (Id),
+	constraint fk_Email_pr foreign key (Email) references UserSets(Email),
+	constraint fk_Reply_pr foreign key (Reply) references PostMsg(Id)
+);
+
+if OBJECT_ID('PostReplyMsg') is not null drop table PostReplyMsg
+create table PostReplyMsg
+(
+	Id      int identity,
+	Email   nvarchar(20),
+	Reply   int,
+	Content nvarchar(200),
+	RDate	datetime,
+	primary key(Id),
+	constraint fk_Reply_prm foreign key (Reply) references PostReply(Id),
+	constraint fk_Email_prm foreign key (Email) references UserSets(Email)
+);
 go
 
 
@@ -273,6 +322,16 @@ insert into cfg_GoodsType values(N'笔记')
 insert into cfg_GoodsType values(N'二手电脑')
 insert into cfg_GoodsType values(N'运动器材')
 
+--cfg_PostType
+insert into cfg_PostType values(N'技术问答')
+insert into cfg_PostType values(N'技术分享')
+insert into cfg_PostType values(N'IT大杂烩')
+insert into cfg_PostType values(N'职业生涯')
+insert into cfg_PostType values(N'学习感悟')
+insert into cfg_PostType values(N'求助专区')
+insert into cfg_PostType values(N'生活琐事')
+insert into cfg_PostType values(N'兴趣爱好')
+insert into cfg_PostType values(N'升学指导')
 
 
 
