@@ -226,6 +226,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ForumService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\MarketService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -293,9 +298,32 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Service References\ForumService\Admin.ForumService.PostModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ForumService\ForumService.disco" />
+    <None Include="Service References\ForumService\configuration91.svcinfo" />
+    <None Include="Service References\ForumService\configuration.svcinfo" />
+    <None Include="Service References\ForumService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Service References\MarketService\Admin.MarketService.GoodsInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\ForumService\ForumService.wsdl" />
+    <None Include="Service References\ForumService\ForumService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ForumService\ForumService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ForumService\ForumService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ForumService\ForumService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MarketService\MarketService.disco" />
     <None Include="Service References\MarketService\configuration91.svcinfo" />
     <None Include="Service References\MarketService\configuration.svcinfo" />
@@ -446,6 +474,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\AccountService\" />
     <WCFMetadataStorage Include="Service References\CourseService\" />
+    <WCFMetadataStorage Include="Service References\ForumService\" />
     <WCFMetadataStorage Include="Service References\MarketService\" />
     <WCFMetadataStorage Include="Service References\TeacherService\" />
     <WCFMetadataStorage Include="Service References\UtilityService\" />

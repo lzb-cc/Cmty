@@ -118,6 +118,21 @@ namespace Admin.Controllers
             }
         }
 
+        public void SetPostMsgSets(XmlNodeList nodeList)
+        {
+            foreach (XmlElement node in nodeList)
+            {
+                var model = new ForumService.PostModel();
+                model.Poster = node.SelectSingleNode("poster")?.InnerText;
+                model.Title = node.SelectSingleNode("title")?.InnerText;
+                model.PostType = node.SelectSingleNode("type")?.InnerText;
+                model.Content = node.SelectSingleNode("content")?.InnerText;
+                model.PublishDate = Convert.ToDateTime(node.SelectSingleNode("date")?.InnerText);
+                model.NoComments = Convert.ToInt32(node.SelectSingleNode("NoComments")?.InnerText);
+                forumClient.AddPost(model);
+            }
+        }
+
         public ActionResult UploadData(string fileName)
         {
             var msg = "导入成功!";
@@ -155,6 +170,11 @@ namespace Admin.Controllers
                     if (name.Equals("GoodsInfoSets"))
                     {
                         SetGoodsInfoSets(node.SelectNodes("array"));
+                    }
+
+                    if(name.Equals("PostMsg"))
+                    {
+                        SetPostMsgSets(node.SelectNodes("array"));
                     }
                 }
             }

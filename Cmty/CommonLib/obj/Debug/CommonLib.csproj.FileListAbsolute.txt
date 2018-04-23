@@ -9,7 +9,6 @@ F:\GitHub\Cmty\Cmty\CommonLib\obj\Debug\CommonLib.dll
 F:\GitHub\Cmty\Cmty\CommonLib\obj\Debug\CommonLib.pdb
 E:\github\Cmty\Cmty\CommonLib\bin\Debug\CommonLib.dll
 E:\github\Cmty\Cmty\CommonLib\bin\Debug\CommonLib.pdb
-E:\github\Cmty\Cmty\CommonLib\obj\Debug\CommonLib.csprojResolveAssemblyReference.cache
 E:\github\Cmty\Cmty\CommonLib\obj\Debug\CommonLib.dll
 E:\github\Cmty\Cmty\CommonLib\obj\Debug\CommonLib.pdb
 F:\GitHub\Cmty\Cmty\CommonLib\obj\Debug\CommonLib.csprojResolveAssemblyReference.cache
