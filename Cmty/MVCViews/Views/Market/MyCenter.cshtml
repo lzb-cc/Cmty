@@ -7,8 +7,8 @@
 <h2>我的二手中心</h2>
 
 <p>
-    @Html.ActionLink("申请添加交易物品", "AddGoods") | 
-    @Html.ActionLink("购物记录", "MyPayList")
+   <input type="button" class="btn-success" value="申请添加交易物品" onclick="Redirect('/Market/AddGoods')"/> | 
+   <input type="button" class="btn-primary" value="购物记录" onclick="Redirect('/Market/MyPayList')" />
 </p>
 <table class="table">
     <tr>
@@ -79,3 +79,15 @@
 }
 
 </table>
+
+<hr />
+
+<p>
+    <input type="button" class="btn" value="返回主页" onclick="Redirect('/Market/Index')"/>
+</p>
+
+<script>
+    function Redirect(url) {
+        window.location.href = url;
+    }
+</script>

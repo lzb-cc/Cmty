@@ -1,0 +1,98 @@
+﻿@model MVCViews.Models.GoodsInfoView
+
+@{
+    ViewBag.Title = "Buy";
+}
+
+<h2>确认购买</h2>
+
+<div>
+    <h4>货物信息</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Seller)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seller)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Money)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Money) 元(RMB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PicUrl)
+        </dt>
+
+        <dd>
+            <img src="http://localhost:8090/Goods_Url/@Model.PicUrl" height="200" width="180" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+    </dl>
+</div>
+
+<hr />
+
+<p>
+    <input class="btn-default" type="button" value="取消" onclick="cancel()"/> |
+    <input class="btn-danger" type="button" value="确认购买" onclick="confirm_buy()" />
+    <label hidden="hidden" id="_id">@Model.Id</label>
+</p>
+
+
+<script>
+    function confirm_buy() {
+        var params = {
+            id: document.getElementById("_id").innerText,
+        }
+        $.ajax({
+            url: "/Market/ConfirmBuy",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function (json) {
+            alert(json.Msg);
+            if (json.Status == 0) {
+                window.location.href = "/Market/MyPayList"
+            }
+        })
+    }
+</script>

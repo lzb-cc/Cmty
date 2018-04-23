@@ -59,5 +59,10 @@ namespace Services.svcs
         {
             return MarketOperator.HasMember(model);
         }
+
+        public ReturnState SetGoodsInfoSaleStatusAndBuyerById(int id, string status, string buyer)
+        {
+            return MarketOperator.SetGoodsInfoSaleStatusAndBuyerById(id, MarketOperator.IndexOfSaleStatus(status), buyer) ? ReturnState.ReturnOK : ReturnState.ReturnError;
+        }
     }
 }

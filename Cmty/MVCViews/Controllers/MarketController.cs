@@ -13,13 +13,23 @@ namespace MVCViews.Controllers
         // GET: Market
         public ActionResult Index()
         {
+            var buyer = string.Empty;
+            if (Authority())
+            {
+                buyer = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value;
+            }
+
             var list = new List<GoodsInfoView>();
             var retList = marketClient.GetGoodsInfoByStatus(@"销售中");
             foreach(var item in retList)
             {
+                if (item.Seller.Equals(buyer))
+                {
+                    continue;
+                }
+
                 list.Add(new GoodsInfoView(item));
             }
-
 
             return View(list);
         }
@@ -109,6 +119,45 @@ namespace MVCViews.Controllers
 
             ViewBag.LeaveMsgs = new List<string>();
             return View(model);
+        }
+
+        public ActionResult Buy(int id)
+        {
+            if (!Authority())
+            {
+                return _authorityResult;
+            }
+
+            var email = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value;
+            var goods = marketClient.GetGoodsInfoById(id);
+            if (email.Equals(goods.Seller))
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(new GoodsInfoView(goods));
+        }
+
+        [HttpPost]
+        public JsonResult ConfirmBuy(int id)
+        {
+            var ret = new ConfirmBuyRep()
+            {
+                Status = 0,
+                Msg = @"已经给卖家发送邮件，请稍等卖家联系!"
+            };
+
+            if(!Authority())
+            {
+                ret.Status = 1;
+                ret.Msg = @"请先登录!";
+                return Json(ret);
+            }
+
+            var buyer = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value;
+            marketClient.SetGoodsInfoSaleStatusAndBuyerById(id, @"等待收货", buyer);
+
+            return Json(ret);
         }
     }
 }

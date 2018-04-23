@@ -59,4 +59,10 @@ namespace MVCViews.Models
         [Display(Name = "商品类型")]
         public string Type { get; set; }
     }
+
+    public class ConfirmBuyRep
+    {
+        public int Status { get; set; }
+        public string Msg { get; set; }
+    }
 }

@@ -281,6 +281,12 @@ namespace MVCViews.MarketService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/HasMember", ReplyAction="http://tempuri.org/IMarketService/HasMemberResponse")]
         System.Threading.Tasks.Task<bool> HasMemberAsync(MVCViews.MarketService.GoodsInfo model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/SetGoodsInfoSaleStatusAndBuyerById", ReplyAction="http://tempuri.org/IMarketService/SetGoodsInfoSaleStatusAndBuyerByIdResponse")]
+        CommonLib.ReturnState SetGoodsInfoSaleStatusAndBuyerById(int id, string staus, string buyer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/SetGoodsInfoSaleStatusAndBuyerById", ReplyAction="http://tempuri.org/IMarketService/SetGoodsInfoSaleStatusAndBuyerByIdResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> SetGoodsInfoSaleStatusAndBuyerByIdAsync(int id, string staus, string buyer);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -388,6 +394,14 @@ namespace MVCViews.MarketService {
         
         public System.Threading.Tasks.Task<bool> HasMemberAsync(MVCViews.MarketService.GoodsInfo model) {
             return base.Channel.HasMemberAsync(model);
+        }
+        
+        public CommonLib.ReturnState SetGoodsInfoSaleStatusAndBuyerById(int id, string staus, string buyer) {
+            return base.Channel.SetGoodsInfoSaleStatusAndBuyerById(id, staus, buyer);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> SetGoodsInfoSaleStatusAndBuyerByIdAsync(int id, string staus, string buyer) {
+            return base.Channel.SetGoodsInfoSaleStatusAndBuyerByIdAsync(id, staus, buyer);
         }
     }
 }

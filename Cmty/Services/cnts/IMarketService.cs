@@ -40,6 +40,9 @@ namespace Services.cnts
 
         [OperationContract]
         bool HasMember(GoodsInfo model);
+
+        [OperationContract]
+        CommonLib.ReturnState SetGoodsInfoSaleStatusAndBuyerById(int id, string staus, string buyer);
     }
 
     [DataContract]
