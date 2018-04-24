@@ -42,4 +42,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetPostListByPoster">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="poster" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostListByPosterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Services.cnts" minOccurs="0" name="GetPostListByPosterResult" nillable="true" type="q5:ArrayOfPostModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

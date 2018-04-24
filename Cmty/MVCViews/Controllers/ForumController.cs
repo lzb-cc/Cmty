@@ -55,5 +55,23 @@ namespace MVCViews.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult MyPostCenter()
+        {
+            if (!Authority())
+            {
+                return _authorityResult;
+            }
+            var poster = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value;
+
+            var list = new List<PostViewModel>();
+            var retList = forumClient.GetPostListByPoster(poster);
+            foreach (var item in retList)
+            {
+                list.Add(new PostViewModel(item));
+            }
+
+            return View(list);
+        }
     }
 }

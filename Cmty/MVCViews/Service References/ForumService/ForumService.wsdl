@@ -26,6 +26,12 @@
   <wsdl:message name="IForumService_GetPostList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPostListResponse" />
   </wsdl:message>
+  <wsdl:message name="IForumService_GetPostListByPoster_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostListByPoster" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostListByPoster_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostListByPosterResponse" />
+  </wsdl:message>
   <wsdl:portType name="IForumService">
     <wsdl:operation name="AddPost">
       <wsdl:input wsaw:Action="http://tempuri.org/IForumService/AddPost" message="tns:IForumService_AddPost_InputMessage" />
@@ -38,6 +44,10 @@
     <wsdl:operation name="GetPostList">
       <wsdl:input wsaw:Action="http://tempuri.org/IForumService/GetPostList" message="tns:IForumService_GetPostList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IForumService/GetPostListResponse" message="tns:IForumService_GetPostList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostListByPoster">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/GetPostListByPoster" message="tns:IForumService_GetPostListByPoster_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/GetPostListByPosterResponse" message="tns:IForumService_GetPostListByPoster_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IForumService" type="tns:IForumService">
@@ -62,6 +72,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPostList">
       <soap:operation soapAction="http://tempuri.org/IForumService/GetPostList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostListByPoster">
+      <soap:operation soapAction="http://tempuri.org/IForumService/GetPostListByPoster" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

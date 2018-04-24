@@ -175,6 +175,12 @@ namespace MVCViews.ForumService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/GetPostList", ReplyAction="http://tempuri.org/IForumService/GetPostListResponse")]
         System.Threading.Tasks.Task<MVCViews.ForumService.PostModel[]> GetPostListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/GetPostListByPoster", ReplyAction="http://tempuri.org/IForumService/GetPostListByPosterResponse")]
+        MVCViews.ForumService.PostModel[] GetPostListByPoster(string poster);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/GetPostListByPoster", ReplyAction="http://tempuri.org/IForumService/GetPostListByPosterResponse")]
+        System.Threading.Tasks.Task<MVCViews.ForumService.PostModel[]> GetPostListByPosterAsync(string poster);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -226,6 +232,14 @@ namespace MVCViews.ForumService {
         
         public System.Threading.Tasks.Task<MVCViews.ForumService.PostModel[]> GetPostListAsync() {
             return base.Channel.GetPostListAsync();
+        }
+        
+        public MVCViews.ForumService.PostModel[] GetPostListByPoster(string poster) {
+            return base.Channel.GetPostListByPoster(poster);
+        }
+        
+        public System.Threading.Tasks.Task<MVCViews.ForumService.PostModel[]> GetPostListByPosterAsync(string poster) {
+            return base.Channel.GetPostListByPosterAsync(poster);
         }
     }
 }

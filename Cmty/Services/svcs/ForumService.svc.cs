@@ -28,5 +28,10 @@ namespace Services.svcs
         {
             return ForumOperator.QueryPostList();
         }
+
+        public List<PostModel> GetPostListByPoster(string poster)
+        {
+            return ForumOperator.QueryPostListByEamil(poster);
+        }
     }
 }

@@ -490,6 +490,7 @@
     <Content Include="Views\Market\Buy.cshtml" />
     <Content Include="Views\Forum\Index.cshtml" />
     <Content Include="Views\Forum\AddPost.cshtml" />
+    <Content Include="Views\Forum\MyPostCenter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -19,6 +19,9 @@ namespace Services.cnts
 
         [OperationContract]
         List<PostModel> GetPostList();
+
+        [OperationContract]
+        List<PostModel> GetPostListByPoster(string poster);
     }
 
     [DataContract]
