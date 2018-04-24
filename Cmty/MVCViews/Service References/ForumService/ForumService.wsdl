@@ -32,6 +32,18 @@
   <wsdl:message name="IForumService_GetPostListByPoster_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPostListByPosterResponse" />
   </wsdl:message>
+  <wsdl:message name="IForumService_GetPostById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostById" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_UpdatePost_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePost" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_UpdatePost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePostResponse" />
+  </wsdl:message>
   <wsdl:portType name="IForumService">
     <wsdl:operation name="AddPost">
       <wsdl:input wsaw:Action="http://tempuri.org/IForumService/AddPost" message="tns:IForumService_AddPost_InputMessage" />
@@ -48,6 +60,14 @@
     <wsdl:operation name="GetPostListByPoster">
       <wsdl:input wsaw:Action="http://tempuri.org/IForumService/GetPostListByPoster" message="tns:IForumService_GetPostListByPoster_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IForumService/GetPostListByPosterResponse" message="tns:IForumService_GetPostListByPoster_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/GetPostById" message="tns:IForumService_GetPostById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/GetPostByIdResponse" message="tns:IForumService_GetPostById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/UpdatePost" message="tns:IForumService_UpdatePost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/UpdatePostResponse" message="tns:IForumService_UpdatePost_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IForumService" type="tns:IForumService">
@@ -81,6 +101,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetPostListByPoster">
       <soap:operation soapAction="http://tempuri.org/IForumService/GetPostListByPoster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostById">
+      <soap:operation soapAction="http://tempuri.org/IForumService/GetPostById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePost">
+      <soap:operation soapAction="http://tempuri.org/IForumService/UpdatePost" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

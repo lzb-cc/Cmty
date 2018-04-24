@@ -90,7 +90,7 @@ namespace Services.DAL.Forum
                     {
                         var model = new PostModel()
                         {
-                            Id =Convert.ToInt32(reader.GetValue(0)),
+                            Id = Convert.ToInt32(reader.GetValue(0)),
                             Poster = Convert.ToString(reader.GetValue(1)),
                             Title = Convert.ToString(reader.GetValue(2)),
                             Content = Convert.ToString(reader.GetValue(3)),
@@ -100,6 +100,7 @@ namespace Services.DAL.Forum
                         };
                         ret.Add(model);
                     }
+                    conn.Close();
                 }
             }
 
@@ -130,10 +131,58 @@ namespace Services.DAL.Forum
                         };
                         ret.Add(model);
                     }
+                    conn.Close();
                 }
             }
 
             return ret;
+        }
+
+        public static PostModel QueryPostById(int id)
+        {
+            PostModel model = null;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select Id, Email, Title, Content, PType, PDate, NoComments from PostMsg where Id = {0}", id);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        model = new PostModel()
+                        {
+                            Id = Convert.ToInt32(reader.GetValue(0)),
+                            Poster = Convert.ToString(reader.GetValue(1)),
+                            Title = Convert.ToString(reader.GetValue(2)),
+                            Content = Convert.ToString(reader.GetValue(3)),
+                            PostType = NameOfPostType(Convert.ToInt32(reader.GetValue(4))),
+                            PublishDate = Convert.ToDateTime(reader.GetValue(5)),
+                            NoComments = Convert.ToInt32(reader.GetValue(6))
+                        };
+                    }
+                    conn.Close();
+                }
+            }
+
+            return model;
+        }
+
+        public static bool UpdatePost(PostModel model)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("update PostMsg set Title = N'{1}', Content = N'{2}', PType = {3}, NoComments = {4} where Id = {0}", model.Id, model.Title, model.Content, IndexOfPostType(model.PostType), model.NoComments);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+            return result;
         }
     }
 }

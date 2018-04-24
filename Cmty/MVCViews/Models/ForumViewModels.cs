@@ -40,4 +40,10 @@ namespace MVCViews.Models
         [Display(Name = "是否禁止回帖")]
         public int NoComments { get; set; }
     }
+
+    public class PostEditResp
+    {
+        public int Status { get; set; }
+        public string Message { get; set; }
+    }
 }

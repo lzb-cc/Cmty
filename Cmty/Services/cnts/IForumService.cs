@@ -22,6 +22,12 @@ namespace Services.cnts
 
         [OperationContract]
         List<PostModel> GetPostListByPoster(string poster);
+
+        [OperationContract]
+        PostModel GetPostById(int id);
+
+        [OperationContract]
+        CommonLib.ReturnState UpdatePost(PostModel model);
     }
 
     [DataContract]

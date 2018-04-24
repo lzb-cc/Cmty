@@ -7,7 +7,7 @@
 <h2>自由论坛</h2>
 
 <p>
-    <button class="btn btn-success" onclick="Redirect('/Forum/AddPost')">我要发帖</button> | 
+    <button class="btn btn-success" onclick="Redirect('/Forum/AddPost')">我要发帖</button>  
     <button class="btn btn-primary" onclick="Redirect('/Forum/MyPostCenter')">个人中心</button>
 </p>
 <table class="table">
@@ -48,9 +48,7 @@
             @Html.DisplayFor(modelItem => item.PublishDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <input type="button" value="详细" class="btn btn-success" onclick="Redirect('/Forum/PostDetails?id=@item.Id')" /> 
         </td>
     </tr>
 }

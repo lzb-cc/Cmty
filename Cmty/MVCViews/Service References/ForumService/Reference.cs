@@ -181,6 +181,18 @@ namespace MVCViews.ForumService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/GetPostListByPoster", ReplyAction="http://tempuri.org/IForumService/GetPostListByPosterResponse")]
         System.Threading.Tasks.Task<MVCViews.ForumService.PostModel[]> GetPostListByPosterAsync(string poster);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/GetPostById", ReplyAction="http://tempuri.org/IForumService/GetPostByIdResponse")]
+        MVCViews.ForumService.PostModel GetPostById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/GetPostById", ReplyAction="http://tempuri.org/IForumService/GetPostByIdResponse")]
+        System.Threading.Tasks.Task<MVCViews.ForumService.PostModel> GetPostByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/UpdatePost", ReplyAction="http://tempuri.org/IForumService/UpdatePostResponse")]
+        CommonLib.ReturnState UpdatePost(MVCViews.ForumService.PostModel model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/UpdatePost", ReplyAction="http://tempuri.org/IForumService/UpdatePostResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> UpdatePostAsync(MVCViews.ForumService.PostModel model);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -240,6 +252,22 @@ namespace MVCViews.ForumService {
         
         public System.Threading.Tasks.Task<MVCViews.ForumService.PostModel[]> GetPostListByPosterAsync(string poster) {
             return base.Channel.GetPostListByPosterAsync(poster);
+        }
+        
+        public MVCViews.ForumService.PostModel GetPostById(int id) {
+            return base.Channel.GetPostById(id);
+        }
+        
+        public System.Threading.Tasks.Task<MVCViews.ForumService.PostModel> GetPostByIdAsync(int id) {
+            return base.Channel.GetPostByIdAsync(id);
+        }
+        
+        public CommonLib.ReturnState UpdatePost(MVCViews.ForumService.PostModel model) {
+            return base.Channel.UpdatePost(model);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> UpdatePostAsync(MVCViews.ForumService.PostModel model) {
+            return base.Channel.UpdatePostAsync(model);
         }
     }
 }

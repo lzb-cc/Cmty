@@ -24,6 +24,11 @@ namespace Services.svcs
             return ForumOperator.RemovePost(id) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
 
+        public PostModel GetPostById(int id)
+        {
+            return ForumOperator.QueryPostById(id);
+        }
+
         public List<PostModel> GetPostList()
         {
             return ForumOperator.QueryPostList();
@@ -32,6 +37,11 @@ namespace Services.svcs
         public List<PostModel> GetPostListByPoster(string poster)
         {
             return ForumOperator.QueryPostListByEamil(poster);
+        }
+
+        public ReturnState UpdatePost(PostModel model)
+        {
+            return ForumOperator.UpdatePost(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
     }
 }

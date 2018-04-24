@@ -8,6 +8,7 @@
 
 <p>
     <input type="button" class="btn btn-success"value="我要发帖" onclick="Redirect('/Forum/AddPost/')" />
+    <input type="button" class="btn" value="返回主页" onclick="Redirect('/Forum/Index')" />
 </p>
 <table class="table">
     <tr>
@@ -48,9 +49,9 @@
             <font color="@(item.NoComments > 0 ? "red" : "green")">@(item.NoComments > 0 ? "是" : "否")</font>
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <input type="button" value="编辑" class="btn btn-warning" onclick="Redirect('/Forum/PostEdit?id=@item.Id')" />  
+            <input type="button" value="详细" class="btn btn-success" onclick="Redirect('/Forum/PostDetails?id=@item.Id')" />  
+            <input type="button" value="删除" class="btn btn-danger" onclick="Redirect('/Forum/PostDel?id=@item.Id')" />
         </td>
     </tr>
 }
@@ -58,11 +59,6 @@
 </table>
 
 <script>
-    $(function () {
-        var no_comment = document.getElementById("item_NoComments").innerText;
-        document.getElementById("no_comments").setAttribute("innerText", no_comment > 0 ? "是" : "否")
-    })
-
     function Redirect(url) {
         window.location.href = url;
     }

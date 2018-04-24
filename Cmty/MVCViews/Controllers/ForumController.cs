@@ -73,5 +73,47 @@ namespace MVCViews.Controllers
 
             return View(list);
         }
+
+        [HttpGet]
+        public ActionResult PostDetails(int id)
+        {
+            var model = new PostViewModel(forumClient.GetPostById(id));
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult PostEdit(int id)
+        {
+            if (!Authority())
+            {
+                return _authorityResult;
+            }
+
+            var model = new PostViewModel(forumClient.GetPostById(id));
+            return View(model);
+        }
+
+        [HttpPost]
+        public JsonResult PostEdit(PostViewModel model)
+        {
+            var ret = new PostEditResp()
+            {
+                Status = 0,
+                Message = @"更新成功"
+            };
+
+            var post = new ForumService.PostModel()
+            {
+                Id = model.Id,
+                Content = model.Content,
+                NoComments = model.NoComments,
+                PostType = model.PostType,
+                Title = model.Title
+            };
+
+            forumClient.UpdatePost(post);
+
+            return Json(ret);
+        }
     }
 }
