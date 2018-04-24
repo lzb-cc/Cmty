@@ -74,7 +74,15 @@
 
 </table>
 
+<hr />
+
 <div>
-    @Html.ActionLink("返回我的主页", "MyCenter")
+    <input type="button" value="返回主页" class="btn" onclick="Redirect('/Market/MyCenter')"/>
 </div>
+
+<script>
+    function Redirect(url) {
+        window.location.href = url;
+    }
+</script>
 

@@ -7,7 +7,7 @@
 <h2>二手交易中心</h2>
 
 <p>
-    @Html.ActionLink("进入我的主页", "MyCenter")
+    <input type="button" value="进入我的主页" class="btn btn-success" onclick="Redirect('/Market/MyCenter')" />
 </p>
 <table class="table">
     <tr>
@@ -60,3 +60,9 @@
 }
 
 </table>
+
+<script>
+    function Redirect(url) {
+        window.location.href = url;
+    }
+</script>
