@@ -18,4 +18,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfPostModel" nillable="true" type="tns:ArrayOfPostModel" />
+  <xs:complexType name="ArrayOfPostReplyModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PostReplyModel" nillable="true" type="tns:PostReplyModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPostReplyModel" nillable="true" type="tns:ArrayOfPostReplyModel" />
+  <xs:complexType name="PostReplyModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ResponseDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ResponseTo" type="xs:int" />
+      <xs:element minOccurs="0" name="Responser" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PostReplyModel" nillable="true" type="tns:PostReplyModel" />
 </xs:schema>

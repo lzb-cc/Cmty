@@ -154,6 +154,115 @@ namespace MVCViews.ForumService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PostReplyModel", Namespace="http://schemas.datacontract.org/2004/07/Services.cnts")]
+    [System.SerializableAttribute()]
+    public partial class PostReplyModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime ResponseDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ResponseToField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ResponserField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Content {
+            get {
+                return this.ContentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContentField, value) != true)) {
+                    this.ContentField = value;
+                    this.RaisePropertyChanged("Content");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime ResponseDate {
+            get {
+                return this.ResponseDateField;
+            }
+            set {
+                if ((this.ResponseDateField.Equals(value) != true)) {
+                    this.ResponseDateField = value;
+                    this.RaisePropertyChanged("ResponseDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ResponseTo {
+            get {
+                return this.ResponseToField;
+            }
+            set {
+                if ((this.ResponseToField.Equals(value) != true)) {
+                    this.ResponseToField = value;
+                    this.RaisePropertyChanged("ResponseTo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Responser {
+            get {
+                return this.ResponserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResponserField, value) != true)) {
+                    this.ResponserField = value;
+                    this.RaisePropertyChanged("Responser");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ForumService.IForumService")]
     public interface IForumService {
@@ -193,6 +302,24 @@ namespace MVCViews.ForumService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/UpdatePost", ReplyAction="http://tempuri.org/IForumService/UpdatePostResponse")]
         System.Threading.Tasks.Task<CommonLib.ReturnState> UpdatePostAsync(MVCViews.ForumService.PostModel model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/GetPostReplyListByPostId", ReplyAction="http://tempuri.org/IForumService/GetPostReplyListByPostIdResponse")]
+        MVCViews.ForumService.PostReplyModel[] GetPostReplyListByPostId(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/GetPostReplyListByPostId", ReplyAction="http://tempuri.org/IForumService/GetPostReplyListByPostIdResponse")]
+        System.Threading.Tasks.Task<MVCViews.ForumService.PostReplyModel[]> GetPostReplyListByPostIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/AddResponseToPost", ReplyAction="http://tempuri.org/IForumService/AddResponseToPostResponse")]
+        CommonLib.ReturnState AddResponseToPost(MVCViews.ForumService.PostReplyModel model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/AddResponseToPost", ReplyAction="http://tempuri.org/IForumService/AddResponseToPostResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> AddResponseToPostAsync(MVCViews.ForumService.PostReplyModel model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/DelResponseToPostById", ReplyAction="http://tempuri.org/IForumService/DelResponseToPostByIdResponse")]
+        CommonLib.ReturnState DelResponseToPostById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/DelResponseToPostById", ReplyAction="http://tempuri.org/IForumService/DelResponseToPostByIdResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> DelResponseToPostByIdAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -268,6 +395,30 @@ namespace MVCViews.ForumService {
         
         public System.Threading.Tasks.Task<CommonLib.ReturnState> UpdatePostAsync(MVCViews.ForumService.PostModel model) {
             return base.Channel.UpdatePostAsync(model);
+        }
+        
+        public MVCViews.ForumService.PostReplyModel[] GetPostReplyListByPostId(int id) {
+            return base.Channel.GetPostReplyListByPostId(id);
+        }
+        
+        public System.Threading.Tasks.Task<MVCViews.ForumService.PostReplyModel[]> GetPostReplyListByPostIdAsync(int id) {
+            return base.Channel.GetPostReplyListByPostIdAsync(id);
+        }
+        
+        public CommonLib.ReturnState AddResponseToPost(MVCViews.ForumService.PostReplyModel model) {
+            return base.Channel.AddResponseToPost(model);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> AddResponseToPostAsync(MVCViews.ForumService.PostReplyModel model) {
+            return base.Channel.AddResponseToPostAsync(model);
+        }
+        
+        public CommonLib.ReturnState DelResponseToPostById(int id) {
+            return base.Channel.DelResponseToPostById(id);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> DelResponseToPostByIdAsync(int id) {
+            return base.Channel.DelResponseToPostByIdAsync(id);
         }
     }
 }

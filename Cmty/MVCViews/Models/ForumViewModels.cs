@@ -41,7 +41,26 @@ namespace MVCViews.Models
         public int NoComments { get; set; }
     }
 
-    public class PostEditResp
+    public class PostReplyViewModel
+    {
+        public PostReplyViewModel() { }
+        public PostReplyViewModel(ForumService.PostReplyModel model)
+        {
+            this.Id = model.Id;
+            this.Responser = model.Responser;
+            this.Content = model.Content;
+            this.ResponseDate = model.ResponseDate;
+            this.ResponseTo = model.ResponseTo;
+        }
+
+        public int Id { get; set; }
+        public string Responser { get; set; }
+        public int ResponseTo { get; set; }
+        public DateTime ResponseDate { get; set; }
+        public string Content { get; set; }
+    }
+
+    public class PostOperatorRep
     {
         public int Status { get; set; }
         public string Message { get; set; }

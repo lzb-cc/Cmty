@@ -44,6 +44,24 @@
   <wsdl:message name="IForumService_UpdatePost_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePostResponse" />
   </wsdl:message>
+  <wsdl:message name="IForumService_GetPostReplyListByPostId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostReplyListByPostId" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostReplyListByPostId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostReplyListByPostIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_AddResponseToPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddResponseToPost" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_AddResponseToPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddResponseToPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_DelResponseToPostById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelResponseToPostById" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_DelResponseToPostById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelResponseToPostByIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="IForumService">
     <wsdl:operation name="AddPost">
       <wsdl:input wsaw:Action="http://tempuri.org/IForumService/AddPost" message="tns:IForumService_AddPost_InputMessage" />
@@ -68,6 +86,18 @@
     <wsdl:operation name="UpdatePost">
       <wsdl:input wsaw:Action="http://tempuri.org/IForumService/UpdatePost" message="tns:IForumService_UpdatePost_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IForumService/UpdatePostResponse" message="tns:IForumService_UpdatePost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostReplyListByPostId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/GetPostReplyListByPostId" message="tns:IForumService_GetPostReplyListByPostId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/GetPostReplyListByPostIdResponse" message="tns:IForumService_GetPostReplyListByPostId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddResponseToPost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/AddResponseToPost" message="tns:IForumService_AddResponseToPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/AddResponseToPostResponse" message="tns:IForumService_AddResponseToPost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelResponseToPostById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/DelResponseToPostById" message="tns:IForumService_DelResponseToPostById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/DelResponseToPostByIdResponse" message="tns:IForumService_DelResponseToPostById_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IForumService" type="tns:IForumService">
@@ -119,6 +149,33 @@
     </wsdl:operation>
     <wsdl:operation name="UpdatePost">
       <soap:operation soapAction="http://tempuri.org/IForumService/UpdatePost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostReplyListByPostId">
+      <soap:operation soapAction="http://tempuri.org/IForumService/GetPostReplyListByPostId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddResponseToPost">
+      <soap:operation soapAction="http://tempuri.org/IForumService/AddResponseToPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelResponseToPostById">
+      <soap:operation soapAction="http://tempuri.org/IForumService/DelResponseToPostById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

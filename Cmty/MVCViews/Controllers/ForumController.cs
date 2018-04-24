@@ -15,7 +15,7 @@ namespace MVCViews.Controllers
         {
             var list = new List<PostViewModel>();
             var retList = forumClient.GetPostList();
-            foreach(var item in retList)
+            foreach (var item in retList)
             {
                 list.Add(new PostViewModel(item));
             }
@@ -78,6 +78,8 @@ namespace MVCViews.Controllers
         public ActionResult PostDetails(int id)
         {
             var model = new PostViewModel(forumClient.GetPostById(id));
+            ViewBag.ReplyList = forumClient.GetPostReplyListByPostId(id);
+
             return View(model);
         }
 
@@ -96,10 +98,10 @@ namespace MVCViews.Controllers
         [HttpPost]
         public JsonResult PostEdit(PostViewModel model)
         {
-            var ret = new PostEditResp()
+            var ret = new PostOperatorRep()
             {
                 Status = 0,
-                Message = @"更新成功"
+                Message = @"更新成功!"
             };
 
             var post = new ForumService.PostModel()
@@ -112,6 +114,65 @@ namespace MVCViews.Controllers
             };
 
             forumClient.UpdatePost(post);
+
+            return Json(ret);
+        }
+
+        [HttpPost]
+        public JsonResult PostDel(int id)
+        {
+            var ret = new PostOperatorRep()
+            {
+                Status = 0,
+                Message = "删除成功!"
+            };
+
+            forumClient.DelPost(id);
+
+            return Json(ret);
+        }
+
+        [HttpPost]
+        public JsonResult AddResponseToPost(int postId, string content)
+        {
+            var ret = new PostOperatorRep()
+            {
+                Status = 0,
+                Message = "跟帖成功!",
+            };
+
+            if (!Authority())
+            {
+                ret.Status = 1;
+                ret.Message = "跟帖失败,请登录!";
+                return Json(ret);
+            }
+
+            if(forumClient.GetPostById(postId).NoComments > 0)
+            {
+                ret.Status = 2;
+                ret.Message = "跟帖失败,贴住禁止回帖!";
+                return Json(ret);
+            }
+
+            var model = new ForumService.PostReplyModel();
+            model.Responser = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value;
+            model.ResponseTo = postId;
+            model.Content = content;
+            forumClient.AddResponseToPost(model);
+
+            return Json(ret);
+        }
+
+        [HttpPost]
+        public JsonResult RemoveResponseReply(int id)
+        {
+            var ret = new PostOperatorRep()
+            {
+                Status = 0,
+                Message = "删除成功!",
+            };
+            forumClient.DelResponseToPostById(id);
 
             return Json(ret);
         }

@@ -332,6 +332,7 @@ insert into cfg_PostType values(N'求助专区')
 insert into cfg_PostType values(N'生活琐事')
 insert into cfg_PostType values(N'兴趣爱好')
 insert into cfg_PostType values(N'升学指导')
+insert into cfg_PostType values(N'博客专区')
 
 
 

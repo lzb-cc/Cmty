@@ -28,6 +28,15 @@ namespace Services.cnts
 
         [OperationContract]
         CommonLib.ReturnState UpdatePost(PostModel model);
+
+        [OperationContract]
+        List<PostReplyModel> GetPostReplyListByPostId(int id);
+
+        [OperationContract]
+        CommonLib.ReturnState AddResponseToPost(PostReplyModel model);
+
+        [OperationContract]
+        CommonLib.ReturnState DelResponseToPostById(int id);
     }
 
     [DataContract]
@@ -65,10 +74,10 @@ namespace Services.cnts
         public string Responser { get; set; }
 
         [DataMember]
-        public int ReponseTo { get; set; }
+        public int ResponseTo { get; set; }
 
         [DataMember]
-        public DateTime ReponseDate { get; set; }
+        public DateTime ResponseDate { get; set; }
 
         [DataMember]
         public string Content { get; set; }

@@ -51,7 +51,7 @@
         <td>
             <input type="button" value="编辑" class="btn btn-warning" onclick="Redirect('/Forum/PostEdit?id=@item.Id')" />  
             <input type="button" value="详细" class="btn btn-success" onclick="Redirect('/Forum/PostDetails?id=@item.Id')" />  
-            <input type="button" value="删除" class="btn btn-danger" onclick="Redirect('/Forum/PostDel?id=@item.Id')" />
+            <input type="button" value="删除" class="btn btn-danger" onclick="PostDel(@item.Id)" />
         </td>
     </tr>
 }
@@ -61,5 +61,23 @@
 <script>
     function Redirect(url) {
         window.location.href = url;
+    }
+
+    function PostDel(id) {
+        var params = {
+            id:id,
+        }
+
+        $.ajax({
+            url: "/Forum/PostDel",
+            type:"post",
+            dataType: "json",
+            data: params,
+        }).done(function(json){
+            alert(json.Message);
+            if (json.Status == 0) {
+                location.reload();
+            }
+        })
     }
 </script>
