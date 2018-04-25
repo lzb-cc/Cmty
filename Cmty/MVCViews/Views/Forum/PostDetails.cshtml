@@ -63,7 +63,7 @@
             <td>
                 <input type="button" value="回复" class="btn btn-primary" onclick="ResponseReply(@item.Id)"/>
                 @{ 
-                    if(item.Responser.Equals(Request.Cookies.Get("ApplicationCookie").Value))
+                    if(item.Responser.Equals(Request.Cookies.Get("ApplicationCookie")?.Value))
                     {
                         <input type="button" value="删除" class="btn btn-danger" onclick="RemoveResponseReply(@item.Id)"/>
                     }
