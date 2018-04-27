@@ -6,10 +6,10 @@
 
 <h2>我要发帖</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>详细信息</h4>
         <hr />
@@ -40,17 +40,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PublishDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PublishDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PublishDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.NoComments, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NoComments, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.CheckBoxFor(model => model.NoComments, new { htmlAttributes = new { @type="form-control" } })
                 @Html.ValidationMessageFor(model => model.NoComments, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -58,14 +50,15 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="提交" class="btn btn-primary" />
-                <input type="button" value="返回主页" class="btn" onclick="Redirect('/Forum/Index')"  />
+                <input type="button" value="返回主页" class="btn" onclick="Redirect('/Forum/Index')" />
             </div>
         </div>
     </div>
 }
 
 
-<script>
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js">
+
     function Redirect(url) {
         window.location.href = url;
     }

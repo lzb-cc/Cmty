@@ -27,6 +27,9 @@ namespace Services.cnts
         PostModel GetPostById(int id);
 
         [OperationContract]
+        PostReplyModel GetPostReplyById(int id);
+
+        [OperationContract]
         CommonLib.ReturnState UpdatePost(PostModel model);
 
         [OperationContract]
@@ -37,6 +40,15 @@ namespace Services.cnts
 
         [OperationContract]
         CommonLib.ReturnState DelResponseToPostById(int id);
+
+        [OperationContract]
+        List<PostReplyModel> GetReplyResponseListByPostId(int id);
+
+        [OperationContract]
+        CommonLib.ReturnState AddResponseToPostReply(PostReplyModel model);
+
+        [OperationContract]
+        CommonLib.ReturnState DelResponseToPostReplyById(int id);
     }
 
     [DataContract]

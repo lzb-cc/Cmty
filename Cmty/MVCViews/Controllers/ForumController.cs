@@ -46,9 +46,9 @@ namespace MVCViews.Controllers
             {
                 Poster = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value,
                 Content = model.Content,
-                NoComments = model.NoComments,
+                NoComments = Convert.ToInt32(model.NoComments),
                 PostType = model.PostType,
-                PublishDate = model.PublishDate,
+                PublishDate = DateTime.Now,
                 Title = model.Title
             };
             forumClient.AddPost(post);
@@ -84,6 +84,15 @@ namespace MVCViews.Controllers
         }
 
         [HttpGet]
+        public ActionResult PostReplyDetails(int id)
+        {
+            var model = new PostReplyViewModel(forumClient.GetPostReplyById(id));
+            ViewBag.ResponseList = forumClient.GetReplyResponseListByPostId(id);
+
+            return View(model);
+        }
+
+        [HttpGet]
         public ActionResult PostEdit(int id)
         {
             if (!Authority())
@@ -108,7 +117,7 @@ namespace MVCViews.Controllers
             {
                 Id = model.Id,
                 Content = model.Content,
-                NoComments = model.NoComments,
+                NoComments =Convert.ToInt32(model.NoComments),
                 PostType = model.PostType,
                 Title = model.Title
             };
@@ -165,6 +174,32 @@ namespace MVCViews.Controllers
         }
 
         [HttpPost]
+        public JsonResult AddResponseToPostReply(int replyId, string content)
+        {
+            var ret = new PostOperatorRep()
+            {
+                Status = 0,
+                Message = "跟帖成功!",
+            };
+
+            if (!Authority())
+            {
+                ret.Status = 1;
+                ret.Message = "跟帖失败,请登录!";
+                return Json(ret);
+            }
+
+
+            var model = new ForumService.PostReplyModel();
+            model.Responser = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value;
+            model.ResponseTo = replyId;
+            model.Content = content;
+            forumClient.AddResponseToPostReply(model);
+
+            return Json(ret);
+        }
+
+        [HttpPost]
         public JsonResult RemoveResponseReply(int id)
         {
             var ret = new PostOperatorRep()
@@ -173,6 +208,18 @@ namespace MVCViews.Controllers
                 Message = "删除成功!",
             };
             forumClient.DelResponseToPostById(id);
+
+            return Json(ret);
+        }
+
+        public JsonResult RemoveResponseReplyMsg(int id)
+        {
+            var ret = new PostOperatorRep()
+            {
+                Status = 0,
+                Message = "删除成功!",
+            };
+            forumClient.DelResponseToPostReplyById(id);
 
             return Json(ret);
         }

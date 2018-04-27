@@ -244,5 +244,91 @@ namespace Services.DAL.Forum
 
             return result;
         }
+
+        public static List<PostReplyModel> QueryReplyResponseListByPostId(int id)
+        {
+            var list = new List<PostReplyModel>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select Id, Email, Reply, Content, RDate from PostReplyMsg where Reply = {0}", id);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var model = new PostReplyModel();
+                        model.Id = Convert.ToInt32(reader.GetValue(0));
+                        model.Responser = Convert.ToString(reader.GetValue(1));
+                        model.ResponseTo = Convert.ToInt32(reader.GetValue(2));
+                        model.Content = Convert.ToString(reader.GetValue(3));
+                        model.ResponseDate = Convert.ToDateTime(reader.GetValue(4));
+                        list.Add(model);
+                    }
+                    conn.Close();
+                }
+            }
+            return list;
+        }
+
+        public static PostReplyModel QueryPostReplyById(int id)
+        {
+            var model = new PostReplyModel();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select Id, Email, Reply, Content, RDate from PostReply where Id = {0}", id);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        model.Id = Convert.ToInt32(reader.GetValue(0));
+                        model.Responser = Convert.ToString(reader.GetValue(1));
+                        model.ResponseTo = Convert.ToInt32(reader.GetValue(2));
+                        model.Content = Convert.ToString(reader.GetValue(3));
+                        model.ResponseDate = Convert.ToDateTime(reader.GetValue(4));
+                    }
+                    conn.Close();
+                }
+            }
+            return model;
+        }
+
+        public static bool AddResponseToPostReply(PostReplyModel model)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("insert into PostReplyMsg values(N'{0}', {1}, N'{2}', '{3}')", model.Responser, model.ResponseTo, model.Content, DateTime.Now);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static bool RemoveResponseToPostReplyById(int id)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("delete from PostReplyMsg where Id = {0}", id);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+
     }
 }

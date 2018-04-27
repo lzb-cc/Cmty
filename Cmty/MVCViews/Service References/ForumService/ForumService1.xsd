@@ -70,17 +70,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetPostReplyById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostReplyByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Services.cnts" minOccurs="0" name="GetPostReplyByIdResult" nillable="true" type="q7:PostReplyModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="UpdatePost">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Services.cnts" minOccurs="0" name="model" nillable="true" type="q7:PostModel" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Services.cnts" minOccurs="0" name="model" nillable="true" type="q8:PostModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdatePostResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/CommonLib" minOccurs="0" name="UpdatePostResult" type="q8:ReturnState" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/CommonLib" minOccurs="0" name="UpdatePostResult" type="q9:ReturnState" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -94,21 +108,21 @@
   <xs:element name="GetPostReplyListByPostIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Services.cnts" minOccurs="0" name="GetPostReplyListByPostIdResult" nillable="true" type="q9:ArrayOfPostReplyModel" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Services.cnts" minOccurs="0" name="GetPostReplyListByPostIdResult" nillable="true" type="q10:ArrayOfPostReplyModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddResponseToPost">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Services.cnts" minOccurs="0" name="model" nillable="true" type="q10:PostReplyModel" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Services.cnts" minOccurs="0" name="model" nillable="true" type="q11:PostReplyModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddResponseToPostResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/CommonLib" minOccurs="0" name="AddResponseToPostResult" type="q11:ReturnState" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/CommonLib" minOccurs="0" name="AddResponseToPostResult" type="q12:ReturnState" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -122,7 +136,49 @@
   <xs:element name="DelResponseToPostByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/CommonLib" minOccurs="0" name="DelResponseToPostByIdResult" type="q12:ReturnState" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/CommonLib" minOccurs="0" name="DelResponseToPostByIdResult" type="q13:ReturnState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReplyResponseListByPostId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReplyResponseListByPostIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Services.cnts" minOccurs="0" name="GetReplyResponseListByPostIdResult" nillable="true" type="q14:ArrayOfPostReplyModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddResponseToPostReply">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Services.cnts" minOccurs="0" name="model" nillable="true" type="q15:PostReplyModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddResponseToPostReplyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/CommonLib" minOccurs="0" name="AddResponseToPostReplyResult" type="q16:ReturnState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DelResponseToPostReplyById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DelResponseToPostReplyByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/CommonLib" minOccurs="0" name="DelResponseToPostReplyByIdResult" type="q17:ReturnState" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

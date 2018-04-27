@@ -496,6 +496,7 @@
     <Content Include="Views\Forum\MyPostCenter.cshtml" />
     <Content Include="Views\Forum\PostDetails.cshtml" />
     <Content Include="Views\Forum\PostEdit.cshtml" />
+    <Content Include="Views\Forum\PostReplyDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

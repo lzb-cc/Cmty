@@ -18,7 +18,7 @@ namespace MVCViews.Models
             this.PostType = model.PostType;
             this.Content = model.Content;
             this.PublishDate = model.PublishDate;
-            this.NoComments = model.NoComments;
+            this.NoComments = model.NoComments > 0;
         }
         public int Id { get; set; }
 
@@ -38,7 +38,7 @@ namespace MVCViews.Models
         public DateTime PublishDate { get; set; }
 
         [Display(Name = "是否禁止回帖")]
-        public int NoComments { get; set; }
+        public bool NoComments { get; set; }
     }
 
     public class PostReplyViewModel

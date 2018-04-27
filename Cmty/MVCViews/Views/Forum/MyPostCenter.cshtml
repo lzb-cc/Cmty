@@ -46,7 +46,7 @@
             @Html.DisplayFor(modelItem => item.PublishDate)
         </td>
         <td>
-            <font color="@(item.NoComments > 0 ? "red" : "green")">@(item.NoComments > 0 ? "是" : "否")</font>
+            <font color="@(item.NoComments ? "red" : "green")">@(item.NoComments ? "是" : "否")</font>
         </td>
         <td>
             <input type="button" value="编辑" class="btn btn-warning" onclick="Redirect('/Forum/PostEdit?id=@item.Id')" />  

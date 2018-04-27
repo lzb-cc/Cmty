@@ -297,6 +297,12 @@ namespace MVCViews.ForumService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/GetPostById", ReplyAction="http://tempuri.org/IForumService/GetPostByIdResponse")]
         System.Threading.Tasks.Task<MVCViews.ForumService.PostModel> GetPostByIdAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/GetPostReplyById", ReplyAction="http://tempuri.org/IForumService/GetPostReplyByIdResponse")]
+        MVCViews.ForumService.PostReplyModel GetPostReplyById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/GetPostReplyById", ReplyAction="http://tempuri.org/IForumService/GetPostReplyByIdResponse")]
+        System.Threading.Tasks.Task<MVCViews.ForumService.PostReplyModel> GetPostReplyByIdAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/UpdatePost", ReplyAction="http://tempuri.org/IForumService/UpdatePostResponse")]
         CommonLib.ReturnState UpdatePost(MVCViews.ForumService.PostModel model);
         
@@ -320,6 +326,24 @@ namespace MVCViews.ForumService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/DelResponseToPostById", ReplyAction="http://tempuri.org/IForumService/DelResponseToPostByIdResponse")]
         System.Threading.Tasks.Task<CommonLib.ReturnState> DelResponseToPostByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/GetReplyResponseListByPostId", ReplyAction="http://tempuri.org/IForumService/GetReplyResponseListByPostIdResponse")]
+        MVCViews.ForumService.PostReplyModel[] GetReplyResponseListByPostId(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/GetReplyResponseListByPostId", ReplyAction="http://tempuri.org/IForumService/GetReplyResponseListByPostIdResponse")]
+        System.Threading.Tasks.Task<MVCViews.ForumService.PostReplyModel[]> GetReplyResponseListByPostIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/AddResponseToPostReply", ReplyAction="http://tempuri.org/IForumService/AddResponseToPostReplyResponse")]
+        CommonLib.ReturnState AddResponseToPostReply(MVCViews.ForumService.PostReplyModel model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/AddResponseToPostReply", ReplyAction="http://tempuri.org/IForumService/AddResponseToPostReplyResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> AddResponseToPostReplyAsync(MVCViews.ForumService.PostReplyModel model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/DelResponseToPostReplyById", ReplyAction="http://tempuri.org/IForumService/DelResponseToPostReplyByIdResponse")]
+        CommonLib.ReturnState DelResponseToPostReplyById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/DelResponseToPostReplyById", ReplyAction="http://tempuri.org/IForumService/DelResponseToPostReplyByIdResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> DelResponseToPostReplyByIdAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -389,6 +413,14 @@ namespace MVCViews.ForumService {
             return base.Channel.GetPostByIdAsync(id);
         }
         
+        public MVCViews.ForumService.PostReplyModel GetPostReplyById(int id) {
+            return base.Channel.GetPostReplyById(id);
+        }
+        
+        public System.Threading.Tasks.Task<MVCViews.ForumService.PostReplyModel> GetPostReplyByIdAsync(int id) {
+            return base.Channel.GetPostReplyByIdAsync(id);
+        }
+        
         public CommonLib.ReturnState UpdatePost(MVCViews.ForumService.PostModel model) {
             return base.Channel.UpdatePost(model);
         }
@@ -419,6 +451,30 @@ namespace MVCViews.ForumService {
         
         public System.Threading.Tasks.Task<CommonLib.ReturnState> DelResponseToPostByIdAsync(int id) {
             return base.Channel.DelResponseToPostByIdAsync(id);
+        }
+        
+        public MVCViews.ForumService.PostReplyModel[] GetReplyResponseListByPostId(int id) {
+            return base.Channel.GetReplyResponseListByPostId(id);
+        }
+        
+        public System.Threading.Tasks.Task<MVCViews.ForumService.PostReplyModel[]> GetReplyResponseListByPostIdAsync(int id) {
+            return base.Channel.GetReplyResponseListByPostIdAsync(id);
+        }
+        
+        public CommonLib.ReturnState AddResponseToPostReply(MVCViews.ForumService.PostReplyModel model) {
+            return base.Channel.AddResponseToPostReply(model);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> AddResponseToPostReplyAsync(MVCViews.ForumService.PostReplyModel model) {
+            return base.Channel.AddResponseToPostReplyAsync(model);
+        }
+        
+        public CommonLib.ReturnState DelResponseToPostReplyById(int id) {
+            return base.Channel.DelResponseToPostReplyById(id);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> DelResponseToPostReplyByIdAsync(int id) {
+            return base.Channel.DelResponseToPostReplyByIdAsync(id);
         }
     }
 }

@@ -24,6 +24,11 @@ namespace Services.svcs
             return ForumOperator.AddResponseToPost(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
 
+        public ReturnState AddResponseToPostReply(PostReplyModel model)
+        {
+            return ForumOperator.AddResponseToPostReply(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
+        }
+
         public ReturnState DelPost(int id)
         {
             return ForumOperator.RemovePost(id) ? ReturnState.ReturnOK : ReturnState.ReturnError;
@@ -32,6 +37,11 @@ namespace Services.svcs
         public ReturnState DelResponseToPostById(int id)
         {
             return ForumOperator.RemoveResponseToPostById(id) ? ReturnState.ReturnOK : ReturnState.ReturnError;
+        }
+
+        public ReturnState DelResponseToPostReplyById(int id)
+        {
+            return ForumOperator.RemoveResponseToPostReplyById(id) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
 
         public PostModel GetPostById(int id)
@@ -49,9 +59,19 @@ namespace Services.svcs
             return ForumOperator.QueryPostListByEamil(poster);
         }
 
+        public PostReplyModel GetPostReplyById(int id)
+        {
+            return ForumOperator.QueryPostReplyById(id);
+        }
+
         public List<PostReplyModel> GetPostReplyListByPostId(int id)
         {
             return ForumOperator.QueryPostReplyListByPostId(id);
+        }
+
+        public List<PostReplyModel> GetReplyResponseListByPostId(int id)
+        {
+            return ForumOperator.QueryReplyResponseListByPostId(id);
         }
 
         public ReturnState UpdatePost(PostModel model)
