@@ -7,8 +7,8 @@
 <h2>我的二手中心</h2>
 
 <p>
-   <input type="button" class="btn btn-success" value="申请添加交易物品" onclick="Redirect('/Market/AddGoods')"/> | 
-   <input type="button" class="btn btn-primary" value="购物记录" onclick="Redirect('/Market/MyPayList')" />
+    <input type="button" class="btn btn-success" value="申请添加交易物品" onclick="Redirect('/Market/AddGoods')" /> |
+    <input type="button" class="btn btn-primary" value="购物记录" onclick="Redirect('/Market/MyPayList')" />
 </p>
 <table class="table">
     <tr>
@@ -42,52 +42,98 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Money)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PicUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Desp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AddDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Buyer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comments)
-        </td>
-        <td>
-            @Html.ActionLink("详细", "Details", new { id=item.Id }) |
-            @Html.ActionLink("删除记录", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Money)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PicUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Desp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Buyer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                <input type="button" class="btn btn-success" value="详细" onclick="Redirect('/Market/Details?id=@item.Id')" />
+                <input type="button" class="btn btn-warning" value="删除记录" onclick="DeleteShoppingRecords(@item.Id)" />
+                @if (item.Status.Equals("销售中"))
+                {
+                    <input type = "button" class="btn btn-danger" value="下架" onclick="DropOff(@item.Id)" />
+                }
+
+            </td>
+        </tr>
+    }
 
 </table>
 
 <hr />
 
 <p>
-    <input type="button" class="btn" value="返回主页" onclick="Redirect('/Market/Index')"/>
+    <input type="button" class="btn" value="返回主页" onclick="Redirect('/Market/Index')" />
 </p>
 
 <script>
     function Redirect(url) {
         window.location.href = url;
+    }
+
+    function DeleteShoppingRecords(id) {
+        var params = { id: id, }
+
+        $.ajax({
+            url: "/Market/DeleteShoppingRecords",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function (json) {
+            alert(json.Msg);
+            if (json.Status == 0) {
+                location.reload();
+            }
+
+            if (json.Status == 1) {
+                window.location.href = "/Account/Login";
+            }
+        })
+    }
+
+    function DropOff(id) {
+        var params = { id: id, }
+
+        $.ajax({
+            url: "/Market/GoodsDropOff",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function (json) {
+            alert(json.Msg);
+            if (json.Status == 0) {
+                location.reload();
+            }
+
+            if (json.Status == 1) {
+                window.location.href = "/Account/Login";
+            }
+        })
     }
 </script>

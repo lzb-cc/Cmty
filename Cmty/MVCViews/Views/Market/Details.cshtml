@@ -58,6 +58,11 @@
             @Html.DisplayFor(model => model.AddDate)
         </dd>
 
+        <dd>
+            <input type="button" value="我想要" class="btn btn-danger" onclick="Redirect('/Market/Buy?id=@Model.Id')" />
+            <input type="button" value="返回上一页" class="btn" onclick="Back()" />
+        </dd>
+
     </dl>
 </div>
 
@@ -65,27 +70,78 @@
 
 <div>
     <h3>用户留言:</h3>
-    @foreach(var msg in ViewBag.LeaveMsgs)
-    {
-
-    }
-
-    <h3>添加留言:</h3>
-    <input id="leave_msg" /><a id="cmt_msg" href="" onclick="LeaveMsg()">提交</a>
+    <table class="table">
+        @foreach (var msg in ViewBag.LeaveMsgs)
+        {
+            <tr>
+                <td>#@msg.Floor</td>
+                <td>@msg.Email</td>
+                <td>@msg.PubDate</td>
+                <td>@msg.Content</td>
+                @if(msg.Email.Equals(Request.Cookies.Get("ApplicationCookie")?.Value))
+                {
+                    <td>
+                        <input type="button" value="撤销" class="btn btn-danger" onclick="DropMsg(@msg.Id)" />
+                    </td>
+                }
+            </tr>
+        }
+    </table>
 </div>
-
 <hr />
-
 <p>
-    @Html.ActionLink("返回主页", "Index") | 
-    @Html.ActionLink("我想要", "Buy")
+    <textarea placeholder="输入内容..." class="form-control" id="user_edit"></textarea>
+    <input type="button" value="添加留言" class="btn btn-warning" onclick="SendMsg(@Model.Id)" />
+    <input type="button" value="返回主页" class="btn" onclick="Redirect('/Forum/Index')" />
+    <label hidden="hidden" id="id">@Model.Id</label>
 </p>
 
 
 <script>
-    function LeaveMsg() {
-        var msg = document.getElementById("leave_msg").value;
-        href = "/Market/LeaveMsg?msg=" + msg;
-        document.getElementById("cmg_msg").setAttribute("href", href)
+    function SendMsg() {
+        var params = {
+            id: $("#id").text(),
+            content: $("#user_edit").val(),
+        }
+
+        $.ajax({
+            url: "/Market/SendMsg",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function (json) {
+            alert(json.Msg);
+            if (json.Status == 0) {
+                location.reload();
+            } else if (json.Status == 1) {
+                window.location.href = "/Account/Login";
+            }
+        })
+    }
+
+    function DropMsg(id) {
+        var params = { id: id, }
+
+        $.ajax({
+            url: "/Market/DropMsg",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function (json) {
+            alert(json.Msg);
+            if (json.Status == 0) {
+                location.reload();
+            } else if (json.Status == 1) {
+                window.location.href = "/Account/Login";
+            }
+        })
+    }
+
+    function Back() {
+        window.history.back(-1);
+    }
+
+    function Redirect(url) {
+        window.location.href = url;
     }
 </script>

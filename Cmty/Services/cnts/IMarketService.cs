@@ -46,6 +46,18 @@ namespace Services.cnts
 
         [OperationContract]
         CommonLib.ReturnState RemoveGoodsInfo(int id);
+
+        [OperationContract]
+        CommonLib.ReturnState AddLeaveMsg(LeaveMsgModel model);
+
+        [OperationContract]
+        CommonLib.ReturnState DelLeaveMsgById(int id);
+
+        [OperationContract]
+        LeaveMsgModel GetLeaveMsgById(int id);
+
+        [OperationContract]
+        List<LeaveMsgModel> GetLeaveMsgListByGid(int gid);
     }
 
     [DataContract]
@@ -74,14 +86,36 @@ namespace Services.cnts
 
         [DataMember]
         public string Status { get; set; }
-        
+
         [DataMember]
-        public string Buyer { get; set; } 
+        public string Buyer { get; set; }
 
         [DataMember]
         public string Comments { get; set; }
 
         [DataMember]
         public string Type { get; set; }
+    }
+
+    [DataContract]
+    public class LeaveMsgModel
+    {
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
+        public int Gid { get; set; }
+
+        [DataMember]
+        public string Email { get; set; }
+
+        [DataMember]
+        public DateTime PubDate { get; set; }
+
+        [DataMember]
+        public string Content { get; set; }
+
+        [DataMember]
+        public int Floor { get; set; }
     }
 }

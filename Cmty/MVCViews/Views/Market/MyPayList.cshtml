@@ -67,7 +67,7 @@
 
         <td>
             <input type="button" class="btn btn-success" value="详细" onclick="Redirect('/Marekt/ShoppingRecordsDetails?id=@item.Id')" />
-            <input type="button" class="btn btn-danger" value="删除记录" onclick="Redirect('/Market/DeleteShoppingRecords?id=@item.Id')" />
+            <input type="button" class="btn btn-danger" value="删除记录" onclick="DeleteShoppingRecords(@item.Id)" />
         </td>
     </tr>
 }
@@ -87,6 +87,26 @@
 
     function Back() {
         window.history.back(-1);
+    }
+
+    function DeleteShoppingRecords(id) {
+        var params = { id: id, }
+
+        $.ajax({
+            url: "/Market/DeleteShoppingRecords",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function (json) {
+            alert(json.Msg);
+            if (json.Status == 0) {
+                location.reload();
+            }
+
+            if (json.Status == 1) {
+                window.location.href = "/Account/Login";
+            }
+        })
     }
 </script>
 

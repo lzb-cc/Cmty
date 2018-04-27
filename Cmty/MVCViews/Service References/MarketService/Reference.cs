@@ -218,6 +218,131 @@ namespace MVCViews.MarketService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LeaveMsgModel", Namespace="http://schemas.datacontract.org/2004/07/Services.cnts")]
+    [System.SerializableAttribute()]
+    public partial class LeaveMsgModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FloorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int GidField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime PubDateField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Content {
+            get {
+                return this.ContentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContentField, value) != true)) {
+                    this.ContentField = value;
+                    this.RaisePropertyChanged("Content");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Floor {
+            get {
+                return this.FloorField;
+            }
+            set {
+                if ((this.FloorField.Equals(value) != true)) {
+                    this.FloorField = value;
+                    this.RaisePropertyChanged("Floor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Gid {
+            get {
+                return this.GidField;
+            }
+            set {
+                if ((this.GidField.Equals(value) != true)) {
+                    this.GidField = value;
+                    this.RaisePropertyChanged("Gid");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime PubDate {
+            get {
+                return this.PubDateField;
+            }
+            set {
+                if ((this.PubDateField.Equals(value) != true)) {
+                    this.PubDateField = value;
+                    this.RaisePropertyChanged("PubDate");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MarketService.IMarketService")]
     public interface IMarketService {
@@ -293,6 +418,30 @@ namespace MVCViews.MarketService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/RemoveGoodsInfo", ReplyAction="http://tempuri.org/IMarketService/RemoveGoodsInfoResponse")]
         System.Threading.Tasks.Task<CommonLib.ReturnState> RemoveGoodsInfoAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/AddLeaveMsg", ReplyAction="http://tempuri.org/IMarketService/AddLeaveMsgResponse")]
+        CommonLib.ReturnState AddLeaveMsg(MVCViews.MarketService.LeaveMsgModel model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/AddLeaveMsg", ReplyAction="http://tempuri.org/IMarketService/AddLeaveMsgResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> AddLeaveMsgAsync(MVCViews.MarketService.LeaveMsgModel model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/DelLeaveMsgById", ReplyAction="http://tempuri.org/IMarketService/DelLeaveMsgByIdResponse")]
+        CommonLib.ReturnState DelLeaveMsgById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/DelLeaveMsgById", ReplyAction="http://tempuri.org/IMarketService/DelLeaveMsgByIdResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> DelLeaveMsgByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetLeaveMsgById", ReplyAction="http://tempuri.org/IMarketService/GetLeaveMsgByIdResponse")]
+        MVCViews.MarketService.LeaveMsgModel GetLeaveMsgById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetLeaveMsgById", ReplyAction="http://tempuri.org/IMarketService/GetLeaveMsgByIdResponse")]
+        System.Threading.Tasks.Task<MVCViews.MarketService.LeaveMsgModel> GetLeaveMsgByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetLeaveMsgListByGid", ReplyAction="http://tempuri.org/IMarketService/GetLeaveMsgListByGidResponse")]
+        MVCViews.MarketService.LeaveMsgModel[] GetLeaveMsgListByGid(int gid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetLeaveMsgListByGid", ReplyAction="http://tempuri.org/IMarketService/GetLeaveMsgListByGidResponse")]
+        System.Threading.Tasks.Task<MVCViews.MarketService.LeaveMsgModel[]> GetLeaveMsgListByGidAsync(int gid);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -416,6 +565,38 @@ namespace MVCViews.MarketService {
         
         public System.Threading.Tasks.Task<CommonLib.ReturnState> RemoveGoodsInfoAsync(int id) {
             return base.Channel.RemoveGoodsInfoAsync(id);
+        }
+        
+        public CommonLib.ReturnState AddLeaveMsg(MVCViews.MarketService.LeaveMsgModel model) {
+            return base.Channel.AddLeaveMsg(model);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> AddLeaveMsgAsync(MVCViews.MarketService.LeaveMsgModel model) {
+            return base.Channel.AddLeaveMsgAsync(model);
+        }
+        
+        public CommonLib.ReturnState DelLeaveMsgById(int id) {
+            return base.Channel.DelLeaveMsgById(id);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> DelLeaveMsgByIdAsync(int id) {
+            return base.Channel.DelLeaveMsgByIdAsync(id);
+        }
+        
+        public MVCViews.MarketService.LeaveMsgModel GetLeaveMsgById(int id) {
+            return base.Channel.GetLeaveMsgById(id);
+        }
+        
+        public System.Threading.Tasks.Task<MVCViews.MarketService.LeaveMsgModel> GetLeaveMsgByIdAsync(int id) {
+            return base.Channel.GetLeaveMsgByIdAsync(id);
+        }
+        
+        public MVCViews.MarketService.LeaveMsgModel[] GetLeaveMsgListByGid(int gid) {
+            return base.Channel.GetLeaveMsgListByGid(gid);
+        }
+        
+        public System.Threading.Tasks.Task<MVCViews.MarketService.LeaveMsgModel[]> GetLeaveMsgListByGidAsync(int gid) {
+            return base.Channel.GetLeaveMsgListByGidAsync(gid);
         }
     }
 }

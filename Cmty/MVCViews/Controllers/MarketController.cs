@@ -117,7 +117,7 @@ namespace MVCViews.Controllers
         {
             var model = new GoodsInfoView(marketClient.GetGoodsInfoById(id));
 
-            ViewBag.LeaveMsgs = new List<string>();
+            ViewBag.LeaveMsgs = marketClient.GetLeaveMsgListByGid(id);
             return View(model);
         }
 
@@ -210,6 +210,50 @@ namespace MVCViews.Controllers
 
             var model = new GoodsInfoView(marketClient.GetGoodsInfoById(id));
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult SendMsg(int id, string content)
+        {
+            var ret = new MarketOperatorResp
+            {
+                Status = 0,
+                Msg = @"留言成功!"
+            };
+
+            if (!Authority())
+            {
+                ret.Status = 1;
+                ret.Msg = @"请先登录!";
+                return Json(ret);
+            }
+
+            var model = new MarketService.LeaveMsgModel();
+            model.Email = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value;
+            model.Gid = id;
+            model.Content = content;
+            marketClient.AddLeaveMsg(model);
+            return Json(ret);
+        }
+
+        [HttpPost]
+        public JsonResult DropMsg(int id)
+        {
+            var ret = new MarketOperatorResp
+            {
+                Status = 0, 
+                Msg = @"撤销成功!"
+            };
+
+            if (!Authority())
+            {
+                ret.Status = 1;
+                ret.Msg = @"请先登录！";
+                return Json(ret);
+            }
+
+            marketClient.DelLeaveMsgById(id);
+            return Json(ret);
         }
     }
 }

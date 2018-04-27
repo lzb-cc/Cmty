@@ -69,5 +69,25 @@ namespace Services.svcs
         {
             return MarketOperator.RemoveGoodsInfoById(id) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
+
+        public ReturnState AddLeaveMsg(LeaveMsgModel model)
+        {
+            return MarketOperator.AddLeaveMsg(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
+        }
+
+        public ReturnState DelLeaveMsgById(int id)
+        {
+            return MarketOperator.RemoveLeaveMsgById(id) ? ReturnState.ReturnOK : ReturnState.ReturnError;
+        }
+
+        public LeaveMsgModel GetLeaveMsgById(int id)
+        {
+            return MarketOperator.QueryLeaveMsgById(id);
+        }
+
+        public List<LeaveMsgModel> GetLeaveMsgListByGid(int gid)
+        {
+            return MarketOperator.QueryLeaveMsgListByGid(gid);
+        }
     }
 }

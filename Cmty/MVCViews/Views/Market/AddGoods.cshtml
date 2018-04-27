@@ -58,7 +58,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="提交" class="btn btn-primary" />
-                <input type="button" value="返回主页" class="btn" onclick="Redirect('/Market/MyCenter')"/>
+                <input type="button" value="返回上一页" class="btn" onclick="Back()"/>
             </div>
         </div>
     </div>
@@ -67,5 +67,9 @@
 <script>
     function Redirect(url) {
         window.location.href = url;
+    }
+
+    function Back() {
+        window.history.back(-1);
     }
 </script>

@@ -314,5 +314,111 @@ namespace Services.DAL.Market
 
             return result;
         }
+
+        public static bool AddLeaveMsg(LeaveMsgModel model)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("insert into LeaveMsg values({0}, N'{1}', '{2}', N'{3}', {4})", model.Gid, model.Email, DateTime.Now, model.Content, GetValidFloorByGid(model.Gid));
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static bool RemoveLeaveMsgById(int id)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("delete from LeaveMsg where Id = {0}", id);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static int GetValidFloorByGid(int gid)
+        {
+            var result = 1;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select max(LmFloor) from LeaveMsg where Gid = {0}", gid);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var val = cmd.ExecuteScalar();
+                    result += Convert.ToInt32(DBNull.Value.Equals(val) ? 0 : val);
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static LeaveMsgModel SqlReaderLeaveMsg(SqlDataReader reader)
+        {
+            var model = new LeaveMsgModel();
+            model.Id = Convert.ToInt32(reader.GetValue(0));
+            model.Gid = Convert.ToInt32(reader.GetValue(1));
+            model.Email = Convert.ToString(reader.GetValue(2));
+            model.PubDate = Convert.ToDateTime(reader.GetValue(3));
+            model.Content = Convert.ToString(reader.GetValue(4));
+            model.Floor = Convert.ToInt32(reader.GetValue(5));
+            return model;
+        }
+
+        public static List<LeaveMsgModel> QueryLeaveMsgListByGid(int gid)
+        {
+            var result = new List<LeaveMsgModel>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select * from LeaveMsg where Gid = {0}", gid);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        result.Add(SqlReaderLeaveMsg(reader));
+                    }
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static LeaveMsgModel QueryLeaveMsgById(int id)
+        {
+            LeaveMsgModel result = null;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select * from LeaveMsg where Id = {0}", id);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        result = SqlReaderLeaveMsg(reader);
+                    }
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
     }
 }

@@ -22,4 +22,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfGoodsInfo" nillable="true" type="tns:ArrayOfGoodsInfo" />
+  <xs:complexType name="LeaveMsgModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Floor" type="xs:int" />
+      <xs:element minOccurs="0" name="Gid" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="PubDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LeaveMsgModel" nillable="true" type="tns:LeaveMsgModel" />
+  <xs:complexType name="ArrayOfLeaveMsgModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LeaveMsgModel" nillable="true" type="tns:LeaveMsgModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLeaveMsgModel" nillable="true" type="tns:ArrayOfLeaveMsgModel" />
 </xs:schema>

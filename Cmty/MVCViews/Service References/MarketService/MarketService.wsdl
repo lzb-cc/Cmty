@@ -80,6 +80,30 @@
   <wsdl:message name="IMarketService_RemoveGoodsInfo_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoveGoodsInfoResponse" />
   </wsdl:message>
+  <wsdl:message name="IMarketService_AddLeaveMsg_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddLeaveMsg" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_AddLeaveMsg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddLeaveMsgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_DelLeaveMsgById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelLeaveMsgById" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_DelLeaveMsgById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelLeaveMsgByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_GetLeaveMsgById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLeaveMsgById" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_GetLeaveMsgById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLeaveMsgByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_GetLeaveMsgListByGid_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLeaveMsgListByGid" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_GetLeaveMsgListByGid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLeaveMsgListByGidResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMarketService">
     <wsdl:operation name="UserAddGoods">
       <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/UserAddGoods" message="tns:IMarketService_UserAddGoods_InputMessage" />
@@ -128,6 +152,22 @@
     <wsdl:operation name="RemoveGoodsInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/RemoveGoodsInfo" message="tns:IMarketService_RemoveGoodsInfo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/RemoveGoodsInfoResponse" message="tns:IMarketService_RemoveGoodsInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLeaveMsg">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/AddLeaveMsg" message="tns:IMarketService_AddLeaveMsg_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/AddLeaveMsgResponse" message="tns:IMarketService_AddLeaveMsg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelLeaveMsgById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/DelLeaveMsgById" message="tns:IMarketService_DelLeaveMsgById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/DelLeaveMsgByIdResponse" message="tns:IMarketService_DelLeaveMsgById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMsgById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/GetLeaveMsgById" message="tns:IMarketService_GetLeaveMsgById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/GetLeaveMsgByIdResponse" message="tns:IMarketService_GetLeaveMsgById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMsgListByGid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/GetLeaveMsgListByGid" message="tns:IMarketService_GetLeaveMsgListByGid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/GetLeaveMsgListByGidResponse" message="tns:IMarketService_GetLeaveMsgListByGid_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMarketService" type="tns:IMarketService">
@@ -233,6 +273,42 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveGoodsInfo">
       <soap:operation soapAction="http://tempuri.org/IMarketService/RemoveGoodsInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLeaveMsg">
+      <soap:operation soapAction="http://tempuri.org/IMarketService/AddLeaveMsg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelLeaveMsgById">
+      <soap:operation soapAction="http://tempuri.org/IMarketService/DelLeaveMsgById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMsgById">
+      <soap:operation soapAction="http://tempuri.org/IMarketService/GetLeaveMsgById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLeaveMsgListByGid">
+      <soap:operation soapAction="http://tempuri.org/IMarketService/GetLeaveMsgListByGid" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
