@@ -74,6 +74,12 @@
   <wsdl:message name="IMarketService_SetGoodsInfoSaleStatusAndBuyerById_OutputMessage">
     <wsdl:part name="parameters" element="tns:SetGoodsInfoSaleStatusAndBuyerByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IMarketService_RemoveGoodsInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveGoodsInfo" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_RemoveGoodsInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveGoodsInfoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMarketService">
     <wsdl:operation name="UserAddGoods">
       <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/UserAddGoods" message="tns:IMarketService_UserAddGoods_InputMessage" />
@@ -118,6 +124,10 @@
     <wsdl:operation name="SetGoodsInfoSaleStatusAndBuyerById">
       <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/SetGoodsInfoSaleStatusAndBuyerById" message="tns:IMarketService_SetGoodsInfoSaleStatusAndBuyerById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/SetGoodsInfoSaleStatusAndBuyerByIdResponse" message="tns:IMarketService_SetGoodsInfoSaleStatusAndBuyerById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveGoodsInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/RemoveGoodsInfo" message="tns:IMarketService_RemoveGoodsInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/RemoveGoodsInfoResponse" message="tns:IMarketService_RemoveGoodsInfo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMarketService" type="tns:IMarketService">
@@ -214,6 +224,15 @@
     </wsdl:operation>
     <wsdl:operation name="SetGoodsInfoSaleStatusAndBuyerById">
       <soap:operation soapAction="http://tempuri.org/IMarketService/SetGoodsInfoSaleStatusAndBuyerById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveGoodsInfo">
+      <soap:operation soapAction="http://tempuri.org/IMarketService/RemoveGoodsInfo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

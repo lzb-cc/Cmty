@@ -136,7 +136,7 @@ namespace Services.DAL.Market
 
             return result;
         }
-        
+
         public static GoodsInfo QueryGoodsInfoById(int id)
         {
             GoodsInfo result = null;
@@ -288,6 +288,23 @@ namespace Services.DAL.Market
             {
                 conn.Open();
                 var cmdText = string.Format("update GoodsSets set SStatus = {1}, buyer = N'{2}' where Id = {0}", id, status, buyer);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static bool RemoveGoodsInfoById(int id)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("delete from GoodsSets where Id = {0}", id);
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     result = cmd.ExecuteNonQuery() > 0;

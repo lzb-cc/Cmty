@@ -156,4 +156,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RemoveGoodsInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveGoodsInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/CommonLib" minOccurs="0" name="RemoveGoodsInfoResult" type="q13:ReturnState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

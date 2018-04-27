@@ -287,6 +287,12 @@ namespace MVCViews.MarketService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/SetGoodsInfoSaleStatusAndBuyerById", ReplyAction="http://tempuri.org/IMarketService/SetGoodsInfoSaleStatusAndBuyerByIdResponse")]
         System.Threading.Tasks.Task<CommonLib.ReturnState> SetGoodsInfoSaleStatusAndBuyerByIdAsync(int id, string staus, string buyer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/RemoveGoodsInfo", ReplyAction="http://tempuri.org/IMarketService/RemoveGoodsInfoResponse")]
+        CommonLib.ReturnState RemoveGoodsInfo(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/RemoveGoodsInfo", ReplyAction="http://tempuri.org/IMarketService/RemoveGoodsInfoResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> RemoveGoodsInfoAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -402,6 +408,14 @@ namespace MVCViews.MarketService {
         
         public System.Threading.Tasks.Task<CommonLib.ReturnState> SetGoodsInfoSaleStatusAndBuyerByIdAsync(int id, string staus, string buyer) {
             return base.Channel.SetGoodsInfoSaleStatusAndBuyerByIdAsync(id, staus, buyer);
+        }
+        
+        public CommonLib.ReturnState RemoveGoodsInfo(int id) {
+            return base.Channel.RemoveGoodsInfo(id);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> RemoveGoodsInfoAsync(int id) {
+            return base.Channel.RemoveGoodsInfoAsync(id);
         }
     }
 }

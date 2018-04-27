@@ -43,6 +43,9 @@ namespace Services.cnts
 
         [OperationContract]
         CommonLib.ReturnState SetGoodsInfoSaleStatusAndBuyerById(int id, string staus, string buyer);
+
+        [OperationContract]
+        CommonLib.ReturnState RemoveGoodsInfo(int id);
     }
 
     [DataContract]

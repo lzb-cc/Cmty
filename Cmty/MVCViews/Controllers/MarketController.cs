@@ -21,7 +21,7 @@ namespace MVCViews.Controllers
 
             var list = new List<GoodsInfoView>();
             var retList = marketClient.GetGoodsInfoByStatus(@"销售中");
-            foreach(var item in retList)
+            foreach (var item in retList)
             {
                 if (item.Seller.Equals(buyer))
                 {
@@ -45,7 +45,7 @@ namespace MVCViews.Controllers
             var seller = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value;
             var retList = marketClient.GetGoodsInfoListBySeller(seller);
             var list = new List<GoodsInfoView>();
-            foreach(var item in retList)
+            foreach (var item in retList)
             {
                 list.Add(new GoodsInfoView(item));
             }
@@ -141,13 +141,13 @@ namespace MVCViews.Controllers
         [HttpPost]
         public JsonResult ConfirmBuy(int id)
         {
-            var ret = new MarketOperatorRep()
+            var ret = new MarketOperatorResp()
             {
                 Status = 0,
                 Msg = @"已经给卖家发送邮件，请稍等卖家联系!"
             };
 
-            if(!Authority())
+            if (!Authority())
             {
                 ret.Status = 1;
                 ret.Msg = @"请先登录!";
@@ -163,7 +163,7 @@ namespace MVCViews.Controllers
         [HttpPost]
         public JsonResult DeleteShoppingRecords(int id)
         {
-            var ret = new MarketOperatorRep
+            var ret = new MarketOperatorResp()
             {
                 Status = 0,
                 Msg = @"删除成功!"
@@ -176,7 +176,40 @@ namespace MVCViews.Controllers
                 return Json(ret);
             }
 
+            marketClient.RemoveGoodsInfo(id);
             return Json(ret);
+        }
+
+        [HttpPost]
+        public JsonResult GoodsDropOff(int id)
+        {
+            var ret = new MarketOperatorResp()
+            {
+                Status = 0,
+                Msg = @"下架成功"
+            };
+
+            if (!Authority())
+            {
+                ret.Status = 1;
+                ret.Msg = @"请先登录!";
+                return Json(ret);
+            }
+
+            marketClient.RemoveGoodsInfo(id);
+            return Json(ret);
+        }
+
+        [HttpGet]
+        public ActionResult ShoppingRecordsDetails(int id)
+        {
+            if (!Authority())
+            {
+                return _authorityResult;
+            }
+
+            var model = new GoodsInfoView(marketClient.GetGoodsInfoById(id));
+            return View();
         }
     }
 }

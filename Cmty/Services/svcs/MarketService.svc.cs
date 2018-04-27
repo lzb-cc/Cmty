@@ -64,5 +64,10 @@ namespace Services.svcs
         {
             return MarketOperator.SetGoodsInfoSaleStatusAndBuyerById(id, MarketOperator.IndexOfSaleStatus(status), buyer) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
+
+        public ReturnState RemoveGoodsInfo(int id)
+        {
+            return MarketOperator.RemoveGoodsInfoById(id) ? ReturnState.ReturnOK : ReturnState.ReturnError;
+        }
     }
 }
