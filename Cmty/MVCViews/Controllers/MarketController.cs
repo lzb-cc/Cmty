@@ -141,7 +141,7 @@ namespace MVCViews.Controllers
         [HttpPost]
         public JsonResult ConfirmBuy(int id)
         {
-            var ret = new ConfirmBuyRep()
+            var ret = new MarketOperatorRep()
             {
                 Status = 0,
                 Msg = @"已经给卖家发送邮件，请稍等卖家联系!"
@@ -156,6 +156,25 @@ namespace MVCViews.Controllers
 
             var buyer = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value;
             marketClient.SetGoodsInfoSaleStatusAndBuyerById(id, @"等待收货", buyer);
+
+            return Json(ret);
+        }
+
+        [HttpPost]
+        public JsonResult DeleteShoppingRecords(int id)
+        {
+            var ret = new MarketOperatorRep
+            {
+                Status = 0,
+                Msg = @"删除成功!"
+            };
+
+            if (!Authority())
+            {
+                ret.Status = 1;
+                ret.Msg = @"请先登录!";
+                return Json(ret);
+            }
 
             return Json(ret);
         }

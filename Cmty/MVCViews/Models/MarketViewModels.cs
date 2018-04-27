@@ -60,7 +60,7 @@ namespace MVCViews.Models
         public string Type { get; set; }
     }
 
-    public class ConfirmBuyRep
+    public class MarketOperatorRep
     {
         public int Status { get; set; }
         public string Msg { get; set; }

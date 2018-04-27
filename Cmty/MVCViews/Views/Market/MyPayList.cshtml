@@ -66,8 +66,8 @@
         </td>
 
         <td>
-            @Html.ActionLink("详细", "Details", new { id=item.Id }) |
-            @Html.ActionLink("删除记录", "Delete", new { id=item.Id })
+            <input type="button" class="btn btn-success" value="详细" onclick="Redirect('/Marekt/Details?id=@item.Id')" />
+            <input type="button" class="btn btn-danger" value="删除记录" onclick="Redirect('/Market/Delete?id=@item.Id')" />
         </td>
     </tr>
 }
@@ -77,12 +77,16 @@
 <hr />
 
 <div>
-    <input type="button" value="返回主页" class="btn" onclick="Redirect('/Market/MyCenter')"/>
+    <input type="button" value="返回上一页" class="btn" onclick="Back()"/>
 </div>
 
 <script>
     function Redirect(url) {
         window.location.href = url;
+    }
+
+    function Back() {
+        window.history.back(-1);
     }
 </script>
 

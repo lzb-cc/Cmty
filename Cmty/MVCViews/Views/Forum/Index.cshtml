@@ -12,19 +12,19 @@
 </p>
 <table class="table">
     <tr>
-        <th>
+        <th width="10%">
             @Html.DisplayNameFor(model => model.Poster)
         </th>
-        <th>
+        <th width="40%">
             @Html.DisplayNameFor(model => model.Title)
         </th>
-        <th>
+        <th width="%20">
             @Html.DisplayNameFor(model => model.PostType)
         </th>
-        <th>
+        <th width="10%">
             @Html.DisplayNameFor(model => model.Content)
         </th>
-        <th>
+        <th width="20">
             @Html.DisplayNameFor(model => model.PublishDate)
         </th>
         <th></th>
@@ -42,7 +42,7 @@
             @Html.DisplayFor(modelItem => item.PostType)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Content)
+            <div class="overflow">@item.Content</div>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PublishDate)
@@ -54,6 +54,12 @@
 }
 
 </table>
+
+<style>
+    .overflow {
+        width:100px;height:20px;text-overflow:ellipsis; white-space:nowrap; overflow:hidden;
+    }
+</style>
 
 <script>
     function Redirect(url) {

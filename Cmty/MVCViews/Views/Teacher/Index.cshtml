@@ -54,12 +54,28 @@
             @Html.DisplayFor(modelItem => item.JobTitle)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Desp)
+           <div class="overflow">@item.Desp</div>
         </td>
         <td>
-            @Html.ActionLink("详细", "Details", new { email = item.Email}) 
+            <input type="button" class="btn btn-success" value="详细" onclick="Details('@item.Email')" />
         </td>
     </tr>
 }
 
 </table>
+
+<style>
+    .overflow {
+        width: 400px;
+        height: 40px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+</style>
+
+<script>
+    function Details(email) {
+        window.location.href = "/Teacher/Details?email=" + email;
+    }
+</script>

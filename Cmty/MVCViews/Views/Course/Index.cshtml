@@ -7,15 +7,11 @@
 <h2>课程专区</h2>
 
 <p>
-    @Html.ActionLink("申请添加新课程", "ApplyForAddCourse") |
-    @Html.ActionLink("我的申请", "IndexOfApply")
+    <input type="button" value="申请添加课程" class="btn btn-success" onclick="Redirect('/Course/ApplyForAddCourse')" />
+    <input type="button" value="我的申请" class="btn btn-primary" onclick="Redirect('/Course/IndexOfApply')" />
 </p>
 <table class="table">
     <tr>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Code)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.University)
         </th>
@@ -34,24 +30,41 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Code)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.University)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Desp)
+            <div class="overflow">@item.Desp</div>
         </td>
         <td>
             <img class="lazy" rel="popover" src="http://localhost:8090/Course_Url/@item.PicUrl" width="60" height="40"/>
         </td>
         <td>
-            @Html.ActionLink("详细", "Details", new { code = item.Code }) 
+            <input type="button" class="btn btn-success" onclick="Details('@item.Code')" value="详细"/>
         </td>
     </tr>
 }
 
 </table>
+
+<style>
+    .overflow {
+        width: 600px;
+        height: 40px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+</style>
+
+<script>
+    function Details(code) {
+        window.location.href = "/Course/Details?code=" + code;
+    }
+
+    function Redirect(url) {
+        window.location.href = url;
+    }
+</script>
