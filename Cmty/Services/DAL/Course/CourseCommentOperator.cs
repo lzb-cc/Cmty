@@ -46,13 +46,30 @@ namespace Services.DAL.Course
             return result;
         }
 
+        public static bool RemoveCourseCommentById(int id)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("delete from CourseCommentSets where Id = {0}", id);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
         public static List<CourseCommentView> GetCourseCommentListByCode(string code)
         {
             var ret = new List<CourseCommentView>();
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                var cmdText = string.Format("select Code, Email, cDate, Content, CmtFloor from CourseCommentSets where Code = N'{0}' order by CmtFloor ASC", code);
+                var cmdText = string.Format("select Code, Email, cDate, Content, CmtFloor, Id from CourseCommentSets where Code = N'{0}' order by CmtFloor DESC", code);
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     var reader = cmd.ExecuteReader();
@@ -64,7 +81,8 @@ namespace Services.DAL.Course
                             Email = Convert.ToString(reader.GetValue(1)),
                             PubDate = Convert.ToDateTime(reader.GetValue(2)),
                             Content = Convert.ToString(reader.GetValue(3)),
-                            Floor = Convert.ToInt32(reader.GetValue(4))
+                            Floor = Convert.ToInt32(reader.GetValue(4)),
+                            Id = Convert.ToInt32(reader.GetValue(5))
                         };
                         ret.Add(comment);
                     }

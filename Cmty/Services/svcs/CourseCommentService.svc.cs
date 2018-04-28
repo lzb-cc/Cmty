@@ -33,5 +33,10 @@ namespace Services.svcs
         {
             return CourseCommentOperator.RemoveCourseComment(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
+
+        public ReturnState RemoveCommentById(int id)
+        {
+            return CourseCommentOperator.RemoveCourseCommentById(id) ? ReturnState.ReturnOK : ReturnState.ReturnError;
+        }
     }
 }

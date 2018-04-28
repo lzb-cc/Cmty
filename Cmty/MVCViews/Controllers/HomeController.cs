@@ -13,29 +13,10 @@ namespace MVCViews.Controllers
             return View();
         }
 
-        public ActionResult Course()
+        public JsonResult Upload(string data)
         {
-            return View();
-        }
-
-        public ActionResult Teacher()
-        {
-            return View();
-        }
-
-        public ActionResult Market()
-        {
-            return View();
-        }
-
-        public ActionResult Forum()
-        {
-            return View();
-        }
-
-        public ActionResult Blog()
-        {
-            return View();
+            
+            return Json("");
         }
 
         public ActionResult About()

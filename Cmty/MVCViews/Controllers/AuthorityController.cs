@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -41,6 +42,13 @@ namespace MVCViews.Controllers
             }
 
             return true;
+        }
+
+        protected void UploadImgae(string path, string base64Data)
+        {
+            var img = Convert.FromBase64String(base64Data);
+            var fs = new FileStream(path, FileMode.Create);
+            fs.Write(img, 0, img.Length);
         }
     }
 }

@@ -86,7 +86,7 @@ namespace Services.DAL.Account
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                var cmdText = string.Format("select uName, Tel, c.name, Sex, Nick, Hobby from UserSets a left join ExtraUserInfo b on a.Email = b.Email left join cfg_Universities c on a.university = c.Id where a.Email = N'{0}'", email);
+                var cmdText = string.Format("select uName, Tel, c.name, Sex, Nick, Hobby, Avatar from UserSets a left join ExtraUserInfo b on a.Email = b.Email left join cfg_Universities c on a.university = c.Id where a.Email = N'{0}'", email);
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     var reader = cmd.ExecuteReader();
@@ -99,6 +99,7 @@ namespace Services.DAL.Account
                         user.Sex = Convert.ToString(reader.GetValue(3));
                         user.Nick = Convert.ToString(reader.GetValue(4));
                         user.Hobby = Convert.ToString(reader.GetValue(5));
+                        user.Avatar = Convert.ToString(reader.GetValue(6));
                     }
                     conn.Close();
                 }
@@ -114,7 +115,7 @@ namespace Services.DAL.Account
             {
                 conn.Open();
                 var cmdText = string.Format("update UserSets set uName = N'{0}', Tel = N'{1}' where Email = N'{2}'", model.UserName, model.Tel, model.Email);
-                var cmdText1 = string.Format(@"if not exists (select * from ExtraUserInfo where Email = N'{0}') insert into ExtraUserInfo values (N'{0}', N'{1}', N'{2}', N'{3}') else update ExtraUserInfo set Sex = N'{1}', Nick = N'{2}', Hobby = N'{3}' where Email = N'{0}'", model.Email, model.Sex, model.Nick, model.Hobby);
+                var cmdText1 = string.Format(@"if not exists (select * from ExtraUserInfo where Email = N'{0}') insert into ExtraUserInfo values (N'{0}', N'{1}', N'{2}', N'{3}', N'{4}') else update ExtraUserInfo set Sex = N'{1}', Nick = N'{2}', Hobby = N'{3}', Avatar = N'{4}' where Email = N'{0}'", model.Email, model.Sex, model.Nick, model.Hobby, model.Avatar);
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     result = cmd.ExecuteNonQuery() > 0;

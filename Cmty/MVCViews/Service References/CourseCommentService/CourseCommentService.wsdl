@@ -20,6 +20,12 @@
   <wsdl:message name="ICourseCommentService_RemoveComment_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoveCommentResponse" />
   </wsdl:message>
+  <wsdl:message name="ICourseCommentService_RemoveCommentById_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCommentById" />
+  </wsdl:message>
+  <wsdl:message name="ICourseCommentService_RemoveCommentById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCommentByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="ICourseCommentService_GetCommentByCode_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCommentByCode" />
   </wsdl:message>
@@ -40,6 +46,10 @@
     <wsdl:operation name="RemoveComment">
       <wsdl:input wsaw:Action="http://tempuri.org/ICourseCommentService/RemoveComment" message="tns:ICourseCommentService_RemoveComment_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICourseCommentService/RemoveCommentResponse" message="tns:ICourseCommentService_RemoveComment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCommentById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICourseCommentService/RemoveCommentById" message="tns:ICourseCommentService_RemoveCommentById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICourseCommentService/RemoveCommentByIdResponse" message="tns:ICourseCommentService_RemoveCommentById_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCommentByCode">
       <wsdl:input wsaw:Action="http://tempuri.org/ICourseCommentService/GetCommentByCode" message="tns:ICourseCommentService_GetCommentByCode_InputMessage" />
@@ -63,6 +73,15 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveComment">
       <soap:operation soapAction="http://tempuri.org/ICourseCommentService/RemoveComment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCommentById">
+      <soap:operation soapAction="http://tempuri.org/ICourseCommentService/RemoveCommentById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

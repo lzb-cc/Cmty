@@ -122,5 +122,8 @@ namespace Services
 
         [DataMember]
         public string Hobby { get; set; }
+
+        [DataMember]
+        public string Avatar { get; set; }
     }
 }

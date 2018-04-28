@@ -49,5 +49,42 @@ namespace MVCViews.Models
 
         [Display(Name = "课程图片")]
         public string PicUrl { get; set; }
+
+        public List<string> Teachers { get; set; }
+    }
+
+    public class CourseOperatorResp
+    {
+        public int Status { get; set; }
+        public string Msg { get; set; }
+    }
+
+    public class CourseCommentViewModel
+    {
+        public CourseCommentViewModel() { }
+        public CourseCommentViewModel(CourseCommentService.CourseCommentView model)
+        {
+            this.Id = model.Id;
+            this.Code = model.Code;
+            this.Date = model.PubDate;
+            this.Content = model.Content;
+            this.Floor = model.Floor;
+        }
+
+        public int Id { get; set; }
+
+        public string Code { get; set; }
+
+        public string UserAvatar { get; set; }
+
+        public string UserName { get; set; }
+
+        public string UserEmail { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public string Content { get; set; }
+
+        public int Floor { get; set; }
     }
 }

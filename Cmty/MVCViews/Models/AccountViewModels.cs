@@ -144,5 +144,7 @@ namespace MVCViews.Models
 
         [Display(Name ="兴趣爱好")]
         public string Hobby { get; set; }
+
+        public string Avatar { get; set; }
     }
 }

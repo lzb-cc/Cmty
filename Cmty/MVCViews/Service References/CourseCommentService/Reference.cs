@@ -35,6 +35,9 @@ namespace MVCViews.CourseCommentService {
         private int FloorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime PubDateField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -100,6 +103,19 @@ namespace MVCViews.CourseCommentService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime PubDate {
             get {
                 return this.PubDateField;
@@ -137,6 +153,12 @@ namespace MVCViews.CourseCommentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseCommentService/RemoveComment", ReplyAction="http://tempuri.org/ICourseCommentService/RemoveCommentResponse")]
         System.Threading.Tasks.Task<CommonLib.ReturnState> RemoveCommentAsync(MVCViews.CourseCommentService.CourseCommentView model);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseCommentService/RemoveCommentById", ReplyAction="http://tempuri.org/ICourseCommentService/RemoveCommentByIdResponse")]
+        CommonLib.ReturnState RemoveCommentById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseCommentService/RemoveCommentById", ReplyAction="http://tempuri.org/ICourseCommentService/RemoveCommentByIdResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> RemoveCommentByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICourseCommentService/GetCommentByCode", ReplyAction="http://tempuri.org/ICourseCommentService/GetCommentByCodeResponse")]
         MVCViews.CourseCommentService.CourseCommentView[] GetCommentByCode(string code);
@@ -192,6 +214,14 @@ namespace MVCViews.CourseCommentService {
         
         public System.Threading.Tasks.Task<CommonLib.ReturnState> RemoveCommentAsync(MVCViews.CourseCommentService.CourseCommentView model) {
             return base.Channel.RemoveCommentAsync(model);
+        }
+        
+        public CommonLib.ReturnState RemoveCommentById(int id) {
+            return base.Channel.RemoveCommentById(id);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> RemoveCommentByIdAsync(int id) {
+            return base.Channel.RemoveCommentByIdAsync(id);
         }
         
         public MVCViews.CourseCommentService.CourseCommentView[] GetCommentByCode(string code) {

@@ -49,11 +49,23 @@ namespace MVCViews.Controllers
                 Desp = course.Desp,
                 Name = course.Name,
                 PicUrl = course.PicUrl,
-                University = utilityClient.NameOfUniversity(course.University)
+                University = utilityClient.NameOfUniversity(course.University),
             };
+            
+            
 
             // 查询评论
-            ViewBag.CmtList = courseCommentClient.GetCommentByCode(code);
+            ViewBag.CmtList = new List<CourseCommentViewModel>();
+            var retList = courseCommentClient.GetCommentByCode(code);
+            foreach(var item in retList)
+            {
+                var tmp = new CourseCommentViewModel(item);
+                var userInfo = accountClient.GetUserInfo(item.Email);
+                tmp.UserAvatar = string.IsNullOrEmpty(userInfo.Avatar) ? "00.jpg" : userInfo.Avatar;
+                tmp.UserName = string.IsNullOrEmpty(userInfo.Nick) ? userInfo.UserName : userInfo.Nick;
+                tmp.UserEmail = item.Email;
+                ViewBag.CmtList.Add(tmp);
+            }
             
             return View(model);
         }
@@ -148,16 +160,26 @@ namespace MVCViews.Controllers
             return RedirectToAction("IndexOfApply");
         }
 
-        public ActionResult MakeComment(string code, string content)
+        [HttpPost]
+        public JsonResult MakeComment(string code, string content)
         {
+            var ret = new CourseOperatorResp
+            {
+                Status = 0,
+            };
+
             if (!Authority())
             {
-                return _authorityResult;
+                ret.Status = 1;
+                ret.Msg = @"请先登录！";
+                return Json(ret);
             }
 
             if (string.IsNullOrEmpty(code) || string.IsNullOrEmpty(content))
             {
-                return RedirectToAction("Index", new { page = 0 });
+                ret.Status = 2;
+                ret.Msg = @"";
+                return Json(ret);
             }
 
             var model = new CourseCommentService.CourseCommentView()
@@ -169,7 +191,26 @@ namespace MVCViews.Controllers
                 Floor = courseCommentClient.GetValidFloor(code)
             };
             courseCommentClient.AddComment(model);
-            return RedirectToAction("Details", new { code = code });
+            return Json(ret);
+        }
+
+        [HttpPost]
+        public JsonResult CommentCancel(int id)
+        {
+            var ret = new CourseOperatorResp
+            {
+                Status = 0,
+                Msg = @"撤销成功!"
+            };
+
+            if (!Authority())
+            {
+                ret.Status = 1;
+                ret.Msg = @"请先登录!";   
+            }
+
+            courseCommentClient.RemoveCommentById(id);
+            return Json(ret);
         }
     }
 }

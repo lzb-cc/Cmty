@@ -48,10 +48,18 @@ namespace UnitTest
             }
         }
 
+        public static void ReadWrite()
+        {
+            var path = "tt.txt";
+            var reader = new StreamReader(path, Encoding.UTF8);
+            var data = Convert.FromBase64String(reader.ReadToEnd().Split(',')[1]);
+            var fs = new FileStream("tt.jpg", FileMode.Create);
+            fs.Write(data, 0, data.Length);
+        }
 
         static void Main(string[] args)
         {
-            ReadJson();
+            ReadWrite();
         }
     }
 }

@@ -18,6 +18,9 @@ namespace Services.cnts
         CommonLib.ReturnState RemoveComment(CourseCommentView model);
 
         [OperationContract]
+        CommonLib.ReturnState RemoveCommentById(int id);
+
+        [OperationContract]
         List<CourseCommentView> GetCommentByCode(string code);
 
         [OperationContract]
@@ -27,6 +30,9 @@ namespace Services.cnts
     [DataContract]
     public class CourseCommentView
     {
+        [DataMember]
+        public int Id { get; set; }
+
         [DataMember]
         public string Code { get; set; }
 
