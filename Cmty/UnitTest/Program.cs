@@ -53,7 +53,8 @@ namespace UnitTest
             var path = "tt.txt";
             var reader = new StreamReader(path, Encoding.UTF8);
             var data = Convert.FromBase64String(reader.ReadToEnd().Split(',')[1]);
-            var fs = new FileStream("tt.jpg", FileMode.Create);
+            path = "Release";
+            var fs = new FileStream(("../" + path + "/" + Guid.NewGuid().ToString() + ".jpg").ToString(), FileMode.Create);
             fs.Write(data, 0, data.Length);
         }
 

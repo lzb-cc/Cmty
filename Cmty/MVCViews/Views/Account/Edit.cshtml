@@ -81,7 +81,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="保存" class="btn btn-danger" onclick="Upload()"/>
+                <input type="submit" value="保存" class="btn btn-danger"/>
                 <input type="button" value="返回主页" class="btn" onclick="Back()" />
             </div>
         </div>
@@ -98,14 +98,29 @@
         var reader = new FileReader();
         reader.onload = function () {
             document.getElementById("avatar").src = this.result;
+
+            var img = document.getElementById("avatar").getAttribute("src").split(',')[1];
+            if (img.length <= 0) {
+                return;
+            }
+
+            var params = {
+                base64Data: img,
+            }
+
+            $.ajax({
+                url: "http://localhost:8090/Svcs/UploadFile",
+                type: "POST",
+                dataType: "json",
+                data: params,
+                withCredentials: true,
+            }).done(function (json) {
+                alert(json.FileName);
+            })
         }
         reader.readAsDataURL(file.files[0])
 
-    }
 
-    function Upload() {
-        var img = document.getElementById("avatar").getAttribute("src");
-        alert(img);
     }
 
     function Back() {

@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin", "Admin\Admin.csproj
 		{95227557-3E11-412F-8CC2-B83A8280F3AD} = {95227557-3E11-412F-8CC2-B83A8280F3AD}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageServices", "ImageServices\ImageServices.csproj", "{BDA8116F-8AEE-44E2-B49D-0A7FC1BCC7C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{DF6B8081-0448-403B-9E13-0C1A8EDBD411}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF6B8081-0448-403B-9E13-0C1A8EDBD411}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF6B8081-0448-403B-9E13-0C1A8EDBD411}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDA8116F-8AEE-44E2-B49D-0A7FC1BCC7C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDA8116F-8AEE-44E2-B49D-0A7FC1BCC7C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA8116F-8AEE-44E2-B49D-0A7FC1BCC7C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDA8116F-8AEE-44E2-B49D-0A7FC1BCC7C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
