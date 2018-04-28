@@ -62,6 +62,12 @@
   <wsdl:message name="IMarketService_GetAllGoodsInfo_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllGoodsInfoResponse" />
   </wsdl:message>
+  <wsdl:message name="IMarketService_AddGoodsCommentById_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddGoodsCommentById" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_AddGoodsCommentById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddGoodsCommentByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IMarketService_HasMember_InputMessage">
     <wsdl:part name="parameters" element="tns:HasMember" />
   </wsdl:message>
@@ -140,6 +146,10 @@
     <wsdl:operation name="GetAllGoodsInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/GetAllGoodsInfo" message="tns:IMarketService_GetAllGoodsInfo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/GetAllGoodsInfoResponse" message="tns:IMarketService_GetAllGoodsInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddGoodsCommentById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/AddGoodsCommentById" message="tns:IMarketService_AddGoodsCommentById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/AddGoodsCommentByIdResponse" message="tns:IMarketService_AddGoodsCommentById_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="HasMember">
       <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/HasMember" message="tns:IMarketService_HasMember_InputMessage" />
@@ -246,6 +256,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllGoodsInfo">
       <soap:operation soapAction="http://tempuri.org/IMarketService/GetAllGoodsInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGoodsCommentById">
+      <soap:operation soapAction="http://tempuri.org/IMarketService/AddGoodsCommentById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

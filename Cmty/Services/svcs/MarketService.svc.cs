@@ -89,5 +89,10 @@ namespace Services.svcs
         {
             return MarketOperator.QueryLeaveMsgListByGid(gid);
         }
+
+        public ReturnState AddGoodsCommentById(int id, string content)
+        {
+            return MarketOperator.UpdateGoodsInfoCommentById(id, content) ? ReturnState.ReturnOK : ReturnState.ReturnError;
+        }
     }
 }

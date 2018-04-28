@@ -500,6 +500,7 @@
     <Content Include="Views\Forum\PostDetails.cshtml" />
     <Content Include="Views\Forum\PostEdit.cshtml" />
     <Content Include="Views\Forum\PostReplyDetails.cshtml" />
+    <Content Include="Views\Market\ShoppingRecordsDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -113,8 +113,13 @@ namespace MVCViews.Controllers
             return RedirectToAction("MyCenter");
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int id = -1)
         {
+            if (id == -1)
+            {
+                return RedirectToAction("Index");
+            }
+
             var model = new GoodsInfoView(marketClient.GetGoodsInfoById(id));
 
             ViewBag.LeaveMsgs = marketClient.GetLeaveMsgListByGid(id);
@@ -209,7 +214,7 @@ namespace MVCViews.Controllers
             }
 
             var model = new GoodsInfoView(marketClient.GetGoodsInfoById(id));
-            return View();
+            return View(model);
         }
 
         [HttpPost]
@@ -253,6 +258,26 @@ namespace MVCViews.Controllers
             }
 
             marketClient.DelLeaveMsgById(id);
+            return Json(ret);
+        }
+
+        [HttpPost]
+        public JsonResult AddGoodsComments(int id, string content)
+        {
+            var ret = new MarketOperatorResp
+            {
+                Status = 0,
+                Msg = @"评论成功!"
+            };
+
+            if(!Authority())
+            {
+                ret.Status = 1;
+                ret.Msg = @"请先登录!";
+                return Json(ret);
+            }
+
+            marketClient.AddGoodsCommentById(id, content);
             return Json(ret);
         }
     }

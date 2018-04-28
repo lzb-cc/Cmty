@@ -401,6 +401,12 @@ namespace MVCViews.MarketService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetAllGoodsInfo", ReplyAction="http://tempuri.org/IMarketService/GetAllGoodsInfoResponse")]
         System.Threading.Tasks.Task<MVCViews.MarketService.GoodsInfo[]> GetAllGoodsInfoAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/AddGoodsCommentById", ReplyAction="http://tempuri.org/IMarketService/AddGoodsCommentByIdResponse")]
+        CommonLib.ReturnState AddGoodsCommentById(int id, string content);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/AddGoodsCommentById", ReplyAction="http://tempuri.org/IMarketService/AddGoodsCommentByIdResponse")]
+        System.Threading.Tasks.Task<CommonLib.ReturnState> AddGoodsCommentByIdAsync(int id, string content);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/HasMember", ReplyAction="http://tempuri.org/IMarketService/HasMemberResponse")]
         bool HasMember(MVCViews.MarketService.GoodsInfo model);
         
@@ -541,6 +547,14 @@ namespace MVCViews.MarketService {
         
         public System.Threading.Tasks.Task<MVCViews.MarketService.GoodsInfo[]> GetAllGoodsInfoAsync() {
             return base.Channel.GetAllGoodsInfoAsync();
+        }
+        
+        public CommonLib.ReturnState AddGoodsCommentById(int id, string content) {
+            return base.Channel.AddGoodsCommentById(id, content);
+        }
+        
+        public System.Threading.Tasks.Task<CommonLib.ReturnState> AddGoodsCommentByIdAsync(int id, string content) {
+            return base.Channel.AddGoodsCommentByIdAsync(id, content);
         }
         
         public bool HasMember(MVCViews.MarketService.GoodsInfo model) {

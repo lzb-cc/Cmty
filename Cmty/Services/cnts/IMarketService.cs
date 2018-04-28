@@ -39,6 +39,9 @@ namespace Services.cnts
         List<GoodsInfo> GetAllGoodsInfo();
 
         [OperationContract]
+        CommonLib.ReturnState AddGoodsCommentById(int id, string content);
+
+        [OperationContract]
         bool HasMember(GoodsInfo model);
 
         [OperationContract]

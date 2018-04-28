@@ -1,0 +1,82 @@
+﻿@model MVCViews.Models.GoodsInfoView
+
+@{
+    ViewBag.Title = "ShoppingRecordsDetails";
+}
+
+
+<div class="div-inline">
+    <div class="div-img"><img src="http://localhost:8090/Goods_Url/@Model.PicUrl" /></div>
+</div>
+<div class="div-inline">
+    <div>名称： @Model.Name</div>
+    <div>卖家： @Model.Seller</div>
+    <div>价格： ￥ @Model.Money</div>
+    <div>时间： @Model.AddDate</div>
+    <div>状态： @Model.Status</div>
+    <div>类型： @Model.Type</div>
+    @if (Model.Comments.Equals(""))
+    {
+        <div class="modal-footer">
+            <textarea placeholder="输入内容..." class="form-control" id="comment_edit"></textarea>
+            <input type="button" value="评论" class="btn btn-warning" onclick="AddComments(@Model.Id)" />
+            <input type="button" value="返回上一页" class="btn" onclick="Back()" />
+        </div>
+    }
+    else
+    {
+        <div>评论： @Model.Comments</div>
+        <div class="modal-footer">
+            <input type="button" value="返回上一页" class="btn" onclick="Back()" />
+        </div>
+    }
+</div>
+
+<style>
+    .div-inline {
+        width: 300px;
+        height: 400px;
+        display: inline;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 50px;
+    }
+
+    img {
+        width: 300px;
+        height: 400px;
+    }
+</style>
+
+<script>
+    function Redirect(url) {
+        window.location.href = url;
+    }
+
+    function Back() {
+        window.history.back(-1);
+    }
+
+    function AddComments(id) {
+        var params = {
+            id:id,
+            content: $("#comment_edit").val(),
+        }
+
+        $.ajax({
+            url: "/Market/AddGoodsComments",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function(json){
+            alert(json.Msg);
+            if (json.Status == 0) {
+                location.reload();
+            } else if (json.Status == 1) {
+                window.location.href = "/Account/Login";
+            }
+        })
+    }
+</script>

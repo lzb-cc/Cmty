@@ -97,6 +97,23 @@ namespace Services.DAL.Market
             return result;
         }
 
+        public static bool UpdateGoodsInfoCommentById(int id, string content)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("update GoodsSets set Comment = N'{1}' where id = {0}",id, content);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
         public static GoodsInfo SqlReaderGoodsInfo(SqlDataReader reader)
         {
             var model = new GoodsInfo();
