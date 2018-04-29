@@ -190,5 +190,26 @@ namespace Services.DAL
 
             return result;
         }
+
+        public static List<string> QeuryUniversityList()
+        {
+            var result = new List<string>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select Name from cfg_Universities");
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(Convert.ToString(reader.GetValue(00)));
+                    }
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
     }
 }

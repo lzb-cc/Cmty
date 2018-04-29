@@ -4,17 +4,51 @@ using System.Xml;
 using Newtonsoft.Json;
 using System.IO;
 using System.Net;
+using System.Configuration;
+using System.Net.Mail;
+using System.Text;
 
 namespace Admin.Controllers
 {
     public class OtherController : AuthorityController
     {
+
+        public static string userName = ConfigurationManager.ConnectionStrings["userName"].ConnectionString;
+        public static string password = ConfigurationManager.ConnectionStrings["password"].ConnectionString;
         private const string url = "http://localhost:8090/";
 
         // GET: Other
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult SendEmail(string sendTo, string subject, string content)
+        {
+            var client = new SmtpClient();
+            client.Host = "smtp.163.com";
+            client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential(userName, password);
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            MailMessage message = new MailMessage(userName, sendTo);
+            message.Subject = subject;
+            message.Body = content;
+            message.SubjectEncoding = Encoding.UTF8;
+            message.BodyEncoding = Encoding.UTF8;
+            message.IsBodyHtml = true;
+            message.Priority = MailPriority.High;
+            message.IsBodyHtml = true;
+            try
+            {
+                client.Send(message);
+            }
+            catch (Exception)
+            {
+                return Json(new { Status = 1 });
+            }
+
+            return Json(new { Status = 0 });
         }
 
         [HttpPost]

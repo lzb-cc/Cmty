@@ -33,6 +33,11 @@ namespace Services.svcs
             return UtilityOperator.GetTeacherByCourseId(code);
         }
 
+        public List<string> GetUniversityList()
+        {
+            return UtilityOperator.QeuryUniversityList();
+        }
+
         public int IndexOfJobTitle(string name)
         {
             return UtilityOperator.IndexOfJobTitle(name);

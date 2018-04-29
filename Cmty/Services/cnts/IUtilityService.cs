@@ -36,5 +36,8 @@ namespace Services.cnts
 
         [OperationContract]
         string NameOfCourse(string code);
+
+        [OperationContract]
+        List<string> GetUniversityList();
     }
 }

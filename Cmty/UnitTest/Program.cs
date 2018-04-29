@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Xml;
+using System.Net.Mail;
 
 namespace UnitTest
 {
@@ -42,7 +43,7 @@ namespace UnitTest
             var xmlDoc = JsonConvert.DeserializeXmlNode(dat[0], "XmlData").FirstChild;
             var name = xmlDoc.SelectSingleNode("name")?.InnerText;
             var list = xmlDoc.SelectNodes("array");
-            foreach(XmlElement node in list)
+            foreach (XmlElement node in list)
             {
                 Console.WriteLine("{0} {1}", name, node.SelectSingleNode("email")?.InnerText);
             }
@@ -58,9 +59,26 @@ namespace UnitTest
             fs.Write(data, 0, data.Length);
         }
 
+        public static void SendMail()
+        {
+            var client = new SmtpClient();
+            client.Host = "smtp.163.com";
+            client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential("", "");
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            MailMessage message = new MailMessage("", "");
+            message.Subject = "确认注册";
+            message.Body = "请确认注册消息！";
+            message.SubjectEncoding = Encoding.UTF8;
+            message.BodyEncoding = Encoding.UTF8;
+            message.IsBodyHtml = true;
+            message.Priority = MailPriority.High;
+            message.IsBodyHtml = true;
+            client.Send(message);
+        }
         static void Main(string[] args)
         {
-            ReadWrite();
+            SendMail();
         }
     }
 }

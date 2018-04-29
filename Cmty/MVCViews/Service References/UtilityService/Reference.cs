@@ -68,6 +68,12 @@ namespace MVCViews.UtilityService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/NameOfCourse", ReplyAction="http://tempuri.org/IUtilityService/NameOfCourseResponse")]
         System.Threading.Tasks.Task<string> NameOfCourseAsync(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/GetUniversityList", ReplyAction="http://tempuri.org/IUtilityService/GetUniversityListResponse")]
+        string[] GetUniversityList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/GetUniversityList", ReplyAction="http://tempuri.org/IUtilityService/GetUniversityListResponse")]
+        System.Threading.Tasks.Task<string[]> GetUniversityListAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -167,6 +173,14 @@ namespace MVCViews.UtilityService {
         
         public System.Threading.Tasks.Task<string> NameOfCourseAsync(string code) {
             return base.Channel.NameOfCourseAsync(code);
+        }
+        
+        public string[] GetUniversityList() {
+            return base.Channel.GetUniversityList();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetUniversityListAsync() {
+            return base.Channel.GetUniversityListAsync();
         }
     }
 }

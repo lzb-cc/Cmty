@@ -11,3 +11,4 @@ F:\GitHub\Cmty\Cmty\CommonLib\bin\Debug\CommonLib.dll
 F:\GitHub\Cmty\Cmty\CommonLib\bin\Debug\CommonLib.pdb
 F:\GitHub\Cmty\Cmty\CommonLib\obj\Debug\CommonLib.dll
 F:\GitHub\Cmty\Cmty\CommonLib\obj\Debug\CommonLib.pdb
+F:\GitHub\Cmty\Cmty\CommonLib\obj\Debug\CommonLib.csprojResolveAssemblyReference.cache

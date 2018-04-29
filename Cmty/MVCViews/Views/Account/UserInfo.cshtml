@@ -6,69 +6,76 @@
 
 <h2>个人信息</h2>
 
-<div>
-    <h4>查看个人信息</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+<h4>详细信息</h4>
+<hr />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tel)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tel)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.University)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.University)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sex)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sex)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nick)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nick)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Hobby)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Hobby)
-        </dd>
-
-    </dl>
+<div class="div-inline">
+    @if (string.IsNullOrEmpty(Model.Avatar))
+    {
+        <img src="http://localhost:8090/ImageUrl/00.jpg" />
+    }
+    else
+    {
+        <img src="http://localhost:8090/ImageUrl/@Model.Avatar" />
+    }
 </div>
-<p>
-    @Html.ActionLink("修改", "Edit", new { email = Model.Email }) |
-    @Html.ActionLink("返回主页", "Index")
-</p>
+
+<div class="div-inline">
+    <div>姓名： @Model.UserName</div>
+    <div>院校： @Model.University</div>
+    <div>邮箱： @Model.Email</div>
+    <div>昵称： @Model.Nick</div>
+    <div>电话： @Model.Tel</div>
+    <div>性别： @Model.Sex</div>
+    <div>兴趣： @Model.Hobby</div>
+    <hr />
+    <div>
+        <input type="button" class="btn btn-primary" value="修改" onclick="Redirect('/Account/Edit?email=@Model.Email')" />
+        <input type="button" class="btn" value="返回主页" onclick="Redirect('/Home/Index/')" />
+    </div>
+</div>
+
+<style>
+    .div-inline {
+        width: 300px;
+        height: 300px;
+        display: inline;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 50px;
+    }
+
+    .div-inline-comment {
+        width: 150px;
+        height: 150px;
+        display: inline;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 30px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        max-width: 300px;
+        max-height: 300px;
+    }
+
+    .user_pic {
+        width: 100%;
+        height: 100%;
+        max-height: 150px;
+        max-width: 150px;
+    }
+</style>
+
+<script>
+    function Redirect(url) {
+        window.location.href = url;
+    }
+</script>

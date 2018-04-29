@@ -28,10 +28,10 @@
       <publishTime>03/12/2018 12:34:39</publishTime>
     </File>
     <File Include="bin/ImageServices.dll">
-      <publishTime>04/28/2018 21:13:33</publishTime>
+      <publishTime>04/29/2018 15:21:59</publishTime>
     </File>
     <File Include="bin/ImageServices.pdb">
-      <publishTime>04/28/2018 21:13:33</publishTime>
+      <publishTime>04/29/2018 15:21:59</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>12/07/2015 19:04:38</publishTime>
@@ -376,7 +376,7 @@
       <publishTime>04/28/2018 21:09:01</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/28/2018 21:10:30</publishTime>
+      <publishTime>04/29/2018 15:15:11</publishTime>
     </File>
   </ItemGroup>
 </Project>

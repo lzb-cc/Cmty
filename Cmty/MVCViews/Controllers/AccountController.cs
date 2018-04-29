@@ -10,10 +10,11 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MVCViews.Models;
 using CommonLib;
+using System.Collections.Generic;
 
 namespace MVCViews.Controllers
 {
-   // [Authorize]
+    // [Authorize]
     public class AccountController : AuthorityController
     {
         private ApplicationSignInManager _signInManager;
@@ -23,7 +24,7 @@ namespace MVCViews.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -35,9 +36,9 @@ namespace MVCViews.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -81,8 +82,8 @@ namespace MVCViews.Controllers
                 Email = model.Email,
                 Password = model.Password
             };
-            var result = accountClient.Login(obj) ;
-            
+            var result = accountClient.Login(obj);
+
             if (result == ReturnState.ReturnOK)
             {
                 _cookie.Value = model.Email;
@@ -111,29 +112,26 @@ namespace MVCViews.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
+        public ActionResult VerifyCode(VerifyCodeViewModel model)
         {
             if (true)
             {
                 return View(model);
             }
+        }
 
-            // 以下代码可以防范双重身份验证代码遭到暴力破解攻击。
-            // 如果用户输入错误代码的次数达到指定的次数，则会将
-            // 该用户帐户锁定指定的时间。
-            // 可以在 IdentityConfig 中配置帐户锁定设置
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
-            switch (result)
+        [HttpPost]
+        public JsonResult CheckEamil(string email)
+        {
+            var success = new { Status = 0 };
+            var fail = new { Status = 1 };
+
+            if (accountClient.HasMember(email))
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(model.ReturnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "代码无效。");
-                    return View(model);
+                return Json(fail);
             }
+
+            return Json(success);
         }
 
         //
@@ -141,6 +139,14 @@ namespace MVCViews.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            var UniversityList = new List<SelectListItem>();
+            var items = utilityClient.GetUniversityList();
+            foreach (var item in items)
+            {
+                UniversityList.Add(new SelectListItem() { Text = item });
+            }
+
+            ViewData["University"] = UniversityList;
             return View();
         }
 
@@ -148,72 +154,49 @@ namespace MVCViews.Controllers
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterViewModel model)
+        public JsonResult Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            var success = new { Status = 0 };
+            var fail = new { Status = 1 };
+            var exist = new { Status = 2 };
+            AccountService.RegisterView registerModel = new AccountService.RegisterView
             {
-                AccountService.RegisterView registerModel = new AccountService.RegisterView
-                {
-                    Email = model.Email,
-                    Password = model.Password,
-                    UserName = model.UserName,
-                    Tel = model.Tel,
-                };
+                Email = model.Email,
+                Password = model.Password,
+                UserName = model.UserName,
+                Tel = model.Tel,
+            };
 
-                // 用户名为空，则默认为Email
-                if (model.UserName.Equals(""))
-                {
-                    registerModel.UserName = model.Email;
-                }
+            // 用户名为空，则默认为Email
+            if (model.UserName.Equals(""))
+            {
+                registerModel.UserName = model.Email;
+            }
 
-                registerModel.University = utilityClient.IndexOfUniversity(model.University);
-                if (registerModel.University <= 0)
-                {
-                    AddErrors(IdentityResult.Failed(@"学校信息错误"));
-                    return View(model);
-                }
+            if(accountClient.HasMember(model.Email))
+            {
+                return Json(exist);
+            }
 
-                var result = accountClient.Register(registerModel);
-                if (result.Equals(ReturnState.ReturnOK))
-                {
-                    // set dict
-                    Gloable.dict.Add(model.Email, model.UserName);
+            registerModel.University = utilityClient.IndexOfUniversity(model.University);
 
-                    // set cookie
-                    _cookie.Value = model.Email;
-                    _cookie.Expires = DateTime.Now.AddDays(1);
-                    this.ControllerContext.HttpContext.Response.SetCookie(_cookie);
+            var result = accountClient.Register(registerModel);
+            if (result.Equals(ReturnState.ReturnOK))
+            {
+                // set cookie
+                _cookie.Value = model.Email;
+                _cookie.Expires = DateTime.Now.AddDays(1);
+                this.ControllerContext.HttpContext.Response.SetCookie(_cookie);
 
-                    return RedirectToAction("Index", "Home");
-                }
-                AddErrors(IdentityResult.Failed(@"邮箱已注册!"));
+                return Json(success);
             }
 
             // 如果我们进行到这一步时某个地方出错，则重新显示表单
-            return View(model);
+            return Json(fail);
         }
 
-
-        public ActionResult UserInfo(string email)
+        private UserInfoViewModel ToUserInfoViewModel(AccountService.UserInfoView user)
         {
-            var user = accountClient.GetUserInfo(email);
-            var model = new UserInfoViewModel()
-            {
-                Email = user.Email,
-                Tel = user.Tel,
-                University = user.University,
-                Hobby = user.Hobby,
-                Nick = user.Nick,
-                Sex = user.Sex,
-                UserName = user.UserName
-            };
-            return View(model);
-        }
-
-        public ActionResult Edit(string email)
-        {
-            var user = accountClient.GetUserInfo(email);
             var model = new UserInfoViewModel();
             model.Email = user.Email;
             model.Tel = user.Tel;
@@ -223,6 +206,20 @@ namespace MVCViews.Controllers
             model.Sex = user.Sex;
             model.UserName = user.UserName;
             model.Avatar = user.Avatar;
+            return model;
+        }
+
+        public ActionResult UserInfo(string email)
+        {
+            var user = accountClient.GetUserInfo(email);
+            var model = ToUserInfoViewModel(user);
+            return View(model);
+        }
+
+        public ActionResult Edit(string email)
+        {
+            var user = accountClient.GetUserInfo(email);
+            var model = ToUserInfoViewModel(user);
             return View(model);
         }
 
