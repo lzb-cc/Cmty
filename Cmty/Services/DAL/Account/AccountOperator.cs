@@ -144,5 +144,77 @@ namespace Services.DAL.Account
 
             return result;
         }
+
+        public static bool AddEmailToCheckSet(string email)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("insert into EmailCheckSets values(N'{0}', {1}, {2})", email, new Random().Next(), 0);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+            return result;
+        }
+
+        public static int GetEmailToken(string email)
+        {
+            var result = 0;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select  Token from EmailCheckSets where Email = N'{0}'", email);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var status = cmd.ExecuteScalar();
+                    if (status != null)
+                    {
+                        result = Convert.ToInt32(status);
+                    }
+                    conn.Close();
+                }
+            }
+            return result;
+        }
+
+        public static bool IsEmailValid(string email)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select  CheckStatus from EmailCheckSets where Email = N'{0}'", email);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var status = cmd.ExecuteScalar();
+                    if (status != null)
+                    {
+                        result = Convert.ToBoolean(status);
+                    }
+                    conn.Close();
+                }
+            }
+            return result;
+        }
+
+        public static bool SetEmailStatus(string email, int token)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("update EmailCheckSets set CheckStatus = 1 where Email = N'{0}' and Token = {1}", email, token);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+            return result;
+        }
     }
 }

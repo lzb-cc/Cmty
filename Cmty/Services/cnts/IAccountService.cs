@@ -31,6 +31,12 @@ namespace Services
 
         [OperationContract]
         bool HasMember(string email);
+
+        [OperationContract]
+        bool IsEmailValid(string email);
+
+        [OperationContract]
+        bool SetEamilStatus(string email, int token);
     }
 
     [DataContract]

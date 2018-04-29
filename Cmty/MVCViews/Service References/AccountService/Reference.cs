@@ -379,6 +379,18 @@ namespace MVCViews.AccountService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/HasMember", ReplyAction="http://tempuri.org/IAccountService/HasMemberResponse")]
         System.Threading.Tasks.Task<bool> HasMemberAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/IsEmailValid", ReplyAction="http://tempuri.org/IAccountService/IsEmailValidResponse")]
+        bool IsEmailValid(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/IsEmailValid", ReplyAction="http://tempuri.org/IAccountService/IsEmailValidResponse")]
+        System.Threading.Tasks.Task<bool> IsEmailValidAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/SetEamilStatus", ReplyAction="http://tempuri.org/IAccountService/SetEamilStatusResponse")]
+        bool SetEamilStatus(string email, int token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/SetEamilStatus", ReplyAction="http://tempuri.org/IAccountService/SetEamilStatusResponse")]
+        System.Threading.Tasks.Task<bool> SetEamilStatusAsync(string email, int token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -454,6 +466,22 @@ namespace MVCViews.AccountService {
         
         public System.Threading.Tasks.Task<bool> HasMemberAsync(string email) {
             return base.Channel.HasMemberAsync(email);
+        }
+        
+        public bool IsEmailValid(string email) {
+            return base.Channel.IsEmailValid(email);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsEmailValidAsync(string email) {
+            return base.Channel.IsEmailValidAsync(email);
+        }
+        
+        public bool SetEamilStatus(string email, int token) {
+            return base.Channel.SetEamilStatus(email, token);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SetEamilStatusAsync(string email, int token) {
+            return base.Channel.SetEamilStatusAsync(email, token);
         }
     }
 }

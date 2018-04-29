@@ -30,7 +30,7 @@ namespace Admin.Controllers
             var client = new SmtpClient();
             client.Host = "smtp.163.com";
             client.UseDefaultCredentials = false;
-            client.Credentials = new System.Net.NetworkCredential(userName, password);
+            client.Credentials = new NetworkCredential(userName, password);
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             MailMessage message = new MailMessage(userName, sendTo);
             message.Subject = subject;

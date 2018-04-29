@@ -134,6 +134,15 @@ namespace MVCViews.Controllers
             return Json(success);
         }
 
+        public ActionResult EmailPass(string email, int token)
+        {
+           if(accountClient.SetEamilStatus(email, token))
+            {
+                return RedirectToAction("UserInfo", new { email = email });
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
         //
         // GET: /Account/Register
         [AllowAnonymous]

@@ -1,22 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
 using Services.DAL.Account;
-using Services.DAL;
+using System.Net;
+using System.IO;
+using System.Threading;
 
 namespace Services
 {
     public class AccountService : IAccountService
     {
+        private void SendEmailForRegister(object objEmail)
+        {
+            var email = objEmail as string;
+            var token = AccountOperator.GetEmailToken(email);
+            var checkLink = string.Format("http://localhost:14371/Account/EmailPass?email={0}&&token={1}", email, token);
+            var url = string.Format("http://localhost:8088/Other/SendEmail?sendTo={0}&&subject=请用户注册邮箱验证&content=感谢您好的加入，请点击链接{1}进行验证！", email, checkLink);
+            Convert.ToInt32(new StreamReader(((HttpWebRequest)WebRequest.Create(url)).GetResponse().GetResponseStream()).ReadToEnd());
+        }
+
         public CommonLib.ReturnState Register(RegisterView model)
         {
+            var result = CommonLib.ReturnState.ReturnOK;
             if (AccountOperator.HasMember(model.Email))
-                return CommonLib.ReturnState.ReturnError;
-            return AccountOperator.Register(model);
+                result =  CommonLib.ReturnState.ReturnError;
+            result = AccountOperator.Register(model);
+            result = AccountOperator.AddEmailToCheckSet(model.Email) ? CommonLib.ReturnState.ReturnOK : CommonLib.ReturnState.ReturnError;
+            if(result.Equals(CommonLib.ReturnState.ReturnOK))
+            {
+                var thread = new Thread(new ParameterizedThreadStart(this.SendEmailForRegister));
+                thread.Start(model.Email);
+            }
+
+            return result;
         }
 
         public CommonLib.ReturnState Login(LoginView model)
@@ -44,6 +58,16 @@ namespace Services
         public bool HasMember(string email)
         {
             return AccountOperator.HasMember(email);
+        }
+
+        public bool IsEmailValid(string email)
+        {
+            return AccountOperator.IsEmailValid(email);
+        }
+
+        public bool SetEamilStatus(string email, int token)
+        {
+            return AccountOperator.SetEmailStatus(email, token);
         }
     }
 }

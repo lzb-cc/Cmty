@@ -118,6 +118,14 @@ create table ExtraUserInfo
 	constraint fk_email_eui foreign key (Email) references UserSets (Email)
 );
 
+create table EmailCheckSets
+(
+	Email       nvarchar(20),
+	Token       int,
+	CheckStatus int,
+	primary key (Email)
+);
+
 if OBJECT_ID('AdminUsers') is not null drop table AdminUsers;
 create table AdminUsers
 (
