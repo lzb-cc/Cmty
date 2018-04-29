@@ -23,9 +23,10 @@ namespace Admin.Controllers
             return View();
         }
 
-        [HttpPost]
-        public JsonResult SendEmail(string sendTo, string subject, string content)
+        [HttpGet]
+        public int SendEmail(string sendTo, string subject, string content)
         {
+            var result = 0;
             var client = new SmtpClient();
             client.Host = "smtp.163.com";
             client.UseDefaultCredentials = false;
@@ -45,10 +46,10 @@ namespace Admin.Controllers
             }
             catch (Exception)
             {
-                return Json(new { Status = 1 });
+                result = 1;
             }
 
-            return Json(new { Status = 0 });
+            return result;
         }
 
         [HttpPost]
