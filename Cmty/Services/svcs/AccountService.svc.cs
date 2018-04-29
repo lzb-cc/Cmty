@@ -8,13 +8,17 @@ namespace Services
 {
     public class AccountService : IAccountService
     {
+        private static AdminService.AdminServices adminClient = new AdminService.AdminServices();
+        private static AdminServiceTest.AdminServicesClient adminTestClient = new AdminServiceTest.AdminServicesClient();
+
         private void SendEmailForRegister(object objEmail)
         {
             var email = objEmail as string;
             var token = AccountOperator.GetEmailToken(email);
             var checkLink = string.Format("http://localhost:14371/Account/EmailPass?email={0}&&token={1}", email, token);
-            var url = string.Format("http://localhost:8088/Other/SendEmail?sendTo={0}&&subject=请用户注册邮箱验证&content=感谢您好的加入，请点击链接{1}进行验证！", email, checkLink);
-            Convert.ToInt32(new StreamReader(((HttpWebRequest)WebRequest.Create(url)).GetResponse().GetResponseStream()).ReadToEnd());
+            var subject = "Thanks for join.";
+            var content = string.Format("Thank you for join us, please <a href = '{0}'>click me</a> to finish the validation.", checkLink);
+            adminClient.SendEamil(email, subject, content);
         }
 
         public CommonLib.ReturnState Register(RegisterView model)

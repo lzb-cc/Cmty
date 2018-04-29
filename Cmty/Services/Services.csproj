@@ -89,6 +89,13 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\AdminServiceTest\AdminServices.disco" />
+    <None Include="Service References\AdminServiceTest\configuration91.svcinfo" />
+    <None Include="Service References\AdminServiceTest\configuration.svcinfo" />
+    <None Include="Service References\AdminServiceTest\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="svcs\AccountService.svc" />
     <Content Include="svcs\CourseCommentService.svc" />
     <Content Include="svcs\CourseService.svc" />
@@ -96,6 +103,18 @@
     <Content Include="svcs\MarketService.svc" />
     <Content Include="svcs\TeacherService.svc" />
     <Content Include="svcs\UtilityService.svc" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\AdminServiceTest\AdminServices.wsdl" />
+    <None Include="Service References\AdminServiceTest\AdminServices.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminServiceTest\AdminServices1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\AdminService\AdminServices.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +131,16 @@
     <Compile Include="DAL\Market\MarketOperator.cs" />
     <Compile Include="DAL\Teacher\TeacherOperator.cs" />
     <Compile Include="DAL\UtilityOperator.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\AdminServiceTest\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="svcs\AccountService.svc.cs">
       <DependentUpon>AccountService.svc</DependentUpon>
     </Compile>
@@ -135,6 +164,11 @@
     <Compile Include="svcs\UtilityService.svc.cs">
       <DependentUpon>UtilityService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Web References\AdminService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -145,6 +179,17 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\PublishProfiles\CmtyServices.pubxml" />
+    <None Include="Web References\AdminService\AdminServices.wsdl" />
+    <None Include="Web References\AdminService\AdminServices.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\AdminService\AdminServices0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Web References\AdminService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -157,6 +202,28 @@
       <Project>{0e27f111-06cd-48a2-b02a-a264db29f7a4}</Project>
       <Name>CommonLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:8080/Svcs/AdminServices.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\AdminService\</RelPath>
+      <UpdateFromURL>http://localhost:8080/Svcs/AdminServices.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Services_AdminService_AdminServices</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AdminServiceTest\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
