@@ -214,32 +214,30 @@ namespace MVCViews.Controllers
         public ActionResult Edit(string email)
         {
             var user = accountClient.GetUserInfo(email);
-            var model = new UserInfoViewModel()
-            {
-                Email = user.Email,
-                Tel = user.Tel,
-                University = user.University,
-                Hobby = user.Hobby,
-                Nick = user.Nick,
-                Sex = user.Sex,
-                UserName = user.UserName
-            };
+            var model = new UserInfoViewModel();
+            model.Email = user.Email;
+            model.Tel = user.Tel;
+            model.University = user.University;
+            model.Hobby = user.Hobby;
+            model.Nick = user.Nick;
+            model.Sex = user.Sex;
+            model.UserName = user.UserName;
+            model.Avatar = user.Avatar;
             return View(model);
         }
 
         [HttpPost]
         public ActionResult Edit(UserInfoViewModel model)
         {
-            var user = new AccountService.UserInfoView()
-            {
-                Email = model.Email,
-                Tel = model.Tel,
-                University = model.University,
-                Hobby = model.Hobby,
-                Nick = model.Nick,
-                Sex = model.Sex,
-                UserName = model.UserName
-            };
+            var user = new AccountService.UserInfoView();
+            user.Email = model.Email;
+            user.Tel = model.Tel;
+            user.University = model.University;
+            user.Hobby = model.Hobby;
+            user.Nick = model.Nick;
+            user.Sex = model.Sex;
+            user.UserName = model.UserName;
+            user.Avatar = model.Avatar;
             accountClient.UpdateUserInfo(user);
             return RedirectToAction("UserInfo", "Account", routeValues: new { email = model.Email });
         }

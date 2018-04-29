@@ -113,7 +113,7 @@ create table ExtraUserInfo
 	Sex			nvarchar(10),
 	Nick		nvarchar(20),
 	Hobby		nvarchar(30),
-	Avatar      nvarchar(40),
+	Avatar      nvarchar(120),
 	primary key (Email),
 	constraint fk_email_eui foreign key (Email) references UserSets (Email)
 );
