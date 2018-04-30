@@ -322,6 +322,8 @@ insert into cfg_SaleStatus values(N'等待收货')
 insert into cfg_SaleStatus values(N'销售完成')
 insert into cfg_SaleStatus values(N'售后/退货')
 insert into cfg_SaleStatus values(N'退货完成')
+insert into cfg_SaleStatus values(N'下架')
+insert into cfg_SaleStatus values(N'删除记录')
 
 --cfg_GooldsType--
 insert into cfg_GoodsType values(N'其他')
@@ -346,6 +348,7 @@ insert into cfg_PostType values(N'博客专区')
 
 
 go
+
 
 use master;
 

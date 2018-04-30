@@ -13,21 +13,10 @@ namespace MVCViews.Controllers
         // GET: Market
         public ActionResult Index()
         {
-            var buyer = string.Empty;
-            if (Authority())
-            {
-                buyer = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value;
-            }
-
             var list = new List<GoodsInfoView>();
             var retList = marketClient.GetGoodsInfoByStatus(@"销售中");
             foreach (var item in retList)
             {
-                if (item.Seller.Equals(buyer))
-                {
-                    continue;
-                }
-
                 list.Add(new GoodsInfoView(item));
             }
 
@@ -47,6 +36,11 @@ namespace MVCViews.Controllers
             var list = new List<GoodsInfoView>();
             foreach (var item in retList)
             {
+                if (item.Status.Equals("删除记录"))
+                {
+                    continue;
+                }
+
                 list.Add(new GoodsInfoView(item));
             }
 
@@ -107,6 +101,12 @@ namespace MVCViews.Controllers
                 Status = @"待审核",
                 Type = model.Type
             };
+            
+            if(string.IsNullOrEmpty(good.PicUrl))
+            {
+                good.PicUrl = "00.jpg"; //default.
+            }
+
             marketClient.UserAddGoods(good);
 
             // ret
@@ -135,10 +135,6 @@ namespace MVCViews.Controllers
 
             var email = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value;
             var goods = marketClient.GetGoodsInfoById(id);
-            if (email.Equals(goods.Seller))
-            {
-                return RedirectToAction("Index");
-            }
 
             return View(new GoodsInfoView(goods));
         }
@@ -160,6 +156,13 @@ namespace MVCViews.Controllers
             }
 
             var buyer = Request.Cookies.Get(DefaultAuthenticationTypes.ApplicationCookie).Value;
+            if (marketClient.GetGoodsInfoById(id).Seller.Equals(buyer))
+            {
+                ret.Status = 2;
+                ret.Msg = @"不能购买自己的商品！";
+                return Json(ret);
+            }
+
             marketClient.SetGoodsInfoSaleStatusAndBuyerById(id, @"等待收货", buyer);
 
             return Json(ret);
@@ -181,7 +184,7 @@ namespace MVCViews.Controllers
                 return Json(ret);
             }
 
-            marketClient.RemoveGoodsInfo(id);
+            marketClient.SetGoodsInfoStatusById(id, @"删除记录");
             return Json(ret);
         }
 
@@ -201,7 +204,7 @@ namespace MVCViews.Controllers
                 return Json(ret);
             }
 
-            marketClient.RemoveGoodsInfo(id);
+            marketClient.SetGoodsInfoStatusById(id, @"下架");
             return Json(ret);
         }
 

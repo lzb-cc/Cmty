@@ -75,7 +75,7 @@
         {
             <tr>
                 <td>#@msg.Floor</td>
-                <td>@msg.Email</td>
+                <td>@msg.Email @if (msg.Email.Equals(Model.Seller)) { <font color="lightpink">卖家</font> }</td>
                 <td>@msg.PubDate</td>
                 <td>@msg.Content</td>
                 @if(msg.Email.Equals(Request.Cookies.Get("ApplicationCookie")?.Value))
