@@ -16,7 +16,7 @@ namespace Services
             var email = objEmail as string;
             var token = AccountOperator.GetEmailToken(email);
             var checkLink = string.Format("http://localhost:14371/Account/EmailPass?email={0}&&token={1}", email, token);
-            var subject = "Thanks for join.";
+            var subject = "Thanks for joining.";
             var content = string.Format("Thank you for join us, please <a href = '{0}'>click me</a> to finish the validation.", checkLink);
             adminClient.SendEamil(email, subject, content);
         }
@@ -30,8 +30,7 @@ namespace Services
             result = AccountOperator.AddEmailToCheckSet(model.Email) ? CommonLib.ReturnState.ReturnOK : CommonLib.ReturnState.ReturnError;
             if(result.Equals(CommonLib.ReturnState.ReturnOK))
             {
-                var thread = new Thread(new ParameterizedThreadStart(this.SendEmailForRegister));
-                thread.Start(model.Email);
+                SendEmailForRegister(model.Email);
             }
 
             return result;

@@ -17,7 +17,7 @@ namespace Admin.Svcs
         public void SendEamil(string sendTo, string subject, string content)
         {
             var client = new SmtpClient();
-            client.Host = "smtp.163.com";
+            client.Host = "smtp.tom.com";
             client.UseDefaultCredentials = false;
             client.Credentials = new NetworkCredential(userName, password);
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
@@ -29,12 +29,15 @@ namespace Admin.Svcs
             message.IsBodyHtml = true;
             message.Priority = MailPriority.High;
             message.IsBodyHtml = true;
+            
             try
             {
                 client.Send(message);
             }
-            catch (Exception)
+            //catch (Exception) { }
+            finally
             {
+                client.Dispose();
             }
         }
     }

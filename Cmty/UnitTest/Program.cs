@@ -63,11 +63,11 @@ namespace UnitTest
         public static void SendMail()
         {
             var client = new SmtpClient();
-            client.Host = "smtp.163.com";
+            client.Host = "smtp.tom.com";
             client.UseDefaultCredentials = false;
-            client.Credentials = new System.Net.NetworkCredential("15926040905@163.com", "@liuzhibin950211");
+            client.Credentials = new System.Net.NetworkCredential("liuzhibin@tom.com", "@qq5201314");
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            MailMessage message = new MailMessage("15926040905@163.com", "937907891@qq.com");
+            MailMessage message = new MailMessage("liuzhibin@tom.com", "937907891@qq.com");
             message.Subject = "确认注册";
             message.Body = "感谢您好的加入，请<a href='http://localhost:14371/Account/EmailPass?email=937907891@qq.com&&token=1981489905'>点击链接</a>进行验证！";
             message.SubjectEncoding = Encoding.UTF8;
@@ -89,7 +89,7 @@ namespace UnitTest
 
         static void Main(string[] args)
         {
-            WebRequestTest();
+            SendMail();
         }
     }
 }
