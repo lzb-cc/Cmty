@@ -6,6 +6,7 @@
       <xsd:import schemaLocation="http://localhost:7774/svcs/ForumService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:7774/svcs/ForumService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Services.cnts" />
       <xsd:import schemaLocation="http://localhost:7774/svcs/ForumService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/CommonLib" />
+      <xsd:import schemaLocation="http://localhost:7774/svcs/ForumService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IForumService_AddPost_InputMessage">
@@ -86,6 +87,12 @@
   <wsdl:message name="IForumService_DelResponseToPostReplyById_OutputMessage">
     <wsdl:part name="parameters" element="tns:DelResponseToPostReplyByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IForumService_GetPostTypeList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostTypeList" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostTypeList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostTypeListResponse" />
+  </wsdl:message>
   <wsdl:portType name="IForumService">
     <wsdl:operation name="AddPost">
       <wsdl:input wsaw:Action="http://tempuri.org/IForumService/AddPost" message="tns:IForumService_AddPost_InputMessage" />
@@ -138,6 +145,10 @@
     <wsdl:operation name="DelResponseToPostReplyById">
       <wsdl:input wsaw:Action="http://tempuri.org/IForumService/DelResponseToPostReplyById" message="tns:IForumService_DelResponseToPostReplyById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IForumService/DelResponseToPostReplyByIdResponse" message="tns:IForumService_DelResponseToPostReplyById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostTypeList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/GetPostTypeList" message="tns:IForumService_GetPostTypeList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/GetPostTypeListResponse" message="tns:IForumService_GetPostTypeList_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IForumService" type="tns:IForumService">
@@ -252,6 +263,15 @@
     </wsdl:operation>
     <wsdl:operation name="DelResponseToPostReplyById">
       <soap:operation soapAction="http://tempuri.org/IForumService/DelResponseToPostReplyById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostTypeList">
+      <soap:operation soapAction="http://tempuri.org/IForumService/GetPostTypeList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

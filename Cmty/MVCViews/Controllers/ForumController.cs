@@ -31,6 +31,14 @@ namespace MVCViews.Controllers
                 return _authorityResult;
             }
 
+            var postTypeList = forumClient.GetPostTypeList();
+            var postList = new List<SelectListItem>();
+            foreach (var item in postTypeList)
+            {
+                postList.Add(new SelectListItem() { Text = item });
+            }
+
+            ViewData["PostType"] = postList;
             return View();
         }
 
@@ -117,7 +125,7 @@ namespace MVCViews.Controllers
             {
                 Id = model.Id,
                 Content = model.Content,
-                NoComments =Convert.ToInt32(model.NoComments),
+                NoComments = Convert.ToInt32(model.NoComments),
                 PostType = model.PostType,
                 Title = model.Title
             };
@@ -157,7 +165,7 @@ namespace MVCViews.Controllers
                 return Json(ret);
             }
 
-            if(forumClient.GetPostById(postId).NoComments > 0)
+            if (forumClient.GetPostById(postId).NoComments > 0)
             {
                 ret.Status = 2;
                 ret.Message = "跟帖失败,贴住禁止回帖!";

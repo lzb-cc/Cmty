@@ -295,6 +295,25 @@ namespace Services.DAL.Forum
             return model;
         }
 
+        public static List<string> QueryPostTypeList()
+        {
+            var result = new List<string>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select Desp from cfg_PostType");
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(Convert.ToString(reader.GetValue(0)));
+                    }
+                }
+            }
+            return result;
+        }
+
         public static bool AddResponseToPostReply(PostReplyModel model)
         {
             var result = false;

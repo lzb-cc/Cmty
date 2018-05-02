@@ -49,6 +49,9 @@ namespace Services.cnts
 
         [OperationContract]
         CommonLib.ReturnState DelResponseToPostReplyById(int id);
+
+        [OperationContract]
+        List<string> GetPostTypeList();
     }
 
     [DataContract]

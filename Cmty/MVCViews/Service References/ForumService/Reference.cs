@@ -344,6 +344,12 @@ namespace MVCViews.ForumService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/DelResponseToPostReplyById", ReplyAction="http://tempuri.org/IForumService/DelResponseToPostReplyByIdResponse")]
         System.Threading.Tasks.Task<CommonLib.ReturnState> DelResponseToPostReplyByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/GetPostTypeList", ReplyAction="http://tempuri.org/IForumService/GetPostTypeListResponse")]
+        string[] GetPostTypeList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumService/GetPostTypeList", ReplyAction="http://tempuri.org/IForumService/GetPostTypeListResponse")]
+        System.Threading.Tasks.Task<string[]> GetPostTypeListAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -475,6 +481,14 @@ namespace MVCViews.ForumService {
         
         public System.Threading.Tasks.Task<CommonLib.ReturnState> DelResponseToPostReplyByIdAsync(int id) {
             return base.Channel.DelResponseToPostReplyByIdAsync(id);
+        }
+        
+        public string[] GetPostTypeList() {
+            return base.Channel.GetPostTypeList();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetPostTypeListAsync() {
+            return base.Channel.GetPostTypeListAsync();
         }
     }
 }

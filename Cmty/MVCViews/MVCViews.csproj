@@ -349,6 +349,9 @@
     <Content Include="Service References\ForumService\MVCViews.ForumService.PostReplyModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\ForumService\ForumService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MarketService\MarketService.disco" />
     <None Include="Service References\MarketService\configuration91.svcinfo" />
     <None Include="Service References\MarketService\configuration.svcinfo" />

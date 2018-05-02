@@ -27,6 +27,7 @@
     <MetadataFile FileName="ForumService2.xsd" MetadataType="Schema" ID="3842d09c-27aa-4150-9063-58d47913f5ee" SourceId="1" SourceUrl="http://localhost:7774/svcs/ForumService.svc?xsd=xsd2" />
     <MetadataFile FileName="ForumService.wsdl" MetadataType="Wsdl" ID="02e50187-7430-4b60-aad2-2f0a89a67525" SourceId="1" SourceUrl="http://localhost:7774/svcs/ForumService.svc?wsdl" />
     <MetadataFile FileName="ForumService.disco" MetadataType="Disco" ID="9e2d0a90-224d-4838-9616-c10b891c9343" SourceId="1" SourceUrl="http://localhost:7774/svcs/ForumService.svc?disco" />
+    <MetadataFile FileName="ForumService4.xsd" MetadataType="Schema" ID="0f8680f9-cbe1-4420-a3c2-b1f1eb51e06e" SourceId="1" SourceUrl="http://localhost:7774/svcs/ForumService.svc?xsd=xsd4" />
     <MetadataFile FileName="ForumService3.xsd" MetadataType="Schema" ID="8beda9ab-23f8-4dd8-b658-d996a5e7035b" SourceId="1" SourceUrl="http://localhost:7774/svcs/ForumService.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>

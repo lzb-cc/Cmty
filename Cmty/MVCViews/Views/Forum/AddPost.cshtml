@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PostType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PostType, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.PostType, ViewData["PostType"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.PostType, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Content,new { @class = "form-control", @placeholder="输入内容..." })
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
             </div>
         </div>

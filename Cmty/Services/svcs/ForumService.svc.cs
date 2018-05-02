@@ -69,6 +69,11 @@ namespace Services.svcs
             return ForumOperator.QueryPostReplyListByPostId(id);
         }
 
+        public List<string> GetPostTypeList()
+        {
+            return ForumOperator.QueryPostTypeList();
+        }
+
         public List<PostReplyModel> GetReplyResponseListByPostId(int id)
         {
             return ForumOperator.QueryReplyResponseListByPostId(id);
