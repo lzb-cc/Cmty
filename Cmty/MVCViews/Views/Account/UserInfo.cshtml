@@ -24,7 +24,17 @@
 <div class="div-inline">
     <div>姓名： @Model.UserName</div>
     <div>院校： @Model.University</div>
-    <div>邮箱： @Model.Email</div>
+    <div>邮箱： @Model.Email
+        @if ((int)ViewData["EmailStatus"] > 0)
+        {
+            <font color="green">√</font>
+        }
+        else
+        {
+            <font color="red">×</font>
+            <input type="button" value="验证" class="btn btn-success" onclick="ReValidEmail('@Model.Email')" />
+        }
+    </div>
     <div>昵称： @Model.Nick</div>
     <div>电话： @Model.Tel</div>
     <div>性别： @Model.Sex</div>
@@ -77,5 +87,18 @@
 <script>
     function Redirect(url) {
         window.location.href = url;
+    }
+
+    function ReValidEmail(email) {
+        var params = { email: email, }
+
+        $.ajax({
+            url: "/Account/ReValidEmail",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function (json) {
+            alert("请转到邮箱验证!");
+        })
     }
 </script>

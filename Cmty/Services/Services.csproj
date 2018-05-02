@@ -210,6 +210,9 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AdminServiceTest\" />
+  </ItemGroup>
+  <ItemGroup>
     <WebReferenceUrl Include="http://localhost:8080/Svcs/AdminServices.svc">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\AdminService\</RelPath>
@@ -221,9 +224,6 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Services_AdminService_AdminServices</CachedSettingsPropName>
     </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\AdminServiceTest\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

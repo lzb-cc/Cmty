@@ -391,6 +391,18 @@ namespace MVCViews.AccountService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/SetEamilStatus", ReplyAction="http://tempuri.org/IAccountService/SetEamilStatusResponse")]
         System.Threading.Tasks.Task<bool> SetEamilStatusAsync(string email, int token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/GetEmailCheckStatus", ReplyAction="http://tempuri.org/IAccountService/GetEmailCheckStatusResponse")]
+        int GetEmailCheckStatus(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/GetEmailCheckStatus", ReplyAction="http://tempuri.org/IAccountService/GetEmailCheckStatusResponse")]
+        System.Threading.Tasks.Task<int> GetEmailCheckStatusAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/ReValidEmail", ReplyAction="http://tempuri.org/IAccountService/ReValidEmailResponse")]
+        void ReValidEmail(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/ReValidEmail", ReplyAction="http://tempuri.org/IAccountService/ReValidEmailResponse")]
+        System.Threading.Tasks.Task ReValidEmailAsync(string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -482,6 +494,22 @@ namespace MVCViews.AccountService {
         
         public System.Threading.Tasks.Task<bool> SetEamilStatusAsync(string email, int token) {
             return base.Channel.SetEamilStatusAsync(email, token);
+        }
+        
+        public int GetEmailCheckStatus(string email) {
+            return base.Channel.GetEmailCheckStatus(email);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetEmailCheckStatusAsync(string email) {
+            return base.Channel.GetEmailCheckStatusAsync(email);
+        }
+        
+        public void ReValidEmail(string email) {
+            base.Channel.ReValidEmail(email);
+        }
+        
+        public System.Threading.Tasks.Task ReValidEmailAsync(string email) {
+            return base.Channel.ReValidEmailAsync(email);
         }
     }
 }

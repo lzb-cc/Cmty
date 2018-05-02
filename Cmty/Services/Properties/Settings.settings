@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Services_AdminService_AdminServices" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:8080/Svcs/AdminServices.svc</Value>
+      <Value Profile="(Default)">http://localhost:8080/svcs/AdminServices.svc</Value>
     </Setting>
   </Settings>
 </SettingsFile>

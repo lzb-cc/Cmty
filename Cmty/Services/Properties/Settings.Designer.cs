@@ -26,7 +26,7 @@ namespace Services.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8080/Svcs/AdminServices.svc")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8080/svcs/AdminServices.svc")]
         public string Services_AdminService_AdminServices {
             get {
                 return ((string)(this["Services_AdminService_AdminServices"]));

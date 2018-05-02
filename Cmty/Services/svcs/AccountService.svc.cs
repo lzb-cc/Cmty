@@ -72,5 +72,15 @@ namespace Services
         {
             return AccountOperator.SetEmailStatus(email, token);
         }
+
+        public int GetEmailCheckStatus(string email)
+        {
+            return AccountOperator.GetEmailCheckStatus(email);
+        }
+
+        public void ReValidEmail(string email)
+        {
+            SendEmailForRegister(email);
+        }
     }
 }

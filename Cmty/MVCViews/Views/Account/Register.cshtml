@@ -83,6 +83,11 @@
             University: $("#University").val(),
         }
 
+        if (params.University.length <= 0) {
+            alert("学校不能为空!");
+            return;
+        }
+
         $.ajax({
             url: "/Account/Register",
             type: "post",

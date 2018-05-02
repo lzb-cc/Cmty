@@ -149,6 +149,7 @@ namespace MVCViews.Controllers
         public ActionResult Register()
         {
             var UniversityList = new List<SelectListItem>();
+            UniversityList.Add(new SelectListItem());
             var items = utilityClient.GetUniversityList();
             foreach (var item in items)
             {
@@ -218,10 +219,18 @@ namespace MVCViews.Controllers
             return model;
         }
 
+        [HttpPost]
+        public JsonResult ReValidEmail(string email)
+        {
+            accountClient.ReValidEmail(email);
+            return Json(new { Status = 0 });
+        }
+
         public ActionResult UserInfo(string email)
         {
             var user = accountClient.GetUserInfo(email);
             var model = ToUserInfoViewModel(user);
+            ViewData["EmailStatus"] = accountClient.GetEmailCheckStatus(email);
             return View(model);
         }
 

@@ -37,6 +37,12 @@ namespace Services
 
         [OperationContract]
         bool SetEamilStatus(string email, int token);
+
+        [OperationContract]
+        int GetEmailCheckStatus(string email);
+
+        [OperationContract]
+        void ReValidEmail(string email);
     }
 
     [DataContract]

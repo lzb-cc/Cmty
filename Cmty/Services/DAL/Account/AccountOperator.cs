@@ -216,5 +216,23 @@ namespace Services.DAL.Account
             }
             return result;
         }
+
+        public static int GetEmailCheckStatus(string email)
+        {
+            var result = 0;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select CheckStatus from EmailCheckSets where Email = N'{0}'", email);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var val = cmd.ExecuteScalar();
+                    result = Convert.ToInt32(val == null ? 0 : val);
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
     }
 }
