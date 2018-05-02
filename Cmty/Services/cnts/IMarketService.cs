@@ -61,6 +61,9 @@ namespace Services.cnts
 
         [OperationContract]
         List<LeaveMsgModel> GetLeaveMsgListByGid(int gid);
+
+        [OperationContract]
+        List<string> GetGoodsInfoTypeList();
     }
 
     [DataContract]

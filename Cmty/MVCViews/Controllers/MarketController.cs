@@ -76,6 +76,14 @@ namespace MVCViews.Controllers
                 return _authorityResult;
             }
 
+            var goodsTypeList = marketClient.GetGoodsInfoTypeList();
+            var goodsItemList = new List<SelectListItem>();
+            foreach(var item in goodsTypeList)
+            {
+                goodsItemList.Add(new SelectListItem() { Text = item });
+            }
+
+            ViewData["GoodsItemList"] = goodsItemList;
             return View();
         }
 

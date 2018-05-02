@@ -368,6 +368,9 @@
     <Content Include="Service References\MarketService\MVCViews.MarketService.LeaveMsgModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\MarketService\MarketService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MarketService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

@@ -6,6 +6,7 @@
       <xsd:import schemaLocation="http://localhost:7774/svcs/MarketService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:7774/svcs/MarketService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Services.cnts" />
       <xsd:import schemaLocation="http://localhost:7774/svcs/MarketService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/CommonLib" />
+      <xsd:import schemaLocation="http://localhost:7774/svcs/MarketService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IMarketService_UserAddGoods_InputMessage">
@@ -110,6 +111,12 @@
   <wsdl:message name="IMarketService_GetLeaveMsgListByGid_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetLeaveMsgListByGidResponse" />
   </wsdl:message>
+  <wsdl:message name="IMarketService_GetGoodsInfoTypeList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGoodsInfoTypeList" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_GetGoodsInfoTypeList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGoodsInfoTypeListResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMarketService">
     <wsdl:operation name="UserAddGoods">
       <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/UserAddGoods" message="tns:IMarketService_UserAddGoods_InputMessage" />
@@ -178,6 +185,10 @@
     <wsdl:operation name="GetLeaveMsgListByGid">
       <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/GetLeaveMsgListByGid" message="tns:IMarketService_GetLeaveMsgListByGid_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/GetLeaveMsgListByGidResponse" message="tns:IMarketService_GetLeaveMsgListByGid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsInfoTypeList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/GetGoodsInfoTypeList" message="tns:IMarketService_GetGoodsInfoTypeList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/GetGoodsInfoTypeListResponse" message="tns:IMarketService_GetGoodsInfoTypeList_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMarketService" type="tns:IMarketService">
@@ -328,6 +339,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetLeaveMsgListByGid">
       <soap:operation soapAction="http://tempuri.org/IMarketService/GetLeaveMsgListByGid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsInfoTypeList">
+      <soap:operation soapAction="http://tempuri.org/IMarketService/GetGoodsInfoTypeList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

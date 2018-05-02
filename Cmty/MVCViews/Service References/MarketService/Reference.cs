@@ -448,6 +448,12 @@ namespace MVCViews.MarketService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetLeaveMsgListByGid", ReplyAction="http://tempuri.org/IMarketService/GetLeaveMsgListByGidResponse")]
         System.Threading.Tasks.Task<MVCViews.MarketService.LeaveMsgModel[]> GetLeaveMsgListByGidAsync(int gid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetGoodsInfoTypeList", ReplyAction="http://tempuri.org/IMarketService/GetGoodsInfoTypeListResponse")]
+        string[] GetGoodsInfoTypeList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetGoodsInfoTypeList", ReplyAction="http://tempuri.org/IMarketService/GetGoodsInfoTypeListResponse")]
+        System.Threading.Tasks.Task<string[]> GetGoodsInfoTypeListAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -611,6 +617,14 @@ namespace MVCViews.MarketService {
         
         public System.Threading.Tasks.Task<MVCViews.MarketService.LeaveMsgModel[]> GetLeaveMsgListByGidAsync(int gid) {
             return base.Channel.GetLeaveMsgListByGidAsync(gid);
+        }
+        
+        public string[] GetGoodsInfoTypeList() {
+            return base.Channel.GetGoodsInfoTypeList();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetGoodsInfoTypeListAsync() {
+            return base.Channel.GetGoodsInfoTypeListAsync();
         }
     }
 }

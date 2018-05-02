@@ -22,6 +22,7 @@
     <MetadataSource Address="http://localhost:7774/svcs/MarketService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="MarketService4.xsd" MetadataType="Schema" ID="43b31a4f-6fca-4042-8ead-0b6000336225" SourceId="1" SourceUrl="http://localhost:7774/svcs/MarketService.svc?xsd=xsd4" />
     <MetadataFile FileName="MarketService3.xsd" MetadataType="Schema" ID="55607a43-85f9-4808-bf21-1a0849769b0f" SourceId="1" SourceUrl="http://localhost:7774/svcs/MarketService.svc?xsd=xsd3" />
     <MetadataFile FileName="MarketService.xsd" MetadataType="Schema" ID="ca7574fe-c3f0-4d5e-918d-4da1222f804d" SourceId="1" SourceUrl="http://localhost:7774/svcs/MarketService.svc?xsd=xsd2" />
     <MetadataFile FileName="MarketService2.xsd" MetadataType="Schema" ID="c5447be4-d908-4edb-b50b-f6fc9b278550" SourceId="1" SourceUrl="http://localhost:7774/svcs/MarketService.svc?xsd=xsd1" />

@@ -103,7 +103,7 @@ namespace Services.DAL.Market
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                var cmdText = string.Format("update GoodsSets set Comment = N'{1}' where id = {0}",id, content);
+                var cmdText = string.Format("update GoodsSets set Comment = N'{1}' where id = {0}", id, content);
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     result = cmd.ExecuteNonQuery() > 0;
@@ -259,6 +259,25 @@ namespace Services.DAL.Market
             return result;
         }
 
+        public static List<string> GetGoodsInfoTypeList()
+        {
+            var result = new List<string>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select Desp from cfg_GoodsType");
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        result.Add(Convert.ToString(reader.GetValue(0)));
+                    }
+                }
+            }
+            return result;
+        }
+
         public static bool HasMember(GoodsInfo model)
         {
             var result = false;
@@ -406,7 +425,7 @@ namespace Services.DAL.Market
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     var reader = cmd.ExecuteReader();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         result.Add(SqlReaderLeaveMsg(reader));
                     }

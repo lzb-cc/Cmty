@@ -238,6 +238,10 @@ namespace MVCViews.Controllers
         {
             var user = accountClient.GetUserInfo(email);
             var model = ToUserInfoViewModel(user);
+            var sexType = new List<SelectListItem>();
+            sexType.Add(new SelectListItem() { Text = "男" });
+            sexType.Add(new SelectListItem() { Text = "女" });
+            ViewData["SexType"] = sexType;
             return View(model);
         }
 

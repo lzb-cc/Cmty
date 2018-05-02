@@ -6,10 +6,10 @@
 
 <h2>申请上架</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>物品信息</h4>
         <hr />
@@ -32,14 +32,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PicUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PicUrl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PicUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.Desp, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Desp, new { htmlAttributes = new { @class = "form-control" } })
@@ -50,15 +42,25 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Type, ViewData["GoodsItemList"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">商品图片</label>
+            <div class="col-md-10">
+                <img id="avatar" width="100" height="100" />
+                <input id="file" type="file" hidden="hidden" style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;" onchange="GetPath(this)" />
+                @Html.EditorFor(model => model.PicUrl, new { htmlAttributes = new { @hidden = "hidden" } })
+                <input type="button" value="上传图片" class="btn btn-primary" onclick="FileSel()" />
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="提交" class="btn btn-primary" />
-                <input type="button" value="返回上一页" class="btn" onclick="Back()"/>
+                <input type="button" value="返回上一页" class="btn" onclick="Back()" />
             </div>
         </div>
     </div>
@@ -71,5 +73,36 @@
 
     function Back() {
         window.history.back(-1);
+    }
+
+    function FileSel() {
+        $("#file").trigger("click");
+    }
+
+    function GetPath(file) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var img = this.result.split(',')[1];
+            if (img.length <= 0) {
+                return;
+            }
+
+            var params = {
+                base64Data: img,
+            }
+
+            $.ajax({
+                url: "http://localhost:8090/Svcs/UploadFile",
+                type: "POST",
+                dataType: "json",
+                data: params,
+                withCredentials: true,
+            }).done(function (json) {
+                var fileName = json.FileName;
+                document.getElementById("avatar").src = "http://localhost:8090/ImageUrl/" + fileName;
+                $("#PicUrl").val(fileName);
+            })
+        }
+        reader.readAsDataURL(file.files[0])
     }
 </script>

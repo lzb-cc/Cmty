@@ -204,7 +204,7 @@ create table GoodsSets
 	Seller		nvarchar(20),
 	Name		nvarchar(30),
 	Mny 		int,
-	Pic_Url		nvarchar(20),
+	Pic_Url		nvarchar(200),
 	Desp		nvarchar(200),
 	PubDate		datetime,
 	SStatus     int,

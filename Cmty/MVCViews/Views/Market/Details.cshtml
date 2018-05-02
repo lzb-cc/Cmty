@@ -9,64 +9,24 @@
 <div>
     <h4>详细信息</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Seller)
-        </dt>
+    <div class="div-inline">
+        <div class="div-img"><img id="course_pic" src="http://localhost:8090/ImageUrl/@Model.PicUrl" /></div>
+    </div>
+    <div>
+        <div>买家： @Model.Seller</div>
+        <div>名称： @Model.Name</div>
+        <div>价格： ￥ @Model.Money</div>
+        <div>时间： @Model.AddDate</div>
+        <div>描述： @Model.Desp</div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Seller)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Money)
-        </dt>
-
-        <dd>
-            ￥ @Html.DisplayFor(model => model.Money)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PicUrl)
-        </dt>
-
-        <dd>
-            <img src="http://localhost:8090/ImageUrl/@Model.PicUrl" width="80" height="100" />
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Desp)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Desp)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AddDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AddDate)
-        </dd>
-
-        <dd>
-            <input type="button" value="我想要" class="btn btn-danger" onclick="Redirect('/Market/Buy?id=@Model.Id')" />
-            <input type="button" value="返回上一页" class="btn" onclick="Back()"/>
-        </dd>
-
-    </dl>
+        <hr />
+        <input type="button" value="我想要" class="btn btn-danger" onclick="Redirect('/Market/Buy?id=@Model.Id')" />
+        <input type="button" value="返回上一页" class="btn" onclick="Back()" />
+    </div>
 </div>
 
-<hr />
+
+<hr style="clear:both" />
 
 <div>
     <h3>用户留言:</h3>
@@ -75,10 +35,13 @@
         {
             <tr>
                 <td>#@msg.Floor</td>
-                <td>@msg.Email @if (msg.Email.Equals(Model.Seller)) { <font color="lightpink">卖家</font> }</td>
+                <td>
+                    @msg.Email @if (msg.Email.Equals(Model.Seller))
+                { <font color="lightpink">卖家</font> }
+                </td>
                 <td>@msg.PubDate</td>
                 <td>@msg.Content</td>
-                @if(msg.Email.Equals(Request.Cookies.Get("ApplicationCookie")?.Value))
+                @if (msg.Email.Equals(Request.Cookies.Get("ApplicationCookie")?.Value))
                 {
                     <td>
                         <input type="button" value="撤销" class="btn btn-danger" onclick="DropMsg(@msg.Id)" />
@@ -96,6 +59,25 @@
     <label hidden="hidden" id="id">@Model.Id</label>
 </p>
 
+<style>
+    .div-inline {
+        width: 300px;
+        height: 300px;
+        display: inline;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+
+        img #course_pic{
+        width: 100%;
+        height: 100%;
+        max-width: 300px;
+        max-height:300px;
+    }
+</style>
 
 <script>
     function SendMsg() {

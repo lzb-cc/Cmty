@@ -94,5 +94,10 @@ namespace Services.svcs
         {
             return MarketOperator.UpdateGoodsInfoCommentById(id, content) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
+
+        public List<string> GetGoodsInfoTypeList()
+        {
+            return MarketOperator.GetGoodsInfoTypeList();
+        }
     }
 }
