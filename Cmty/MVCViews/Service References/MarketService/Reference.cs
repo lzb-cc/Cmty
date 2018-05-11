@@ -454,6 +454,12 @@ namespace MVCViews.MarketService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetGoodsInfoTypeList", ReplyAction="http://tempuri.org/IMarketService/GetGoodsInfoTypeListResponse")]
         System.Threading.Tasks.Task<string[]> GetGoodsInfoTypeListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetGoodsInfoListByNameAndDesp", ReplyAction="http://tempuri.org/IMarketService/GetGoodsInfoListByNameAndDespResponse")]
+        MVCViews.MarketService.GoodsInfo[] GetGoodsInfoListByNameAndDesp(string filter, string findStr);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMarketService/GetGoodsInfoListByNameAndDesp", ReplyAction="http://tempuri.org/IMarketService/GetGoodsInfoListByNameAndDespResponse")]
+        System.Threading.Tasks.Task<MVCViews.MarketService.GoodsInfo[]> GetGoodsInfoListByNameAndDespAsync(string filter, string findStr);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -625,6 +631,14 @@ namespace MVCViews.MarketService {
         
         public System.Threading.Tasks.Task<string[]> GetGoodsInfoTypeListAsync() {
             return base.Channel.GetGoodsInfoTypeListAsync();
+        }
+        
+        public MVCViews.MarketService.GoodsInfo[] GetGoodsInfoListByNameAndDesp(string filter, string findStr) {
+            return base.Channel.GetGoodsInfoListByNameAndDesp(filter, findStr);
+        }
+        
+        public System.Threading.Tasks.Task<MVCViews.MarketService.GoodsInfo[]> GetGoodsInfoListByNameAndDespAsync(string filter, string findStr) {
+            return base.Channel.GetGoodsInfoListByNameAndDespAsync(filter, findStr);
         }
     }
 }

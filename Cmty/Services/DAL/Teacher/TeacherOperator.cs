@@ -234,5 +234,25 @@ namespace Services.DAL.Teacher
             return result;
         }
 
+        public static List<string> GetTeacherByCourse(string code)
+        {
+            var result = new List<string>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("");
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while(reader.Read())
+                    {
+                        result.Add(Convert.ToString(reader.GetValue(0)));
+                    }
+                    conn.Close();
+                }
+            }
+                return result;
+        }
+
     }
 }

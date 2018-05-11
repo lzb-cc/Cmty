@@ -254,4 +254,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetGoodsInfoListByNameAndDesp">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="filter" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="findStr" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGoodsInfoListByNameAndDespResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Services.cnts" minOccurs="0" name="GetGoodsInfoListByNameAndDespResult" nillable="true" type="q21:ArrayOfGoodsInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

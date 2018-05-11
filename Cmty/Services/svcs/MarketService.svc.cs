@@ -99,5 +99,10 @@ namespace Services.svcs
         {
             return MarketOperator.GetGoodsInfoTypeList();
         }
+
+        public List<GoodsInfo> GetGoodsInfoListByNameAndDesp(string filter, string findStr)
+        {
+            return MarketOperator.QueryGoodsInfoListByNameAndDesp(filter, findStr);
+        }
     }
 }

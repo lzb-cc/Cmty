@@ -51,8 +51,14 @@ namespace MVCViews.Controllers
                 PicUrl = course.PicUrl,
                 University = utilityClient.NameOfUniversity(course.University),
             };
-            
-            
+
+            var teacherList = utilityClient.GetTeacherByCourseId(code);
+            var list = new List<string>();
+            foreach(var item in teacherList)
+            {
+                list.Add(teacherClient.GetTeacherInfo(item).UserName);
+            }
+            ViewBag.Teacher = list;
 
             // 查询评论
             ViewBag.CmtList = new List<CourseCommentViewModel>();

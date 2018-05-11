@@ -23,6 +23,24 @@ namespace MVCViews.Controllers
             return View(list);
         }
 
+        [HttpPost]
+        public ActionResult Index(string filter, string findStr)
+        {
+            var list = new List<GoodsInfoView>();
+            if (string.IsNullOrEmpty(filter))
+            {
+                return View(list);
+            }
+
+            var retList = marketClient.GetGoodsInfoListByNameAndDesp(filter, findStr);
+            foreach(var item in retList)
+            {
+                list.Add(new GoodsInfoView(item));
+            }
+
+            return View(list);
+        }
+
         public ActionResult MyCenter()
         {
             if (!Authority())

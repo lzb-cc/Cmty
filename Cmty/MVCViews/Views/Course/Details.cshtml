@@ -18,7 +18,7 @@
     <div>
         <div>课程名称： @Model.Name</div>
         <div>授课学校： @Model.University</div>
-        <div>授课教师： </div>
+        <div>授课教师： @foreach (var item in ViewBag.Teacher) { <label>@item</label>}</div>
         <div>课程简介： @Model.Desp</div>
 
         <hr />

@@ -64,6 +64,9 @@ namespace Services.cnts
 
         [OperationContract]
         List<string> GetGoodsInfoTypeList();
+
+        [OperationContract]
+        List<GoodsInfo> GetGoodsInfoListByNameAndDesp(string filter, string findStr);
     }
 
     [DataContract]

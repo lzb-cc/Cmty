@@ -117,6 +117,12 @@
   <wsdl:message name="IMarketService_GetGoodsInfoTypeList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetGoodsInfoTypeListResponse" />
   </wsdl:message>
+  <wsdl:message name="IMarketService_GetGoodsInfoListByNameAndDesp_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGoodsInfoListByNameAndDesp" />
+  </wsdl:message>
+  <wsdl:message name="IMarketService_GetGoodsInfoListByNameAndDesp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGoodsInfoListByNameAndDespResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMarketService">
     <wsdl:operation name="UserAddGoods">
       <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/UserAddGoods" message="tns:IMarketService_UserAddGoods_InputMessage" />
@@ -189,6 +195,10 @@
     <wsdl:operation name="GetGoodsInfoTypeList">
       <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/GetGoodsInfoTypeList" message="tns:IMarketService_GetGoodsInfoTypeList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/GetGoodsInfoTypeListResponse" message="tns:IMarketService_GetGoodsInfoTypeList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsInfoListByNameAndDesp">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMarketService/GetGoodsInfoListByNameAndDesp" message="tns:IMarketService_GetGoodsInfoListByNameAndDesp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMarketService/GetGoodsInfoListByNameAndDespResponse" message="tns:IMarketService_GetGoodsInfoListByNameAndDesp_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMarketService" type="tns:IMarketService">
@@ -348,6 +358,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetGoodsInfoTypeList">
       <soap:operation soapAction="http://tempuri.org/IMarketService/GetGoodsInfoTypeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGoodsInfoListByNameAndDesp">
+      <soap:operation soapAction="http://tempuri.org/IMarketService/GetGoodsInfoListByNameAndDesp" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

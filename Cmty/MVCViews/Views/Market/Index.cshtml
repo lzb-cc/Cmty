@@ -8,43 +8,81 @@
 
 <p>
     <input type="button" value="进入我的主页" class="btn btn-success" onclick="Redirect('/Market/MyCenter')" />
+    <select id="filter_edit" class="form-control-myself">
+        <option value="Name">名称</option>
+        <option value="Desp">描述</option>
+    </select>
+    <input placeholder="输入" class="form-control-myself" id="findStr_edit" />
+    <input type="button" id="btn_search" value="查询" class="btn btn-primary" onclick="Search()"/>
 </p>
+
+<hr />
 
 @foreach (var item in Model)
 {
-<div class="div-inline">
-    <div class="div-img"><img src="http://localhost:8090/ImageUrl/@item.PicUrl"/></div>
-    <div>
-        <span>@item.Name</span>
-        <span>@item.Desp</span>
+    <div class="div-inline">
+        <div class="div-img"><img src="http://localhost:8090/ImageUrl/@item.PicUrl" /></div>
+        <div>
+            <span>@item.Name</span>
+            <span>@item.Desp</span>
+        </div>
+        <div>￥ @item.Money</div>
+        <div>
+            <input type="button" value="详细" class="btn btn-success" onclick="Redirect('/Market/Details?id=@item.Id')" />
+            <input type="button" value="我想要" class="btn btn-danger" onclick="Redirect('/Market/Buy?id=@item.Id')" />
+        </div>
     </div>
-    <div>￥ @item.Money</div>
-    <div>
-        <input type="button" value="详细" class="btn btn-success" onclick="Redirect('/Market/Details?id=@item.Id')" />
-        <input type="button" value="我想要" class="btn btn-danger" onclick="Redirect('/Market/Buy?id=@item.Id')" />
-    </div>
-</div>
 }
 
 
 <style>
     .div-inline {
         width: 200px;
-        height:300px;
-        display:inline;
-        float:left;
-        margin-left:20px;
-        margin-top:20px;
+        height: 300px;
+        display: inline;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    .form-control-myself {
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.428571429;
+        color: #555555;
+        vertical-align: middle;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+        transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
     }
 
     img {
-        width:150px;
-        height:200px;
+        width: 150px;
+        height: 200px;
     }
 </style>
 
 <script>
     function Redirect(url) {
         window.location.href = url;
+    }
+
+    function Search() {
+        var args = {
+            filter: $("#filter_edit").val(),
+            findStr: $("#findStr_edit").val(),
+        }
+
+        htmlText = "<form hidden='hidden' method='post' action='/Market/Index'><input id='filter' name='filter'/> <input id='findStr'  name='findStr'/><button type='submit' id='btn_submit' /></form>"
+        $(htmlText).appendTo("body")
+
+        $("#filter").val(args.filter);
+        $("#findStr").val(args.findStr);
+        $("#btn_submit").click();
     }
 </script>

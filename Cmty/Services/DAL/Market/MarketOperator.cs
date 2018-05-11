@@ -154,6 +154,28 @@ namespace Services.DAL.Market
             return result;
         }
 
+        public static List<GoodsInfo> QueryGoodsInfoListByNameAndDesp(string filter, string findStr)
+        {
+            var result = new List<GoodsInfo>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select * from GoodsSets where {0} like N'%{1}%' and SStatus = 4", filter, findStr);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var model = SqlReaderGoodsInfo(reader);
+                        result.Add(model);
+                    }
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
         public static GoodsInfo QueryGoodsInfoById(int id)
         {
             GoodsInfo result = null;
