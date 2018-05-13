@@ -279,6 +279,12 @@ create table PostReplyMsg
 	constraint fk_Reply_prm foreign key (Reply) references PostReply(Id),
 	constraint fk_Email_prm foreign key (Email) references UserSets(Email)
 );
+
+create table FilterStrings
+(
+	Name   nvarchar(20),
+	primary key (Name)
+);
 go
 
 
@@ -345,6 +351,12 @@ insert into cfg_PostType values(N'兴趣爱好')
 insert into cfg_PostType values(N'升学指导')
 insert into cfg_PostType values(N'博客专区')
 
+
+--FilterStrings
+insert into FilterStrings values(N'测试1')
+insert into FilterStrings values(N'测试2')
+insert into FilterStrings values(N'测试3')
+insert into FilterStrings values(N'测试4')
 
 
 go
