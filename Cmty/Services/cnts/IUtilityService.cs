@@ -39,5 +39,14 @@ namespace Services.cnts
 
         [OperationContract]
         List<string> GetUniversityList();
+
+        [OperationContract]
+        List<string> GetFilterLisst();
+
+        [OperationContract]
+        bool AddFilterString(string content);
+
+        [OperationContract]
+        bool RemoveFilterString(string content);
     }
 }

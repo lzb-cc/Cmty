@@ -203,11 +203,86 @@ namespace Services.DAL
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        result.Add(Convert.ToString(reader.GetValue(00)));
+                        result.Add(Convert.ToString(reader.GetValue(0)));
                     }
                     conn.Close();
                 }
             }
+
+            return result;
+        }
+
+        public static List<string> QueryFilterList()
+        {
+            var result = new List<string>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select Name from FilterStrings");
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(Convert.ToString(reader.GetValue(0)));
+                    }
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
+        public static bool InsertFilterString(string content)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("insert into FilterStrings values(N'{0}')", content);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+
+            return result;
+        }
+
+        public static bool DelFilterString(string content)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("delete from FilterStrings where Name = N'{0}'", content);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+
+            return result;
+        }
+
+        public static bool FilterStringExist(string content)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select * from FilterStrings where Name = N'{0}'", content);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteScalar() != null;
+                    conn.Close();
+                }
+            }
+
 
             return result;
         }

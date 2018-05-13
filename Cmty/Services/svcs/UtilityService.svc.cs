@@ -13,6 +13,11 @@ namespace Services.svcs
     // 注意: 为了启动 WCF 测试客户端以测试此服务，请在解决方案资源管理器中选择 UtilityService.svc 或 UtilityService.svc.cs，然后开始调试。
     public class UtilityService : IUtilityService
     {
+        public bool AddFilterString(string content)
+        {
+            return UtilityOperator.InsertFilterString(content);
+        }
+
         public bool AddTeacherCourseMap(string email, string code)
         {
             return UtilityOperator.AddTeacherCourseMap(email, code);
@@ -26,6 +31,11 @@ namespace Services.svcs
         public List<string> GetCourseIdByTeacher(string email)
         {
             return UtilityOperator.GetCourseByTeacher(email);
+        }
+
+        public List<string> GetFilterLisst()
+        {
+            return UtilityOperator.QueryFilterList();
         }
 
         public List<string> GetTeacherByCourseId(string code)
@@ -61,6 +71,11 @@ namespace Services.svcs
         public string NameOfUniversity(int id)
         {
             return UtilityOperator.NameOfUniversity(id);
+        }
+
+        public bool RemoveFilterString(string content)
+        {
+            return UtilityOperator.DelFilterString(content);
         }
     }
 }

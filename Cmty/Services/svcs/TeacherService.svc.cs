@@ -46,6 +46,8 @@ namespace Services.svcs
 
         public ReturnState AddComment(TeacherCommentView model)
         {
+            var filters = new UtilityService().GetFilterLisst();
+            model.Content = Utilities.Filter(model.Content, filters);
             return TeacherOperator.AddCourseComment(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
 

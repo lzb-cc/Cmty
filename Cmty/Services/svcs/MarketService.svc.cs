@@ -72,6 +72,8 @@ namespace Services.svcs
 
         public ReturnState AddLeaveMsg(LeaveMsgModel model)
         {
+            var filters = new UtilityService().GetFilterLisst();
+            model.Content = Utilities.Filter(model.Content, filters);
             return MarketOperator.AddLeaveMsg(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
 
@@ -92,6 +94,8 @@ namespace Services.svcs
 
         public ReturnState AddGoodsCommentById(int id, string content)
         {
+            var filters = new UtilityService().GetFilterLisst();
+            content = Utilities.Filter(content, filters);
             return MarketOperator.UpdateGoodsInfoCommentById(id, content) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
 

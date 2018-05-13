@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using System.Xml;
 using System.Net.Mail;
 using System.Net;
+using System.Text.RegularExpressions;
 
 namespace UnitTest
 {
@@ -87,9 +88,24 @@ namespace UnitTest
             Console.WriteLine(val);
         }
 
+        public static string Filter(string content, List<string> filters)
+        {
+            var result = content;
+            foreach(var filter in filters)
+            {
+                result = Regex.Replace(result, filter, "");
+            }
+
+            return result;
+        }
+
         static void Main(string[] args)
         {
-            SendMail();
+            var content = "SBHelloCNM";
+            var filters = new List<string>();
+            filters.Add("SB");
+            filters.Add("CNM");
+            Console.WriteLine(Filter(content, filters));
         }
     }
 }

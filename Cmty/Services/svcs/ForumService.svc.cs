@@ -16,16 +16,22 @@ namespace Services.svcs
     {
         public ReturnState AddPost(PostModel model)
         {
+            var filters = new UtilityService().GetFilterLisst();
+            model.Content = Utilities.Filter(model.Content, filters);
             return ForumOperator.AddPost(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
 
         public ReturnState AddResponseToPost(PostReplyModel model)
         {
+            var filters = new UtilityService().GetFilterLisst();
+            model.Content = Utilities.Filter(model.Content, filters);
             return ForumOperator.AddResponseToPost(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
 
         public ReturnState AddResponseToPostReply(PostReplyModel model)
         {
+            var filters = new UtilityService().GetFilterLisst();
+            model.Content = Utilities.Filter(model.Content, filters);
             return ForumOperator.AddResponseToPostReply(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
 
@@ -81,6 +87,8 @@ namespace Services.svcs
 
         public ReturnState UpdatePost(PostModel model)
         {
+            var filters = new UtilityService().GetFilterLisst();
+            model.Content = Utilities.Filter(model.Content, filters);
             return ForumOperator.UpdatePost(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
     }
