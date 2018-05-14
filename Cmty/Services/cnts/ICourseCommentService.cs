@@ -30,7 +30,7 @@ namespace Services.cnts
     [DataContract]
     public class CourseCommentView
     {
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int Id { get; set; }
 
         [DataMember]
@@ -39,13 +39,13 @@ namespace Services.cnts
         [DataMember]
         public string Email { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public DateTime PubDate { get; set; }
 
         [DataMember]
         public string Content { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int Floor { get; set; }
     }
 }

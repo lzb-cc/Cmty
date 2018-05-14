@@ -1,0 +1,81 @@
+﻿@model IEnumerable<MVCViews.Models.TeacherViewModels>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>任课教师列表</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.University)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegistDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Desp)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.University)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegistDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobTitle)
+        </td>
+        <td>
+           <div class="overflow">@item.Desp</div>
+        </td>
+        <td>
+            <input type="button" class="btn btn-success" value="详细" onclick="Details('@item.Email')" />
+        </td>
+    </tr>
+}
+
+</table>
+
+<style>
+    .overflow {
+        width: 400px;
+        height: 40px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+</style>
+
+<script>
+    function Details(email) {
+        window.location.href = "/Teacher/Details?email=" + email;
+    }
+</script>

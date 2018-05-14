@@ -156,8 +156,7 @@ namespace MVCViews.Controllers
                 course.PicUrl = "00.jpg";
             }
 
-            var result = courseClient.AddCourseApply(course, user);
-            if (result == CommonLib.ReturnState.ReturnError)
+            if (!courseClient.AddCourseApply(course, user))
             {
                 ModelState.AddModelError("", "申请失败，请重试!");
                 return View(model);

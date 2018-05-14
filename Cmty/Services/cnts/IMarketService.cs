@@ -72,7 +72,7 @@ namespace Services.cnts
     [DataContract]
     public class GoodsInfo
     {
-        [DataMember]
+        [DataMember(IsRequired =true)]
         public int Id { get; set; }
 
         [DataMember]
@@ -81,7 +81,7 @@ namespace Services.cnts
         [DataMember]
         public string Name { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired =true)]
         public int Money { get; set; }
 
         [DataMember]
@@ -90,7 +90,7 @@ namespace Services.cnts
         [DataMember]
         public string Desp { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public DateTime AddDate { get; set; }
 
         [DataMember]
@@ -109,22 +109,22 @@ namespace Services.cnts
     [DataContract]
     public class LeaveMsgModel
     {
-        [DataMember]
+        [DataMember(IsRequired =true)]
         public int Id { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired =true)]
         public int Gid { get; set; }
 
         [DataMember]
         public string Email { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired =true)]
         public DateTime PubDate { get; set; }
 
         [DataMember]
         public string Content { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired =true)]
         public int Floor { get; set; }
     }
 }

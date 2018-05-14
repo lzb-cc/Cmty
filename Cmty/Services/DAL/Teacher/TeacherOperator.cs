@@ -161,7 +161,7 @@ namespace Services.DAL.Teacher
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                var cmdText = string.Format("insert into TeacherCommentSets values (N'{0}', N'{1}' , '{2}', N'{3}', {4})", model.Teacher, model.Email, model.PubDate, model.Content, model.Floor);
+                var cmdText = string.Format("insert into TeacherCommentSets values (N'{0}', N'{1}' , '{2}', N'{3}', {4})", model.Teacher, model.Email, DateTime.Now, model.Content, model.Floor);
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     result = cmd.ExecuteNonQuery() > 0;

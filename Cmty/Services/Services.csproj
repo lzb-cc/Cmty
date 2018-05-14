@@ -89,6 +89,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\Services.pubxml" />
     <None Include="Service References\AdminServiceTest\AdminServices.disco" />
     <None Include="Service References\AdminServiceTest\configuration91.svcinfo" />
     <None Include="Service References\AdminServiceTest\configuration.svcinfo" />

@@ -1,0 +1,129 @@
+﻿@model MVCViews.Models.GoodsInfoView
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>物品详细信息</h2>
+
+<div>
+    <h4>详细信息</h4>
+    <hr />
+    <div class="div-inline">
+        <div class="div-img"><img id="course_pic" src="http://localhost:8090/ImageUrl/@Model.PicUrl" /></div>
+    </div>
+    <div>
+        <div>买家： @Model.Seller</div>
+        <div>名称： @Model.Name</div>
+        <div>价格： ￥ @Model.Money</div>
+        <div>时间： @Model.AddDate</div>
+        <div>描述： @Model.Desp</div>
+
+        <hr />
+        <input type="button" value="我想要" class="btn btn-danger" onclick="Redirect('/Market/Buy?id=@Model.Id')" />
+        <input type="button" value="返回上一页" class="btn" onclick="Back()" />
+    </div>
+</div>
+
+
+<hr style="clear:both" />
+
+<div>
+    <h3>用户留言:</h3>
+    <table class="table">
+        @foreach (var msg in ViewBag.LeaveMsgs)
+        {
+            <tr>
+                <td>#@msg.Floor</td>
+                <td>
+                    @msg.Email @if (msg.Email.Equals(Model.Seller))
+                { <font color="lightpink">卖家</font> }
+                </td>
+                <td>@msg.PubDate</td>
+                <td>@msg.Content</td>
+                @if (msg.Email.Equals(Request.Cookies.Get("ApplicationCookie")?.Value))
+                {
+                    <td>
+                        <input type="button" value="撤销" class="btn btn-danger" onclick="DropMsg(@msg.Id)" />
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+<hr />
+<p>
+    <textarea placeholder="输入内容..." class="form-control" id="user_edit"></textarea>
+    <input type="button" value="添加留言" class="btn btn-warning" onclick="SendMsg(@Model.Id)" />
+    <input type="button" value="返回主页" class="btn" onclick="Redirect('/Forum/Index')" />
+    <label hidden="hidden" id="id">@Model.Id</label>
+</p>
+
+<style>
+    .div-inline {
+        width: 300px;
+        height: 300px;
+        display: inline;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+
+        img #course_pic{
+        width: 100%;
+        height: 100%;
+        max-width: 300px;
+        max-height:300px;
+    }
+</style>
+
+<script>
+    function SendMsg() {
+        var params = {
+            id: $("#id").text(),
+            content: $("#user_edit").val(),
+        }
+
+        $.ajax({
+            url: "/Market/SendMsg",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function (json) {
+            alert(json.Msg);
+            if (json.Status == 0) {
+                location.reload();
+            } else if (json.Status == 1) {
+                window.location.href = "/Account/Login";
+            }
+        })
+    }
+
+    function DropMsg(id) {
+        var params = { id: id, }
+
+        $.ajax({
+            url: "/Market/DropMsg",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function (json) {
+            alert(json.Msg);
+            if (json.Status == 0) {
+                location.reload();
+            } else if (json.Status == 1) {
+                window.location.href = "/Account/Login";
+            }
+        })
+    }
+
+    function Back() {
+        window.history.back(-1);
+    }
+
+    function Redirect(url) {
+        window.location.href = url;
+    }
+</script>

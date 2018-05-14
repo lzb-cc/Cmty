@@ -1,0 +1,75 @@
+﻿@model MVCViews.Models.GoodsInfoView
+
+@{
+    ViewBag.Title = "Buy";
+}
+
+<h2>确认购买</h2>
+
+<div>
+    <h4>货物信息</h4>
+    <hr />
+    <div class="div-inline">
+        <div class="div-img"><img id="course_pic" src="http://localhost:8090/ImageUrl/@Model.PicUrl" /></div>
+    </div>
+    <div>
+        <div>买家： @Model.Seller</div>
+        <div>名称： @Model.Name</div>
+        <div>价格： ￥ @Model.Money</div>
+        <div>时间： @Model.AddDate</div>
+        <div>描述： @Model.Desp</div>
+
+        <hr />
+        <p>
+            <input class="btn btn-danger" type="button" value="确认购买" onclick="confirm_buy()" />
+            <input class="btn" type="button" value="取消" onclick="cancel()" />
+            <label hidden="hidden" id="_id">@Model.Id</label>
+        </p>
+
+    </div>
+</div>
+
+<style>
+    .div-inline {
+        width: 300px;
+        height: 300px;
+        display: inline;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+
+    img #course_pic {
+        width: 100%;
+        height: 100%;
+        max-width: 300px;
+        max-height: 300px;
+    }
+</style>
+
+
+
+<script>
+    function confirm_buy() {
+        var params = {
+            id: document.getElementById("_id").innerText,
+        }
+        $.ajax({
+            url: "/Market/ConfirmBuy",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function (json) {
+            alert(json.Msg);
+            if (json.Status == 0) {
+                window.location.href = "/Market/MyPayList"
+            }
+        })
+    }
+
+    function cancel() {
+        window.history.back(-1);
+    }
+</script>

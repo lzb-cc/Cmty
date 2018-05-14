@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="UtilityService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8060/Svcs/UtilityService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8060/Svcs/UtilityService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8060/Svcs/UtilityService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IUtilityService_IndexOfUniversity_InputMessage">
+    <wsdl:part name="parameters" element="tns:IndexOfUniversity" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_IndexOfUniversity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IndexOfUniversityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_NameOfUniversity_InputMessage">
+    <wsdl:part name="parameters" element="tns:NameOfUniversity" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_NameOfUniversity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NameOfUniversityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_IndexOfJobTitle_InputMessage">
+    <wsdl:part name="parameters" element="tns:IndexOfJobTitle" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_IndexOfJobTitle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IndexOfJobTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_NameOfJobTitle_InputMessage">
+    <wsdl:part name="parameters" element="tns:NameOfJobTitle" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_NameOfJobTitle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NameOfJobTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_AddTeacherCourseMap_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTeacherCourseMap" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_AddTeacherCourseMap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTeacherCourseMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_DelTeacherCourseMap_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelTeacherCourseMap" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_DelTeacherCourseMap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelTeacherCourseMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_GetCourseIdByTeacher_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCourseIdByTeacher" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_GetCourseIdByTeacher_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCourseIdByTeacherResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_GetTeacherByCourseId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeacherByCourseId" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_GetTeacherByCourseId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTeacherByCourseIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_NameOfCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:NameOfCourse" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_NameOfCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NameOfCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_GetUniversityList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUniversityList" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_GetUniversityList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUniversityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_GetFilterLisst_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilterLisst" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_GetFilterLisst_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilterLisstResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_AddFilterString_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddFilterString" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_AddFilterString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddFilterStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_RemoveFilterString_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveFilterString" />
+  </wsdl:message>
+  <wsdl:message name="IUtilityService_RemoveFilterString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveFilterStringResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IUtilityService">
+    <wsdl:operation name="IndexOfUniversity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/IndexOfUniversity" message="tns:IUtilityService_IndexOfUniversity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/IndexOfUniversityResponse" message="tns:IUtilityService_IndexOfUniversity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NameOfUniversity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/NameOfUniversity" message="tns:IUtilityService_NameOfUniversity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/NameOfUniversityResponse" message="tns:IUtilityService_NameOfUniversity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IndexOfJobTitle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/IndexOfJobTitle" message="tns:IUtilityService_IndexOfJobTitle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/IndexOfJobTitleResponse" message="tns:IUtilityService_IndexOfJobTitle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NameOfJobTitle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/NameOfJobTitle" message="tns:IUtilityService_NameOfJobTitle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/NameOfJobTitleResponse" message="tns:IUtilityService_NameOfJobTitle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTeacherCourseMap">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/AddTeacherCourseMap" message="tns:IUtilityService_AddTeacherCourseMap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/AddTeacherCourseMapResponse" message="tns:IUtilityService_AddTeacherCourseMap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelTeacherCourseMap">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/DelTeacherCourseMap" message="tns:IUtilityService_DelTeacherCourseMap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/DelTeacherCourseMapResponse" message="tns:IUtilityService_DelTeacherCourseMap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseIdByTeacher">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/GetCourseIdByTeacher" message="tns:IUtilityService_GetCourseIdByTeacher_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/GetCourseIdByTeacherResponse" message="tns:IUtilityService_GetCourseIdByTeacher_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeacherByCourseId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/GetTeacherByCourseId" message="tns:IUtilityService_GetTeacherByCourseId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/GetTeacherByCourseIdResponse" message="tns:IUtilityService_GetTeacherByCourseId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NameOfCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/NameOfCourse" message="tns:IUtilityService_NameOfCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/NameOfCourseResponse" message="tns:IUtilityService_NameOfCourse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUniversityList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/GetUniversityList" message="tns:IUtilityService_GetUniversityList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/GetUniversityListResponse" message="tns:IUtilityService_GetUniversityList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilterLisst">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/GetFilterLisst" message="tns:IUtilityService_GetFilterLisst_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/GetFilterLisstResponse" message="tns:IUtilityService_GetFilterLisst_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFilterString">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/AddFilterString" message="tns:IUtilityService_AddFilterString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/AddFilterStringResponse" message="tns:IUtilityService_AddFilterString_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveFilterString">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUtilityService/RemoveFilterString" message="tns:IUtilityService_RemoveFilterString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUtilityService/RemoveFilterStringResponse" message="tns:IUtilityService_RemoveFilterString_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IUtilityService" type="tns:IUtilityService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IndexOfUniversity">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/IndexOfUniversity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NameOfUniversity">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/NameOfUniversity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IndexOfJobTitle">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/IndexOfJobTitle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NameOfJobTitle">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/NameOfJobTitle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTeacherCourseMap">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/AddTeacherCourseMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelTeacherCourseMap">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/DelTeacherCourseMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseIdByTeacher">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/GetCourseIdByTeacher" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeacherByCourseId">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/GetTeacherByCourseId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NameOfCourse">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/NameOfCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUniversityList">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/GetUniversityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilterLisst">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/GetFilterLisst" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFilterString">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/AddFilterString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveFilterString">
+      <soap:operation soapAction="http://tempuri.org/IUtilityService/RemoveFilterString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UtilityService">
+    <wsdl:port name="BasicHttpBinding_IUtilityService" binding="tns:BasicHttpBinding_IUtilityService">
+      <soap:address location="http://localhost:8060/Svcs/UtilityService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

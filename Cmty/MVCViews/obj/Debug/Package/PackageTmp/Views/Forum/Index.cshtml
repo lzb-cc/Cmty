@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MVCViews.Models.PostViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>自由论坛</h2>
+
+<p>
+    <button class="btn btn-success" onclick="Redirect('/Forum/AddPost')">我要发帖</button>  
+    <button class="btn btn-primary" onclick="Redirect('/Forum/MyPostCenter')">个人中心</button>
+</p>
+<table class="table">
+    <tr>
+        <th width="10%">
+            @Html.DisplayNameFor(model => model.Poster)
+        </th>
+        <th width="40%">
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th width="%20">
+            @Html.DisplayNameFor(model => model.PostType)
+        </th>
+        <th width="10%">
+            @Html.DisplayNameFor(model => model.Content)
+        </th>
+        <th width="20">
+            @Html.DisplayNameFor(model => model.PublishDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Poster)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostType)
+        </td>
+        <td>
+            <div class="overflow">@item.Content</div>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublishDate)
+        </td>
+        <td>
+            <input type="button" value="详细" class="btn btn-success" onclick="Redirect('/Forum/PostDetails?id=@item.Id')" /> 
+        </td>
+    </tr>
+}
+
+</table>
+
+<style>
+    .overflow {
+        width:100px;height:20px;text-overflow:ellipsis; white-space:nowrap; overflow:hidden;
+    }
+</style>
+
+<script>
+    function Redirect(url) {
+        window.location.href = url;
+    }
+</script>

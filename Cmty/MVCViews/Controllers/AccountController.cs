@@ -82,9 +82,8 @@ namespace MVCViews.Controllers
                 Email = model.Email,
                 Password = model.Password
             };
-            var result = accountClient.Login(obj);
 
-            if (result == ReturnState.ReturnOK)
+            if (accountClient.Login(obj))
             {
                 _cookie.Value = model.Email;
                 _cookie.Expires = DateTime.Now.AddDays(1);

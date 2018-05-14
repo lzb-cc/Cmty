@@ -1,0 +1,104 @@
+﻿@model MVCViews.Models.UserInfoViewModel
+
+@{
+    ViewBag.Title = "UserInfo";
+}
+
+<h2>个人信息</h2>
+
+
+<h4>详细信息</h4>
+<hr />
+
+<div class="div-inline">
+    @if (string.IsNullOrEmpty(Model.Avatar))
+    {
+        <img src="http://localhost:8090/ImageUrl/00.jpg" />
+    }
+    else
+    {
+        <img src="http://localhost:8090/ImageUrl/@Model.Avatar" />
+    }
+</div>
+
+<div class="div-inline">
+    <div>姓名： @Model.UserName</div>
+    <div>院校： @Model.University</div>
+    <div>邮箱： @Model.Email
+        @if ((int)ViewData["EmailStatus"] > 0)
+        {
+            <font color="green">√</font>
+        }
+        else
+        {
+            <font color="red">×</font>
+            <input type="button" value="验证" class="btn btn-success" onclick="ReValidEmail('@Model.Email')" />
+        }
+    </div>
+    <div>昵称： @Model.Nick</div>
+    <div>电话： @Model.Tel</div>
+    <div>性别： @Model.Sex</div>
+    <div>兴趣： @Model.Hobby</div>
+    <hr />
+    <div>
+        <input type="button" class="btn btn-primary" value="修改" onclick="Redirect('/Account/Edit?email=@Model.Email')" />
+        <input type="button" class="btn" value="返回主页" onclick="Redirect('/Home/Index/')" />
+    </div>
+</div>
+
+<style>
+    .div-inline {
+        width: 300px;
+        height: 300px;
+        display: inline;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 50px;
+    }
+
+    .div-inline-comment {
+        width: 150px;
+        height: 150px;
+        display: inline;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 30px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        max-width: 300px;
+        max-height: 300px;
+    }
+
+    .user_pic {
+        width: 100%;
+        height: 100%;
+        max-height: 150px;
+        max-width: 150px;
+    }
+</style>
+
+<script>
+    function Redirect(url) {
+        window.location.href = url;
+    }
+
+    function ReValidEmail(email) {
+        var params = { email: email, }
+
+        $.ajax({
+            url: "/Account/ReValidEmail",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function (json) {
+            alert("请转到邮箱验证!");
+        })
+    }
+</script>

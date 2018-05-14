@@ -57,13 +57,13 @@ namespace Services.cnts
         [DataMember]
         public string Tel { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int University { get; set; }
 
         [DataMember]
         public string Sex { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int JobTitle { get; set; }
 
         [DataMember]
@@ -84,7 +84,7 @@ namespace Services.cnts
         [DataMember]
         public string Content { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int Floor { get; set; }
 
     }

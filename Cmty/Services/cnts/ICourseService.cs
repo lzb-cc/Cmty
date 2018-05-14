@@ -45,7 +45,7 @@ namespace Services.cnts
         [DataMember]
         public string Code { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired =true)]
         public int University { get; set; }
 
         [DataMember]
@@ -67,7 +67,7 @@ namespace Services.cnts
         [DataMember]
         public DateTime CommitDate { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired =true)]
         public int Status { get; set; }
     }
 

@@ -57,7 +57,7 @@ namespace Services.cnts
     [DataContract]
     public class PostModel
     {
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int Id { get; set; }
 
         [DataMember]
@@ -72,26 +72,26 @@ namespace Services.cnts
         [DataMember]
         public string Content { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired =true)]
         public DateTime PublishDate { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int NoComments { get; set; }
     }
 
     [DataContract]
     public class PostReplyModel
     {
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int Id { get; set; }
 
         [DataMember]
         public string Responser { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int ResponseTo { get; set; }
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public DateTime ResponseDate { get; set; }
 
         [DataMember]

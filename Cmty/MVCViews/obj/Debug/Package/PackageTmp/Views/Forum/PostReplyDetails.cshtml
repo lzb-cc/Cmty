@@ -1,0 +1,101 @@
+﻿@model MVCViews.Models.PostReplyViewModel
+
+@{
+    ViewBag.Title = "PostReplyDetails";
+}
+
+<h2>PostReplyDetails</h2>
+
+<div>
+    <h4>PostReplyViewModel</h4>
+    <hr />
+    <table>
+        <tr>
+            <td>@Html.DisplayFor(model => model.Responser)</td>
+            <td>@Html.DisplayFor(model => model.ResponseDate)</td>
+            <td>@Html.DisplayFor(model => model.Content)</td>
+        </tr>
+    </table>
+</div>
+
+<hr />
+<table class="table">
+    @foreach (var item in ViewBag.ResponseList)
+    {
+        <tr>
+            <td>@item.Responser</td>
+            <td>@item.ResponseDate</td>
+            <td>@item.Content</td>
+            <td>
+                @{
+                    if (item.Responser.Equals(Request.Cookies.Get("ApplicationCookie")?.Value))
+                    {
+                        <input type="button" value="删除" class="btn btn-danger" onclick="RemoveResponseReply(@item.Id)" />
+                    }
+                }
+            </td>
+        </tr>
+                    }
+</table>
+<hr />
+<p>
+    <textarea placeholder="输入内容..." class="form-control" id="post_edit"></textarea>
+    <input type="button" value="我要跟帖" class="btn btn-warning" onclick="FllowPost(@Model.Id)" />
+    <input type="button" value="返回主页" class="btn" onclick="Redirect('/Forum/Index')" />
+</p>
+
+
+<script>
+    function Redirect(url) {
+        window.location.href = url;
+    }
+
+    function FllowPost(id) {
+        var content = document.getElementById("post_edit").value;
+        if (content.length <= 0) {
+            alert("内容不能为空!")
+            return
+        }
+
+        var params = {
+            replyId: id,
+            content: content,
+        }
+
+        $.ajax({
+            url: "/Forum/AddResponseToPostReply",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function (json) {
+            alert(json.Message);
+            if (json.Status == 0) {
+                location.reload();
+            } else if (json.Status == 1) {
+                window.location.href = "/Account/Login"
+            }
+        })
+    }
+
+    function ResponseReply(id) {
+        window.location.href = "/Forum/PostReplyDetails?id=" + id;
+    }
+
+    function RemoveResponseReply(id) {
+        var params = {
+            id: id,
+        }
+
+        $.ajax({
+            url: "/Forum/RemoveResponseReplyMsg",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function (json) {
+            alert(json.Message);
+            if (json.Status == 0) {
+                location.reload();
+            }
+        })
+    }
+</script>

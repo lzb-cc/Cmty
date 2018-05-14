@@ -130,7 +130,7 @@ namespace Services.DAL.Course
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                var cmdText = string.Format("insert into tmp_CourseSets values (N'{0}', '{1}', {2}, N'{3}', {4}, N'{5}', N'{6}', N'{7}')", user.Email, user.CommitDate, user.Status, model.Code, model.University, model.Name, model.Desp, model.PicUrl);
+                var cmdText = string.Format("insert into tmp_CourseSets values (N'{0}', '{1}', '{2}', {3}, {4}, N'{5}', N'{6}', N'{7}')", model.Code, user.Email, DateTime.Now, user.Status, model.University, model.Name, model.Desp, model.PicUrl);
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     result = cmd.ExecuteNonQuery() > 0;

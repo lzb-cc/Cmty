@@ -1,0 +1,109 @@
+﻿@model MVCViews.Models.TeacherViewModels
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>教师详细信息</h2>
+
+<div>
+    <h4>详细信息</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.University)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.University)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegistDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desp)
+        </dd>
+
+        <dt>
+            所授课程
+        </dt>
+
+        @foreach (var item in ViewBag.Courses)
+        {
+            <dd>
+                @item
+            </dd>
+        }
+    </dl>
+</div>
+
+<div>
+    @foreach (var cmt in ViewBag.CmtList)
+    {
+        <div>
+            <h3>#@cmt.Floor @cmt.Email</h3>
+            <p>@cmt.PubDate : @cmt.Content</p>
+        </div>
+    }
+
+    <div>
+        <label id="code_label" hidden>@Model.Email</label>
+        评论: @Html.Editor("comment_edit")
+        <a id="href_comment" href="" onclick="make_comment()">发送</a>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("返回主页", "Index")
+</p>
+
+
+<script>
+    function make_comment() {
+        var content = document.getElementById("comment_edit").value;
+        var email = document.getElementById("code_label").innerText;
+        var href = "/Teacher/MakeComment?email=" + email + "&content=" + content;
+        document.getElementById("href_comment").setAttribute("href", href);
+    }
+</script>

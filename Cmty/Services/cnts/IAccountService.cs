@@ -82,7 +82,7 @@ namespace Services
             set { _tel = value; }
         }
 
-        [DataMember]
+        [DataMember(IsRequired = true)]
         public int University
         {
             get { return _university; }

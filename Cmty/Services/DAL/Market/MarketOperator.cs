@@ -186,9 +186,8 @@ namespace Services.DAL.Market
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     var reader = cmd.ExecuteReader();
-                    if (reader.HasRows)
+                    if (reader.Read())
                     {
-                        reader.Read();
                         result = SqlReaderGoodsInfo(reader);
                     }
                     conn.Close();

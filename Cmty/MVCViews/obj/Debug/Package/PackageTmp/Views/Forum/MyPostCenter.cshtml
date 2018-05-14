@@ -1,0 +1,83 @@
+﻿@model IEnumerable<MVCViews.Models.PostViewModel>
+
+@{
+    ViewBag.Title = "MyPostCenter";
+}
+
+<h2>我的帖子</h2>
+
+<p>
+    <input type="button" class="btn btn-success"value="我要发帖" onclick="Redirect('/Forum/AddPost/')" />
+    <input type="button" class="btn" value="返回主页" onclick="Redirect('/Forum/Index')" />
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublishDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoComments)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublishDate)
+        </td>
+        <td>
+            <font color="@(item.NoComments ? "red" : "green")">@(item.NoComments ? "是" : "否")</font>
+        </td>
+        <td>
+            <input type="button" value="编辑" class="btn btn-warning" onclick="Redirect('/Forum/PostEdit?id=@item.Id')" />  
+            <input type="button" value="详细" class="btn btn-success" onclick="Redirect('/Forum/PostDetails?id=@item.Id')" />  
+            <input type="button" value="删除" class="btn btn-danger" onclick="PostDel(@item.Id)" />
+        </td>
+    </tr>
+}
+
+</table>
+
+<script>
+    function Redirect(url) {
+        window.location.href = url;
+    }
+
+    function PostDel(id) {
+        var params = {
+            id:id,
+        }
+
+        $.ajax({
+            url: "/Forum/PostDel",
+            type:"post",
+            dataType: "json",
+            data: params,
+        }).done(function(json){
+            alert(json.Message);
+            if (json.Status == 0) {
+                location.reload();
+            }
+        })
+    }
+</script>

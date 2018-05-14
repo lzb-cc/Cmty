@@ -1,0 +1,137 @@
+﻿@model MVCViews.Models.UserInfoViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>修改个人信息</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>用户信息</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly="readonly" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tel, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Tel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Tel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.University, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.University, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.University, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Sex, ViewData["SexType"] as IEnumerable<SelectListItem>,new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nick, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nick, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nick, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Hobby, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Hobby, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Hobby, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">头像</label>
+            <div class="col-md-10">
+                @if (string.IsNullOrEmpty(Model.Avatar))
+                {
+                    <img id="avatar" width="100" height="100" />
+                }
+                else
+                {
+                    <img id="avatar" width="100" height="100" src="http://localhost:8090/ImageUrl/@Model.Avatar" />
+                }
+                <input id="file" type="file" hidden="hidden" style="filter:alpha(opacity=0);opacity:0;width: 0;height: 0;" onchange="GetPath(this)" />
+                @Html.EditorFor(model => model.Avatar, new { htmlAttributes = new { @hidden = "hidden" } })
+                <input type="button" value="上传头像" class="btn btn-primary" onclick="FileSel()" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="保存" class="btn btn-danger" />
+                <input type="button" value="返回主页" class="btn" onclick="Back()" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    function FileSel() {
+        $("#file").trigger("click");
+    }
+
+    function GetPath(file) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var img = this.result.split(',')[1];
+            if (img.length <= 0) {
+                return;
+            }
+
+            var params = {
+                base64Data: img,
+            }
+
+            $.ajax({
+                url: "http://localhost:8090/Svcs/UploadFile",
+                type: "POST",
+                dataType: "json",
+                data: params,
+                withCredentials: true,
+            }).done(function (json) {
+                var fileName = json.FileName;
+                document.getElementById("avatar").src = "http://localhost:8090/ImageUrl/" + fileName;
+                $("#Avatar").val(fileName);
+            })
+        }
+        reader.readAsDataURL(file.files[0])
+
+
+    }
+
+    function Back() {
+        window.history.back(-1);
+    }
+</script>
