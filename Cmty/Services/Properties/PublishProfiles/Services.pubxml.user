@@ -16,10 +16,10 @@
       <publishTime>03/15/2018 21:20:29</publishTime>
     </File>
     <File Include="bin/CommonLib.dll">
-      <publishTime>05/14/2018 09:41:16</publishTime>
+      <publishTime>05/14/2018 19:43:49</publishTime>
     </File>
     <File Include="bin/CommonLib.pdb">
-      <publishTime>05/14/2018 09:41:16</publishTime>
+      <publishTime>05/14/2018 19:43:49</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>03/15/2018 21:20:38</publishTime>
@@ -43,10 +43,10 @@
       <publishTime>03/15/2018 21:20:37</publishTime>
     </File>
     <File Include="bin/Services.dll">
-      <publishTime>05/14/2018 16:55:51</publishTime>
+      <publishTime>05/14/2018 19:43:50</publishTime>
     </File>
     <File Include="bin/Services.pdb">
-      <publishTime>05/14/2018 16:55:51</publishTime>
+      <publishTime>05/14/2018 19:43:50</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>03/15/2018 21:20:31</publishTime>
@@ -76,7 +76,7 @@
       <publishTime>05/03/2018 21:09:10</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/14/2018 15:31:15</publishTime>
+      <publishTime>05/14/2018 19:43:57</publishTime>
     </File>
   </ItemGroup>
 </Project>

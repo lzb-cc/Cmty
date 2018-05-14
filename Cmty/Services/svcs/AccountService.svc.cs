@@ -15,7 +15,7 @@ namespace Services
         {
             var email = objEmail as string;
             var token = AccountOperator.GetEmailToken(email);
-            var checkLink = string.Format("http://localhost:14371/Account/EmailPass?email={0}&&token={1}", email, token);
+            var checkLink = string.Format("http://localhost:8070/Account/EmailPass?email={0}&&token={1}", email, token);
             var subject = "Thanks for joining.";
             var content = string.Format("Thank you for join us, please <a href = '{0}'>click me</a> to finish the validation.", checkLink);
             adminClient.SendEamil(email, subject, content);

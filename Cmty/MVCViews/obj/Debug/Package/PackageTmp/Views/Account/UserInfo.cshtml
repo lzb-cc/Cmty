@@ -25,7 +25,7 @@
     <div>姓名： @Model.UserName</div>
     <div>院校： @Model.University</div>
     <div>邮箱： @Model.Email
-        @if ((int)ViewData["EmailStatus"] > 0)
+        @if (Convert.ToInt32(ViewData["EmailStatus"]) > 0)
         {
             <font color="green">√</font>
         }
