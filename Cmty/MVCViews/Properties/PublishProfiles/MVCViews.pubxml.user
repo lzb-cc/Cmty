@@ -97,10 +97,10 @@
       <publishTime>03/15/2018 21:20:49</publishTime>
     </File>
     <File Include="bin/MVCViews.dll">
-      <publishTime>05/14/2018 13:03:59</publishTime>
+      <publishTime>05/14/2018 16:58:13</publishTime>
     </File>
     <File Include="bin/MVCViews.pdb">
-      <publishTime>05/14/2018 13:03:59</publishTime>
+      <publishTime>05/14/2018 16:58:13</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>03/15/2018 21:20:50</publishTime>
@@ -297,8 +297,14 @@
     <File Include="Service References/AccountService/MVCViews.AccountService.UserInfoView.datasource">
       <publishTime>03/27/2018 21:53:56</publishTime>
     </File>
+    <File Include="Service References/AccountServiceDebug/MVCViews.AccountServiceDebug.UserInfoView.datasource">
+      <publishTime>05/14/2018 13:11:00</publishTime>
+    </File>
     <File Include="Service References/CourseCommentService/MVCViews.CourseCommentService.CourseCommentView.datasource">
       <publishTime>04/18/2018 21:45:37</publishTime>
+    </File>
+    <File Include="Service References/CourseCommentServiceDebug/MVCViews.CourseCommentServiceDebug.CourseCommentView.datasource">
+      <publishTime>05/14/2018 13:15:15</publishTime>
     </File>
     <File Include="Service References/CourseService/MVCViews.CourseService.CourseReviewView.datasource">
       <publishTime>03/28/2018 23:00:00</publishTime>
@@ -306,11 +312,23 @@
     <File Include="Service References/CourseService/MVCViews.CourseService.CourseView.datasource">
       <publishTime>03/27/2018 21:53:56</publishTime>
     </File>
+    <File Include="Service References/CourseServiceDebug/MVCViews.CourseServiceDebug.CourseReviewView.datasource">
+      <publishTime>05/14/2018 13:15:36</publishTime>
+    </File>
+    <File Include="Service References/CourseServiceDebug/MVCViews.CourseServiceDebug.CourseView.datasource">
+      <publishTime>05/14/2018 13:15:36</publishTime>
+    </File>
     <File Include="Service References/ForumService/MVCViews.ForumService.PostModel.datasource">
       <publishTime>04/23/2018 22:02:07</publishTime>
     </File>
     <File Include="Service References/ForumService/MVCViews.ForumService.PostReplyModel.datasource">
       <publishTime>04/25/2018 22:10:40</publishTime>
+    </File>
+    <File Include="Service References/ForumServiceDebug/MVCViews.ForumServiceDebug.PostModel.datasource">
+      <publishTime>05/14/2018 13:15:48</publishTime>
+    </File>
+    <File Include="Service References/ForumServiceDebug/MVCViews.ForumServiceDebug.PostReplyModel.datasource">
+      <publishTime>05/14/2018 13:15:48</publishTime>
     </File>
     <File Include="Service References/MarketService/MVCViews.MarketService.GoodsInfo.datasource">
       <publishTime>05/11/2018 14:33:11</publishTime>
@@ -318,11 +336,23 @@
     <File Include="Service References/MarketService/MVCViews.MarketService.LeaveMsgModel.datasource">
       <publishTime>05/11/2018 14:33:11</publishTime>
     </File>
+    <File Include="Service References/MarketServiceDebug/MVCViews.MarketServiceDebug.GoodsInfo.datasource">
+      <publishTime>05/14/2018 13:15:59</publishTime>
+    </File>
+    <File Include="Service References/MarketServiceDebug/MVCViews.MarketServiceDebug.LeaveMsgModel.datasource">
+      <publishTime>05/14/2018 13:15:59</publishTime>
+    </File>
     <File Include="Service References/TeacherService/MVCViews.TeacherService.TeacherCommentView.datasource">
       <publishTime>04/18/2018 21:45:37</publishTime>
     </File>
     <File Include="Service References/TeacherService/MVCViews.TeacherService.TeacherInfoView.datasource">
       <publishTime>04/10/2018 22:27:03</publishTime>
+    </File>
+    <File Include="Service References/TeacherServiceDebug/MVCViews.TeacherServiceDebug.TeacherCommentView.datasource">
+      <publishTime>05/14/2018 13:16:29</publishTime>
+    </File>
+    <File Include="Service References/TeacherServiceDebug/MVCViews.TeacherServiceDebug.TeacherInfoView.datasource">
+      <publishTime>05/14/2018 13:16:29</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>03/15/2018 21:20:18</publishTime>
@@ -370,7 +400,7 @@
       <publishTime>03/27/2018 21:53:56</publishTime>
     </File>
     <File Include="Views/Course/Details.cshtml">
-      <publishTime>05/11/2018 13:54:44</publishTime>
+      <publishTime>05/14/2018 17:03:11</publishTime>
     </File>
     <File Include="Views/Course/Index.cshtml">
       <publishTime>04/29/2018 22:18:49</publishTime>
@@ -433,7 +463,7 @@
       <publishTime>05/03/2018 21:09:10</publishTime>
     </File>
     <File Include="Views/Market/Details.cshtml">
-      <publishTime>05/03/2018 21:09:10</publishTime>
+      <publishTime>05/14/2018 17:07:02</publishTime>
     </File>
     <File Include="Views/Market/Index.cshtml">
       <publishTime>05/11/2018 15:16:07</publishTime>
@@ -471,8 +501,56 @@
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>03/15/2018 21:20:19</publishTime>
     </File>
+    <File Include="Web References/AccountService/ReturnState.datasource">
+      <publishTime>05/14/2018 16:56:02</publishTime>
+    </File>
+    <File Include="Web References/AccountService/UserInfoView.datasource">
+      <publishTime>05/14/2018 16:56:02</publishTime>
+    </File>
+    <File Include="Web References/CourseCommentService/CourseCommentView.datasource">
+      <publishTime>05/14/2018 16:56:02</publishTime>
+    </File>
+    <File Include="Web References/CourseCommentService/ReturnState.datasource">
+      <publishTime>05/14/2018 16:56:02</publishTime>
+    </File>
+    <File Include="Web References/CourseService/CourseReviewView.datasource">
+      <publishTime>05/14/2018 16:56:03</publishTime>
+    </File>
+    <File Include="Web References/CourseService/CourseView.datasource">
+      <publishTime>05/14/2018 16:56:03</publishTime>
+    </File>
+    <File Include="Web References/CourseService/ReturnState.datasource">
+      <publishTime>05/14/2018 16:56:03</publishTime>
+    </File>
+    <File Include="Web References/ForumService/PostModel.datasource">
+      <publishTime>05/14/2018 16:56:04</publishTime>
+    </File>
+    <File Include="Web References/ForumService/PostReplyModel.datasource">
+      <publishTime>05/14/2018 16:56:04</publishTime>
+    </File>
+    <File Include="Web References/ForumService/ReturnState.datasource">
+      <publishTime>05/14/2018 16:56:04</publishTime>
+    </File>
+    <File Include="Web References/MarketService/GoodsInfo.datasource">
+      <publishTime>05/14/2018 16:56:05</publishTime>
+    </File>
+    <File Include="Web References/MarketService/LeaveMsgModel.datasource">
+      <publishTime>05/14/2018 16:56:05</publishTime>
+    </File>
+    <File Include="Web References/MarketService/ReturnState.datasource">
+      <publishTime>05/14/2018 16:56:05</publishTime>
+    </File>
+    <File Include="Web References/TeacherService/ReturnState.datasource">
+      <publishTime>05/14/2018 16:56:05</publishTime>
+    </File>
+    <File Include="Web References/TeacherService/TeacherCommentView.datasource">
+      <publishTime>05/14/2018 16:56:05</publishTime>
+    </File>
+    <File Include="Web References/TeacherService/TeacherInfoView.datasource">
+      <publishTime>05/14/2018 16:56:05</publishTime>
+    </File>
     <File Include="Web.config">
-      <publishTime>05/14/2018 13:04:01</publishTime>
+      <publishTime>05/14/2018 17:07:37</publishTime>
     </File>
   </ItemGroup>
 </Project>
