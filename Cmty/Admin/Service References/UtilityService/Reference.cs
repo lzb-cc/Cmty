@@ -62,6 +62,36 @@ namespace Admin.UtilityService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/GetTeacherByCourseId", ReplyAction="http://tempuri.org/IUtilityService/GetTeacherByCourseIdResponse")]
         System.Threading.Tasks.Task<string[]> GetTeacherByCourseIdAsync(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/NameOfCourse", ReplyAction="http://tempuri.org/IUtilityService/NameOfCourseResponse")]
+        string NameOfCourse(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/NameOfCourse", ReplyAction="http://tempuri.org/IUtilityService/NameOfCourseResponse")]
+        System.Threading.Tasks.Task<string> NameOfCourseAsync(string code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/GetUniversityList", ReplyAction="http://tempuri.org/IUtilityService/GetUniversityListResponse")]
+        string[] GetUniversityList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/GetUniversityList", ReplyAction="http://tempuri.org/IUtilityService/GetUniversityListResponse")]
+        System.Threading.Tasks.Task<string[]> GetUniversityListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/GetFilterLisst", ReplyAction="http://tempuri.org/IUtilityService/GetFilterLisstResponse")]
+        string[] GetFilterLisst();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/GetFilterLisst", ReplyAction="http://tempuri.org/IUtilityService/GetFilterLisstResponse")]
+        System.Threading.Tasks.Task<string[]> GetFilterLisstAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/AddFilterString", ReplyAction="http://tempuri.org/IUtilityService/AddFilterStringResponse")]
+        bool AddFilterString(string content);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/AddFilterString", ReplyAction="http://tempuri.org/IUtilityService/AddFilterStringResponse")]
+        System.Threading.Tasks.Task<bool> AddFilterStringAsync(string content);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/RemoveFilterString", ReplyAction="http://tempuri.org/IUtilityService/RemoveFilterStringResponse")]
+        bool RemoveFilterString(string content);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUtilityService/RemoveFilterString", ReplyAction="http://tempuri.org/IUtilityService/RemoveFilterStringResponse")]
+        System.Threading.Tasks.Task<bool> RemoveFilterStringAsync(string content);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -153,6 +183,46 @@ namespace Admin.UtilityService {
         
         public System.Threading.Tasks.Task<string[]> GetTeacherByCourseIdAsync(string code) {
             return base.Channel.GetTeacherByCourseIdAsync(code);
+        }
+        
+        public string NameOfCourse(string code) {
+            return base.Channel.NameOfCourse(code);
+        }
+        
+        public System.Threading.Tasks.Task<string> NameOfCourseAsync(string code) {
+            return base.Channel.NameOfCourseAsync(code);
+        }
+        
+        public string[] GetUniversityList() {
+            return base.Channel.GetUniversityList();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetUniversityListAsync() {
+            return base.Channel.GetUniversityListAsync();
+        }
+        
+        public string[] GetFilterLisst() {
+            return base.Channel.GetFilterLisst();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetFilterLisstAsync() {
+            return base.Channel.GetFilterLisstAsync();
+        }
+        
+        public bool AddFilterString(string content) {
+            return base.Channel.AddFilterString(content);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddFilterStringAsync(string content) {
+            return base.Channel.AddFilterStringAsync(content);
+        }
+        
+        public bool RemoveFilterString(string content) {
+            return base.Channel.RemoveFilterString(content);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RemoveFilterStringAsync(string content) {
+            return base.Channel.RemoveFilterStringAsync(content);
         }
     }
 }

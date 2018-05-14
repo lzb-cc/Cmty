@@ -216,6 +216,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MarketViewModels.cs" />
+    <Compile Include="Models\OtherViewModels.cs" />
     <Compile Include="Models\TeacherViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\AccountService\Reference.cs">
@@ -462,6 +463,7 @@
     <Content Include="Views\Other\Index.cshtml" />
     <Content Include="Views\Market\Index.cshtml" />
     <Content Include="Views\Market\AllInfo.cshtml" />
+    <Content Include="Views\Other\FilterList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

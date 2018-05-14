@@ -7,6 +7,8 @@ using System.Net;
 using System.Configuration;
 using System.Net.Mail;
 using System.Text;
+using System.Collections.Generic;
+using Admin.Models;
 
 namespace Admin.Controllers
 {
@@ -21,6 +23,30 @@ namespace Admin.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult FilterList()
+        {
+            var list = new List<OtherViewModels>();
+            var retList = utilityClient.GetFilterLisst();
+            for (int i = 0; i < retList.Length; i++)
+            {
+                list.Add(new OtherViewModels() { Id = i + 1, Desp = retList[i] });
+            }
+
+            return View(list);
+        }
+
+        public ActionResult AddFilterString(string content)
+        {
+            utilityClient.AddFilterString(content);
+            return RedirectToAction("FilterList");
+        }
+
+        public ActionResult RemoveFilterString(string content)
+        {
+            utilityClient.RemoveFilterString(content);
+            return RedirectToAction("FilterList");
         }
 
         [HttpGet]

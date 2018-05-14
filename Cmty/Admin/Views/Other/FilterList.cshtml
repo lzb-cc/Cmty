@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Admin.Models.OtherViewModels>
+
+@{
+    ViewBag.Title = "FilterList";
+}
+
+<h2>敏感词管理</h2>
+
+<p>
+    <input class="form-control-my" id="edit" />
+    <button class="btn btn-default" onclick="AddFilterString()">添加</button>
+</p>
+<table class="table">
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.Id)
+        </td>
+        <th>
+            @Html.DisplayNameFor(model => model.Desp)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Desp)
+            </td>
+            <td>
+                @Html.ActionLink("删除", "RemoveFilterString", new { content = item.Desp })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<script>
+    function AddFilterString() {
+        var content = $("#edit").val();
+        window.location.href = "/Other/AddFilterString?content=" + content;
+    }
+</script>
+
+<style>
+    .form-control-my {
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.428571429;
+        color: #555555;
+        vertical-align: middle;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+        transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    }
+</style>

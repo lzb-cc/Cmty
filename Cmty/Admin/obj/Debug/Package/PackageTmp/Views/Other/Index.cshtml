@@ -2,21 +2,31 @@
 @{
     ViewBag.Title = "Index";
 }
-<label hidden="hidden" id="msg">@ViewBag.Msg</label>
+
 <div>
-<input type="file" id="select_data_file"/><a href="" id="up_data_file" onclick="Upload()">批量导入数据</a>
+<font size="5">批量导入数据： </font>
+<input type="file" onchange="Upload()" id="select_data_file" class="form-control"/>
+</div>
+
+<hr />
+<div>
+<font size="5">敏感词管理：</font>
+<input type="button" class="btn btn-default" onclick="Redirect('/Other/FilterList')" value="跳转"/>    
 </div>
 
 
 <script>
-    $(function () {
-        var msg = document.getElementById("msg").innerText;
-        alert(msg);
-    })
+    function Redirect(url) {
+        window.location.href = url;
+    }
 
     function Upload() {
         var file_name = document.getElementById("select_data_file").value.split("\\");
-        href = "/Other/UploadData?fileName=" + file_name[file_name.length -1];
-        document.getElementById("up_data_file").setAttribute("href", href);
+        if (file_name.length <= 0) {
+            return;
+        }
+
+        href = "/Other/UploadData?fileName=" + file_name[file_name.length - 1];
+        window.location.href = href;
     }
 </script>
