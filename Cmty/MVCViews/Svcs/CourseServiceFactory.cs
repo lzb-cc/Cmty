@@ -64,5 +64,10 @@ namespace MVCViews.Svcs
         {
             return courseClient.GetCourseByCode(code);
         }
+
+        public string GetValidCode()
+        {
+            return courseClient.GetValidCode();
+        }
     }
 }

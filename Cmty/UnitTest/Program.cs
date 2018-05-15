@@ -99,13 +99,17 @@ namespace UnitTest
             return result;
         }
 
+        public static string MakeCourseCode(string code)
+        {
+            var prefix = Regex.Replace(code, "[0-9]*", "");
+            var suffix = System.Convert.ToInt32(Regex.Replace(code, "[a-zA-Z_]*", ""));
+            return string.Format("{0}{1:0000}", prefix, suffix + 1);
+        }
+
         static void Main(string[] args)
         {
-            var content = "SBHelloCNM";
-            var filters = new List<string>();
-            filters.Add("SB");
-            filters.Add("CNM");
-            Console.WriteLine(Filter(content, filters));
+            string code = "wust_cs_0001";
+            Console.WriteLine(MakeCourseCode(code));
         }
     }
 }

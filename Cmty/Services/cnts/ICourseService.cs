@@ -40,6 +40,9 @@ namespace Services.cnts
 
         [OperationContract]
         void DelCourse(string code);
+
+        [OperationContract]
+        string GetValidCode();
     }
 
     [DataContract]

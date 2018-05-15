@@ -69,5 +69,10 @@ namespace Admin.Svcs
         {
             courseClient.DelCourse(code);
         }
+
+        public string GetValidCode()
+        {
+            return courseClient.GetValidCode();
+        }
     }
 }

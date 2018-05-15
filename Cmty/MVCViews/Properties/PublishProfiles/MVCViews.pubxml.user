@@ -22,10 +22,10 @@
       <publishTime>03/15/2018 21:20:16</publishTime>
     </File>
     <File Include="bin/CommonLib.dll">
-      <publishTime>05/15/2018 10:58:48</publishTime>
+      <publishTime>05/15/2018 16:53:13</publishTime>
     </File>
     <File Include="bin/CommonLib.pdb">
-      <publishTime>05/15/2018 10:58:48</publishTime>
+      <publishTime>05/15/2018 16:53:13</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/15/2018 21:20:35</publishTime>
@@ -97,10 +97,10 @@
       <publishTime>03/15/2018 21:20:49</publishTime>
     </File>
     <File Include="bin/MVCViews.dll">
-      <publishTime>05/15/2018 13:37:16</publishTime>
+      <publishTime>05/15/2018 16:57:14</publishTime>
     </File>
     <File Include="bin/MVCViews.pdb">
-      <publishTime>05/15/2018 13:37:16</publishTime>
+      <publishTime>05/15/2018 16:57:14</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>03/15/2018 21:20:50</publishTime>
@@ -397,7 +397,7 @@
       <publishTime>03/15/2018 21:20:18</publishTime>
     </File>
     <File Include="Views/Course/ApplyForAddCourse.cshtml">
-      <publishTime>03/27/2018 21:53:56</publishTime>
+      <publishTime>05/15/2018 16:56:34</publishTime>
     </File>
     <File Include="Views/Course/Details.cshtml">
       <publishTime>05/15/2018 13:40:51</publishTime>
@@ -406,7 +406,7 @@
       <publishTime>04/29/2018 22:18:49</publishTime>
     </File>
     <File Include="Views/Course/IndexOfApply.cshtml">
-      <publishTime>03/28/2018 23:00:00</publishTime>
+      <publishTime>05/15/2018 16:58:08</publishTime>
     </File>
     <File Include="Views/Forum/AddPost.cshtml">
       <publishTime>05/03/2018 21:09:10</publishTime>
@@ -514,13 +514,13 @@
       <publishTime>05/14/2018 16:56:02</publishTime>
     </File>
     <File Include="Web References/CourseService/CourseReviewView.datasource">
-      <publishTime>05/14/2018 16:56:03</publishTime>
+      <publishTime>05/15/2018 16:55:29</publishTime>
     </File>
     <File Include="Web References/CourseService/CourseView.datasource">
-      <publishTime>05/14/2018 16:56:03</publishTime>
+      <publishTime>05/15/2018 16:55:29</publishTime>
     </File>
     <File Include="Web References/CourseService/ReturnState.datasource">
-      <publishTime>05/14/2018 16:56:03</publishTime>
+      <publishTime>05/15/2018 16:55:29</publishTime>
     </File>
     <File Include="Web References/ForumService/PostModel.datasource">
       <publishTime>05/14/2018 16:56:04</publishTime>

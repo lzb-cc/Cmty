@@ -129,6 +129,7 @@ namespace MVCViews.Controllers
             {
                 return _authorityResult;
             }
+            model.Code = courseClient.GetValidCode();
 
             if (courseClient.HasMember(model.Code))
             {

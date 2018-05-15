@@ -47,6 +47,10 @@ namespace MVCViews.CourseService {
         
         private System.Threading.SendOrPostCallback GetCourseByCodeOperationCompleted;
         
+        private System.Threading.SendOrPostCallback DelCourseOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetValidCodeOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -111,6 +115,12 @@ namespace MVCViews.CourseService {
         
         /// <remarks/>
         public event GetCourseByCodeCompletedEventHandler GetCourseByCodeCompleted;
+        
+        /// <remarks/>
+        public event DelCourseCompletedEventHandler DelCourseCompleted;
+        
+        /// <remarks/>
+        public event GetValidCodeCompletedEventHandler GetValidCodeCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ICourseService/AddCourse", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -388,6 +398,62 @@ namespace MVCViews.CourseService {
             if ((this.GetCourseByCodeCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetCourseByCodeCompleted(this, new GetCourseByCodeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ICourseService/DelCourse", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void DelCourse([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string code) {
+            this.Invoke("DelCourse", new object[] {
+                        code});
+        }
+        
+        /// <remarks/>
+        public void DelCourseAsync(string code) {
+            this.DelCourseAsync(code, null);
+        }
+        
+        /// <remarks/>
+        public void DelCourseAsync(string code, object userState) {
+            if ((this.DelCourseOperationCompleted == null)) {
+                this.DelCourseOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDelCourseOperationCompleted);
+            }
+            this.InvokeAsync("DelCourse", new object[] {
+                        code}, this.DelCourseOperationCompleted, userState);
+        }
+        
+        private void OnDelCourseOperationCompleted(object arg) {
+            if ((this.DelCourseCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DelCourseCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ICourseService/GetValidCode", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string GetValidCode() {
+            object[] results = this.Invoke("GetValidCode", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetValidCodeAsync() {
+            this.GetValidCodeAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetValidCodeAsync(object userState) {
+            if ((this.GetValidCodeOperationCompleted == null)) {
+                this.GetValidCodeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetValidCodeOperationCompleted);
+            }
+            this.InvokeAsync("GetValidCode", new object[0], this.GetValidCodeOperationCompleted, userState);
+        }
+        
+        private void OnGetValidCodeOperationCompleted(object arg) {
+            if ((this.GetValidCodeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetValidCodeCompleted(this, new GetValidCodeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -953,6 +1019,36 @@ namespace MVCViews.CourseService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((CourseView)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void DelCourseCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void GetValidCodeCompletedEventHandler(object sender, GetValidCodeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetValidCodeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetValidCodeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }

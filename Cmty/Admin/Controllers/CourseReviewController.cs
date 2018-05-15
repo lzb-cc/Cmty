@@ -72,7 +72,7 @@ namespace Admin.Controllers
         {
             var course = new CourseService.CourseView()
             {
-                Code = model.Code,
+                Code = courseClient.GetValidCode(),
                 Name = model.Name,
                 Desp = model.Desp,
                 PicUrl = model.PicUrl,

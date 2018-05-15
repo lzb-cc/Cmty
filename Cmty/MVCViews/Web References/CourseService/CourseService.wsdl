@@ -62,6 +62,18 @@
   <wsdl:message name="ICourseService_GetCourseByCode_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCourseByCodeResponse" />
   </wsdl:message>
+  <wsdl:message name="ICourseService_DelCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelCourse" />
+  </wsdl:message>
+  <wsdl:message name="ICourseService_DelCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICourseService_GetValidCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidCode" />
+  </wsdl:message>
+  <wsdl:message name="ICourseService_GetValidCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidCodeResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICourseService">
     <wsdl:operation name="AddCourse">
       <wsdl:input wsaw:Action="http://tempuri.org/ICourseService/AddCourse" message="tns:ICourseService_AddCourse_InputMessage" />
@@ -98,6 +110,14 @@
     <wsdl:operation name="GetCourseByCode">
       <wsdl:input wsaw:Action="http://tempuri.org/ICourseService/GetCourseByCode" message="tns:ICourseService_GetCourseByCode_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICourseService/GetCourseByCodeResponse" message="tns:ICourseService_GetCourseByCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICourseService/DelCourse" message="tns:ICourseService_DelCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICourseService/DelCourseResponse" message="tns:ICourseService_DelCourse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValidCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICourseService/GetValidCode" message="tns:ICourseService_GetValidCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICourseService/GetValidCodeResponse" message="tns:ICourseService_GetValidCode_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICourseService" type="tns:ICourseService">
@@ -176,6 +196,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetCourseByCode">
       <soap:operation soapAction="http://tempuri.org/ICourseService/GetCourseByCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelCourse">
+      <soap:operation soapAction="http://tempuri.org/ICourseService/DelCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValidCode">
+      <soap:operation soapAction="http://tempuri.org/ICourseService/GetValidCode" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

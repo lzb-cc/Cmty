@@ -79,6 +79,23 @@ namespace Services.DAL.Course
             return result;
         }
 
+        public static string GetMaxCode()
+        {
+            var result = "";
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select max(Id) from CourseSets ");
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = Convert.ToString(cmd.ExecuteScalar());
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// 分页查询
         /// </summary>

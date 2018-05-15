@@ -51,6 +51,11 @@ namespace Services.svcs
             return CourseOperator.GetCourseReviewViewByEmail(email);
         }
 
+        public string GetValidCode()
+        {
+            return Utilities.MakeCourseCode(CourseOperator.GetMaxCode());
+        }
+
         public bool HasMember(string code)
         {
             return CourseOperator.HasMember(code);
