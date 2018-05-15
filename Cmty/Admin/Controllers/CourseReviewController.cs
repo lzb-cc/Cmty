@@ -33,6 +33,31 @@ namespace Admin.Controllers
             return View(list);
         }
 
+        public ActionResult Edit(string code)
+        {
+            var course = courseClient.GetCourseByCode(code);
+            var model = new CourseViewModels();
+            model.Code = course.Code;
+            model.University = utilityClient.NameOfUniversity(course.University);
+            model.Name = course.Name;
+            model.Desp = course.Desp;
+            model.PicUrl = course.PicUrl;
+            return View(model);
+        }
+
+        public ActionResult Edit(CourseViewModels model)
+        {
+            var course = new CourseView();
+            courseClient.AddCourse(course);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteCourseInfo(string code)
+        {
+            courseClient.DelCourse(code);
+            return RedirectToAction("CourseCenter");
+        }
+
         /// <summary>
         /// 添加新课程
         /// </summary>
@@ -69,7 +94,7 @@ namespace Admin.Controllers
             return RedirectToAction("CourseCenter", new { page = 0 });
         }
 
-        public ActionResult CourseCenter(int page)
+        public ActionResult CourseCenter(int page = 0)
         {
             var list = new List<CourseViewModels>();
             var array = courseClient.GetCourseByPage(page, 10);

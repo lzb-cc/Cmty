@@ -29,29 +29,29 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Code)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.University)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Desp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PicUrl)
-        </td>
-        <td>
-            @Html.ActionLink("编辑", "EditCourseInfo", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("详细", "Details", new { code = item.Code}) |
-            @Html.ActionLink("删除", "DeleteCourseInfo", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.University)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Desp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PicUrl)
+            </td>
+            <td>
+                @Html.ActionLink("详细", "Details", new { code = item.Code }) |
+                @Html.ActionLink("删除", "DeleteCourseInfo", new { code = item.Code })
+            </td>
+        </tr>
+    }
 
 </table>

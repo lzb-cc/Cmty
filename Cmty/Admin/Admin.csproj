@@ -304,6 +304,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Svcs\AdminServices.svc" />
+    <Content Include="Views\CourseReview\Edit.cshtml" />
     <None Include="Web References\AccountService\AccountService.disco" />
     <Content Include="Web References\AccountService\ReturnState.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -445,10 +446,10 @@
     <Content Include="Web References\CourseService\CourseView.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\CourseService\Reference.map">
+    <None Include="Web References\CourseService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Web References\CourseService\ReturnState.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>

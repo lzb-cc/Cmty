@@ -64,5 +64,10 @@ namespace Admin.Svcs
         {
             return courseClient.GetCourseByCode(code);
         }
+
+        public void DelCourse(string code)
+        {
+            courseClient.DelCourse(code);
+        }
     }
 }

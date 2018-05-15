@@ -67,8 +67,7 @@
         </td>
         <td>
             @Html.ActionLink("通过", "ReviewPass", new { code = item.Code }) |
-            @Html.ActionLink("不通过", "ReviewFail", new { code = item.Code }) |
-            @Html.ActionLink("编辑", "Edit")
+            @Html.ActionLink("不通过", "ReviewFailed", new { code = item.Code }) 
         </td>
     </tr>
 }

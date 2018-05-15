@@ -47,6 +47,8 @@ namespace Admin.CourseService {
         
         private System.Threading.SendOrPostCallback GetCourseByCodeOperationCompleted;
         
+        private System.Threading.SendOrPostCallback DelCourseOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -111,6 +113,9 @@ namespace Admin.CourseService {
         
         /// <remarks/>
         public event GetCourseByCodeCompletedEventHandler GetCourseByCodeCompleted;
+        
+        /// <remarks/>
+        public event DelCourseCompletedEventHandler DelCourseCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ICourseService/AddCourse", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -388,6 +393,34 @@ namespace Admin.CourseService {
             if ((this.GetCourseByCodeCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetCourseByCodeCompleted(this, new GetCourseByCodeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ICourseService/DelCourse", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void DelCourse([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string code) {
+            this.Invoke("DelCourse", new object[] {
+                        code});
+        }
+        
+        /// <remarks/>
+        public void DelCourseAsync(string code) {
+            this.DelCourseAsync(code, null);
+        }
+        
+        /// <remarks/>
+        public void DelCourseAsync(string code, object userState) {
+            if ((this.DelCourseOperationCompleted == null)) {
+                this.DelCourseOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDelCourseOperationCompleted);
+            }
+            this.InvokeAsync("DelCourse", new object[] {
+                        code}, this.DelCourseOperationCompleted, userState);
+        }
+        
+        private void OnDelCourseOperationCompleted(object arg) {
+            if ((this.DelCourseCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DelCourseCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -956,6 +989,10 @@ namespace Admin.CourseService {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void DelCourseCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

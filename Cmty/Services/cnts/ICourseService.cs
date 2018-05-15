@@ -37,6 +37,9 @@ namespace Services.cnts
 
         [OperationContract]
         CourseView GetCourseByCode(string code);
+
+        [OperationContract]
+        void DelCourse(string code);
     }
 
     [DataContract]

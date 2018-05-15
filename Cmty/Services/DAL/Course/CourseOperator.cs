@@ -40,6 +40,23 @@ namespace Services.DAL.Course
             return ReturnState.ReturnOK;
         }
 
+        public static bool DeleteCourse(string code)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("delete from CourseSets where Id = N'{0}'", code);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// 查询课程编号是否存在
         /// </summary>

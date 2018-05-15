@@ -13,10 +13,10 @@
       <publishTime>03/27/2018 21:53:55</publishTime>
     </File>
     <File Include="bin/Admin.dll">
-      <publishTime>05/15/2018 10:58:54</publishTime>
+      <publishTime>05/15/2018 14:21:43</publishTime>
     </File>
     <File Include="bin/Admin.pdb">
-      <publishTime>05/15/2018 10:58:54</publishTime>
+      <publishTime>05/15/2018 14:21:43</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>03/15/2018 21:20:32</publishTime>
@@ -358,7 +358,7 @@
       <publishTime>03/27/2018 21:53:55</publishTime>
     </File>
     <File Include="Views/CourseReview/CourseCenter.cshtml">
-      <publishTime>04/10/2018 22:27:03</publishTime>
+      <publishTime>05/15/2018 14:27:40</publishTime>
     </File>
     <File Include="Views/CourseReview/Create.cshtml">
       <publishTime>03/27/2018 21:53:55</publishTime>
@@ -366,8 +366,11 @@
     <File Include="Views/CourseReview/Details.cshtml">
       <publishTime>04/10/2018 17:06:03</publishTime>
     </File>
+    <File Include="Views/CourseReview/Edit.cshtml">
+      <publishTime>05/15/2018 13:58:18</publishTime>
+    </File>
     <File Include="Views/CourseReview/Index.cshtml">
-      <publishTime>04/10/2018 22:27:03</publishTime>
+      <publishTime>05/15/2018 14:10:28</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>03/27/2018 21:53:55</publishTime>
@@ -457,16 +460,16 @@
       <publishTime>05/15/2018 10:50:34</publishTime>
     </File>
     <File Include="Web References/CourseService/CourseReviewView.datasource">
-      <publishTime>05/15/2018 10:50:55</publishTime>
+      <publishTime>05/15/2018 14:16:42</publishTime>
     </File>
     <File Include="Web References/CourseService/CourseView.datasource">
-      <publishTime>05/15/2018 10:50:55</publishTime>
+      <publishTime>05/15/2018 14:16:42</publishTime>
     </File>
     <File Include="Web References/CourseService/Reference.map">
       <publishTime>05/15/2018 10:50:53</publishTime>
     </File>
     <File Include="Web References/CourseService/ReturnState.datasource">
-      <publishTime>05/15/2018 10:50:55</publishTime>
+      <publishTime>05/15/2018 14:16:42</publishTime>
     </File>
     <File Include="Web References/ForumService/PostModel.datasource">
       <publishTime>05/15/2018 10:51:18</publishTime>

@@ -26,6 +26,11 @@ namespace Services.svcs
             return CourseOperator.AddCourseApply(model, user) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
 
+        public void DelCourse(string code)
+        {
+            CourseOperator.DeleteCourse(code);
+        }
+
         public CourseView GetCourseByCode(string code)
         {
             return CourseOperator.GetCourseByCode(code);
