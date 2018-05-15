@@ -219,41 +219,58 @@
     <Compile Include="Models\OtherViewModels.cs" />
     <Compile Include="Models\TeacherViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\AccountService\Reference.cs">
+    <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\CourseService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\ForumService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\MarketService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\TeacherService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\UtilityService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Svcs\AccountServiceFactory.cs" />
     <Compile Include="Svcs\AdminServices.svc.cs">
       <DependentUpon>AdminServices.svc</DependentUpon>
     </Compile>
+    <Compile Include="Svcs\CourseCommentServiceFactory.cs" />
+    <Compile Include="Svcs\CourseServiceFactory.cs" />
+    <Compile Include="Svcs\ForumServiceFactory.cs" />
     <Compile Include="Svcs\IAdminServices.cs" />
+    <Compile Include="Svcs\MarketServiceFactory.cs" />
+    <Compile Include="Svcs\TeacherServiceFactory.cs" />
+    <Compile Include="Svcs\UtilityServiceFactory.cs" />
+    <Compile Include="Web References\AccountService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\CourseCommentService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\CourseService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ForumService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\MarketService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\TeacherService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\UtilityService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -270,6 +287,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\PublishProfiles\Admin.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -282,106 +303,46 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <None Include="Service References\AccountService\AccountService.disco" />
-    <Content Include="Service References\AccountService\Admin.AccountService.UserInfoView.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\AccountService\configuration91.svcinfo" />
-    <None Include="Service References\AccountService\configuration.svcinfo" />
-    <None Include="Service References\AccountService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Service References\CourseService\Admin.CourseService.CourseView.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\CourseService\Admin.CourseService.CourseReviewView.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\CourseService\CourseService.disco" />
-    <None Include="Service References\CourseService\configuration91.svcinfo" />
-    <None Include="Service References\CourseService\configuration.svcinfo" />
-    <None Include="Service References\CourseService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Service References\ForumService\Admin.ForumService.PostModel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\ForumService\ForumService.disco" />
-    <None Include="Service References\ForumService\configuration91.svcinfo" />
-    <None Include="Service References\ForumService\configuration.svcinfo" />
-    <None Include="Service References\ForumService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Service References\MarketService\Admin.MarketService.GoodsInfo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\ForumService\ForumService.wsdl" />
-    <None Include="Service References\ForumService\ForumService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ForumService\ForumService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ForumService\ForumService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ForumService\ForumService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MarketService\MarketService.disco" />
-    <None Include="Service References\MarketService\configuration91.svcinfo" />
-    <None Include="Service References\MarketService\configuration.svcinfo" />
-    <None Include="Service References\MarketService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Service References\TeacherService\Admin.TeacherService.TeacherInfoView.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\MarketService\MarketService.wsdl" />
-    <None Include="Service References\MarketService\MarketService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MarketService\MarketService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MarketService\MarketService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MarketService\MarketService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TeacherService\TeacherService.wsdl" />
-    <None Include="Service References\TeacherService\TeacherService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TeacherService\TeacherService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TeacherService\TeacherService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TeacherService\TeacherService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UtilityService\UtilityService.disco" />
-    <None Include="Service References\UtilityService\configuration91.svcinfo" />
-    <None Include="Service References\UtilityService\configuration.svcinfo" />
-    <None Include="Service References\UtilityService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\TeacherService\TeacherService.disco" />
-    <None Include="Service References\TeacherService\configuration91.svcinfo" />
-    <None Include="Service References\TeacherService\configuration.svcinfo" />
-    <None Include="Service References\TeacherService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Svcs\AdminServices.svc" />
+    <None Include="Web References\AccountService\AccountService.disco" />
+    <Content Include="Web References\AccountService\ReturnState.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\AccountService\UserInfoView.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\CourseCommentService\CourseCommentService.disco" />
+    <Content Include="Web References\CourseService\CourseReviewView.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\CourseService\CourseService.disco" />
+    <None Include="Web References\ForumService\ForumService.disco" />
+    <Content Include="Web References\MarketService\GoodsInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\MarketService\LeaveMsgModel.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\MarketService\MarketService.disco" />
+    <Content Include="Web References\TeacherService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\TeacherService\ReturnState.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\TeacherService\TeacherCommentView.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\TeacherService\TeacherInfoView.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\TeacherService\TeacherService.disco" />
+    <Content Include="Web References\UtilityService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\UtilityService\UtilityService.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -416,54 +377,156 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <None Include="Service References\AccountService\AccountService.wsdl" />
-    <None Include="Service References\AccountService\AccountService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AccountService\AccountService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AccountService\AccountService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AccountService\AccountService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\CourseReview\Index.cshtml" />
     <Content Include="Views\CourseReview\Create.cshtml" />
-    <None Include="Service References\CourseService\CourseService.wsdl" />
-    <None Include="Service References\CourseService\CourseService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CourseService\CourseService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CourseService\CourseService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CourseService\CourseService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\CourseReview\CourseCenter.cshtml" />
-    <None Include="Service References\UtilityService\UtilityService.wsdl" />
-    <None Include="Service References\UtilityService\UtilityService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UtilityService\UtilityService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\Teacher\Index.cshtml" />
     <Content Include="Views\Teacher\Create.cshtml" />
     <Content Include="Views\Teacher\Edit.cshtml" />
     <Content Include="Views\Teacher\Detail.cshtml" />
     <Content Include="Views\CourseReview\Details.cshtml" />
-    <None Include="Service References\UtilityService\UtilityService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\Other\Index.cshtml" />
     <Content Include="Views\Market\Index.cshtml" />
     <Content Include="Views\Market\AllInfo.cshtml" />
     <Content Include="Views\Other\FilterList.cshtml" />
+    <None Include="Web References\AccountService\AccountService.wsdl" />
+    <None Include="Web References\AccountService\AccountService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\AccountService\AccountService0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\AccountService\AccountService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\AccountService\AccountService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Web References\AccountService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\CourseCommentService\CourseCommentService.wsdl" />
+    <None Include="Web References\CourseCommentService\CourseCommentService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CourseCommentService\CourseCommentService0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CourseCommentService\CourseCommentService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CourseCommentService\CourseCommentService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Web References\CourseCommentService\CourseCommentView.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\CourseCommentService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\CourseCommentService\ReturnState.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\CourseService\CourseService.wsdl" />
+    <None Include="Web References\CourseService\CourseService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CourseService\CourseService0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CourseService\CourseService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\CourseService\CourseService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Web References\CourseService\CourseView.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\CourseService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\CourseService\ReturnState.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\ForumService\ForumService.wsdl" />
+    <None Include="Web References\ForumService\ForumService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ForumService\ForumService0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ForumService\ForumService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ForumService\ForumService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ForumService\ForumService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Web References\ForumService\PostModel.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\ForumService\PostReplyModel.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\ForumService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\ForumService\ReturnState.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\MarketService\MarketService.wsdl" />
+    <None Include="Web References\MarketService\MarketService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MarketService\MarketService0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MarketService\MarketService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MarketService\MarketService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\MarketService\MarketService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Web References\MarketService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\MarketService\ReturnState.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\TeacherService\TeacherService.wsdl" />
+    <None Include="Web References\TeacherService\TeacherService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\TeacherService\TeacherService0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\TeacherService\TeacherService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\TeacherService\TeacherService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\UtilityService\UtilityService.wsdl" />
+    <None Include="Web References\UtilityService\UtilityService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\UtilityService\UtilityService0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\UtilityService\UtilityService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -481,18 +544,92 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\AccountService\" />
-    <WCFMetadataStorage Include="Service References\CourseService\" />
-    <WCFMetadataStorage Include="Service References\ForumService\" />
-    <WCFMetadataStorage Include="Service References\MarketService\" />
-    <WCFMetadataStorage Include="Service References\TeacherService\" />
-    <WCFMetadataStorage Include="Service References\UtilityService\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CommonLib\CommonLib.csproj">
       <Project>{0e27f111-06cd-48a2-b02a-a264db29f7a4}</Project>
       <Name>CommonLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:8060/Svcs/AccountService.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\AccountService\</RelPath>
+      <UpdateFromURL>http://localhost:8060/Svcs/AccountService.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Admin_Accouunt_AccountService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:8060/Svcs/CourseCommentService.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CourseCommentService\</RelPath>
+      <UpdateFromURL>http://localhost:8060/Svcs/CourseCommentService.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Admin_CourseCommentService_CourseCommentService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:8060/Svcs/CourseService.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CourseService\</RelPath>
+      <UpdateFromURL>http://localhost:8060/Svcs/CourseService.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Admin_CourseService_CourseService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:8060/Svcs/ForumService.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ForumService\</RelPath>
+      <UpdateFromURL>http://localhost:8060/Svcs/ForumService.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Admin_ForumService_ForumService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:8060/Svcs/MarketService.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\MarketService\</RelPath>
+      <UpdateFromURL>http://localhost:8060/Svcs/MarketService.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Admin_MarketService_MarketService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:8060/Svcs/TeacherService.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\TeacherService\</RelPath>
+      <UpdateFromURL>http://localhost:8060/Svcs/TeacherService.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Admin_TeacherService_TeacherService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:8060/Svcs/UtilityService.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\UtilityService\</RelPath>
+      <UpdateFromURL>http://localhost:8060/Svcs/UtilityService.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Admin_UtilityService_UtilityService</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

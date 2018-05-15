@@ -53,7 +53,7 @@ namespace Admin.Controllers
                 UserName = model.UserName
             };
             var result = teacherClient.AddTeacherInfo(user);
-            if (result != CommonLib.ReturnState.ReturnOK)
+            if (result != TeacherService.ReturnState.ReturnOK)
             {
                 AddErrors("添加失败，请重试!");
                 return View(model);
@@ -93,7 +93,7 @@ namespace Admin.Controllers
                 UserName = model.UserName
             };
             var result = teacherClient.UpdateTeacherrInfo(user);
-            if (result != CommonLib.ReturnState.ReturnOK)
+            if (result != TeacherService.ReturnState.ReturnOK)
             {
                 AddErrors("修改失败，请重试!");
                 return View(model);
@@ -121,7 +121,7 @@ namespace Admin.Controllers
         public ActionResult Delete(string email)
         {
             var result = teacherClient.RemoveTeacherInfo(email);
-            if (result != CommonLib.ReturnState.ReturnOK)
+            if (result != TeacherService.ReturnState.ReturnOK)
             {
                 AddErrors("删除失败，请重试!");
             }

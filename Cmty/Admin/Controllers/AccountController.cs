@@ -9,16 +9,15 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Admin.Models;
+using Admin.AccountService;
 
 namespace Admin.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : AuthorityController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private static HttpCookie _cookie = new HttpCookie(DefaultAuthenticationTypes.ApplicationCookie);
 
-        private static AccountService.AccountServiceClient accountClient = new AccountService.AccountServiceClient();
 
         public AccountController()
         {
@@ -82,9 +81,9 @@ namespace Admin.Controllers
                 Email = model.Email,
                 Password = model.Password
             };
-            CommonLib.ReturnState result = accountClient.AdminLogin(obj);
+            var result = accountClient.AdminLogin(obj);
 
-            if (result == CommonLib.ReturnState.ReturnOK)
+            if (result == ReturnState.ReturnOK)
             {
                 _cookie.Value = model.Email;
                 _cookie.Expires = DateTime.Now.AddDays(1);

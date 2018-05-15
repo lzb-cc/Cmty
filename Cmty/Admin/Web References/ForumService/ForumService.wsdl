@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ForumService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8060/Svcs/ForumService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8060/Svcs/ForumService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8060/Svcs/ForumService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Services.cnts" />
+      <xsd:import schemaLocation="http://localhost:8060/Svcs/ForumService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/CommonLib" />
+      <xsd:import schemaLocation="http://localhost:8060/Svcs/ForumService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IForumService_AddPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPost" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_AddPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_DelPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelPost" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_DelPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostList" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostListByPoster_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostListByPoster" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostListByPoster_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostListByPosterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostById" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostReplyById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostReplyById" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostReplyById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostReplyByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_UpdatePost_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePost" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_UpdatePost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostReplyListByPostId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostReplyListByPostId" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostReplyListByPostId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostReplyListByPostIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_AddResponseToPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddResponseToPost" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_AddResponseToPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddResponseToPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_DelResponseToPostById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelResponseToPostById" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_DelResponseToPostById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelResponseToPostByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetReplyResponseListByPostId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReplyResponseListByPostId" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetReplyResponseListByPostId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReplyResponseListByPostIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_AddResponseToPostReply_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddResponseToPostReply" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_AddResponseToPostReply_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddResponseToPostReplyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_DelResponseToPostReplyById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelResponseToPostReplyById" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_DelResponseToPostReplyById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelResponseToPostReplyByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostTypeList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostTypeList" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostTypeList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostTypeListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IForumService">
+    <wsdl:operation name="AddPost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/AddPost" message="tns:IForumService_AddPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/AddPostResponse" message="tns:IForumService_AddPost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelPost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/DelPost" message="tns:IForumService_DelPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/DelPostResponse" message="tns:IForumService_DelPost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/GetPostList" message="tns:IForumService_GetPostList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/GetPostListResponse" message="tns:IForumService_GetPostList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostListByPoster">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/GetPostListByPoster" message="tns:IForumService_GetPostListByPoster_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/GetPostListByPosterResponse" message="tns:IForumService_GetPostListByPoster_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/GetPostById" message="tns:IForumService_GetPostById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/GetPostByIdResponse" message="tns:IForumService_GetPostById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostReplyById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/GetPostReplyById" message="tns:IForumService_GetPostReplyById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/GetPostReplyByIdResponse" message="tns:IForumService_GetPostReplyById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/UpdatePost" message="tns:IForumService_UpdatePost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/UpdatePostResponse" message="tns:IForumService_UpdatePost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostReplyListByPostId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/GetPostReplyListByPostId" message="tns:IForumService_GetPostReplyListByPostId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/GetPostReplyListByPostIdResponse" message="tns:IForumService_GetPostReplyListByPostId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddResponseToPost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/AddResponseToPost" message="tns:IForumService_AddResponseToPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/AddResponseToPostResponse" message="tns:IForumService_AddResponseToPost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelResponseToPostById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/DelResponseToPostById" message="tns:IForumService_DelResponseToPostById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/DelResponseToPostByIdResponse" message="tns:IForumService_DelResponseToPostById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReplyResponseListByPostId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/GetReplyResponseListByPostId" message="tns:IForumService_GetReplyResponseListByPostId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/GetReplyResponseListByPostIdResponse" message="tns:IForumService_GetReplyResponseListByPostId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddResponseToPostReply">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/AddResponseToPostReply" message="tns:IForumService_AddResponseToPostReply_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/AddResponseToPostReplyResponse" message="tns:IForumService_AddResponseToPostReply_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelResponseToPostReplyById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/DelResponseToPostReplyById" message="tns:IForumService_DelResponseToPostReplyById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/DelResponseToPostReplyByIdResponse" message="tns:IForumService_DelResponseToPostReplyById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostTypeList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/GetPostTypeList" message="tns:IForumService_GetPostTypeList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/GetPostTypeListResponse" message="tns:IForumService_GetPostTypeList_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IForumService" type="tns:IForumService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddPost">
+      <soap:operation soapAction="http://tempuri.org/IForumService/AddPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelPost">
+      <soap:operation soapAction="http://tempuri.org/IForumService/DelPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostList">
+      <soap:operation soapAction="http://tempuri.org/IForumService/GetPostList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostListByPoster">
+      <soap:operation soapAction="http://tempuri.org/IForumService/GetPostListByPoster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostById">
+      <soap:operation soapAction="http://tempuri.org/IForumService/GetPostById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostReplyById">
+      <soap:operation soapAction="http://tempuri.org/IForumService/GetPostReplyById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePost">
+      <soap:operation soapAction="http://tempuri.org/IForumService/UpdatePost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostReplyListByPostId">
+      <soap:operation soapAction="http://tempuri.org/IForumService/GetPostReplyListByPostId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddResponseToPost">
+      <soap:operation soapAction="http://tempuri.org/IForumService/AddResponseToPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelResponseToPostById">
+      <soap:operation soapAction="http://tempuri.org/IForumService/DelResponseToPostById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReplyResponseListByPostId">
+      <soap:operation soapAction="http://tempuri.org/IForumService/GetReplyResponseListByPostId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddResponseToPostReply">
+      <soap:operation soapAction="http://tempuri.org/IForumService/AddResponseToPostReply" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelResponseToPostReplyById">
+      <soap:operation soapAction="http://tempuri.org/IForumService/DelResponseToPostReplyById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostTypeList">
+      <soap:operation soapAction="http://tempuri.org/IForumService/GetPostTypeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ForumService">
+    <wsdl:port name="BasicHttpBinding_IForumService" binding="tns:BasicHttpBinding_IForumService">
+      <soap:address location="http://localhost:8060/Svcs/ForumService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

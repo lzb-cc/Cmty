@@ -13,10 +13,10 @@
       <publishTime>03/27/2018 21:53:55</publishTime>
     </File>
     <File Include="bin/Admin.dll">
-      <publishTime>05/14/2018 10:20:15</publishTime>
+      <publishTime>05/15/2018 10:58:54</publishTime>
     </File>
     <File Include="bin/Admin.pdb">
-      <publishTime>05/14/2018 10:20:15</publishTime>
+      <publishTime>05/15/2018 10:58:54</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>03/15/2018 21:20:32</publishTime>
@@ -28,10 +28,10 @@
       <publishTime>03/27/2018 21:53:55</publishTime>
     </File>
     <File Include="bin/CommonLib.dll">
-      <publishTime>05/14/2018 09:41:16</publishTime>
+      <publishTime>05/15/2018 10:58:48</publishTime>
     </File>
     <File Include="bin/CommonLib.pdb">
-      <publishTime>05/14/2018 09:41:16</publishTime>
+      <publishTime>05/15/2018 10:58:48</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/15/2018 21:20:35</publishTime>
@@ -376,7 +376,7 @@
       <publishTime>03/27/2018 21:53:55</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>05/14/2018 10:37:54</publishTime>
+      <publishTime>05/14/2018 13:04:48</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>03/27/2018 21:53:55</publishTime>
@@ -438,8 +438,77 @@
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>03/27/2018 21:53:55</publishTime>
     </File>
+    <File Include="Web References/AccountService/Reference.map">
+      <publishTime>05/15/2018 10:49:27</publishTime>
+    </File>
+    <File Include="Web References/AccountService/ReturnState.datasource">
+      <publishTime>05/15/2018 10:52:53</publishTime>
+    </File>
+    <File Include="Web References/AccountService/UserInfoView.datasource">
+      <publishTime>05/15/2018 10:52:53</publishTime>
+    </File>
+    <File Include="Web References/CourseCommentService/CourseCommentView.datasource">
+      <publishTime>05/15/2018 10:50:34</publishTime>
+    </File>
+    <File Include="Web References/CourseCommentService/Reference.map">
+      <publishTime>05/15/2018 10:50:32</publishTime>
+    </File>
+    <File Include="Web References/CourseCommentService/ReturnState.datasource">
+      <publishTime>05/15/2018 10:50:34</publishTime>
+    </File>
+    <File Include="Web References/CourseService/CourseReviewView.datasource">
+      <publishTime>05/15/2018 10:50:55</publishTime>
+    </File>
+    <File Include="Web References/CourseService/CourseView.datasource">
+      <publishTime>05/15/2018 10:50:55</publishTime>
+    </File>
+    <File Include="Web References/CourseService/Reference.map">
+      <publishTime>05/15/2018 10:50:53</publishTime>
+    </File>
+    <File Include="Web References/CourseService/ReturnState.datasource">
+      <publishTime>05/15/2018 10:50:55</publishTime>
+    </File>
+    <File Include="Web References/ForumService/PostModel.datasource">
+      <publishTime>05/15/2018 10:51:18</publishTime>
+    </File>
+    <File Include="Web References/ForumService/PostReplyModel.datasource">
+      <publishTime>05/15/2018 10:51:18</publishTime>
+    </File>
+    <File Include="Web References/ForumService/Reference.map">
+      <publishTime>05/15/2018 10:51:15</publishTime>
+    </File>
+    <File Include="Web References/ForumService/ReturnState.datasource">
+      <publishTime>05/15/2018 10:51:18</publishTime>
+    </File>
+    <File Include="Web References/MarketService/GoodsInfo.datasource">
+      <publishTime>05/15/2018 10:51:36</publishTime>
+    </File>
+    <File Include="Web References/MarketService/LeaveMsgModel.datasource">
+      <publishTime>05/15/2018 10:51:36</publishTime>
+    </File>
+    <File Include="Web References/MarketService/Reference.map">
+      <publishTime>05/15/2018 10:51:33</publishTime>
+    </File>
+    <File Include="Web References/MarketService/ReturnState.datasource">
+      <publishTime>05/15/2018 10:51:36</publishTime>
+    </File>
+    <File Include="Web References/TeacherService/Reference.map">
+      <publishTime>05/15/2018 10:51:53</publishTime>
+    </File>
+    <File Include="Web References/TeacherService/ReturnState.datasource">
+      <publishTime>05/15/2018 10:51:56</publishTime>
+    </File>
+    <File Include="Web References/TeacherService/TeacherCommentView.datasource">
+      <publishTime>05/15/2018 10:51:56</publishTime>
+    </File>
+    <File Include="Web References/TeacherService/TeacherInfoView.datasource">
+      <publishTime>05/15/2018 10:51:56</publishTime>
+    </File>
+    <File Include="Web References/UtilityService/Reference.map">
+      <publishTime>05/15/2018 10:52:12</publishTime>
+    </File>
     <File Include="Web.config">
-      <publishTime>05/14/2018 09:41:56</publishTime>
+      <publishTime>05/15/2018 10:59:03</publishTime>
     </File>
   </ItemGroup>
 </Project>

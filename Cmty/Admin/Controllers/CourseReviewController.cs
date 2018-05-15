@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Admin.Models;
+using Admin.CourseService;
 
 namespace Admin.Controllers
 {
@@ -59,7 +60,7 @@ namespace Admin.Controllers
             }
 
             var result = courseClient.AddCourse(course);
-            if (result == CommonLib.ReturnState.ReturnError)
+            if (result == ReturnState.ReturnError)
             {
                 ModelState.AddModelError("", "添加失败，请重试!");
                 return View(model);

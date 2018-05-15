@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Admin.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Admin_Accouunt_AccountService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8060/Svcs/AccountService.svc</Value>
+    </Setting>
+    <Setting Name="Admin_CourseCommentService_CourseCommentService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8060/Svcs/CourseCommentService.svc</Value>
+    </Setting>
+    <Setting Name="Admin_CourseService_CourseService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8060/Svcs/CourseService.svc</Value>
+    </Setting>
+    <Setting Name="Admin_ForumService_ForumService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8060/Svcs/ForumService.svc</Value>
+    </Setting>
+    <Setting Name="Admin_MarketService_MarketService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8060/Svcs/MarketService.svc</Value>
+    </Setting>
+    <Setting Name="Admin_TeacherService_TeacherService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8060/Svcs/TeacherService.svc</Value>
+    </Setting>
+    <Setting Name="Admin_UtilityService_UtilityService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8060/Svcs/UtilityService.svc</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
