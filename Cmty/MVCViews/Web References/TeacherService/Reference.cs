@@ -49,6 +49,8 @@ namespace MVCViews.TeacherService {
         
         private System.Threading.SendOrPostCallback GetValidFloorOperationCompleted;
         
+        private System.Threading.SendOrPostCallback RemoveTeacherCommentOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -116,6 +118,9 @@ namespace MVCViews.TeacherService {
         
         /// <remarks/>
         public event GetValidFloorCompletedEventHandler GetValidFloorCompleted;
+        
+        /// <remarks/>
+        public event RemoveTeacherCommentCompletedEventHandler RemoveTeacherCommentCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ITeacherService/AddTeacherInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -418,6 +423,36 @@ namespace MVCViews.TeacherService {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ITeacherService/RemoveTeacherComment", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void RemoveTeacherComment(int id, [System.Xml.Serialization.XmlIgnoreAttribute()] bool idSpecified) {
+            this.Invoke("RemoveTeacherComment", new object[] {
+                        id,
+                        idSpecified});
+        }
+        
+        /// <remarks/>
+        public void RemoveTeacherCommentAsync(int id, bool idSpecified) {
+            this.RemoveTeacherCommentAsync(id, idSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void RemoveTeacherCommentAsync(int id, bool idSpecified, object userState) {
+            if ((this.RemoveTeacherCommentOperationCompleted == null)) {
+                this.RemoveTeacherCommentOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveTeacherCommentOperationCompleted);
+            }
+            this.InvokeAsync("RemoveTeacherComment", new object[] {
+                        id,
+                        idSpecified}, this.RemoveTeacherCommentOperationCompleted, userState);
+        }
+        
+        private void OnRemoveTeacherCommentOperationCompleted(object arg) {
+            if ((this.RemoveTeacherCommentCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RemoveTeacherCommentCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -575,6 +610,10 @@ namespace MVCViews.TeacherService {
         
         private bool floorFieldSpecified;
         
+        private int idField;
+        
+        private bool idFieldSpecified;
+        
         private System.DateTime pubDateField;
         
         private bool pubDateFieldSpecified;
@@ -621,6 +660,27 @@ namespace MVCViews.TeacherService {
             }
             set {
                 this.floorFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IdSpecified {
+            get {
+                return this.idFieldSpecified;
+            }
+            set {
+                this.idFieldSpecified = value;
             }
         }
         
@@ -988,6 +1048,10 @@ namespace MVCViews.TeacherService {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void RemoveTeacherCommentCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

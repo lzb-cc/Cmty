@@ -74,5 +74,10 @@ namespace MVCViews.Svcs
             teacherClient.GetValidFloor(code, out result, out specify);
             return result;
         }
+
+        public void RemoveTeacherCommnetById(int id)
+        {
+            teacherClient.RemoveTeacherComment(id, specify);
+        }
     }
 }

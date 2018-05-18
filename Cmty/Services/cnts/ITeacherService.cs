@@ -40,6 +40,9 @@ namespace Services.cnts
 
         [OperationContract]
         int GetValidFloor(string code);
+
+        [OperationContract]
+        void RemoveTeacherComment(int id);
     }
 
     [DataContract]
@@ -72,6 +75,9 @@ namespace Services.cnts
 
     public class TeacherCommentView
     {
+        [DataMember(IsRequired =true)]
+        public int Id { get; set; }
+
         [DataMember]
         public string Teacher { get; set; }
 

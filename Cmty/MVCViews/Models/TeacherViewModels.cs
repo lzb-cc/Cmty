@@ -31,4 +31,33 @@ namespace MVCViews.Models
         public string Desp { get; set; }
     }
 
+    public class TeacherCommentViewModel
+    {
+        public TeacherCommentViewModel() { }
+        public TeacherCommentViewModel(TeacherService.TeacherCommentView model)
+        {
+            this.Id = model.Id;
+            this.Code = model.Email;
+            this.Date = model.PubDate;
+            this.Content = model.Content;
+            this.Floor = model.Floor;
+        }
+
+        public int Id { get; set; }
+
+        public string Code { get; set; }
+
+        public string UserAvatar { get; set; }
+
+        public string UserName { get; set; }
+
+        public string UserEmail { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public string Content { get; set; }
+
+        public int Floor { get; set; }
+    }
+
 }

@@ -24,6 +24,7 @@
       <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Floor" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="PubDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Teacher" nillable="true" type="xs:string" />
     </xs:sequence>

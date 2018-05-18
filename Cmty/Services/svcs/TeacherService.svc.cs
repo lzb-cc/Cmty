@@ -48,6 +48,7 @@ namespace Services.svcs
         {
             var filters = new UtilityService().GetFilterLisst();
             model.Content = Utilities.Filter(model.Content, filters);
+            model.Floor = TeacherOperator.GetValidFloor(model.Teacher);
             return TeacherOperator.AddCourseComment(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
         }
 
@@ -64,6 +65,11 @@ namespace Services.svcs
         public ReturnState RemoveComment(TeacherCommentView model)
         {
             return TeacherOperator.RemoveCourseComment(model) ? ReturnState.ReturnOK : ReturnState.ReturnError;
+        }
+
+        public void RemoveTeacherComment(int id)
+        {
+            TeacherOperator.DeleteTeacherCommnetById(id);
         }
     }
 }

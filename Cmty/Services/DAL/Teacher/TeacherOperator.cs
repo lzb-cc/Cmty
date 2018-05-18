@@ -101,7 +101,7 @@ namespace Services.DAL.Teacher
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     var reader = cmd.ExecuteReader();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         var user = new TeacherInfoView();
                         user.UserName = Convert.ToString(reader.GetValue(0));
@@ -155,6 +155,23 @@ namespace Services.DAL.Teacher
             return result;
         }
 
+        public static bool DeleteTeacherCommnetById(int id)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("delete from TeacherCommentSets where Id = {0}", id);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+
+            return result;
+        }
+
         public static bool AddCourseComment(TeacherCommentView model)
         {
             var result = false;
@@ -194,20 +211,19 @@ namespace Services.DAL.Teacher
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                var cmdText = string.Format("select T_Id, Email, cDate, Content, CmtFloor from TeacherCommentSets where T_Id = N'{0}' order by CmtFloor ASC", email);
+                var cmdText = string.Format("select T_Id, Email, cDate, Content, CmtFloor, Id from TeacherCommentSets where T_Id = N'{0}' order by CmtFloor DESC", email);
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        var comment = new TeacherCommentView()
-                        {
-                            Teacher = Convert.ToString(reader.GetValue(0)),
-                            Email = Convert.ToString(reader.GetValue(1)),
-                            PubDate = Convert.ToDateTime(reader.GetValue(2)),
-                            Content = Convert.ToString(reader.GetValue(3)),
-                            Floor = Convert.ToInt32(reader.GetValue(4))
-                        };
+                        var comment = new TeacherCommentView();
+                        comment.Teacher = Convert.ToString(reader.GetValue(0));
+                        comment.Email = Convert.ToString(reader.GetValue(1));
+                        comment.PubDate = Convert.ToDateTime(reader.GetValue(2));
+                        comment.Content = Convert.ToString(reader.GetValue(3));
+                        comment.Floor = Convert.ToInt32(reader.GetValue(4));
+                        comment.Id = Convert.ToInt32(reader.GetValue(5));
                         ret.Add(comment);
                     }
                 }
@@ -244,14 +260,14 @@ namespace Services.DAL.Teacher
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     var reader = cmd.ExecuteReader();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         result.Add(Convert.ToString(reader.GetValue(0)));
                     }
                     conn.Close();
                 }
             }
-                return result;
+            return result;
         }
 
     }

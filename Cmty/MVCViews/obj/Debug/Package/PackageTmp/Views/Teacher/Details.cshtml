@@ -7,103 +7,148 @@
 <h2>教师详细信息</h2>
 
 <div>
-    <h4>详细信息</h4>
+    <h4>@Model.UserName</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
+    <div class="div-inline">
+        <div class="div-img"><img id="course_pic" src="http://localhost:8090/ImageUrl/00.jpg" style="max-width:300px;max-height:400px;" /></div>
+    </div>
+    <div>
+        <div>教师姓名： @Model.UserName</div>
+        <div>所属学校： @Model.University</div>
+        <div>
+            所授课程： @foreach (var item in ViewBag.Courses)
+            { <label>@item</label>}
+        </div>
+        <div>教师简历： @Model.Desp</div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.University)
-        </dt>
+        <hr />
+        <div>
+            <textarea placeholder="输入内容..." class="form-control" id="comment_edit"></textarea>
+            <input type="button" value="添加评论" class="btn btn-warning" onclick="AddComments('@Model.Email')" />
+            <input type="button" value="返回上一页" class="btn" onclick='Back()' />
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.University)
-        </dd>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sex)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sex)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RegistDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RegistDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.JobTitle)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.JobTitle)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Desp)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Desp)
-        </dd>
-
-        <dt>
-            所授课程
-        </dt>
-
-        @foreach (var item in ViewBag.Courses)
+    <hr style="clear:both" />
+    <div>
+        <h3>用户评论</h3>
+        @foreach (var cmt in ViewBag.CmtList)
         {
-            <dd>
-                @item
-            </dd>
+            <hr style="clear:both" />
+            <div class="div-inline-comment">
+                <img class="user_pic" src="http://localhost:8090/ImageUrl/@cmt.UserAvatar" style="max-height:400px;max-width:300px;" />
+            </div>
+            <div class="div-inline-comment">
+                <div><span>@cmt.Floor 楼</span>    <span>@cmt.UserName</span></div>
+                <div>@cmt.Date</div>
+                <div>@cmt.Content</div>
+                @if (cmt.UserEmail.Equals(Request.Cookies.Get("ApplicationCookie")?.Value))
+                {
+                    <input type="button" value="撤销" class="btn btn-danger" onclick="DropOff(@cmt.Id)" />
+                }
+            </div>
         }
-    </dl>
+    </div>
+
 </div>
 
-<div>
-    @foreach (var cmt in ViewBag.CmtList)
-    {
-        <div>
-            <h3>#@cmt.Floor @cmt.Email</h3>
-            <p>@cmt.PubDate : @cmt.Content</p>
-        </div>
+<style>
+    .div-inline {
+        width: 300px;
+        height: 400px;
+        display: inline;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 50px;
     }
 
-    <div>
-        <label id="code_label" hidden>@Model.Email</label>
-        评论: @Html.Editor("comment_edit")
-        <a id="href_comment" href="" onclick="make_comment()">发送</a>
-    </div>
-</div>
-<p>
-    @Html.ActionLink("返回主页", "Index")
-</p>
+    .div-inline-comment {
+        width: 150px;
+        height: 150px;
+        display: inline;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 30px;
+    }
 
+    img #course_pic {
+        width: 100%;
+        height: 100%;
+        max-width: 300px;
+        max-height: 400px;
+    }
+
+    .user_pic {
+        width: 100%;
+        height: 100%;
+        max-height: 150px;
+        max-width: 150px;
+    }
+</style>
 
 <script>
-    function make_comment() {
-        var content = document.getElementById("comment_edit").value;
-        var email = document.getElementById("code_label").innerText;
-        var href = "/Teacher/MakeComment?email=" + email + "&content=" + content;
-        document.getElementById("href_comment").setAttribute("href", href);
+    function Back() {
+        window.history.back(-1);
+    }
+
+    function DropOff(id) {
+        var params = { id: id, }
+
+        if (id <= 0) {
+            return;
+        }
+
+        $.ajax({
+            url: "/Teacher/CommentCancel",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function (json) {
+            alert(json.Msg);
+            if (json.Status == 0) {
+                location.reload();
+            } else if (json.Status == 1) {
+                window.location.href = "/Account/Login";
+            }
+        })
+    }
+
+    function AddComments(email) {
+        var params = {
+            email: email,
+            content: $("#comment_edit").val(),
+        }
+
+        if (params.email.length <= 0) {
+            return;
+        }
+
+        if (params.content.length <= 0) {
+            alert("评论不能为空!");
+            return;
+        }
+
+        $.ajax({
+            url: "/Teacher/MakeComment",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function (json) {
+            alert(json.Msg);
+            if (json.Status == 0) {
+                location.reload();
+            } else if (json.Status == 1) {
+                window.location.href = "/Account/Login";
+            }
+        })
     }
 </script>

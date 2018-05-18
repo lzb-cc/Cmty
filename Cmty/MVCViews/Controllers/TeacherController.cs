@@ -55,19 +55,44 @@ namespace MVCViews.Controllers
 
             ViewBag.Courses = courseList;
             ViewBag.CmtList = teacherClient.GetCommentByEmail(email);
+
+            // 查询评论
+            ViewBag.CmtList = new List<TeacherCommentViewModel>();
+            var retList = teacherClient.GetCommentByEmail(email);
+            foreach (var item in retList)
+            {
+                var tmp = new TeacherCommentViewModel(item);
+                var userInfo = accountClient.GetUserInfo(item.Email);
+                tmp.UserAvatar = string.IsNullOrEmpty(userInfo.Avatar) ? "00.jpg" : userInfo.Avatar;
+                tmp.UserName = string.IsNullOrEmpty(userInfo.Nick) ? userInfo.UserName : userInfo.Nick;
+                tmp.UserEmail = item.Email;
+                ViewBag.CmtList.Add(tmp);
+            }
+
             return View(model);
         }
 
-        public ActionResult MakeComment(string email, string content)
+        [HttpPost]
+        public JsonResult MakeComment(string email, string content)
         {
+            var ret = new CourseOperatorResp
+            {
+                Status = 0,
+                Msg = "评论成功！"
+            };
+
             if (!Authority())
             {
-                return _authorityResult;
+                ret.Status = 1;
+                ret.Msg = @"请先登录！";
+                return Json(ret);
             }
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(content))
             {
-                return RedirectToAction("Index");
+                ret.Status = 2;
+                ret.Msg = @"";
+                return Json(ret);
             }
 
             var model = new TeacherService.TeacherCommentView()
@@ -79,7 +104,26 @@ namespace MVCViews.Controllers
                 Floor = teacherClient.GetValidFloor(email)
             };
             teacherClient.AddComment(model);
-            return RedirectToAction("Details", new { email = email });
+            return Json(ret);
+        }
+
+        [HttpPost]
+        public JsonResult CommentCancel(int id)
+        {
+            var ret = new CourseOperatorResp
+            {
+                Status = 0,
+                Msg = @"撤销成功!"
+            };
+
+            if (!Authority())
+            {
+                ret.Status = 1;
+                ret.Msg = @"请先登录!";
+            }
+
+            teacherClient.RemoveTeacherCommnetById(id);
+            return Json(ret);
         }
     }
 }
