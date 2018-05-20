@@ -139,12 +139,32 @@ namespace MVCViews.Models
         [Display(Name = "性别")]
         public string Sex { get; set; }
 
-        [Display(Name ="昵称")]
+        [Display(Name = "昵称")]
         public string Nick { get; set; }
 
-        [Display(Name ="兴趣爱好")]
+        [Display(Name = "兴趣爱好")]
         public string Hobby { get; set; }
 
         public string Avatar { get; set; }
+    }
+
+    public class ForgetPasswordViewModel
+    {
+        [Display(Name = "注册邮箱")]
+        public string Email { get; set; }
+
+        [Display(Name = "用户名")]
+        public string UserName { get; set; }
+
+        [Display(Name = "性别")]
+        public string Sex { get; set; }
+
+        [Display(Name = "昵称")]
+        public string Nick { get; set; }
+
+        [Display(Name = "联系方式")]
+        public string Tel { get; set; }
+
+
     }
 }

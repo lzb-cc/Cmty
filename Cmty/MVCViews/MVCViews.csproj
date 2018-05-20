@@ -480,6 +480,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Views\Account\GetBackPassword.cshtml" />
     <None Include="Web References\AccountService\AccountService.disco" />
     <None Include="Web References\CourseCommentService\CourseCommentService.disco" />
     <Content Include="Web References\CourseService\CourseReviewView.datasource">

@@ -97,10 +97,10 @@
       <publishTime>03/15/2018 21:20:49</publishTime>
     </File>
     <File Include="bin/MVCViews.dll">
-      <publishTime>05/20/2018 23:19:36</publishTime>
+      <publishTime>05/21/2018 00:06:19</publishTime>
     </File>
     <File Include="bin/MVCViews.pdb">
-      <publishTime>05/20/2018 23:19:36</publishTime>
+      <publishTime>05/21/2018 00:06:19</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>03/15/2018 21:20:50</publishTime>
@@ -372,8 +372,11 @@
     <File Include="Views/Account/ForgotPasswordConfirmation.cshtml">
       <publishTime>03/15/2018 21:20:18</publishTime>
     </File>
+    <File Include="Views/Account/GetBackPassword.cshtml">
+      <publishTime>05/21/2018 00:07:05</publishTime>
+    </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>03/15/2018 21:20:18</publishTime>
+      <publishTime>05/20/2018 23:49:28</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>05/03/2018 21:09:10</publishTime>

@@ -271,6 +271,21 @@ namespace MVCViews.Controllers
             accountClient.UpdateUserInfo(user);
             return RedirectToAction("UserInfo", "Account", routeValues: new { email = model.Email });
         }
+
+        public ActionResult GetBackPassword()
+        {
+            var list = new List<SelectListItem>();
+            list.Add(new SelectListItem() { Text = "男" });
+            list.Add(new SelectListItem() { Text = "女" });
+            ViewData["Sex"] = list;
+            return View();
+        }
+
+        public JsonResult GetBackPasswordConfirm(ForgetPasswordViewModel model)
+        {
+            return Json(new { Status = 0 });
+        }
+
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
