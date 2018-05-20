@@ -97,10 +97,10 @@
       <publishTime>03/15/2018 21:20:49</publishTime>
     </File>
     <File Include="bin/MVCViews.dll">
-      <publishTime>05/18/2018 13:44:39</publishTime>
+      <publishTime>05/20/2018 23:19:36</publishTime>
     </File>
     <File Include="bin/MVCViews.pdb">
-      <publishTime>05/18/2018 13:44:39</publishTime>
+      <publishTime>05/20/2018 23:19:36</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>03/15/2018 21:20:50</publishTime>
@@ -388,7 +388,7 @@
       <publishTime>03/15/2018 21:20:18</publishTime>
     </File>
     <File Include="Views/Account/UserInfo.cshtml">
-      <publishTime>05/14/2018 19:44:59</publishTime>
+      <publishTime>05/20/2018 23:19:07</publishTime>
     </File>
     <File Include="Views/Account/VerifyCode.cshtml">
       <publishTime>03/15/2018 21:20:18</publishTime>
@@ -436,7 +436,7 @@
       <publishTime>03/15/2018 21:20:18</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>03/15/2018 21:20:18</publishTime>
+      <publishTime>05/20/2018 21:26:24</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>03/15/2018 21:20:18</publishTime>
@@ -487,7 +487,7 @@
       <publishTime>04/29/2018 22:18:49</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>03/27/2018 21:53:56</publishTime>
+      <publishTime>05/20/2018 22:34:16</publishTime>
     </File>
     <File Include="Views/Teacher/Details.cshtml">
       <publishTime>05/18/2018 13:41:03</publishTime>
@@ -502,10 +502,10 @@
       <publishTime>03/15/2018 21:20:19</publishTime>
     </File>
     <File Include="Web References/AccountService/ReturnState.datasource">
-      <publishTime>05/14/2018 16:56:02</publishTime>
+      <publishTime>05/20/2018 23:00:25</publishTime>
     </File>
     <File Include="Web References/AccountService/UserInfoView.datasource">
-      <publishTime>05/14/2018 16:56:02</publishTime>
+      <publishTime>05/20/2018 23:00:25</publishTime>
     </File>
     <File Include="Web References/CourseCommentService/CourseCommentView.datasource">
       <publishTime>05/14/2018 16:56:02</publishTime>

@@ -24,7 +24,8 @@
 <div class="div-inline">
     <div>姓名： @Model.UserName</div>
     <div>院校： @Model.University</div>
-    <div>邮箱： @Model.Email
+    <div>
+        邮箱： @Model.Email
         @if (Convert.ToInt32(ViewData["EmailStatus"]) > 0)
         {
             <font color="green">√</font>
@@ -43,6 +44,10 @@
     <div>
         <input type="button" class="btn btn-primary" value="修改" onclick="Redirect('/Account/Edit?email=@Model.Email')" />
         <input type="button" class="btn" value="返回主页" onclick="Redirect('/Home/Index/')" />
+        @if (Convert.ToInt32(ViewData["EmailStatus"]) > 0)
+        {
+            <input type="button" class="btn btn-danger" value="注销账号" onclick="DeleteUser('@Model.Email')" />
+        }
     </div>
 </div>
 
@@ -99,6 +104,22 @@
             data: params,
         }).done(function (json) {
             alert("请转到邮箱验证!");
+        })
+    }
+
+    function DeleteUser(email) {
+        var params = { email: email, }
+
+        $.ajax({
+            url: "/Account/DeleteUser",
+            type: "post",
+            dataType: "json",
+            data: params,
+        }).done(function (json) {
+            if (json.Status == 0) {
+                alert("我们已经向您邮箱发送注销验证!");
+                window.location.href = "/Account/Logoff";
+            }
         })
     }
 </script>

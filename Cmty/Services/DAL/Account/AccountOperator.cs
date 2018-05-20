@@ -234,5 +234,30 @@ namespace Services.DAL.Account
 
             return result;
         }
+
+        public static bool DeleteUser(string email)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format(@"delete from PostReplyMsg where Email = N'{0}'
+                                              delete from PostReply where Email = N'{0}'
+                                              delete from PostMsg where Email = N'{0}'
+                                              delete from LeaveMsg where Email = N'{0}'
+                                              delete from GoodsSets where Seller = N'{0}' or Buyer = N'{0}'
+                                              delete from TeacherCommentSets where Email = N'{0}'
+                                              delete from CourseCommentSets where Email = N'{0}'
+                                              delete from tmp_CourseSets where CommitUser = N'{0}'
+                                              delete from ExtraUserInfo where Email = N'{0}'
+                                              delete from UserSets where Email = N'{0}'", email);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+            return result;
+        }
     }
 }

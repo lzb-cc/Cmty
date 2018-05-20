@@ -75,5 +75,14 @@ namespace MVCViews.Svcs
             accountClient.ReValidEmail(email);
         }
 
+        public void DeleteUser(string email)
+        {
+            accountClient.DeleteUser(email);
+        }
+
+        public void SendEmailForDelete(string email)
+        {
+            accountClient.CheckEmailForDelete(email);
+        }
     }
 }

@@ -233,6 +233,18 @@ namespace MVCViews.Controllers
             return View(model);
         }
 
+        public JsonResult DeleteUser(string email)
+        {
+            accountClient.SendEmailForDelete(email);
+            return Json(new { Status = 0 });
+        }
+
+        public ActionResult ConfirmDelete(string email)
+        {
+            accountClient.DeleteUser(email);
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult Edit(string email)
         {
             var user = accountClient.GetUserInfo(email);

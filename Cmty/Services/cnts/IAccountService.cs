@@ -43,6 +43,12 @@ namespace Services
 
         [OperationContract]
         void ReValidEmail(string email);
+
+        [OperationContract]
+        void DeleteUser(string email);
+
+        [OperationContract]
+        void CheckEmailForDelete(string email);
     }
 
     [DataContract]

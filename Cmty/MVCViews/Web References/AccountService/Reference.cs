@@ -49,6 +49,10 @@ namespace MVCViews.AccountService {
         
         private System.Threading.SendOrPostCallback ReValidEmailOperationCompleted;
         
+        private System.Threading.SendOrPostCallback DeleteUserOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CheckEmailForDeleteOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -116,6 +120,12 @@ namespace MVCViews.AccountService {
         
         /// <remarks/>
         public event ReValidEmailCompletedEventHandler ReValidEmailCompleted;
+        
+        /// <remarks/>
+        public event DeleteUserCompletedEventHandler DeleteUserCompleted;
+        
+        /// <remarks/>
+        public event CheckEmailForDeleteCompletedEventHandler CheckEmailForDeleteCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IAccountService/Register", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -416,6 +426,62 @@ namespace MVCViews.AccountService {
             if ((this.ReValidEmailCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ReValidEmailCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IAccountService/DeleteUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void DeleteUser([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string email) {
+            this.Invoke("DeleteUser", new object[] {
+                        email});
+        }
+        
+        /// <remarks/>
+        public void DeleteUserAsync(string email) {
+            this.DeleteUserAsync(email, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteUserAsync(string email, object userState) {
+            if ((this.DeleteUserOperationCompleted == null)) {
+                this.DeleteUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteUserOperationCompleted);
+            }
+            this.InvokeAsync("DeleteUser", new object[] {
+                        email}, this.DeleteUserOperationCompleted, userState);
+        }
+        
+        private void OnDeleteUserOperationCompleted(object arg) {
+            if ((this.DeleteUserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteUserCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IAccountService/CheckEmailForDelete", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void CheckEmailForDelete([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string email) {
+            this.Invoke("CheckEmailForDelete", new object[] {
+                        email});
+        }
+        
+        /// <remarks/>
+        public void CheckEmailForDeleteAsync(string email) {
+            this.CheckEmailForDeleteAsync(email, null);
+        }
+        
+        /// <remarks/>
+        public void CheckEmailForDeleteAsync(string email, object userState) {
+            if ((this.CheckEmailForDeleteOperationCompleted == null)) {
+                this.CheckEmailForDeleteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCheckEmailForDeleteOperationCompleted);
+            }
+            this.InvokeAsync("CheckEmailForDelete", new object[] {
+                        email}, this.CheckEmailForDeleteOperationCompleted, userState);
+        }
+        
+        private void OnCheckEmailForDeleteOperationCompleted(object arg) {
+            if ((this.CheckEmailForDeleteCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CheckEmailForDeleteCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -976,6 +1042,14 @@ namespace MVCViews.AccountService {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void ReValidEmailCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void DeleteUserCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void CheckEmailForDeleteCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591
