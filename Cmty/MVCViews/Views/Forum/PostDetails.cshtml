@@ -4,81 +4,91 @@
     ViewBag.Title = "PostDetails";
 }
 
-<h2>帖子详情</h2>
-
+<h3>@Model.Title</h3>
 <div>
-    <h4></h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Poster)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Poster)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PostType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PostType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PublishDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PublishDate)
-        </dd>
-    </dl>
+    <span><a href="/Forum/Index?type=@Model.PostType">@Model.PostType &raquo;</a></span>&nbsp;
+    <span>@ViewBag.User.UserName</span>&nbsp;posted at:&nbsp;
+    <span>@Model.PublishDate</span>
 </div>
 
 <hr />
-<table class="table">
-    @foreach (var item in ViewBag.ReplyList)
-    {
-        <tr>
-            <td>@item.Responser</td>
-            <td>@item.ResponseDate</td>
-            <td>@item.Content</td>
-            <td>
-                <input type="button" value="回复" class="btn btn-primary" onclick="ResponseReply(@item.Id)"/>
-                @{ 
-                    if(item.Responser.Equals(Request.Cookies.Get("ApplicationCookie")?.Value))
-                    {
-                        <input type="button" value="删除" class="btn btn-danger" onclick="RemoveResponseReply(@item.Id)"/>
-                    }
-                }
-            </td>
-        </tr>
-                    }
-</table>
+
+<div class="article">
+    <p>
+        @Model.Content
+    </p>
+</div>
 
 <hr />
+
+@foreach (var item in ViewBag.ReplyList)
+{
+    <div class="div-inline">
+        <img src="http://localhost:8090/ImageUrl/@ViewData[item.Responser].Avatar" height="150" width="150" />
+    </div>
+    <div class="div-inline">
+        <div>
+            <span>@ViewData[item.Responser].UserName</span>&nbsp;responsed at:&nbsp;@item.ResponseDate
+        </div>
+        <div style="vertical-align:central">
+            <p>
+                @item.Content
+            </p>
+        </div>
+        <div style="width:100%;position:absolute;bottom:0;">
+            <input type="button" value="回复" class="btn btn-primary" onclick="ResponseReply(@item.Id)" />
+            @{
+                if (item.Responser.Equals(Request.Cookies.Get("ApplicationCookie")?.Value))
+                {
+                    <input type="button" value="撤销" class="btn btn-default" onclick="RemoveResponseReply(@item.Id)" />
+                }
+            }
+        </div>
+    </div>
+    <hr style="clear:both" />
+                }
+
 <p>
     <textarea placeholder="输入内容..." class="form-control" id="post_edit"></textarea>
     <input type="button" value="我要跟帖" class="btn btn-warning" onclick="FllowPost(@Model.Id)" />
     <input type="button" value="返回主页" class="btn" onclick="Redirect('/Forum/Index')" />
 </p>
+
+<style>
+    .article {
+        min-height: 200px;
+    }
+
+    .div-inline {
+        max-width:70%;
+        min-height: 180px;
+        display: inline;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 50px;
+        position: relative;
+    }
+
+    .div-inline-comment {
+        width: 150px;
+        height: 150px;
+        display: inline;
+        float: left;
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 30px;
+    }
+
+    .user_pic {
+        width: 100%;
+        height: 100%;
+        max-height: 150px;
+        max-width: 150px;
+    }
+</style>
 
 <script>
     function Redirect(url) {
@@ -113,7 +123,7 @@
     }
 
     function ResponseReply(id) {
-        window.location.href = "/Forum/PostReplyDetails?id="+id;
+        window.location.href = "/Forum/PostReplyDetails?id=" + id;
     }
 
     function RemoveResponseReply(id) {
@@ -130,7 +140,7 @@
             alert(json.Message);
             if (json.Status == 0) {
                 location.reload();
-            } 
+            }
         })
     }
 </script>

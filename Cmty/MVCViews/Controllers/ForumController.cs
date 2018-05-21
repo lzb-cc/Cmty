@@ -107,6 +107,16 @@ namespace MVCViews.Controllers
         {
             var model = new PostViewModel(forumClient.GetPostById(id));
             ViewBag.ReplyList = forumClient.GetPostReplyListByPostId(id);
+            foreach(var item in ViewBag.ReplyList)
+            {
+                ViewData[item.Responser] = accountClient.GetUserInfo(item.Responser);
+                if(string.IsNullOrEmpty(ViewData[item.Responser].Avatar))
+                {
+                    ViewData[item.Responser].Avatar = "00.jpg";
+                }
+            }
+
+            ViewBag.User = accountClient.GetUserInfo(model.Poster);
 
             return View(model);
         }
