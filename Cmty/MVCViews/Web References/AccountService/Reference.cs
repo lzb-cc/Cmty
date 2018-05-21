@@ -63,6 +63,8 @@ namespace MVCViews.AccountService {
         
         private System.Threading.SendOrPostCallback GetForgotPasswordByIdOperationCompleted;
         
+        private System.Threading.SendOrPostCallback UpdateUserPasswordOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -151,6 +153,9 @@ namespace MVCViews.AccountService {
         
         /// <remarks/>
         public event GetForgotPasswordByIdCompletedEventHandler GetForgotPasswordByIdCompleted;
+        
+        /// <remarks/>
+        public event UpdateUserPasswordCompletedEventHandler UpdateUserPasswordCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IAccountService/Register", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -660,6 +665,36 @@ namespace MVCViews.AccountService {
             if ((this.GetForgotPasswordByIdCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetForgotPasswordByIdCompleted(this, new GetForgotPasswordByIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IAccountService/UpdateUserPassword", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UpdateUserPassword([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string email, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string password) {
+            this.Invoke("UpdateUserPassword", new object[] {
+                        email,
+                        password});
+        }
+        
+        /// <remarks/>
+        public void UpdateUserPasswordAsync(string email, string password) {
+            this.UpdateUserPasswordAsync(email, password, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateUserPasswordAsync(string email, string password, object userState) {
+            if ((this.UpdateUserPasswordOperationCompleted == null)) {
+                this.UpdateUserPasswordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateUserPasswordOperationCompleted);
+            }
+            this.InvokeAsync("UpdateUserPassword", new object[] {
+                        email,
+                        password}, this.UpdateUserPasswordOperationCompleted, userState);
+        }
+        
+        private void OnUpdateUserPasswordOperationCompleted(object arg) {
+            if ((this.UpdateUserPasswordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateUserPasswordCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1441,6 +1476,10 @@ namespace MVCViews.AccountService {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void UpdateUserPasswordCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

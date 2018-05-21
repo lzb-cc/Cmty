@@ -29,6 +29,8 @@ namespace Admin.AccountService {
     [System.Web.Services.WebServiceBindingAttribute(Name="BasicHttpBinding_IAccountService", Namespace="http://tempuri.org/")]
     public partial class AccountService : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback RegisterWithoutValidOperationCompleted;
+        
         private System.Threading.SendOrPostCallback RegisterOperationCompleted;
         
         private System.Threading.SendOrPostCallback LoginOperationCompleted;
@@ -62,6 +64,8 @@ namespace Admin.AccountService {
         private System.Threading.SendOrPostCallback GetForgotPasswordListOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetForgotPasswordByIdOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateUserPasswordOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -100,6 +104,9 @@ namespace Admin.AccountService {
                 this.useDefaultCredentialsSetExplicitly = true;
             }
         }
+        
+        /// <remarks/>
+        public event RegisterWithoutValidCompletedEventHandler RegisterWithoutValidCompleted;
         
         /// <remarks/>
         public event RegisterCompletedEventHandler RegisterCompleted;
@@ -151,6 +158,37 @@ namespace Admin.AccountService {
         
         /// <remarks/>
         public event GetForgotPasswordByIdCompletedEventHandler GetForgotPasswordByIdCompleted;
+        
+        /// <remarks/>
+        public event UpdateUserPasswordCompletedEventHandler UpdateUserPasswordCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IAccountService/RegisterWithoutValid", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void RegisterWithoutValid([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] RegisterView model) {
+            this.Invoke("RegisterWithoutValid", new object[] {
+                        model});
+        }
+        
+        /// <remarks/>
+        public void RegisterWithoutValidAsync(RegisterView model) {
+            this.RegisterWithoutValidAsync(model, null);
+        }
+        
+        /// <remarks/>
+        public void RegisterWithoutValidAsync(RegisterView model, object userState) {
+            if ((this.RegisterWithoutValidOperationCompleted == null)) {
+                this.RegisterWithoutValidOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegisterWithoutValidOperationCompleted);
+            }
+            this.InvokeAsync("RegisterWithoutValid", new object[] {
+                        model}, this.RegisterWithoutValidOperationCompleted, userState);
+        }
+        
+        private void OnRegisterWithoutValidOperationCompleted(object arg) {
+            if ((this.RegisterWithoutValidCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RegisterWithoutValidCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IAccountService/Register", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -664,6 +702,36 @@ namespace Admin.AccountService {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IAccountService/UpdateUserPassword", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UpdateUserPassword([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string email, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string password) {
+            this.Invoke("UpdateUserPassword", new object[] {
+                        email,
+                        password});
+        }
+        
+        /// <remarks/>
+        public void UpdateUserPasswordAsync(string email, string password) {
+            this.UpdateUserPasswordAsync(email, password, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateUserPasswordAsync(string email, string password, object userState) {
+            if ((this.UpdateUserPasswordOperationCompleted == null)) {
+                this.UpdateUserPasswordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateUserPasswordOperationCompleted);
+            }
+            this.InvokeAsync("UpdateUserPassword", new object[] {
+                        email,
+                        password}, this.UpdateUserPasswordOperationCompleted, userState);
+        }
+        
+        private void OnUpdateUserPasswordOperationCompleted(object arg) {
+            if ((this.UpdateUserPasswordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateUserPasswordCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -1070,6 +1138,10 @@ namespace Admin.AccountService {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void RegisterWithoutValidCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void RegisterCompletedEventHandler(object sender, RegisterCompletedEventArgs e);
     
     /// <remarks/>
@@ -1441,6 +1513,10 @@ namespace Admin.AccountService {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void UpdateUserPasswordCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

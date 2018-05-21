@@ -128,6 +128,22 @@ namespace Services.DAL.Account
             return result;
         }
 
+        public static bool UpdateUserPassword(string email, string password)
+        {
+            var result = false;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("update UserSets set Pwd = N'{1}' where Email = N'{0}'", email, password);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery() > 0;
+                    conn.Close();
+                }
+            }
+            return result;
+        }
+
         public static bool AdminLogin(LoginView model)
         {
             var result = false;

@@ -15,6 +15,11 @@ namespace Admin.Svcs
             return outResult;
         }
 
+        public void RegisterWithoutValid(RegisterView model)
+        {
+            accountClient.RegisterWithoutValid(model);
+        }
+
         public bool Login(LoginView model)
         {
             ReturnState outResult;

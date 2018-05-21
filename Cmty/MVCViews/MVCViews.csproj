@@ -481,6 +481,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Views\Account\GetBackPassword.cshtml" />
+    <Content Include="Views\Account\ModifyPassword.cshtml" />
     <None Include="Web References\AccountService\AccountService.disco" />
     <Content Include="Web References\AccountService\ForgotPasswordView.datasource">
       <DependentUpon>Reference.map</DependentUpon>

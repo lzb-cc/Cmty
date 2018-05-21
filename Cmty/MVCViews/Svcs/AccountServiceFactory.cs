@@ -89,5 +89,10 @@ namespace MVCViews.Svcs
         {
             accountClient.AddForgotPassword(model);
         }
+
+        public void UpdateUserPassword(string email, string password)
+        {
+            accountClient.UpdateUserPassword(email, password);
+        }
     }
 }

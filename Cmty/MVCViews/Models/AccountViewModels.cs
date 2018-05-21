@@ -165,4 +165,13 @@ namespace MVCViews.Models
         [Display(Name = "联系方式")]
         public string Tel { get; set; }
     }
+
+    public class ResetPasswordView
+    {
+        [Display(Name = "账号")]
+        public string Email { get; set; }
+
+        [Display(Name = "重置密码")]
+        public string Password { get; set; }
+    }
 }

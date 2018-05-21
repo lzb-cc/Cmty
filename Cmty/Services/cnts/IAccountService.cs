@@ -12,6 +12,8 @@ namespace Services
     [ServiceContract]
     public interface IAccountService
     {
+        [OperationContract]
+        void RegisterWithoutValid(RegisterView model);
 
         [OperationContract]
         CommonLib.ReturnState Register(RegisterView model);
@@ -64,6 +66,9 @@ namespace Services
 
         [OperationContract]
         ForgotPasswordView GetForgotPasswordById(int id);
+
+        [OperationContract]
+        void UpdateUserPassword(string email, string password);
     }
 
     [DataContract]

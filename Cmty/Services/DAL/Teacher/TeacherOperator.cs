@@ -24,7 +24,7 @@ namespace Services.DAL.Teacher
             using (var conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                var cmdText = string.Format("insert into TeacherSets values (N'{0}', N'{1}', '{2}', N'{3}', N'{4}', {5}, {6}, N'{7}')", model.Email, model.UserName, model.RegisteDate, model.Sex, model.Tel, model.University, model.JobTitle, model.Desp);
+                var cmdText = string.Format("insert into TeacherSets values (N'{0}', N'{1}', '{2}', N'{3}', N'{4}', {5}, {6}, N'{7}')", model.Email, model.UserName, DateTime.Now, model.Sex, model.Tel, model.University, model.JobTitle, model.Desp);
                 using (var cmd = new SqlCommand(cmdText, conn))
                 {
                     var result = cmd.ExecuteNonQuery();

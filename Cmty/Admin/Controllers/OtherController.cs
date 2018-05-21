@@ -132,7 +132,7 @@ namespace Admin.Controllers
                     continue;
                 }
 
-                accountClient.Register(model);
+                accountClient.RegisterWithoutValid(model);
             }
         }
 

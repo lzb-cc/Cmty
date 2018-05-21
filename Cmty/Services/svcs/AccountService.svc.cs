@@ -46,6 +46,8 @@ namespace Services
             return result;
         }
 
+        
+
         public CommonLib.ReturnState Login(LoginView model)
         {
             return AccountOperator.Login(model) ? CommonLib.ReturnState.ReturnOK : CommonLib.ReturnState.ReturnError;
@@ -108,8 +110,32 @@ namespace Services
             AccountOperator.ForgotPasswordApply(model);
         }
 
+        private void SendEmailForForgotPass(string email)
+        {
+            var checkLink = string.Format("http://localhost:8070/Account/ModifyPassword?email={0}", email);
+            var subject = "Result for forgot password apply.";
+            var content = string.Format("Please <a href = '{0}'>click me</a> to Reset the password.", checkLink);
+            adminClient.SendEamil(email, subject, content);
+        }
+
+        private void SendEmailForForgotFailed(string email)
+        {
+            var subject = "Result for forgot password apply.";
+            var content = string.Format("I'm sorry to inform you that your apply failed.");
+            adminClient.SendEamil(email, subject, content);
+        }
+
         public void UpdateForgotPassword(int id, int status)
         {
+            var email = GetForgotPasswordById(id).Email;
+            if (status == 1)
+            {
+                SendEmailForForgotPass(email);
+            }
+            else if (status == 2)
+            {
+                SendEmailForForgotFailed(email);
+            }
             AccountOperator.UpdateForgotPasswordStatus(id, status);
         }
 
@@ -126,6 +152,16 @@ namespace Services
         public ForgotPasswordView GetForgotPasswordById(int id)
         {
             return AccountOperator.GetForgotPasswordById(id);
+        }
+
+        public void UpdateUserPassword(string email, string password)
+        {
+            AccountOperator.UpdateUserPassword(email, password);
+        }
+
+        public void RegisterWithoutValid(RegisterView model)
+        {
+            AccountOperator.Register(model);
         }
     }
 }
