@@ -57,6 +57,8 @@ namespace MVCViews.ForumService {
         
         private System.Threading.SendOrPostCallback GetPostTypeListOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetPostListByTypeOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -136,6 +138,9 @@ namespace MVCViews.ForumService {
         
         /// <remarks/>
         public event GetPostTypeListCompletedEventHandler GetPostTypeListCompleted;
+        
+        /// <remarks/>
+        public event GetPostListByTypeCompletedEventHandler GetPostListByTypeCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IForumService/AddPost", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -569,6 +574,37 @@ namespace MVCViews.ForumService {
             if ((this.GetPostTypeListCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetPostTypeListCompleted(this, new GetPostTypeListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IForumService/GetPostListByType", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Services.cnts")]
+        public PostModel[] GetPostListByType([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string type) {
+            object[] results = this.Invoke("GetPostListByType", new object[] {
+                        type});
+            return ((PostModel[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetPostListByTypeAsync(string type) {
+            this.GetPostListByTypeAsync(type, null);
+        }
+        
+        /// <remarks/>
+        public void GetPostListByTypeAsync(string type, object userState) {
+            if ((this.GetPostListByTypeOperationCompleted == null)) {
+                this.GetPostListByTypeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPostListByTypeOperationCompleted);
+            }
+            this.InvokeAsync("GetPostListByType", new object[] {
+                        type}, this.GetPostListByTypeOperationCompleted, userState);
+        }
+        
+        private void OnGetPostListByTypeOperationCompleted(object arg) {
+            if ((this.GetPostListByTypeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetPostListByTypeCompleted(this, new GetPostListByTypeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1191,6 +1227,32 @@ namespace MVCViews.ForumService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void GetPostListByTypeCompletedEventHandler(object sender, GetPostListByTypeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPostListByTypeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPostListByTypeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public PostModel[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((PostModel[])(this.results[0]));
             }
         }
     }

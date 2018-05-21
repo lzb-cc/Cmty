@@ -65,6 +65,11 @@ namespace Services.svcs
             return ForumOperator.QueryPostListByEamil(poster);
         }
 
+        public List<PostModel> GetPostListByType(string type)
+        {
+            return ForumOperator.QueryPostListByType(ForumOperator.IndexOfPostType(type));
+        }
+
         public PostReplyModel GetPostReplyById(int id)
         {
             return ForumOperator.QueryPostReplyById(id);

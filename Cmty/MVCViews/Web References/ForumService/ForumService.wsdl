@@ -93,6 +93,12 @@
   <wsdl:message name="IForumService_GetPostTypeList_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPostTypeListResponse" />
   </wsdl:message>
+  <wsdl:message name="IForumService_GetPostListByType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostListByType" />
+  </wsdl:message>
+  <wsdl:message name="IForumService_GetPostListByType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostListByTypeResponse" />
+  </wsdl:message>
   <wsdl:portType name="IForumService">
     <wsdl:operation name="AddPost">
       <wsdl:input wsaw:Action="http://tempuri.org/IForumService/AddPost" message="tns:IForumService_AddPost_InputMessage" />
@@ -149,6 +155,10 @@
     <wsdl:operation name="GetPostTypeList">
       <wsdl:input wsaw:Action="http://tempuri.org/IForumService/GetPostTypeList" message="tns:IForumService_GetPostTypeList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IForumService/GetPostTypeListResponse" message="tns:IForumService_GetPostTypeList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostListByType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumService/GetPostListByType" message="tns:IForumService_GetPostListByType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumService/GetPostListByTypeResponse" message="tns:IForumService_GetPostListByType_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IForumService" type="tns:IForumService">
@@ -272,6 +282,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPostTypeList">
       <soap:operation soapAction="http://tempuri.org/IForumService/GetPostTypeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostListByType">
+      <soap:operation soapAction="http://tempuri.org/IForumService/GetPostListByType" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -52,6 +52,9 @@ namespace Services.cnts
 
         [OperationContract]
         List<string> GetPostTypeList();
+
+        [OperationContract]
+        List<PostModel> GetPostListByType(string type);
     }
 
     [DataContract]

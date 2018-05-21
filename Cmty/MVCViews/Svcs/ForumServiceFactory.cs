@@ -94,5 +94,10 @@ namespace MVCViews.Svcs
         {
             return forumClient.GetPostTypeList();
         }
+
+        public PostModel[] GetPostListByType(string type)
+        {
+            return forumClient.GetPostListByType(type);
+        }
     }
 }

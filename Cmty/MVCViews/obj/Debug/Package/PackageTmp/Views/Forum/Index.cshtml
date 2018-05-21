@@ -7,8 +7,10 @@
 <h2>自由论坛</h2>
 
 <p>
-    <button class="btn btn-success" onclick="Redirect('/Forum/AddPost')">我要发帖</button>  
+    <button class="btn btn-success" onclick="Redirect('/Forum/AddPost')">我要发帖</button>
     <button class="btn btn-primary" onclick="Redirect('/Forum/MyPostCenter')">个人中心</button>
+    @Html.DropDownList("type", ViewData["PostType"] as IEnumerable<SelectListItem>, new { @class = "form-control-self" })
+    <button class="btn btn-default" onclick="Search()">搜索</button>
 </p>
 <table class="table">
     <tr>
@@ -30,39 +32,67 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Poster)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostType)
-        </td>
-        <td>
-            <div class="overflow">@item.Content</div>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PublishDate)
-        </td>
-        <td>
-            <input type="button" value="详细" class="btn btn-success" onclick="Redirect('/Forum/PostDetails?id=@item.Id')" /> 
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Poster)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostType)
+            </td>
+            <td>
+                <div class="overflow">@item.Content</div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishDate)
+            </td>
+            <td>
+                <input type="button" value="详细" class="btn btn-success" onclick="Redirect('/Forum/PostDetails?id=@item.Id')" />
+            </td>
+        </tr>
+    }
 
 </table>
 
 <style>
     .overflow {
-        width:100px;height:20px;text-overflow:ellipsis; white-space:nowrap; overflow:hidden;
+        width: 100px;
+        height: 20px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .form-control-self {
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.428571429;
+        color: #555555;
+        vertical-align: middle;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+        transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
     }
 </style>
 
 <script>
     function Redirect(url) {
         window.location.href = url;
+    }
+
+    function Search() {
+        var type = $("#type").val();
+
+        window.location.href = "/Forum/Index?type=" + type;
     }
 </script>

@@ -11,14 +11,34 @@ namespace MVCViews.Controllers
     public class ForumController : AuthorityController
     {
         // GET: Forum
-        public ActionResult Index()
+        public ActionResult Index(string type = "")
         {
             var list = new List<PostViewModel>();
-            var retList = forumClient.GetPostList();
+            ForumService.PostModel[] retList;
+            if(string.IsNullOrEmpty(type))
+            {
+                retList = forumClient.GetPostList();
+
+            }
+            else
+            {
+                retList = forumClient.GetPostListByType(type);
+            }
+
             foreach (var item in retList)
             {
                 list.Add(new PostViewModel(item));
             }
+
+            var postTypeList = forumClient.GetPostTypeList();
+            var postList = new List<SelectListItem>();
+            postList.Add(new SelectListItem() { Text = "All", Value = "" });
+            foreach (var item in postTypeList)
+            {
+                postList.Add(new SelectListItem() { Text = item });
+            }
+
+            ViewData["PostType"] = postList;
 
             return View(list);
         }

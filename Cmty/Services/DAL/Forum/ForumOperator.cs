@@ -107,6 +107,37 @@ namespace Services.DAL.Forum
             return ret;
         }
 
+        public static List<PostModel> QueryPostListByType(int type)
+        {
+            var ret = new List<PostModel>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select Id, Email, Title, Content, PType, PDate, NoComments from PostMsg where PType = {0} order by PDate DESC", type);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var model = new PostModel()
+                        {
+                            Id = Convert.ToInt32(reader.GetValue(0)),
+                            Poster = Convert.ToString(reader.GetValue(1)),
+                            Title = Convert.ToString(reader.GetValue(2)),
+                            Content = Convert.ToString(reader.GetValue(3)),
+                            PostType = NameOfPostType(Convert.ToInt32(reader.GetValue(4))),
+                            PublishDate = Convert.ToDateTime(reader.GetValue(5)),
+                            NoComments = Convert.ToInt32(reader.GetValue(6))
+                        };
+                        ret.Add(model);
+                    }
+                    conn.Close();
+                }
+            }
+
+            return ret;
+        }
+
         public static List<PostModel> QueryPostListByEamil(string email)
         {
             var ret = new List<PostModel>();
