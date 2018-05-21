@@ -4,9 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>自由论坛</h2>
 
-<p>
+<p style="margin:20px;">
     <button class="btn btn-success" onclick="Redirect('/Forum/AddPost')">我要发帖</button>
     <button class="btn btn-primary" onclick="Redirect('/Forum/MyPostCenter')">个人中心</button>
     @Html.DropDownList("type", ViewData["PostType"] as IEnumerable<SelectListItem>, new { @class = "form-control-self" })
