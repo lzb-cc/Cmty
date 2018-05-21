@@ -188,7 +188,7 @@ namespace MVCViews.Controllers
             if (forumClient.GetPostById(postId).NoComments > 0)
             {
                 ret.Status = 2;
-                ret.Message = "跟帖失败,贴住禁止回帖!";
+                ret.Message = "跟帖失败,禁止回帖!";
                 return Json(ret);
             }
 

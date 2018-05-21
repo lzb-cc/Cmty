@@ -97,10 +97,10 @@
       <publishTime>03/15/2018 21:20:49</publishTime>
     </File>
     <File Include="bin/MVCViews.dll">
-      <publishTime>05/21/2018 16:57:16</publishTime>
+      <publishTime>05/21/2018 19:06:32</publishTime>
     </File>
     <File Include="bin/MVCViews.pdb">
-      <publishTime>05/21/2018 16:57:16</publishTime>
+      <publishTime>05/21/2018 19:06:32</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>03/15/2018 21:20:50</publishTime>
@@ -415,7 +415,7 @@
       <publishTime>05/15/2018 16:58:08</publishTime>
     </File>
     <File Include="Views/Forum/AddPost.cshtml">
-      <publishTime>05/03/2018 21:09:10</publishTime>
+      <publishTime>05/21/2018 19:04:57</publishTime>
     </File>
     <File Include="Views/Forum/Index.cshtml">
       <publishTime>05/21/2018 16:54:32</publishTime>
