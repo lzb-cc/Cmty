@@ -4,60 +4,84 @@
     ViewBag.Title = "AddPost";
 }
 
-<h2>我要发帖</h2>
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
+    <div style="margin-top:20px;">
+        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control-self" } })
+    </div>
 
-    <div class="form-horizontal">
-        <h4>详细信息</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <hr />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div style="height:400px;">
+        <textarea name="Content" id="Content" style="width:100%;height:380px;"></textarea>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PostType, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.PostType, ViewData["PostType"] as IEnumerable<SelectListItem>, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PostType, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <hr />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Content,new { @class = "form-control", @placeholder="输入内容..." })
-                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NoComments, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.CheckBoxFor(model => model.NoComments, new { htmlAttributes = new { @type="form-control" } })
-                @Html.ValidationMessageFor(model => model.NoComments, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="提交" class="btn btn-primary" />
-                <input type="button" value="返回主页" class="btn" onclick="Redirect('/Forum/Index')" />
-            </div>
+    <div style="margin:10px;">
+        <span>帖子类型</span>
+        <span>@Html.DropDownListFor(model => model.PostType, ViewData["PostType"] as IEnumerable<SelectListItem>, new { @class = "form-control-self" })</span>
+    </div>
+    <div style="margin:10px;">
+        <span>禁止回帖</span>
+        <span>
+            @Html.CheckBoxFor(model => model.NoComments, new { htmlAttributes = new { @type = "form-control-self" } })
+        </span>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="提交" class="btn btn-primary" />
+            <input type="button" value="返回主页" class="btn" onclick="Redirect('/Forum/Index')" />
         </div>
     </div>
 }
 
 
+<style>
+    #Title {
+        max-width: 100%;
+    }
+
+    .form-control-self {
+        width: 100%;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.428571429;
+        color: #555555;
+        vertical-align: middle;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+        transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    }
+
+    .col-md-2-self {
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+        float: left;
+    }
+</style>
+
+<script charset="utf-8" src="~/Scripts/kindeditor-all.js"></script>
+<script charset="utf-8" src="~/Scripts/kindeditor-all-min.js"></script>
+<script charset="utf-8" src="~/Scripts/lang/zh-CN.js"></script>
 <script>
+    KindEditor.ready(function (K) {
+        window.editor = K.create('#editor_id');
+    });
+</script>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var editor = KindEditor.create('textarea[name="Content"]');
+    }
+
     function Redirect(url) {
         window.location.href = url;
     }
