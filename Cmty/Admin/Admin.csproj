@@ -305,11 +305,16 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Svcs\AdminServices.svc" />
     <Content Include="Views\CourseReview\Edit.cshtml" />
+    <Content Include="Views\Other\ForgotPasswordList.cshtml" />
+    <Content Include="Views\Other\ForgotPasswordDetails.cshtml" />
     <None Include="Web References\AccountService\AccountService.disco" />
     <Content Include="Web References\AccountService\ReturnState.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <Content Include="Web References\AccountService\UserInfoView.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\AccountService\ForgotPasswordView.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <None Include="Web References\CourseCommentService\CourseCommentService.disco" />
@@ -403,10 +408,10 @@
     <None Include="Web References\AccountService\AccountService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Web References\AccountService\Reference.map">
+    <None Include="Web References\AccountService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="Web References\CourseCommentService\CourseCommentService.wsdl" />
     <None Include="Web References\CourseCommentService\CourseCommentService.xsd">
       <SubType>Designer</SubType>

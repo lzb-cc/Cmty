@@ -164,7 +164,5 @@ namespace MVCViews.Models
 
         [Display(Name = "联系方式")]
         public string Tel { get; set; }
-
-
     }
 }

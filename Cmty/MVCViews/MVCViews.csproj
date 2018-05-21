@@ -482,6 +482,9 @@
     </None>
     <Content Include="Views\Account\GetBackPassword.cshtml" />
     <None Include="Web References\AccountService\AccountService.disco" />
+    <Content Include="Web References\AccountService\ForgotPasswordView.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
     <None Include="Web References\CourseCommentService\CourseCommentService.disco" />
     <Content Include="Web References\CourseService\CourseReviewView.datasource">
       <DependentUpon>Reference.map</DependentUpon>

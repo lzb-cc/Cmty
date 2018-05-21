@@ -49,6 +49,21 @@ namespace Services
 
         [OperationContract]
         void CheckEmailForDelete(string email);
+
+        [OperationContract]
+        void AddForgotPassword(ForgotPasswordView model);
+
+        [OperationContract]
+        void UpdateForgotPassword(int id, int status);
+
+        [OperationContract]
+        void DeleteForgotPassword(int id);
+
+        [OperationContract]
+        List<ForgotPasswordView> GetForgotPasswordList();
+
+        [OperationContract]
+        ForgotPasswordView GetForgotPasswordById(int id);
     }
 
     [DataContract]
@@ -143,5 +158,32 @@ namespace Services
 
         [DataMember]
         public string Avatar { get; set; }
+    }
+
+    public class ForgotPasswordView
+    {
+        [DataMember(IsRequired = true)]
+        public int Id { get; set; }
+
+        [DataMember(IsRequired = true)]
+        public string Email { get; set; }
+
+        [DataMember(IsRequired = true)]
+        public string UserName { get; set; }
+
+        [DataMember(IsRequired = true)]
+        public string Sex { get; set; }
+
+        [DataMember(IsRequired = true)]
+        public string Nick { get; set; }
+
+        [DataMember(IsRequired = true)]
+        public string Tel { get; set; }
+
+        [DataMember(IsRequired =true)]
+        public DateTime Date { get; set; }
+
+        [DataMember(IsRequired = true)]
+        public int Status { get; set; }
     }
 }

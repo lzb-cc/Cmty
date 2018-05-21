@@ -3,6 +3,7 @@ using Services.DAL.Account;
 using System.Net;
 using System.IO;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace Services
 {
@@ -34,10 +35,10 @@ namespace Services
         {
             var result = CommonLib.ReturnState.ReturnOK;
             if (AccountOperator.HasMember(model.Email))
-                result =  CommonLib.ReturnState.ReturnError;
+                result = CommonLib.ReturnState.ReturnError;
             result = AccountOperator.Register(model);
             result = AccountOperator.AddEmailToCheckSet(model.Email) ? CommonLib.ReturnState.ReturnOK : CommonLib.ReturnState.ReturnError;
-            if(result.Equals(CommonLib.ReturnState.ReturnOK))
+            if (result.Equals(CommonLib.ReturnState.ReturnOK))
             {
                 SendEmailForRegister(model.Email);
             }
@@ -100,6 +101,31 @@ namespace Services
         public void CheckEmailForDelete(string email)
         {
             SendEmailForDelete(email);
+        }
+
+        public void AddForgotPassword(ForgotPasswordView model)
+        {
+            AccountOperator.ForgotPasswordApply(model);
+        }
+
+        public void UpdateForgotPassword(int id, int status)
+        {
+            AccountOperator.UpdateForgotPasswordStatus(id, status);
+        }
+
+        public void DeleteForgotPassword(int id)
+        {
+            AccountOperator.DeleteForgotPassword(id);
+        }
+
+        public List<ForgotPasswordView> GetForgotPasswordList()
+        {
+            return AccountOperator.GetForgotPasswordList();
+        }
+
+        public ForgotPasswordView GetForgotPasswordById(int id)
+        {
+            return AccountOperator.GetForgotPasswordById(id);
         }
     }
 }

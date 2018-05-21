@@ -97,10 +97,10 @@
       <publishTime>03/15/2018 21:20:49</publishTime>
     </File>
     <File Include="bin/MVCViews.dll">
-      <publishTime>05/21/2018 00:06:19</publishTime>
+      <publishTime>05/21/2018 10:19:40</publishTime>
     </File>
     <File Include="bin/MVCViews.pdb">
-      <publishTime>05/21/2018 00:06:19</publishTime>
+      <publishTime>05/21/2018 10:19:40</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>03/15/2018 21:20:50</publishTime>
@@ -373,7 +373,7 @@
       <publishTime>03/15/2018 21:20:18</publishTime>
     </File>
     <File Include="Views/Account/GetBackPassword.cshtml">
-      <publishTime>05/21/2018 00:07:05</publishTime>
+      <publishTime>05/21/2018 09:32:12</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
       <publishTime>05/20/2018 23:49:28</publishTime>
@@ -504,11 +504,14 @@
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>03/15/2018 21:20:19</publishTime>
     </File>
+    <File Include="Web References/AccountService/ForgotPasswordView.datasource">
+      <publishTime>05/21/2018 10:07:26</publishTime>
+    </File>
     <File Include="Web References/AccountService/ReturnState.datasource">
-      <publishTime>05/20/2018 23:00:25</publishTime>
+      <publishTime>05/21/2018 10:07:26</publishTime>
     </File>
     <File Include="Web References/AccountService/UserInfoView.datasource">
-      <publishTime>05/20/2018 23:00:25</publishTime>
+      <publishTime>05/21/2018 10:07:26</publishTime>
     </File>
     <File Include="Web References/CourseCommentService/CourseCommentView.datasource">
       <publishTime>05/14/2018 16:56:02</publishTime>

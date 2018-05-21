@@ -281,10 +281,25 @@ create table PostReplyMsg
 	constraint fk_Email_prm foreign key (Email) references UserSets(Email)
 );
 
+if OBJECT_ID('FilterStrings') is not null drop table FilterStrings
 create table FilterStrings
 (
 	Name   nvarchar(20),
 	primary key (Name)
+);
+
+if OBJECT_ID('ForgotPassword') is not null drop table ForgotPassword
+create table ForgotPassword
+(
+	Id	     int identity,
+	Email    nvarchar(20),
+	UserName nvarchar(20),
+	Sex		 nvarchar(20),
+	Nick     nvarchar(20),
+	Tel      nvarchar(20),
+	Stat     int,
+	ADate    datetime,
+	primary key (Id)
 );
 go
 

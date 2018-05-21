@@ -9,7 +9,7 @@ namespace Admin.Svcs
     public class CourseCommentServiceFactory
     {
         private static CourseCommentService.CourseCommentService courseCommentClient = new CourseCommentService.CourseCommentService();
-        private static bool specify = false;
+        private static bool specify = true;
 
         public ReturnState AddComment(CourseCommentView model)
         {

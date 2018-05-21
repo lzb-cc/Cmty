@@ -53,6 +53,16 @@ namespace MVCViews.AccountService {
         
         private System.Threading.SendOrPostCallback CheckEmailForDeleteOperationCompleted;
         
+        private System.Threading.SendOrPostCallback AddForgotPasswordOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateForgotPasswordOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback DeleteForgotPasswordOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetForgotPasswordListOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetForgotPasswordByIdOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -126,6 +136,21 @@ namespace MVCViews.AccountService {
         
         /// <remarks/>
         public event CheckEmailForDeleteCompletedEventHandler CheckEmailForDeleteCompleted;
+        
+        /// <remarks/>
+        public event AddForgotPasswordCompletedEventHandler AddForgotPasswordCompleted;
+        
+        /// <remarks/>
+        public event UpdateForgotPasswordCompletedEventHandler UpdateForgotPasswordCompleted;
+        
+        /// <remarks/>
+        public event DeleteForgotPasswordCompletedEventHandler DeleteForgotPasswordCompleted;
+        
+        /// <remarks/>
+        public event GetForgotPasswordListCompletedEventHandler GetForgotPasswordListCompleted;
+        
+        /// <remarks/>
+        public event GetForgotPasswordByIdCompletedEventHandler GetForgotPasswordByIdCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IAccountService/Register", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -486,6 +511,159 @@ namespace MVCViews.AccountService {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IAccountService/AddForgotPassword", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void AddForgotPassword([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] ForgotPasswordView model) {
+            this.Invoke("AddForgotPassword", new object[] {
+                        model});
+        }
+        
+        /// <remarks/>
+        public void AddForgotPasswordAsync(ForgotPasswordView model) {
+            this.AddForgotPasswordAsync(model, null);
+        }
+        
+        /// <remarks/>
+        public void AddForgotPasswordAsync(ForgotPasswordView model, object userState) {
+            if ((this.AddForgotPasswordOperationCompleted == null)) {
+                this.AddForgotPasswordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddForgotPasswordOperationCompleted);
+            }
+            this.InvokeAsync("AddForgotPassword", new object[] {
+                        model}, this.AddForgotPasswordOperationCompleted, userState);
+        }
+        
+        private void OnAddForgotPasswordOperationCompleted(object arg) {
+            if ((this.AddForgotPasswordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddForgotPasswordCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IAccountService/UpdateForgotPassword", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UpdateForgotPassword(int id, [System.Xml.Serialization.XmlIgnoreAttribute()] bool idSpecified, int status, [System.Xml.Serialization.XmlIgnoreAttribute()] bool statusSpecified) {
+            this.Invoke("UpdateForgotPassword", new object[] {
+                        id,
+                        idSpecified,
+                        status,
+                        statusSpecified});
+        }
+        
+        /// <remarks/>
+        public void UpdateForgotPasswordAsync(int id, bool idSpecified, int status, bool statusSpecified) {
+            this.UpdateForgotPasswordAsync(id, idSpecified, status, statusSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateForgotPasswordAsync(int id, bool idSpecified, int status, bool statusSpecified, object userState) {
+            if ((this.UpdateForgotPasswordOperationCompleted == null)) {
+                this.UpdateForgotPasswordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateForgotPasswordOperationCompleted);
+            }
+            this.InvokeAsync("UpdateForgotPassword", new object[] {
+                        id,
+                        idSpecified,
+                        status,
+                        statusSpecified}, this.UpdateForgotPasswordOperationCompleted, userState);
+        }
+        
+        private void OnUpdateForgotPasswordOperationCompleted(object arg) {
+            if ((this.UpdateForgotPasswordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateForgotPasswordCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IAccountService/DeleteForgotPassword", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void DeleteForgotPassword(int id, [System.Xml.Serialization.XmlIgnoreAttribute()] bool idSpecified) {
+            this.Invoke("DeleteForgotPassword", new object[] {
+                        id,
+                        idSpecified});
+        }
+        
+        /// <remarks/>
+        public void DeleteForgotPasswordAsync(int id, bool idSpecified) {
+            this.DeleteForgotPasswordAsync(id, idSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteForgotPasswordAsync(int id, bool idSpecified, object userState) {
+            if ((this.DeleteForgotPasswordOperationCompleted == null)) {
+                this.DeleteForgotPasswordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteForgotPasswordOperationCompleted);
+            }
+            this.InvokeAsync("DeleteForgotPassword", new object[] {
+                        id,
+                        idSpecified}, this.DeleteForgotPasswordOperationCompleted, userState);
+        }
+        
+        private void OnDeleteForgotPasswordOperationCompleted(object arg) {
+            if ((this.DeleteForgotPasswordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteForgotPasswordCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IAccountService/GetForgotPasswordList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/Services")]
+        public ForgotPasswordView[] GetForgotPasswordList() {
+            object[] results = this.Invoke("GetForgotPasswordList", new object[0]);
+            return ((ForgotPasswordView[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetForgotPasswordListAsync() {
+            this.GetForgotPasswordListAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetForgotPasswordListAsync(object userState) {
+            if ((this.GetForgotPasswordListOperationCompleted == null)) {
+                this.GetForgotPasswordListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetForgotPasswordListOperationCompleted);
+            }
+            this.InvokeAsync("GetForgotPasswordList", new object[0], this.GetForgotPasswordListOperationCompleted, userState);
+        }
+        
+        private void OnGetForgotPasswordListOperationCompleted(object arg) {
+            if ((this.GetForgotPasswordListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetForgotPasswordListCompleted(this, new GetForgotPasswordListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IAccountService/GetForgotPasswordById", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public ForgotPasswordView GetForgotPasswordById(int id, [System.Xml.Serialization.XmlIgnoreAttribute()] bool idSpecified) {
+            object[] results = this.Invoke("GetForgotPasswordById", new object[] {
+                        id,
+                        idSpecified});
+            return ((ForgotPasswordView)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetForgotPasswordByIdAsync(int id, bool idSpecified) {
+            this.GetForgotPasswordByIdAsync(id, idSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void GetForgotPasswordByIdAsync(int id, bool idSpecified, object userState) {
+            if ((this.GetForgotPasswordByIdOperationCompleted == null)) {
+                this.GetForgotPasswordByIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetForgotPasswordByIdOperationCompleted);
+            }
+            this.InvokeAsync("GetForgotPasswordById", new object[] {
+                        id,
+                        idSpecified}, this.GetForgotPasswordByIdOperationCompleted, userState);
+        }
+        
+        private void OnGetForgotPasswordByIdOperationCompleted(object arg) {
+            if ((this.GetForgotPasswordByIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetForgotPasswordByIdCompleted(this, new GetForgotPasswordByIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -562,6 +740,155 @@ namespace MVCViews.AccountService {
             }
             set {
                 this.universityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string UserName {
+            get {
+                return this.userNameField;
+            }
+            set {
+                this.userNameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/Services")]
+    public partial class ForgotPasswordView {
+        
+        private System.DateTime dateField;
+        
+        private bool dateFieldSpecified;
+        
+        private string emailField;
+        
+        private int idField;
+        
+        private bool idFieldSpecified;
+        
+        private string nickField;
+        
+        private string sexField;
+        
+        private int statusField;
+        
+        private bool statusFieldSpecified;
+        
+        private string telField;
+        
+        private string userNameField;
+        
+        /// <remarks/>
+        public System.DateTime Date {
+            get {
+                return this.dateField;
+            }
+            set {
+                this.dateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool DateSpecified {
+            get {
+                return this.dateFieldSpecified;
+            }
+            set {
+                this.dateFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IdSpecified {
+            get {
+                return this.idFieldSpecified;
+            }
+            set {
+                this.idFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Nick {
+            get {
+                return this.nickField;
+            }
+            set {
+                this.nickField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Sex {
+            get {
+                return this.sexField;
+            }
+            set {
+                this.sexField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool StatusSpecified {
+            get {
+                return this.statusFieldSpecified;
+            }
+            set {
+                this.statusFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Tel {
+            get {
+                return this.telField;
+            }
+            set {
+                this.telField = value;
             }
         }
         
@@ -1050,6 +1377,70 @@ namespace MVCViews.AccountService {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void CheckEmailForDeleteCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void AddForgotPasswordCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void UpdateForgotPasswordCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void DeleteForgotPasswordCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void GetForgotPasswordListCompletedEventHandler(object sender, GetForgotPasswordListCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetForgotPasswordListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetForgotPasswordListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ForgotPasswordView[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ForgotPasswordView[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void GetForgotPasswordByIdCompletedEventHandler(object sender, GetForgotPasswordByIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetForgotPasswordByIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetForgotPasswordByIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ForgotPasswordView Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ForgotPasswordView)(this.results[0]));
+            }
+        }
+    }
 }
 
 #pragma warning restore 1591

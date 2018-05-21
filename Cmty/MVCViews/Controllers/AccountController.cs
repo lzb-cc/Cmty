@@ -272,7 +272,7 @@ namespace MVCViews.Controllers
             return RedirectToAction("UserInfo", "Account", routeValues: new { email = model.Email });
         }
 
-        public ActionResult GetBackPassword()
+        public ActionResult c()
         {
             var list = new List<SelectListItem>();
             list.Add(new SelectListItem() { Text = "男" });
@@ -281,9 +281,22 @@ namespace MVCViews.Controllers
             return View();
         }
 
-        public JsonResult GetBackPasswordConfirm(ForgetPasswordViewModel model)
+        [HttpPost]
+        public ActionResult GetBackPassword(ForgetPasswordViewModel model)
         {
-            return Json(new { Status = 0 });
+            if (string.IsNullOrEmpty(model.Email))
+            {
+                return View(model);
+            }
+
+            var forgot = new AccountService.ForgotPasswordView();
+            forgot.Email = model.Email;
+            forgot.UserName = model.UserName;
+            forgot.Sex = model.Sex;
+            forgot.Tel = model.Tel;
+            forgot.Nick = model.Nick;
+            accountClient.AddForgotPasswordApply(forgot);
+            return RedirectToAction("Index", "Home");
         }
 
         //

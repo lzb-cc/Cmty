@@ -84,5 +84,10 @@ namespace MVCViews.Svcs
         {
             accountClient.CheckEmailForDelete(email);
         }
+
+        public void AddForgotPasswordApply(ForgotPasswordView model)
+        {
+            accountClient.AddForgotPassword(model);
+        }
     }
 }

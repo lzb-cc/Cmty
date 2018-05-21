@@ -37,6 +37,38 @@ namespace Admin.Controllers
             return View(list);
         }
 
+        public ActionResult ForgotPasswordList()
+        {
+            var list = accountClient.GetForgotPasswordList();
+            return View(list);
+        }
+
+        public ActionResult DeleteForgotPasswordRecords(int id)
+        {
+            accountClient.DeleteForgotPassword(id);
+            return RedirectToAction("ForgotPasswordList");
+        }
+
+        public ActionResult ForgotPasswordDetails(int id)
+        {
+            var model = accountClient.GetForgotPasswordById(id);
+            var user = accountClient.GetUserInfo(model.Email);
+            ViewBag.User = user == null ? new AccountService.UserInfoView() : user;
+            return View(model);
+        }
+
+        public ActionResult ForgotPass(int id)
+        {
+            accountClient.UpdateForgotPasswordStatus(id, 1);
+            return RedirectToAction("ForgotPasswordList");
+        }
+
+        public ActionResult ForgotFailed(int id)
+        {
+            accountClient.UpdateForgotPasswordStatus(id, 2);
+            return RedirectToAction("ForgotPasswordList");
+        }
+
         public ActionResult AddFilterString(string content)
         {
             utilityClient.AddFilterString(content);

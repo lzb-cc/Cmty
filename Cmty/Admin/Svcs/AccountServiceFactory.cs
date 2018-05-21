@@ -6,7 +6,7 @@ namespace Admin.Svcs
     {
 
         private static AccountService.AccountService accountClient = new AccountService.AccountService();
-        private static bool specify = false;
+        private static bool specify = true;
 
         public ReturnState Register(RegisterView model)
         {
@@ -75,5 +75,24 @@ namespace Admin.Svcs
             accountClient.ReValidEmail(email);
         }
 
+        public ForgotPasswordView[] GetForgotPasswordList()
+        {
+            return accountClient.GetForgotPasswordList();
+        }
+
+        public ForgotPasswordView GetForgotPasswordById(int id)
+        {
+            return accountClient.GetForgotPasswordById(id, specify);
+        }
+
+        public void UpdateForgotPasswordStatus(int id, int status)
+        {
+            accountClient.UpdateForgotPassword(id, specify, status, specify);
+        }
+
+        public void DeleteForgotPassword(int id)
+        {
+            accountClient.DeleteForgotPassword(id, specify);
+        }
     }
 }

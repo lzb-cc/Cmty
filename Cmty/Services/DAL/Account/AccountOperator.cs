@@ -235,6 +235,107 @@ namespace Services.DAL.Account
             return result;
         }
 
+        public static int ForgotPasswordApply(ForgotPasswordView model)
+        {
+            var result = 0;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("insert into ForgotPassword values(N'{0}', N'{1}', N'{2}', N'{3}', N'{4}', {5}, '{6}')", model.Email, model.UserName, model.Sex, model.Nick, model.Tel, 0, DateTime.Now);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            return result;
+        }
+
+        public static int DeleteForgotPassword(int id)
+        {
+            var result = 0;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("delete from ForgotPassword where Id = {0}", id);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            return result;
+        }
+
+        private static ForgotPasswordView SqlReaderForgotPassword(SqlDataReader reader)
+        {
+            var model = new ForgotPasswordView();
+            model.Id = Convert.ToInt32(reader.GetValue(0));
+            model.Email = Convert.ToString(reader.GetValue(1));
+            model.UserName = Convert.ToString(reader.GetValue(2));
+            model.Sex = Convert.ToString(reader.GetValue(3));
+            model.Nick = Convert.ToString(reader.GetValue(4));
+            model.Tel = Convert.ToString(reader.GetValue(5));
+            model.Status = Convert.ToInt32(reader.GetValue(6));
+            model.Date = Convert.ToDateTime(reader.GetValue(7));
+            return model;
+        }
+
+        public static List<ForgotPasswordView> GetForgotPasswordList()
+        {
+            var result = new List<ForgotPasswordView>();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select * from ForgotPassword");
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(SqlReaderForgotPassword(reader));
+                    }
+                }
+            }
+            return result;
+        }
+
+        public static ForgotPasswordView GetForgotPasswordById(int id)
+        {
+            var result = new ForgotPasswordView();
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("select * from ForgotPassword");
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result = SqlReaderForgotPassword(reader);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public static int UpdateForgotPasswordStatus(int id, int status)
+        {
+            var result = 0;
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                var cmdText = string.Format("update ForgotPassword set Stat = {1} where Id = {0}", id, status);
+                using (var cmd = new SqlCommand(cmdText, conn))
+                {
+                    result = cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            return result;
+        }
+
         public static bool DeleteUser(string email)
         {
             var result = false;

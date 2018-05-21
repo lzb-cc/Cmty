@@ -9,7 +9,7 @@ namespace Admin.Svcs
     public class MarketServiceFactory
     {
         private static MarketService.MarketService marketClient = new MarketService.MarketService();
-        private static bool specify = false;
+        private static bool specify = true;
 
         public ReturnState UserAddGoods(GoodsInfo model)
         {
